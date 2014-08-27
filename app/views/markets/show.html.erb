@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @market.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @market.category %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @market.description %>
+</p>
+
+<p>
+  <strong>Published date:</strong>
+  <%= @market.published_date %>
+</p>
+
+<p>
+  <strong>Arbitration date:</strong>
+  <%= @market.arbitration_date %>
+</p>
+
+<%= link_to 'Edit', edit_market_path(@market) %> |
+<%= link_to 'Back', markets_path %>

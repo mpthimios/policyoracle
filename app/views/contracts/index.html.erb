@@ -1,0 +1,29 @@
+<h1>Listing contracts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Opening price</th>
+      <th>Market</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contracts.each do |contract| %>
+      <tr>
+        <td><%= contract.name %></td>
+        <td><%= contract.opening_price %></td>
+        <td><%= contract.market_id %></td>
+        <td><%= link_to 'Show', contract %></td>
+        <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+        <td><%= link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contract', new_contract_path %>

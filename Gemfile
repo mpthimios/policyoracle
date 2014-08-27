@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -21,6 +21,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'bcrypt', '~> 3.1.7'
+gem 'acts_as_list', '~> 0.4.0'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
