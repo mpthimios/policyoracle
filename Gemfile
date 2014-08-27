@@ -21,6 +21,26 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'selenium-webdriver', '2.42.0'
+  gem 'capybara', '2.4.1'
+  gem 'factory_girl_rails', '4.4.1'
+  gem 'cucumber-rails', '1.4.1', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  #gem 'spork', '~> 0.9.2'
+
+  # Uncomment this line on OS X.
+  gem 'growl', '1.0.3'
+
+  # Uncomment these lines on Linux.
+  # gem 'libnotify', '0.8.0'
+
+  # Uncomment these lines on Windows.
+  # gem 'rb-notifu', '0.0.4'
+  # gem 'win32console', '1.3.2'
+  # gem 'wdm', '0.1.0'
+end
+
 gem 'bcrypt', '~> 3.1.7'
 gem 'acts_as_list', '~> 0.4.0'
 gem 'sass-rails', '~> 4.0.3'

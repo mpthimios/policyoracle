@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+
+  get 'static_pages/how_works'
+
+  get 'static_pages/trader_manual'
+
+  get 'static_pages/faq'
+
+  get 'static_pages/contact'
+
+  get 'static_pages/about'
+
   resources :contracts
 
   resources :markets
