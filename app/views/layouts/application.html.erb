@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PolicyOracle | <%= @title %></title>
+    <title><%= title %></title>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "responsive/screen", :media => 'screen' %>
+    <%= stylesheet_link_tag "responsive/print", :media => 'print' %>
+    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
   </head>
   <body>
-	<%= yield %>
+    <div class="container">
+      <%= render 'layouts/header' %>
+    	<section class="round">
+  		  <%= yield %>
+      </section>
+      <%= render 'layouts/footer' %>
+	  </div>
   </body>
 </html>
