@@ -1,6 +1,6 @@
-require "rails_helper"
+require "spec_helper"
 
-RSpec.describe MarketsController, :type => :routing do
+describe MarketsController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do

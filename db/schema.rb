@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826145624) do
+ActiveRecord::Schema.define(version: 20140830082156) do
 
   create_table "contracts", force: true do |t|
     t.string   "name",                 limit: 100
@@ -48,18 +48,19 @@ ActiveRecord::Schema.define(version: 20140826145624) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name",              limit: 32
-    t.string   "email",                         default: "",    null: false
-    t.string   "password",          limit: 32
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
     t.datetime "member_date"
-    t.string   "activation_key",    limit: 100
-    t.boolean  "status",                        default: false
-    t.float    "total_amount",                  default: 200.0
-    t.float    "cash_amount",                   default: 200.0
-    t.float    "investment_amount",             default: 0.0
+    t.float    "total_amount",      default: 200.0
+    t.float    "cash_amount",       default: 200.0
+    t.float    "investment_amount"
     t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["name"], name: "index_users_on_name", unique: true
 
 end

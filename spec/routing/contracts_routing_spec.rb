@@ -1,6 +1,6 @@
-require "rails_helper"
+require "spec_helper"
 
-RSpec.describe ContractsController, :type => :routing do
+describe ContractsController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do
