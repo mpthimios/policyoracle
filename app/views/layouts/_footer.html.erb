@@ -1,9 +1,37 @@
 <footer>
-	<nav class="round">
-		<ul>
-			<li><%= link_to "Home", root_path %></li>
-			<li><%= link_to "About", about_path %></li>
-			<li><%= link_to "Contact", contact_path %></li>
-		</ul>
-	</nav>
+	<div class="wrapper">
+		<div class="grid_6">
+			<h2>About</h2>
+			<p>The PolicyOracle is operated by faculty at the National University of Athens <a href="http://imu.ntua.gr/" target="blank"> Information Management Unit</a> as part of our research mission.</p>
+			<ul class="social">
+			    <li> <a href="https://twitter.com/imu_ntua">
+			    <figure><%= image_tag "soc1.png" %></figure>
+			        Follow us on Twitter</a> </li>
+			    <li> <a href="https://www.facebook.com/pages/ICCS-IMU/108487335848174">
+			    <figure><%= image_tag "soc2.png" %></figure>
+			        Join us on Facebook</a> </li>
+			    <li> <a href="http://imu.ntua.gr/news">
+			    <figure><%= image_tag "soc3.png" %></figure>
+			        Subscribe to our site</a> </li>
+			    <li class="cont_item m_bottom_zero"> <a href="contact.html">
+			    <figure><%= image_tag "soc4.png" %></figure>
+			        Contact Us</a> </li>
+			</ul>
+			</div><!-- grid_6 -->
+			<div class="grid_3">
+			<h2>Copyleft</h2>
+				All lefts reserved. 
+			</div><!-- grid_3 -->
+			<div class="grid_3 last-col">
+			<h2>Navigate</h2>
+			<ul class="navigate">
+				<li><%= link_to "Home", root_path %></li>
+			    <li><%= link_to "About", about_path %></li>
+				<li><%= link_to "Contact", contact_path %></li>
+			    <li><%= link_to "How Works", how_works_path %></li>
+			    <li><%= link_to "FAQ", faq_path %></li>
+			    <li><%= link_to "Sign Up", signup_path %></li>
+			</ul>
+			</div><!-- grid_3 last-col -->
+	</div><!-- wrapper -->
 </footer>

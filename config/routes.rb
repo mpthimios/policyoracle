@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   resources :contracts
   resources :markets
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
 
-  match '/signup', to: 'users#new',    via: 'get'
-  match '/home',    to: 'static_pages#home',    via: 'get'
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  #match '/home',    to: 'static_pages#home',    via: 'get'
   match '/how_works',   to: 'static_pages#how_works',   via: 'get'
   match '/trader_manual', to: 'static_pages#trader_manual', via: 'get'
   match '/faq',    to: 'static_pages#faq',    via: 'get'
