@@ -14,11 +14,11 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
 
-    has_secure_password
-    #Automatically create the virtual attribute 'password_confirmation'
-    validates :password, length: { minimum: 6 }
+  has_secure_password
+  #Automatically create the virtual attribute 'password_confirmation'
+  validates :password, length: { minimum: 6 }
 
-    scope :sorted, lambda { order("users.rank ASC")}
+  scope :sorted, lambda { order("users.rank ASC")}
 
 	def User.new_remember_token
     	SecureRandom.urlsafe_base64
