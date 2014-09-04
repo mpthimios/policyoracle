@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903153913) do
+ActiveRecord::Schema.define(version: 20140904101525) do
 
   create_table "contracts", force: true do |t|
     t.string   "name",                 limit: 100
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 20140903153913) do
   end
 
   add_index "contracts", ["market_id"], name: "index_contracts_on_market_id"
+
+  create_table "holdings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "contract_id"
+    t.integer  "quantity"
+    t.float    "price_purchased"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "holdings", ["user_id", "contract_id"], name: "index_holdings_on_user_id_and_contract_id"
 
   create_table "markets", force: true do |t|
     t.string   "name",             limit: 100

@@ -1,19 +1,29 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'Contracts') %>
+<div class="hireus_block">
+  	<div class="container_12">
+    	<section class="">
+      		<div class="wrapper">
+				<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @contract.name %>
-</p>
+				<p>
+				  <strong>Name:</strong>
+				  <%= @contract.name %>
+				</p>
 
-<p>
-  <strong>Opening price:</strong>
-  <%= @contract.opening_price %>
-</p>
+				<p>
+				  <strong>Opening price:</strong>
+				  <%= @contract.opening_price %>
+				</p>
 
-<p>
-  <strong>Market:</strong>
-  <%= @contract.market_id %>
-</p>
+				<p>
+				  <strong>Market:</strong>
+				  <%= @contract.market_id %>
+				</p>
 
-<%= link_to 'Edit', edit_contract_path(@contract) %> |
-<%= link_to 'Back', contracts_path %>
+				<%= link_to 'Edit', edit_contract_path(@contract) %> |
+				<%= link_to 'Back', contracts_path %>
+			</div>
+		</section>
+	</div>
+</div>
+

@@ -6,7 +6,6 @@ class Contract < ActiveRecord::Base
 	has_many :users, :through => :holdings
 	has_many :users, :through => :utransactions
 
-	#after_save :touch_market
 
 	validates_presence_of :name, :market_id, :opening_price
 	validates_length_of :name, :maximum => 255
@@ -14,12 +13,5 @@ class Contract < ActiveRecord::Base
 
 	scope :sorted, lambda { order("contracts.id ASC")}
 
-	#private
-	
-	#def touch_market
-	      # touch is similar to:
-	      #market.update_attribute(:updated_at, Time.now)
-	    #market.touch
-	#end
 
 end
