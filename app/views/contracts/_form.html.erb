@@ -1,4 +1,4 @@
-<%= form_for(@contract) do |f| %>
+<%= form_for([@market, @contract]) do |f| %>
   <% if @contract.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
@@ -18,10 +18,6 @@
   <div class="field">
     <%= f.label :opening_price %><br>
     <%= f.text_field :opening_price %>
-  </div>
-  <div class="field">
-    <%= f.label :market_id %><br>
-    <%= f.text_field :market_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

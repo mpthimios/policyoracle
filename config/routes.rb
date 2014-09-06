@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :contracts
-  resources :markets
+ 
+  resources :markets do
+    resources :contracts, shallow: true
+  end
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

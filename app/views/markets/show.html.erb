@@ -30,8 +30,10 @@
           <%= @market.arbitration_date %>
         </p>
 
-        <%= link_to 'Edit', edit_market_path(@market) %> |
-        <%= link_to 'Back', markets_path %>
+
+        <%= link_to 'Contracts', market_contracts_path(@market) %> |
+        <%= link_to 'Edit', edit_market_path(@market) %> 
+
       </div>
     </section>
   </div>

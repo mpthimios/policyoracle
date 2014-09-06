@@ -1,10 +1,11 @@
 class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
+  before_action :set_market, only: [:index, :new, :create]
 
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.all
+    @contracts = @market.contracts
   end
 
   # GET /contracts/1
@@ -24,7 +25,9 @@ class ContractsController < ApplicationController
   # POST /contracts
   # POST /contracts.json
   def create
-    @contract = Contract.new(contract_params)
+    #raise contract_params.inspect
+
+    @contract = @market.contracts.build(contract_params)
 
     respond_to do |format|
       if @contract.save
@@ -56,7 +59,7 @@ class ContractsController < ApplicationController
   def destroy
     @contract.destroy
     respond_to do |format|
-      format.html { redirect_to contracts_url, notice: 'Contract was successfully destroyed.' }
+      format.html { redirect_to market_contracts_path(@contract.market), notice: 'Contract was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +72,10 @@ class ContractsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contract_params
-      params.require(:contract).permit(:name, :opening_price, :market_id)
+      params.require(:contract).permit(:name, :opening_price)
+    end
+
+    def set_market
+      @market = Market.find(params[:market_id])
     end
 end

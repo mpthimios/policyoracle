@@ -6,7 +6,7 @@ class Market < ActiveRecord::Base
 
 	CATEGORY_TYPES = ['Economics', 'Politics', 'Environment']
 
-	validates_presence_of :name, :description, :published_date, :arbitration_date, :mechanism
+	validates_presence_of :name, :description, :published_date, :arbitration_date
 	validates_length_of :name, :maximum => 255
 	validates_uniqueness_of :name
 	validates_inclusion_of :category, :in => CATEGORY_TYPES, :message => "must be one of: #{CATEGORY_TYPES.join(',')}"
