@@ -30,8 +30,9 @@
         </table>
 
         <br>
-
-        <%= link_to 'New Contract', new_market_contract_path %>
+        <% if signed_in? && current_user.admin? %>
+          <%= link_to 'New Contract', new_market_contract_path %>
+        <% end %>
       </div>
     </section>
   </div>

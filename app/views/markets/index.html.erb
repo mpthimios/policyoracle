@@ -12,7 +12,9 @@
        
         <br></br>
 
-        <%= link_to 'New Market', new_market_path %>
+        <% if signed_in? && current_user.admin? %>
+          <%= link_to 'New Market', new_market_path %>
+        <% end %>
       </div>
     </section>
   </div>

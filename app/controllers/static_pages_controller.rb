@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     @title = "Home"
+    @market = Market.last
   end
 
   def how_works
