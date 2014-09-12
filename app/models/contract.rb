@@ -11,7 +11,6 @@ class Contract < ActiveRecord::Base
 	validates_length_of :name, :maximum => 255
 	validates_uniqueness_of :name
 
-	scope :sorted, lambda { order("contracts.id ASC")}
-
+	scope :sorted, lambda { order("contracts.name ASC")}
 
 end

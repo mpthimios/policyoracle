@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904101525) do
+ActiveRecord::Schema.define(version: 20140911134416) do
 
   create_table "contracts", force: true do |t|
     t.string   "name",                 limit: 100
@@ -76,5 +76,19 @@ ActiveRecord::Schema.define(version: 20140904101525) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["name"], name: "index_users_on_name", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+
+  create_table "utransactions", force: true do |t|
+    t.integer  "quantity"
+    t.datetime "date"
+    t.integer  "user_id"
+    t.integer  "contract_id"
+    t.decimal  "value"
+    t.decimal  "contract_current_value"
+    t.decimal  "contract_new_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "utransactions", ["user_id", "contract_id"], name: "index_utransactions_on_user_id_and_contract_id"
 
 end

@@ -5,6 +5,8 @@ describe User do
 	before do
 		@user = User.new(name: "Example User", email: "user@example.com",
 				 password: "foobar", password_confirmation: "foobar" )
+    #@contract = Contract.new(name: "Example Contract", market_id: 1, opening_price: 20)
+    #@user.contracts << @contract
 	end
 
 	subject { @user }
@@ -17,6 +19,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:holdings) }
 
  	it { should be_valid }
   it { should_not be_admin }

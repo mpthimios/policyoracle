@@ -1,15 +1,6 @@
 <%= form_for([@market, @contract]) do |f| %>
-  <% if @contract.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
-
-      <ul>
-      <% @contract.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
+  <%= render 'shared/error_messages', object: f.object %>
 
   <div class="field">
     <%= f.label :name %><br>

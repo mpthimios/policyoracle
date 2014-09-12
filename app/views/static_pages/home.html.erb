@@ -1,3 +1,44 @@
+<!--
+<div class="extra_container">
+  
+    <div class="fullwidthbanner-container" style="height:450px">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+
+          
+          <div class="carousel-inner">
+            <div class="item active">
+              <%= image_tag("carousel/blackboard.png", alt: "",size: "900x800") %>
+            </div>
+            <div class="item">
+              <%= image_tag("carousel/join.jpg", alt: "") %>
+            </div>
+            <div class="item">
+              <%= image_tag("carousel/night.jpg", alt: "") %>
+            </div>
+          </div>
+
+
+          
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+
+    </div>  
+ 
+</div>
+-->
+
+
 <div class="block2">
   <div class="container_12"> 
     <!--==============================content================================-->
@@ -19,25 +60,25 @@
         <div class="grid_12">
           <div id="home-services">
             <div class="grid_3">
-              <div class="offer"> <%= link_to image_tag("register.png", alt: "Register") %>
+              <div class="offer"> <%= image_tag("register.png", alt: "Register") %>
                 <div class="title">Register</div>
                 Think You know Economics, Politics and Sports? Register today for FREE and we'll set you up with $. The rest is up to you.<br>
               </div>
             </div>
             <div class="grid_3">
-              <div class="offer"> <%= link_to image_tag("predict.png", alt: "Predict") %>
+              <div class="offer"> <%= image_tag("predict.png", alt: "Predict") %>
                 <div class="title">Predict</div>
                 Navigate in running predictions and make known your forecast about a future event which interests you.<br>
               </div>
             </div>
             <div class="grid_3 last-col">
-              <div class="offer"> <%= link_to image_tag("update.png", alt: "Update") %>
+              <div class="offer"> <%= image_tag("update.png", alt: "Update") %>
                 <div class="title">Update</div>
                 Get informed and update your predictions whenever you want. The goal is to win!<br>
               </div>
             </div>
             <div class="grid_3 ">
-              <div class="offer"> <%= link_to image_tag("awards.png", alt: "Awards") %>
+              <div class="offer"> <%= image_tag("awards.png", alt: "Awards") %>
                 <div class="title">Check Results</div>
                 After the answer to an event is known and made public, participants who answered correctly will be be rewarded and move up on our leaderboard. The more correct forecasts a participant makes, the more influence they’ll have in other forecasts.<br>
               </div>
@@ -54,27 +95,14 @@
       <div class="wrapper featured_work">
         <article class="grid_3">
           <h2>Latest Forecasts</h2>
-            <p><%= link_to @market.name, markets_path(@market) %></p>
+            <p><%= link_to @market.name, market_path(@market) if @market.name%></p>
 
           <!-- <a href="project-details.html" class="arrowlink">Details</a>&nbsp; 
            <a href="contact.html" class="arrowlink">Contact Us</a> -->
         </article>
         <article class="grid_9 last">
           <div class="flexslider" id="home-page-slider-secondary">
-            <ul class="slides">
-              <li >
-                <div class="imgwrap lifted"><img src="images/featured-work.jpg" alt="Featured"/></div>
-              </li>
-              <li>
-                <div class="imgwrap lifted"><img src="images/featured-work-1.jpg" alt="Featured"></div>
-              </li>
-              <li>
-                <div class="imgwrap lifted"><img src="images/featured-work-2.jpg" alt="Featured"/></div>
-              </li>
-              <li>
-                <div class="imgwrap lifted"><img src="images/featured-work-1.jpg" alt="Featured"/></div>
-              </li>
-            </ul>
+            <div class="imgwrap lifted"><%= image_tag("featured-work.jpg", alt: "Featured") %></div>
           </div>
         </article>
       </div>

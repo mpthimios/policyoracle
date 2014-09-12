@@ -30,9 +30,11 @@
           <%= @market.arbitration_date %>
         </p>
 
-        <h2><%= link_to 'View Contracts', market_contracts_path(@market) %> </h2> 
+        <%= link_to 'View Answers', market_contracts_path(@market) %>  |
+        <%= link_to 'Back to Forecasts', markets_path%> 
         <% if signed_in? && current_user.admin? %>
-          <h2><%= link_to 'Edit', edit_market_path(@market) %> </h2>
+          | <%= link_to 'Edit', edit_market_path(@market) %> 
+          | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
       </div>
     </section>

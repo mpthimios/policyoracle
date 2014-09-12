@@ -3,7 +3,7 @@
   	<div class="container_12">
     	<section class="">
       		<div class="wrapper">
-				<p id="notice"><%= notice %></p>
+				<!--<p id="notice"><%= notice %></p> -->
 
 				<p>
 				  <strong>Name:</strong>
@@ -11,16 +11,15 @@
 				</p>
 
 				<p>
-				  <strong>Opening price:</strong>
-				  <%= @contract.opening_price %>
+				  <strong>Current price:</strong>
+				  <%= @contract.current_price %>
 				</p>
 
-				<p>
-				  <strong>Market:</strong>
-				  <%= @contract.market_id %>
-				</p>
-
-				<%= link_to 'Edit', edit_contract_path(@contract) %> 
+				<br>
+        		<% if signed_in? && current_user.admin? %>
+					<%= link_to 'Edit', edit_contract_path(@contract) %> |
+				<% end %>
+				<%= link_to 'Back to Forecasts', markets_path(@market) %>
 			</div>
 		</section>
 	</div>

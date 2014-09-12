@@ -5,12 +5,13 @@ class ContractsController < ApplicationController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = @market.contracts
+    @contracts = @market.contracts.sorted
   end
 
   # GET /contracts/1
   # GET /contracts/1.json
   def show
+
   end
 
   # GET /contracts/new
