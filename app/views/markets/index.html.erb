@@ -4,14 +4,12 @@
     <section class="">
       <div class="wrapper">
         <h2>Listing forecasts</h2>
-        
-        <br></br>
-        <ul class="markets">
-          <%= render @markets %>
-        </ul>
+          <ul class="list-group"> 
+            <%= render @markets %>
+          </ul>
        
-        <br></br>
-
+          <br>
+        </div>
         <% if signed_in? && current_user.admin? %>
           <%= link_to 'New Market', new_market_path %>
         <% end %>

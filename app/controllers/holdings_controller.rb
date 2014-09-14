@@ -6,7 +6,7 @@ class HoldingsController < ApplicationController
 	    if params[:buy_button]
 	    	if @holding.save
 	      		flash[:success] = "Order created!"
-	      		redirect_to root_path
+	      		redirect_to user_path(@user)
 	    	else
 	      		render 'static_pages/home'
     		end

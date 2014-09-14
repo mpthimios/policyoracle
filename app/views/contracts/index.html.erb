@@ -5,11 +5,11 @@
       <div class="wrapper">
         <h2>Make your prediction</h2>
 
-        <table>
+        <table class="table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Price</th>
+              <th>Name</th><br>
+              <th>Price</th><br>
               <th colspan="4"></th>
               <th colspan="3"></th>
             </tr>
@@ -19,7 +19,7 @@
             <% @contracts.each do |contract| %>
               <tr>
                 <td><%= contract.name %></td>
-                <td><%= contract.current_price %></td>
+                <td><%= contract.current_price %> €</td>
                 <td><%= render 'shared/holding_form' %></td>
                 <% if signed_in? && current_user.admin? %>
                   <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
