@@ -12,13 +12,10 @@
     <div class="block1 p_bottom_zero">
       <div class="container_12"> 
         <%= render 'layouts/header' %>
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
-        <% end %>
       </div>
     </div>
 
-    <%= yield %>
+      <%= yield %>
 
     <div class="block3"> 
       <div class="container_12">
