@@ -4,10 +4,7 @@
     <section class="">
       <div class="wrapper">
         <h2>Listing forecasts</h2>
-          <ul class="list-group"> 
             <%= render @markets %>
-          </ul>
-       
           <br>
         </div>
         <% if signed_in? && current_user.admin? %>
