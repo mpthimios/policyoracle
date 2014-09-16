@@ -5,13 +5,18 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: policyoracle_development
   pool: 5
-  timeout: 5000
+  username: root
+  password: el98105
+  host: localhost
+
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: policyoracle_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

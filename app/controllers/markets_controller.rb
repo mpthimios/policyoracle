@@ -61,6 +61,18 @@ class MarketsController < ApplicationController
     end
   end
 
+  def economics
+    @markets = Market.where(:category => 'Economics')
+  end
+
+  def politics
+    @markets = Market.where(:category => 'Politics')
+  end
+
+  def environment
+    @markets = Market.where(:category => 'Environment')
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_market

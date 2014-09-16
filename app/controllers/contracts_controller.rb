@@ -31,6 +31,7 @@ class ContractsController < ApplicationController
     #raise contract_params.inspect
 
     @contract = @market.contracts.build(contract_params)
+    @contract.current_price = @contract.opening_price
 
     respond_to do |format|
       if @contract.save
