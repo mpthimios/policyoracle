@@ -8,11 +8,10 @@ class CreateMarkets < ActiveRecord::Migration
       t.datetime :published_date
       t.datetime :arbitration_date
       t.integer :shares_to_users
-      t.integer :mechanism
+      t.string :mechanism, :limit => 5, :default => "AMM"
       t.boolean :status,     :default => "0"
+      t.float :b_value, :default => 10.0
 
-      # t.datetime "created_at"
-      # t.datetime "updated_at"
       t.timestamps
     end
   end

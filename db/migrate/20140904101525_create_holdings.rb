@@ -3,8 +3,8 @@ class CreateHoldings < ActiveRecord::Migration
     create_table :holdings do |t|
       t.integer :user_id
       t.integer :contract_id
-      t.integer :quantity
-      t.float :price_purchased
+      t.float :quantity, :default => 0
+      t.float :price_purchased, :default => 0
 
       t.timestamps
     end
