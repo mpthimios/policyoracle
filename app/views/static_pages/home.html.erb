@@ -95,7 +95,7 @@
       <div class="wrapper featured_work">
         <article class="grid_3">
           <h2>Latest Forecasts</h2>
-            <p><%= link_to @market.name, market_path(@market) if @market.name%></p>
+            <p><%= link_to @market.name, market_path(@market) if !@market.nil? && @market.name%></p>
 
           <!-- <a href="project-details.html" class="arrowlink">Details</a>&nbsp; 
            <a href="contact.html" class="arrowlink">Contact Us</a> -->

@@ -6,6 +6,8 @@ class ContractsController < ApplicationController
   # GET /contracts.json
   def index
     @contracts = @market.contracts.sorted
+    @utransaction = Utransaction.new
+    logger.debug current_user.inspect
   end
 
   # GET /contracts/1
