@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	has_many :holdings
+	has_many :holdings, dependent: :destroy
 	has_many :utransactions
 	has_many :contracts, :through => :holdings
 	has_many :contracts, :through => :utransactions

@@ -26,3 +26,5 @@ doc/app
 *~
 .DS_Store
 
+config/database.yml
+

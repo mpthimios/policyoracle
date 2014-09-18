@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(version: 20140911134416) do
     t.decimal  "opening_price",                    precision: 8, scale: 2
     t.datetime "opening_date"
     t.datetime "end_date"
-    t.float    "total_shares",         limit: 24
-    t.float    "total_amount_wagered", limit: 24
-    t.decimal  "high_price",                       precision: 8, scale: 2
-    t.decimal  "low_price",                        precision: 8, scale: 2
+    t.float    "total_shares",         limit: 24,                          default: 0.0
+    t.float    "total_amount_wagered", limit: 24,                          default: 0.0
     t.integer  "volume_traded"
     t.boolean  "status",                                                   default: false
     t.integer  "position"
@@ -54,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140911134416) do
     t.integer  "shares_to_users"
     t.string   "mechanism",        limit: 5,   default: "AMM"
     t.boolean  "status",                       default: false
+    t.float    "b_value",          limit: 24,  default: 10.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,13 +77,13 @@ ActiveRecord::Schema.define(version: 20140911134416) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   create_table "utransactions", force: true do |t|
-    t.decimal  "quantity",                         precision: 10, scale: 0, default: 0
+    t.decimal  "quantity",                          precision: 10, scale: 0, default: 0
     t.integer  "user_id"
     t.integer  "contract_id"
-    t.decimal  "value",                            precision: 10, scale: 0, default: 0
-    t.decimal  "contract_current_value",           precision: 10, scale: 0, default: 0
-    t.decimal  "contract_new_value",               precision: 10, scale: 0, default: 0
-    t.string   "transaction_type",       limit: 1,                                      null: false
+    t.float    "value",                  limit: 24,                          default: 0.0
+    t.float    "contract_current_value", limit: 24,                          default: 0.0
+    t.float    "contract_new_value",     limit: 24,                          default: 0.0
+    t.string   "transaction_type",       limit: 1,                                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

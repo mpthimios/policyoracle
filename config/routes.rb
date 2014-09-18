@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   match '/contact',               to: 'static_pages#contact',             via: 'get'
   match '/about',                 to: 'static_pages#about',               via: 'get'
   match '/economics',             to: 'markets#economics',                via: 'get'
-  match '/politics',              to: 'markets#politics',                via: 'get'
-  match '/environment',           to: 'markets#environment',                via: 'get'
+  match '/politics',              to: 'markets#politics',                 via: 'get'
+  match '/environment',           to: 'markets#environment',              via: 'get'
+  match '/trade_history',         to: 'utransactions#index',              via: 'get'
+  match '/my_orders',             to: 'holdings#index',                   via: 'get'
 
 end
