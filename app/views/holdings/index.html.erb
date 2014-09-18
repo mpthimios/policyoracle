@@ -17,9 +17,9 @@
           <tbody>
             <% @holdings.each do |holding| %>
               <tr>
-                <td><%= holding.contract.name %></td>
+                <td><%= holding.contract.name if holding.contract %></td>
                 <td><%= holding.price_purchased %></td>
-                <td><%= holding.contract.current_price %></td>
+                <td><%= holding.contract.current_price if holding.contract%></td>
                 <td><%= holding.quantity %></td> 
               </tr>
             <% end %>

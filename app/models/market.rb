@@ -1,5 +1,5 @@
 class Market < ActiveRecord::Base
-	has_many :contracts
+	has_many :contracts, :dependent => :destroy
 
 	# you need to add a position column to desired table:
 	# acts_as_list

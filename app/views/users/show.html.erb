@@ -5,30 +5,25 @@
       		<div class="wrapper">
 		        <p id="notice"><%= notice %></p>
 
-		        <p>
-		          <strong>Name:</strong>
-		          <%= @user.name %>
-		        </p>
+		        <table class="table">
+          			<thead>
+		            	<tr>
+			            	<th>TOTAL AMOUNT </th>
+							<th>CASH AVAILABLE</th>
+							<th>INVESTMENT AMOUNT</th>
+							<th>RANK</th>
+						</tr>
+					</thead>
+		          	<tbody>
+			            <tr>
+			                <td><%= @user.total_amount  %></td>
+			                <td><%= @user.cash_amount %></td>
+			                <td><%= @user.investment_amount %></td>
+			                <td><%= @user.rank %></td> 
+		              	</tr>
+		          	</tbody>
+		        </table>
 
-		        <p>
-		          <strong>Total Amount:</strong>
-		          <%= @user.total_amount %>
-		        </p>
-
-		        <p>
-		          <strong>Cash Amount:</strong>
-		          <%= @user.cash_amount %>
-		        </p>
-
-		        <p>
-		          <strong>Investment amount:</strong>
-		          <%= @user.investment_amount %>
-		        </p>
-
-		        <p>
-		          <strong>Member date:</strong>
-		          <%= @user.created_at %>
-		        </p>
       		</div>
     	</section>
   	</div>

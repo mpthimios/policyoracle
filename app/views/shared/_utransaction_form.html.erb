@@ -1,4 +1,4 @@
-<%= form_for @utransaction do |f| %>
+<%= form_for Utransaction.new do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
   	<div class="field">
     	<%= f.number_field :quantity, placeholder: "Place bet quantity ..." %>

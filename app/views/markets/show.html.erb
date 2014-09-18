@@ -1,42 +1,58 @@
-<% provide(:title, 'Markets') %>
-<div class="hireus_block">
+<% provide(:title, 'Forecasts') %>
+<div class="block2">
   <div class="container_12">
-    <section class="">
-      <div class="wrapper">
-        <p id="notice"><%= notice %></p>
+    <section class="content">
 
-        <p>
-          <strong>Name:</strong>
-          <%= @market.name %>
-        </p>
+        <div class="row clearfix">
+          <article class="grid_9">
+            <div class="widget">
+              <h2 class="widget-title"> <%=  @market.name  %></h2>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th colspan="4"></th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @contracts.each do |contract| %>
+                    <tr>
+                      <td><%= contract.name %></td>
+                      <td><%= contract.current_price %></td>
+                      <% if signed_in?%>
+                          <td><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
+                      <% end %>
+                      <% if signed_in? && current_user.admin? %>
+                        <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+                        <td><%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      <% end %>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
 
-        <p>
-          <strong>Category:</strong>
-          <%= @market.category %>
-        </p>
+            <ul class="blog_pagination">
+              <%= link_to 'Back to Forecasts', markets_path%> 
+              <% if signed_in? && current_user.admin? %>
+                | <%= link_to 'New Contract', new_market_contract_path(@market) %> 
+                | <%= link_to 'Edit', edit_market_path(@market) %> 
+                | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </ul>
+          </article>
 
-        <p>
-          <strong>Description:</strong>
-          <%= @market.description %>
-        </p>
+            <article class="grid_3">
+              <p><strong>Arbitration date:</strong><br><%= @market.arbitration_date %></p>
+              <p><strong>Category:</strong><br><%= @market.category %></p>
+            </article>
 
-        <p>
-          <strong>Published date:</strong>
-          <%= @market.published_date %>
-        </p>
 
-        <p>
-          <strong>Arbitration date:</strong>
-          <%= @market.arbitration_date %>
-        </p>
 
-        <%= link_to 'View Answers', market_contracts_path(@market) %>  |
-        <%= link_to 'Back to Forecasts', markets_path%> 
-        <% if signed_in? && current_user.admin? %>
-          | <%= link_to 'Edit', edit_market_path(@market) %> 
-          | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </div>
+          </article>
+        </div>
+
     </section>
   </div>
 </div>

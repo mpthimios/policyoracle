@@ -10,6 +10,7 @@ class MarketsController < ApplicationController
   # GET /markets/1
   # GET /markets/1.json
   def show
+    @contracts = @market.contracts.sorted
   end
 
   # GET /markets/new

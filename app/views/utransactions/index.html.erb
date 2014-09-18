@@ -17,7 +17,7 @@
           <tbody>
             <% @utransactions.each do |utransaction| %>
               <tr>
-                <td><%= utransaction.contract.name %></td>
+                <td><%= utransaction.contract.name if utransaction.contract %></td>
                 <td><%= utransaction.contract_current_value %></td>
                 <td><%= utransaction.quantity %></td>
                 <td><% if utransaction.transaction_type == 'B'%> Buyed

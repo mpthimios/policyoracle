@@ -25,7 +25,7 @@
 
       <% if signed_in? %>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account<span class="caret"></span>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Logged in as: <%= current_user.name %><span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
             <li><%= link_to "Portfolio", current_user %></li>
@@ -46,11 +46,11 @@
 
       <% if current_user && current_user.admin %>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">manage<span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Manage Markets", markets_path %></li>
-            <li><%= link_to "Manage Users", users_path %></li>
+            <li><%= link_to "Markets", markets_path %></li>
+            <li><%= link_to "Users", users_path %></li>
           </ul>
         </li>
       <% end %>
