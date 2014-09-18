@@ -10,7 +10,7 @@ default: &default
   database: policyoracle_development
   pool: 5
   username: root
-  password: 
+  password: policyoracle123!@#
   host: localhost
 
 
