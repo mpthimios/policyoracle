@@ -960,16 +960,32 @@ Hire us
   border: none;
   background: #ffffff;
   width: 224px;
-  height: 41px;
-  padding: 0px 10px 0px 77px;
+  height: 49px;
+  padding: 0px 5px 0px 77px;
   font-size: 14px;
-  line-height: 41px;
+  line-height: 49px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   outline: none;
   color: #6a6a6a;
 }
+
+.hireform li input[type="password"] {
+  border: none;
+  background: #eee;
+  width: 224px;
+  height: 49px;
+  padding: 0px 5px 0px 115px;
+  font-size: 14px;
+  line-height: 49px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  color: #6a6a6a;
+}
+
 .hireform li input[type="button"] {
   border: none;
   background: #12212f;

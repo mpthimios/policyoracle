@@ -1,28 +1,45 @@
 <% provide(:title, 'Sign up') %>
-<div class="hireus_block">
+<div class="block2">
   <div class="container_12">
-    <section class="">
+    <section class="content">
       <div class="wrapper">
-        <div class="hello_box"> Sign up and become a member of Policy Oracle </div>
-          <%= form_for(@user) do |f| %>
-            <%= render 'shared/error_messages', object: f.object %>
+        <article class="grid_12 last-col">
+          <div class="hello_box"> Sign up and become a member of Policy Oracle  </div>
+        </article>
 
-            <%= f.label :name %>
-            <%= f.text_field :name %>
+          <article class="grid_12">
+            <p> Get #### to start making predictions</p>
+            <%= form_for(@user) do |f| %>
+              <ul id="homehireus" class="hireform contactform">
 
-            <%= f.label :email %>
-            <%= f.text_field :email %>
+                <%= render 'shared/error_messages', object: f.object %> 
 
-            <%= f.label :password %>
-            <%= f.password_field :password %>
+                <li>
+                  <label>Name:<span class="required" tabindex="1">*</span></label>
+                  <%= f.text_field :name %>
+                </li>
 
-            <%= f.label :password_confirmation, "Confirmation" %>
-            <%= f.password_field :password_confirmation %>
+                <li>
+                  <label>Email:<span class="required" tabindex="2">*</span></label>
+                  <%= f.text_field :email %>
+                </li>
 
-            <br>
-            <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-          <% end %>
-        </div>
+                <li>
+                  <label>Password:<span class="required" tabindex="3">*</span></label>
+                  <%= f.password_field :password %>
+                </li>
+
+                <li>
+                  <label>Password <br> confirmation:<span class="required" tabindex="4">*</span></label>
+                  <%= f.password_field :password_confirmation %>
+                </li>
+
+                <br>
+                <%= f.submit "Create my account", class: "button" %>
+              </ul>
+            <% end %>
+          </article>
+
       </div>
     </section>
   </div>
