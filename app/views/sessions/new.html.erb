@@ -1,26 +1,34 @@
 <% provide(:title, "Sign in") %>
-<div class="hireus_block">
-	<div class="container_12">
-	    <section class="">
-	      	<div class="wrapper">
-	      		<h2>Sign in</h2>
-				<div class="row">
-	  				<div class="span6 offset3">
-	    				<%= form_for(:session, url: sessions_path) do |f| %>
+<div class="block2">
+  	<div class="container_12">
+    	<section class="content">
+      		<div class="wrapper">
+        		<article class="grid_12 last-col">
+          			<div class="hello_box"> Sign in  </div>
+        		</article>
 
-	      					<%= f.label :email %>
-	      					<%= f.text_field :email %>
+          		<article class="grid_3">
+          			<%= link_to 'I forgot my username / password', '#' %>
+          		</article>
+				
+          		<article class="grid_9 last">
+          			<%= form_for(:session, url: sessions_path) do |f| %>
+          				<ul id="homehireus" class="project-filter">
+          					<li>
+                  				<label>Email:</label>
+                  				<%= f.text_field :email %>
+               				</li>
+          					<li>
+                  				<label>Password:</label>
+                  				<%= f.password_field :password %>
+               				</li>
 
-	      					<%= f.label :password %>
-	      					<%= f.password_field :password %>
-	      					<br>
+	      					<%= f.submit "Sign in", class: "button" %>
+	      				</ul>
+	    			<% end %>
 
-	      					<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-	    				<% end %>
-
-	    				<p>New user? <%= link_to "Sign up now!", signup_path %></p>
-	  				</div>
-	  			</div>	
+	    			<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+	    		</article>
 	  	  	</div>
 		</section>
   	</div>

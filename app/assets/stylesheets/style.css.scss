@@ -218,7 +218,21 @@ a.arrowlink:hover {
 }
 input[type="text"] {
   border-radius: 4px;
-  background: #fff;
+  background: #eee;
+  padding: 0px 5px;
+  font-size: 14px;
+  line-height: 41px;
+  height: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  color: #6a6a6a;
+  width: 25%;
+}
+input[type="password"] {
+  border-radius: 4px;
+  background: #eee;
   padding: 0px 5px;
   font-size: 14px;
   line-height: 41px;
