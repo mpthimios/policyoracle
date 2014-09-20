@@ -1,19 +1,18 @@
 <% provide(:title, 'All users') %>
-<div class="hireus_block">
+<div class="block2">
   <div class="container_12">
-    <section class="">
-      <div class="row clearfix">
-        <div class="grid_10">
+    <section class="content">
+      <div class="wrapper projects">
+        <article class="grid_10">
           <h2>All users</h2>
-            <%= will_paginate %>
-            <ul class="blog_pagination">
-              <%= render @users %>
-            </ul>
-            <%= will_paginate %>
-        </div>
-        <div class="grid_2">
-          <h2><%= link_to 'New User', new_user_path %></h2>
-        </div>
+
+          <ul class="project-filter">
+            <%= render @users %>
+          </ul>
+        </article>
+        <article class="grid_2">
+          <h2><%= link_to 'New User', new_user_path, :class => "one" %></h2>
+        </article>
       </div>
     </section>
   </div>

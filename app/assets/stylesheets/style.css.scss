@@ -124,8 +124,15 @@ strike {
   width: 93%;
   border: 1px solid #e19c9c;
 }
-a {
-  color: #000000;
+a.one {
+  color: #E35845;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+a.two {
+  color: #666;
   outline: none;
   text-decoration: none;
   cursor: pointer;
@@ -1403,6 +1410,7 @@ Accordion
   margin-bottom: 7px;
   background: #545454;
   border: 0;
+  border-radius: 5px;
   color: #fff;
   font-weight: normal;
 }
