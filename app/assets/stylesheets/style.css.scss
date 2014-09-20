@@ -448,6 +448,44 @@ h4 {
   border-radius: 50px;
   float: left;
 }
+
+.feature-binary-right {
+  display: inline-block;
+  width: 100px;
+  height: 25px;
+  text-align: center;
+  padding: 6px;
+  color: #12212f;
+  border-radius: 10px;
+  border: 3px;
+  float: right;
+  margin-right: 250px;
+}
+
+.feature-binary-left {
+  display: inline-block;
+  width: 100px;
+  height: 25px;
+  text-align: center;
+  padding: 6px;
+  color: #12212f;
+  border-radius: 10px;
+  border: 3px;
+  float: left;
+
+}
+.feature-binary-small {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding: 6px;
+  color: #12212f;
+  border-radius: 10px;
+  border: 3px;
+  float: left;
+
+}
 #home-page-slider-secondary {
   z-index: 1;
 }
@@ -1240,6 +1278,8 @@ Blog
 .widget input[type="button"] {
   padding: 12px 15px;
 }
+
+
 .related-post {
   padding: 24px 0;
   border-top: 1px solid #eee;

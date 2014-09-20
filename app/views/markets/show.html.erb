@@ -3,36 +3,54 @@
   <div class="container_12">
     <section class="content">
 
-        <div class="row clearfix">
-          <article class="grid_9">
-            <div class="widget">
-              <h2 class="widget-title"> <%=  @market.name  %></h2>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th colspan="4"></th>
-                    <th colspan="3"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @contracts.each do |contract| %>
-                    <tr>
-                      <td><%= contract.name %></td>
-                      <td><%= contract.current_price %></td>
-                      <% if signed_in?%>
-                          <td><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
-                      <% end %>
-                      <% if signed_in? && current_user.admin? %>
-                        <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
-                        <td><%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                      <% end %>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
+      <div class="wrapper">
+        <article class="grid_12 last-col">
+          <div class="hello_box">  <%=  @market.name  %></div>
+        </article>
+      </div>
 
+      <div class="wrapper">
+        <article class="grid_4">
+          <div class="feature">
+            <div class="feature-binary-left blue">YES</div>
+          </div>
+        </article>
+
+        <article class="grid_4">
+          <div class="feature">
+            <div class="feature-binary-right blue">NO</div>
+          </div>
+        </article>
+
+        <article class="grid_10">
+          <p id="center"> Modify the chances if you have a different opinion <br>by investing or changing your investments on the different outcomes </p>
+
+          <article class="grid_6">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>  
+                  <th></th>              
+                </tr>
+              </thead>
+              <tbody>
+                <% @contracts.each do |contract| %>
+                  <tr>
+                    <td>Invest in </td>
+                    <td class="feature-binary-small blue"><%= contract.name %></td>
+                    <% if signed_in?%>
+                        <td><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
+                    <% end %>
+                    <% if signed_in? && current_user.admin? %>
+                      <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+                      <td><%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
             <ul class="blog_pagination">
               <%= link_to 'Back to Forecasts', markets_path, :class => "one" %> 
               <% if signed_in? && current_user.admin? %>
@@ -43,16 +61,19 @@
             </ul>
           </article>
 
-            <article class="grid_3">
-              <p><strong>Arbitration date:</strong><br><%= @market.arbitration_date %></p>
-              <p><strong>Category:</strong><br><%= @market.category %></p>
-            </article>
-
-
+          <article class="grid_4">
 
           </article>
-        </div>
 
+
+        </article>
+
+        <article class="grid_2">
+          <p><strong>Arbitration date:</strong><br><%= @market.arbitration_date %></p>
+          <p><strong>Category:</strong><br><%= @market.category %></p>
+        </article>
+
+      </div>
     </section>
   </div>
 </div>
