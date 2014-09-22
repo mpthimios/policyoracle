@@ -17,9 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <td><%= f.radio_button(:category, 'Economics') %> Economics
-    <td><%= f.radio_button(:category, 'Politics') %> Politics
-    <td><%= f.radio_button(:category, 'Environment') %> Environment
+    <%= f.text_field :category %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
