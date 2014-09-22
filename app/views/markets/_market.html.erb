@@ -1,3 +1,7 @@
-<li>
-  <%= link_to market.name, market %>
-</li>
+<div class="borderbottom">
+    <h2><%= link_to market.name, market, :class => "two" %></h2>
+    <a class="button-grey small secondary message_button" id="contracts_container_link<%=market.id%>" href="#" id="message_button_" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">Show possible answers</a>
+    <div id="contracts_container<%=market.id%>" class="hidden">
+        <%= render market.contracts %>
+    </div>
+</div>
