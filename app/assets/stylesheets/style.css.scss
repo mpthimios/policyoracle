@@ -237,6 +237,22 @@ input[type="text"] {
   color: #6a6a6a;
   width: 25%;
 }
+
+input[type="quantity"] {
+  border-radius: 4px;
+  background: #eee;
+  padding: 0px 3px;
+  font-size: 14px;
+  line-height: 25px;
+  height: 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  color: #6a6a6a;
+  width: 25%;
+}
+
 input[type="password"] {
   border-radius: 4px;
   background: #eee;
@@ -452,7 +468,7 @@ h4 {
 .feature-binary-right {
   display: inline-block;
   width: 100px;
-  height: 25px;
+  height: 20px;
   text-align: center;
   padding: 6px;
   color: #12212f;
@@ -483,9 +499,21 @@ h4 {
   color: #12212f;
   border-radius: 10px;
   border: 3px;
-  float: left;
 
 }
+
+#list ul{
+  list-style: none;
+  text-align: right;
+ 
+}
+#list li{
+  list-style: none;
+  text-align: right;
+  margin-right: 0px;
+ 
+}
+
 #home-page-slider-secondary {
   z-index: 1;
 }
@@ -610,12 +638,12 @@ h4 {
   transform: rotate(3deg);
 }
 .pagination {
-  position: absolute;
+  position: initial;
   z-index: 100;
   margin: 10px;
 }
 .pagination li {
-  display: inline;
+  display: block;
 }
 /*
 Our Process

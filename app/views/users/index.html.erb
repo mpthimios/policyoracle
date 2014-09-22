@@ -5,10 +5,11 @@
       <div class="wrapper projects">
         <article class="grid_10">
           <h2>All users</h2>
-
+        
           <ul class="project-filter">
             <%= render @users %>
           </ul>
+          <%= will_paginate %>
         </article>
         <article class="grid_2">
           <h2><%= link_to 'New User', new_user_path, :class => "one" %></h2>
