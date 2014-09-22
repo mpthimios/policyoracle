@@ -124,11 +124,19 @@ strike {
   width: 93%;
   border: 1px solid #e19c9c;
 }
-a {
+a.one {
   color: #E35845;
   outline: none;
   text-decoration: none;
   cursor: pointer;
+
+}
+a.two {
+  color: #666;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+
 }
 a:hover {
   color: #62676d;
@@ -217,7 +225,37 @@ a.arrowlink:hover {
 }
 input[type="text"] {
   border-radius: 4px;
-  background: #fff;
+  background: #eee;
+  padding: 0px 5px;
+  font-size: 14px;
+  line-height: 41px;
+  height: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  color: #6a6a6a;
+  width: 25%;
+}
+
+input[type="quantity"] {
+  border-radius: 4px;
+  background: #eee;
+  padding: 0px 3px;
+  font-size: 14px;
+  line-height: 25px;
+  height: 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  color: #6a6a6a;
+  width: 25%;
+}
+
+input[type="password"] {
+  border-radius: 4px;
+  background: #eee;
   padding: 0px 5px;
   font-size: 14px;
   line-height: 41px;
@@ -324,7 +362,7 @@ h2, h3, h4 {
   font-weight: normal;
 }
 h2 {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 20px;
   color: #12212f;
   text-transform: uppercase;
@@ -426,6 +464,56 @@ h4 {
   border-radius: 50px;
   float: left;
 }
+
+.feature-binary-right {
+  display: inline-block;
+  width: 100px;
+  height: 20px;
+  text-align: center;
+  padding: 6px;
+  color: #12212f;
+  border-radius: 10px;
+  border: 3px;
+  float: right;
+  margin-right: 250px;
+}
+
+.feature-binary-left {
+  display: inline-block;
+  width: 100px;
+  height: 25px;
+  text-align: center;
+  padding: 6px;
+  color: #12212f;
+  border-radius: 10px;
+  border: 3px;
+  float: left;
+
+}
+.feature-binary-small {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding: 6px;
+  color: #12212f;
+  border-radius: 10px;
+  border: 3px;
+
+}
+
+#list ul{
+  list-style: none;
+  text-align: right;
+ 
+}
+#list li{
+  list-style: none;
+  text-align: right;
+  margin-right: 0px;
+ 
+}
+
 #home-page-slider-secondary {
   z-index: 1;
 }
@@ -550,12 +638,12 @@ h4 {
   transform: rotate(3deg);
 }
 .pagination {
-  position: absolute;
+  position: initial;
   z-index: 100;
   margin: 10px;
 }
 .pagination li {
-  display: inline;
+  display: block;
 }
 /*
 Our Process
@@ -959,16 +1047,32 @@ Hire us
   border: none;
   background: #ffffff;
   width: 224px;
-  height: 41px;
-  padding: 0px 10px 0px 77px;
+  height: 49px;
+  padding: 0px 5px 0px 77px;
   font-size: 14px;
-  line-height: 41px;
+  line-height: 49px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   outline: none;
   color: #6a6a6a;
 }
+
+.hireform li input[type="password"] {
+  border: none;
+  background: #eee;
+  width: 224px;
+  height: 49px;
+  padding: 0px 5px 0px 115px;
+  font-size: 14px;
+  line-height: 49px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  color: #6a6a6a;
+}
+
 .hireform li input[type="button"] {
   border: none;
   background: #12212f;
@@ -1202,6 +1306,8 @@ Blog
 .widget input[type="button"] {
   padding: 12px 15px;
 }
+
+
 .related-post {
   padding: 24px 0;
   border-top: 1px solid #eee;
@@ -1372,6 +1478,7 @@ Accordion
   margin-bottom: 7px;
   background: #545454;
   border: 0;
+  border-radius: 5px;
   color: #fff;
   font-weight: normal;
 }

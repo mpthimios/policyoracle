@@ -1,44 +1,3 @@
-<!--
-<div class="extra_container">
-  
-    <div class="fullwidthbanner-container" style="height:450px">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-          </ol>
-
-          
-          <div class="carousel-inner">
-            <div class="item active">
-              <%= image_tag("carousel/blackboard.png", alt: "",size: "900x800") %>
-            </div>
-            <div class="item">
-              <%= image_tag("carousel/join.jpg", alt: "") %>
-            </div>
-            <div class="item">
-              <%= image_tag("carousel/night.jpg", alt: "") %>
-            </div>
-          </div>
-
-
-          
-          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
-        </div>
-
-    </div>  
- 
-</div>
--->
-
-
 <div class="block2">
   <div class="container_12"> 
     <!--==============================content================================-->
@@ -95,7 +54,7 @@
       <div class="wrapper featured_work">
         <article class="grid_3">
           <h2>Latest Forecasts</h2>
-            <p><%= link_to @market.name, market_path(@market) if @market.name%></p>
+            <p><%= link_to @market.name, market_path(@market) if !@market.nil? && @market.name%></p>
 
           <!-- <a href="project-details.html" class="arrowlink">Details</a>&nbsp; 
            <a href="contact.html" class="arrowlink">Contact Us</a> -->
@@ -114,10 +73,10 @@
   <div class="container_12">
     <section class="">
       <div class="wrapper">
-    	<h2>Impressed? Want to Sign Up?</h2>
-    	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+    	 <h2>Impressed? Want to Sign Up?</h2>
+    	 <%= link_to "Sign up now!", signup_path, class: "button large" %>
 
-	  </div>
-	</section>
+	    </div>
+	  </section>
   </div>
 </div>

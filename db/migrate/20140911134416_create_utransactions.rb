@@ -1,13 +1,13 @@
 class CreateUtransactions < ActiveRecord::Migration
   def change
     create_table :utransactions do |t|
-      t.integer :quantity
-      t.datetime :date
+      t.decimal :quantity, :default => 0
       t.integer :user_id
       t.integer :contract_id
-      t.decimal :value
-      t.decimal :contract_current_value
-      t.decimal :contract_new_value
+      t.float :value, :default => 0
+      t.float :contract_current_value, :default => 0
+      t.float :contract_new_value, :default => 0
+      t.string  :transaction_type, :limit => 1, :null => false
 
       t.timestamps
     end

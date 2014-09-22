@@ -1,41 +1,90 @@
-<% provide(:title, 'Markets') %>
-<div class="hireus_block">
+<% provide(:title, 'Forecasts') %>
+<div class="block2">
   <div class="container_12">
-    <section class="">
+    <section class="content">
+
       <div class="wrapper">
-        <p id="notice"><%= notice %></p>
+        <article class="grid_12 last-col">
+          <div class="hello_box">  <%=  @market.name  %></div>
+        </article>
+      </div>
 
-        <p>
-          <strong>Name:</strong>
-          <%= @market.name %>
-        </p>
-
-        <p>
-          <strong>Category:</strong>
-          <%= @market.category %>
-        </p>
-
-        <p>
-          <strong>Description:</strong>
-          <%= @market.description %>
-        </p>
-
-        <p>
-          <strong>Published date:</strong>
-          <%= @market.published_date %>
-        </p>
-
-        <p>
-          <strong>Arbitration date:</strong>
-          <%= @market.arbitration_date %>
-        </p>
-
-        <%= link_to 'View Answers', market_contracts_path(@market) %>  |
-        <%= link_to 'Back to Forecasts', markets_path%> 
-        <% if signed_in? && current_user.admin? %>
-          | <%= link_to 'Edit', edit_market_path(@market) %> 
-          | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="wrapper">
+        <% @contracts.each do |contract| %>
+          <article class="grid_4">
+            <div class="feature">
+              <% if contract.name == "YES" %>
+                <div class="feature-binary-right blue"><%= "#{contract.name} #{contract.current_price*100}" %>%</div>
+              <%else%>
+                <div class="feature-binary-left blue"><%= "#{contract.name} #{contract.current_price*100}" %>%</div>
+              <% end%>
+            </div>
+          </article>
         <% end %>
+
+        <article class="grid_10">
+          <p id="center"> Modify the chances if you have a different opinion <br>by investing or changing your investments on the different outcomes </p>
+
+          <article class="grid_5">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>  
+                  <th></th>              
+                </tr>
+              </thead>
+              <tbody>
+                <% @contracts.each do |contract| %>
+                  <tr>
+                    <td>Invest </td>
+                    <% if signed_in?%>
+                        <td><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
+                    <% end %>
+                    <td>Shares of </td>
+                    <td class="feature-binary-small blue"><%= contract.name %></td>
+                    <% if signed_in? && current_user.admin? %>
+                      <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+                      <td><%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <ul class="blog_pagination">
+              <%= link_to 'Back to Forecasts', markets_path, :class => "one" %> 
+              <% if signed_in? && current_user.admin? %>
+                | <%= link_to 'New Contract', new_market_contract_path(@market) %> 
+                | <%= link_to 'Edit', edit_market_path(@market) %> 
+                | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </ul>
+          </article>
+
+          <article class="grid_4">
+            <div id="list">
+              <ul>
+                <% @contracts.each do |contract| %>
+                  <% if contract.name == "YES" %>
+                    <p>Current <%= "#{contract.name}"%> price is : <%= " #{contract.current_price*100}" %></p>
+                  <%else%>
+                    <p>Current <%= "#{contract.name}"%> price is : <%= "#{contract.current_price*100}" %></p>
+                  <% end%>
+                <% end%>
+                <li>Cash amount: <%= current_user.cash_amount %></li>
+                <li>Total amount:<%= current_user.total_amount %></li>
+              </ul>
+            </div>
+          </article>
+        </article>
+
+        <article class="grid_2">
+          <p><strong>Arbitration date:</strong><br><%= @market.arbitration_date %></p>
+          <p><strong>Category:</strong><br><%= @market.category %></p>
+        </article>
+
       </div>
     </section>
   </div>

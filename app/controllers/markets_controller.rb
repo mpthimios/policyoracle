@@ -10,6 +10,7 @@ class MarketsController < ApplicationController
   # GET /markets/1
   # GET /markets/1.json
   def show
+    @contracts = @market.contracts.sorted
   end
 
   # GET /markets/new
@@ -59,6 +60,18 @@ class MarketsController < ApplicationController
       format.html { redirect_to markets_url, notice: 'Market was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def economics
+    @markets = Market.where(:category => 'Economics')
+  end
+
+  def politics
+    @markets = Market.where(:category => 'Politics')
+  end
+
+  def environment
+    @markets = Market.where(:category => 'Environment')
   end
 
   private

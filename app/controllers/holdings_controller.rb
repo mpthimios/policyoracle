@@ -1,24 +1,18 @@
 class HoldingsController < ApplicationController
 	before_action :signed_in_user
 
+	def index
+    	@holdings = current_user.holdings.all
+    	@holdings = current_user.holdings.paginate(page: params[:page], :per_page => 10)
+  	end
+
 	def create
 	    @holding = current_user.holdings.build(holdings_params)
-	    if params[:buy_button]
-	    	if @holding.save
-	      		flash[:success] = "Order created!"
-	      		redirect_to root_path
-	    	else
-	      		render 'static_pages/home'
-    		end
-    	elsif params[:sell_button]
-
-    	end
-    		
 	end
 
 	private
 
     	def holdings_params
-      		params.require(:holding).permit(:quantity)
+      		params.require(:holding).permit(:contract_id, :user_id, :quantity)
     	end
 end

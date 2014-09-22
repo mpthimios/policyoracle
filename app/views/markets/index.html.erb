@@ -1,21 +1,22 @@
 <% provide(:title, 'All Markets') %>
-<div class="hireus_block">
-  <div class="container_12">
-    <section class="">
-      <div class="wrapper">
-        <h2>Listing forecasts</h2>
-        
-        <br></br>
-        <ul class="markets">
-          <%= render @markets %>
-        </ul>
-       
-        <br></br>
 
-        <% if signed_in? && current_user.admin? %>
-          <%= link_to 'New Market', new_market_path %>
-        <% end %>
-      </div>
+<div class="block2">
+  <div class="container_12">
+    <section class="content">
+        <div class="row clearfix">
+          <div class="hello_box"> Listing all open forecasts </div>
+          <article class="grid_10">
+            <ul class="blog_pagination">
+              <%= render @markets %>
+            </ul>
+          </article>
+          <article class="grid_2">
+            <% if signed_in? && current_user.admin? %>
+              <h2><%= link_to 'New Market', new_market_path, :class => "one" %></h2>
+            <% end %>
+          </article>
+        </div>
+
     </section>
   </div>
 </div>

@@ -6,6 +6,8 @@ class ContractsController < ApplicationController
   # GET /contracts.json
   def index
     @contracts = @market.contracts.sorted
+    @utransaction = Utransaction.new
+    logger.debug current_user.inspect
   end
 
   # GET /contracts/1
@@ -29,6 +31,7 @@ class ContractsController < ApplicationController
     #raise contract_params.inspect
 
     @contract = @market.contracts.build(contract_params)
+    @contract.current_price = @contract.opening_price
 
     respond_to do |format|
       if @contract.save
