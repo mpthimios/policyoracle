@@ -14,17 +14,16 @@
 ActiveRecord::Schema.define(version: 20140911134416) do
 
   create_table "contracts", force: true do |t|
-    t.string   "name",                 limit: 100
-    t.decimal  "current_price",                    precision: 8, scale: 2
-    t.decimal  "closing_price",                    precision: 8, scale: 2
-    t.decimal  "opening_price",                    precision: 8, scale: 2
+    t.string   "name"
+    t.decimal  "current_price",        precision: 15, scale: 8, default: 0.0
+    t.decimal  "closing_price",        precision: 15, scale: 8, default: 0.0
+    t.decimal  "opening_price",        precision: 15, scale: 8
     t.datetime "opening_date"
     t.datetime "end_date"
-    t.float    "total_shares",         limit: 24,                          default: 0.0
-    t.float    "total_amount_wagered", limit: 24,                          default: 0.0
-    t.integer  "volume_traded"
-    t.boolean  "status",                                                   default: false
-    t.integer  "position"
+    t.integer  "total_shares",                                  default: 0
+    t.decimal  "total_amount_wagered", precision: 15, scale: 8, default: 0.0
+    t.integer  "volume_traded",                                 default: 0
+    t.boolean  "status",                                        default: false
     t.integer  "market_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -35,8 +34,8 @@ ActiveRecord::Schema.define(version: 20140911134416) do
   create_table "holdings", force: true do |t|
     t.integer  "user_id"
     t.integer  "contract_id"
-    t.float    "quantity",        limit: 24, default: 0.0
-    t.float    "price_purchased", limit: 24, default: 0.0
+    t.integer  "quantity",                                 default: 0
+    t.decimal  "price_purchased", precision: 15, scale: 8, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,15 +43,16 @@ ActiveRecord::Schema.define(version: 20140911134416) do
   add_index "holdings", ["user_id", "contract_id"], name: "index_holdings_on_user_id_and_contract_id", using: :btree
 
   create_table "markets", force: true do |t|
-    t.string   "name",             limit: 100
-    t.string   "category",         limit: 32
+    t.string   "name"
+    t.string   "category"
     t.text     "description"
+    t.string   "type"
     t.datetime "published_date"
     t.datetime "arbitration_date"
-    t.integer  "shares_to_users"
-    t.string   "mechanism",        limit: 5,   default: "AMM"
-    t.boolean  "status",                       default: false
-    t.float    "b_value",          limit: 24,  default: 10.0
+    t.integer  "shares_to_users",             default: 0
+    t.string   "mechanism",                   default: "AMM"
+    t.boolean  "status",                      default: false
+    t.float    "b_value",          limit: 24, default: 10.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,14 +62,14 @@ ActiveRecord::Schema.define(version: 20140911134416) do
     t.string   "email"
     t.string   "password_digest"
     t.datetime "member_date"
-    t.float    "total_amount",      limit: 24, default: 200.0
-    t.float    "cash_amount",       limit: 24, default: 200.0
-    t.float    "investment_amount", limit: 24
-    t.integer  "rank"
+    t.decimal  "total_amount",      precision: 15, scale: 8, default: 200.0
+    t.decimal  "cash_amount",       precision: 15, scale: 8, default: 200.0
+    t.decimal  "investment_amount", precision: 15, scale: 8, default: 0.0
+    t.integer  "rank",                                       default: 0
+    t.string   "remember_token"
+    t.boolean  "admin",                                      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token"
-    t.boolean  "admin",                        default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -77,13 +77,12 @@ ActiveRecord::Schema.define(version: 20140911134416) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   create_table "utransactions", force: true do |t|
-    t.decimal  "quantity",                          precision: 10, scale: 0, default: 0
+    t.integer  "quantity",                                                  default: 0
     t.integer  "user_id"
     t.integer  "contract_id"
-    t.float    "value",                  limit: 24,                          default: 0.0
-    t.float    "contract_current_value", limit: 24,                          default: 0.0
-    t.float    "contract_new_value",     limit: 24,                          default: 0.0
-    t.string   "transaction_type",       limit: 1,                                         null: false
+    t.decimal  "contract_current_value",           precision: 15, scale: 8, default: 0.0
+    t.decimal  "contract_new_value",               precision: 15, scale: 8, default: 0.0
+    t.string   "transaction_type",       limit: 1,                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
