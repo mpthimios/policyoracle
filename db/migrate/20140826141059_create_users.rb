@@ -5,10 +5,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :name			
       t.string    :email
       t.string    :password_digest
-      t.datetime  :member_date
-      t.decimal   :total_amount,        precision: 15,    scale: 8,     default: 200
-      t.decimal   :cash_amount,         precision: 15,    scale: 8,     default: 200
-      t.decimal   :investment_amount,   precision: 15,    scale: 8,     default: 0
+      t.decimal   :total_amount,        precision: 15,    scale: 8,     default: 200.00
+      t.decimal   :cash_amount,         precision: 15,    scale: 8,     default: 200.00
+      t.decimal   :investment_amount,   precision: 15,    scale: 8,     default: 0.00
       t.integer   :rank,                default: 0
       t.string    :remember_token
       t.boolean   :admin,               default: false

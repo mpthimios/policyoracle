@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140911134416) do
     t.string   "name"
     t.string   "category"
     t.text     "description"
-    t.string   "type"
+    t.string   "market_type"
     t.datetime "published_date"
     t.datetime "arbitration_date"
     t.integer  "shares_to_users",             default: 0
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20140911134416) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "member_date"
     t.decimal  "total_amount",      precision: 15, scale: 8, default: 200.0
     t.decimal  "cash_amount",       precision: 15, scale: 8, default: 200.0
     t.decimal  "investment_amount", precision: 15, scale: 8, default: 0.0

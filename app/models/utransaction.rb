@@ -9,6 +9,8 @@ class Utransaction < ActiveRecord::Base
   validates :contract_id, presence: true
   validates :quantity, :numericality => {greater_than_or_equal_to: 1}, presence: true
 
+  after_validation :update_market_holdings_and_money, :on => :update
+
   def update_market_holdings_and_money
 
     logger.debug "update_market_holdings_and_money"
@@ -18,7 +20,7 @@ class Utransaction < ActiveRecord::Base
     self.user.investment_amount += (-1) * cost
     self.user.save
     logger.debug "the transaction cost is: " + cost.to_s
-    Holding.find_or_initialize_by(user_id: self.user_id, contract_id: self.contract_id) \
+    Holding.find_or_initialize_by(user_id: self.user_id, contract_id: self.contract_id, price_purchased: contract_current_value) \
       .update_attributes(self)
   end
 end

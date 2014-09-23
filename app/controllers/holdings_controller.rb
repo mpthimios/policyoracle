@@ -13,6 +13,6 @@ class HoldingsController < ApplicationController
 	private
 
     	def holdings_params
-      		params.require(:holding).permit(:contract_id, :user_id, :quantity)
+      		params.require(:holding).permit(:contract_id, :user_id, :quantity, :price_purchased)
     	end
 end

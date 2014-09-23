@@ -8,7 +8,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Prediction </th>
+              <th>Forecast </th>
+              <th>Your Prediction </th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Action</th>
@@ -17,8 +18,9 @@
           <tbody>
             <% @utransactions.each do |utransaction| %>
               <tr>
+                <td><%= utransaction.contract.market.name if utransaction.contract %></td>
                 <td><%= utransaction.contract.name if utransaction.contract %></td>
-                <td><%= utransaction.contract_current_value %></td>
+                <td><%= utransaction.contract_current_value.round(2)*100 %></td>
                 <td><%= utransaction.quantity %></td>
                 <td><% if utransaction.transaction_type == 'B'%> Buyed
                     <% else %> Sold
