@@ -12,13 +12,13 @@ class Holding < ActiveRecord::Base
     case params.transaction_type
       when 'B'
         self.quantity = self.quantity + params.quantity
-        self.price_purchased = 10
+        self.price_purchased = params.contract_current_value
       when 'S'
         self.quantity = self.quantity - params.quantity
         if self.quantity < 0
           self.quantity = 0
         end
-        self.price_purchased = 10
+        self.price_purchased = utransaction.contract_current_value
       else
         #nothing to do
     end

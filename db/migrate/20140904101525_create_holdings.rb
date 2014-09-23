@@ -5,7 +5,7 @@ class CreateHoldings < ActiveRecord::Migration
       t.integer   :user_id
       t.integer   :contract_id
       t.integer   :quantity,          default: 0
-      t.decimal   :price_purchased,   precision: 15,    scale: 8,   default: 0
+      t.decimal   :price_purchased,   precision: 15,    scale: 8,   default: 0.00
 
       t.timestamps
     end

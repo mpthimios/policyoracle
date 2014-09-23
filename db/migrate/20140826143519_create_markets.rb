@@ -5,7 +5,7 @@ class CreateMarkets < ActiveRecord::Migration
       t.string    :name                
       t.string    :category         
       t.text      :description
-      t.string    :type
+      t.string    :market_type
       t.datetime  :published_date
       t.datetime  :arbitration_date
       t.integer   :shares_to_users,     default: 0

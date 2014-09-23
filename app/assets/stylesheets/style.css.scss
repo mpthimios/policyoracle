@@ -473,7 +473,7 @@ h4 {
 .feature-binary-right {
   display: inline-block;
   width: 100px;
-  height: 20px;
+  height: 35px;
   text-align: center;
   padding: 6px;
   color: #12212f;
@@ -486,7 +486,7 @@ h4 {
 .feature-binary-left {
   display: inline-block;
   width: 100px;
-  height: 25px;
+  height: 35px;
   text-align: center;
   padding: 6px;
   color: #12212f;
@@ -497,8 +497,8 @@ h4 {
 }
 .feature-binary-small {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 35px;
   text-align: center;
   padding: 6px;
   color: #12212f;
@@ -650,6 +650,14 @@ h4 {
 .pagination li {
   display: block;
 }
+
+tr.transaction {
+   td{
+      width: 90px;
+    }
+}
+
+
 /*
 Our Process
 ========================================================

@@ -5,8 +5,8 @@ class CreateUtransactions < ActiveRecord::Migration
       t.integer   :quantity,                default: 0
       t.integer   :user_id
       t.integer   :contract_id
-      t.decimal   :contract_current_value,  precision: 15,    scale: 8,     :default => 0
-      t.decimal   :contract_new_value,      precision: 15,    scale: 8,     :default => 0
+      t.decimal   :contract_current_value,  precision: 15,    scale: 8,     :default => 0.00
+      t.decimal   :contract_new_value,      precision: 15,    scale: 8,     :default => 0.00
       t.string    :transaction_type,        limit: 1,         null: false
 
       t.timestamps

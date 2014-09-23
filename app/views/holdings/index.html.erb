@@ -8,7 +8,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Prediction </th>
+              <th>Forecast </th>
+              <th>Your Prediction </th>
               <th>Price Purchased</th>
               <th>Current Prediction Price</th>
               <th>Quantity</th>
@@ -17,9 +18,10 @@
           <tbody>
             <% @holdings.each do |holding| %>
               <tr>
+                <td><%= holding.contract.market.name if holding.contract %></td>
                 <td><%= holding.contract.name if holding.contract %></td>
-                <td><%= holding.price_purchased %></td>
-                <td><%= holding.contract.current_price if holding.contract%></td>
+                <td><%= holding.price_purchased.round(2)*100 %></td>
+                <td><%= holding.contract.current_price.round(2)*100 if holding.contract%></td>
                 <td><%= holding.quantity %></td> 
               </tr>
             <% end %>
