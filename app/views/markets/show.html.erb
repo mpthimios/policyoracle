@@ -68,8 +68,8 @@
             <article class="grid_3">
               <div id="list">
                 <ul>
-                  <li>Cash amount: <%= current_user.cash_amount %></li>
-                  <li>Total amount:<%= current_user.total_amount %></li>
+                  <li>Cash amount: <%= current_user.cash_amount.round(2) %></li>
+                  <li>Total amount: <%= current_user.total_amount.round(2) %></li>
                 </ul>
               </div>
             </article>

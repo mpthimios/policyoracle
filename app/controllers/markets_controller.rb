@@ -6,6 +6,7 @@ class MarketsController < ApplicationController
   # GET /markets.json
   def index
     @markets = Market.all
+    @markets = Market.paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /markets/1

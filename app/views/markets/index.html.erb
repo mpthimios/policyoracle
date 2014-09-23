@@ -9,6 +9,7 @@
             <ul class="blog_pagination">
               <%= render @markets %>
             </ul>
+            <%= will_paginate(@markets, :renderer => WillPaginate::ActionView::LinkRenderer) %>
           </article>
           <article class="grid_2">
             <% if signed_in? && current_user.admin? %>

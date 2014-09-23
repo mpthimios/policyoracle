@@ -6,8 +6,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @users = User.paginate(page: params[:page], :per_page => 2)
+    if current_user.admin? 
+      @users = User.all
+      @users = User.paginate(page: params[:page], :per_page => 20)
+    else
+      redirect_to edit_user_path(@current_user)
+    end
   end
 
   # GET /users/1

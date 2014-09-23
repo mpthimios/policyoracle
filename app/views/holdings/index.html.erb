@@ -4,7 +4,6 @@
     <section class="">
       <div class="wrapper">
         <h2>My Orders (<%= @holdings.count %>)</h2>
-        <%= will_paginate %>
         <table class="table">
           <thead>
             <tr>
@@ -27,7 +26,8 @@
             <% end %>
           </tbody>
         </table>
-        <%= will_paginate %>
+        
+        <%= will_paginate(@holdings, :renderer => WillPaginate::ActionView::LinkRenderer) %>
 
       </div>
     </section>
