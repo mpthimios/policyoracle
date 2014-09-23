@@ -15,9 +15,9 @@
 					</thead>
 		          	<tbody>
 			            <tr>
-			                <td><%= @user.total_amount  %></td>
-			                <td><%= @user.cash_amount %></td>
-			                <td><%= @user.investment_amount %></td>
+			                <td><%= @user.total_amount.round(2)  %></td>
+			                <td><%= @user.cash_amount.round(2) %></td>
+			                <td><%= @user.investment_amount.round(2) %></td>
 			                <td><%= @user.rank %></td> 
 		              	</tr>
 		          	</tbody>
