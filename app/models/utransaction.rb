@@ -2,8 +2,8 @@ class Utransaction < ActiveRecord::Base
 
   before_save :update_market_holdings_and_money
 
-	belongs_to :user
-	belongs_to :contract
+  belongs_to :user
+  belongs_to :contract
 
   validates :user_id, presence: true
   validates :contract_id, presence: true
@@ -24,4 +24,5 @@ class Utransaction < ActiveRecord::Base
     Holding.find_or_initialize_by(user_id: self.user_id, contract_id: self.contract_id, price_purchased: contract_current_value) \
       .update_attributes(self)
   end
+
 end
