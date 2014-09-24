@@ -30,6 +30,7 @@ class Market < ActiveRecord::Base
   def update_AMM_market(params)
     logger.debug self.contracts.count
     #update contract prices
+    cur_price = 0.0
     sum_before = 0.0
     denominator = 0.0
     numerators = Hash.new
@@ -40,8 +41,11 @@ class Market < ActiveRecord::Base
         case params.transaction_type
           when 'B'
             contract[:total_shares] = contract[:total_shares] + params.quantity
+            cur_price = contract[:current_price]
+            logger.debug "the price purchased is " + cur_price.to_s
           when 'S'
             contract[:total_shares] = contract[:total_shares] - params.quantity
+            cur_price = contract[:current_price]
         end
         value = Math.exp(contract[:total_shares]/self.b_value)
       end
@@ -57,8 +61,14 @@ class Market < ActiveRecord::Base
       logger.debug "the sum_of_prices is " + sum_of_prices.to_s
     end
 
-    cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before)
+    if params.transaction_type == 'B'
+      cost = (self.b_value*Math.log((cur_price*(Math.exp(params.quantity/self.b_value)-1))+1)).ceil
+    elsif params.transaction_type == 'S'
+      cost = (self.b_value*Math.log((cur_price*(Math.exp(params.quantity/self.b_value)-1))+1)).floor
+    end
+    #cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before)
 
+      
   end
 
 end

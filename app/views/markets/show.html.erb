@@ -14,9 +14,9 @@
           <article class="grid_4">
             <div class="feature">
               <% if contract.name == "YES" %>
-                <div class="feature-binary-right blue"><%= "#{contract.name} #{contract.current_price.round(2)*100}" %>%</div>
-              <%else%>
                 <div class="feature-binary-left blue"><%= "#{contract.name} #{contract.current_price.round(2)*100}" %>%</div>
+              <%else%>
+                <div class="feature-binary-right blue"><%= "#{contract.name} #{contract.current_price.round(2)*100}" %>%</div>
               <% end%>
             </div>
           </article>
