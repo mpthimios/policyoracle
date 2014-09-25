@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
 	before_save { self.name = name.downcase }
 	before_create :create_remember_token
+  after_save :update_markets
 	#validates :name, presence: true, :length => { maximum: 32 },
 	#				 uniqueness: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -26,6 +27,15 @@ class User < ActiveRecord::Base
 
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def update_markets
+    markets = Market.all
+    markets.each do |market|
+      market.choose_b
+      market.save
+    end
+
   end
 
   private

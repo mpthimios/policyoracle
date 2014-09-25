@@ -15,6 +15,27 @@ class Market < ActiveRecord::Base
   scope :sorted, lambda { order("markets.id ASC")}
   scope :newest_first, lambda { order("markets.published_date DESC")}
 
+  before_create :choose_b
+
+  def choose_b
+    users_default_cash_amount = 200.0
+    number_of_users = User.count.to_f
+    number_of_contracts = 2.0
+    unless !self.contracts.nil?
+      number_of_contracts = self.contracts.size.to_f
+    end
+    initial_price = 1.0/number_of_contracts
+    price_change_to = 0.99
+
+    logger.debug number_of_users
+    logger.debug number_of_contracts
+    logger.debug initial_price
+
+    self.b_value = ((-1.0 ) * number_of_users * users_default_cash_amount) / \
+      (Math.log((1.0 - initial_price)/(1.0 - price_change_to)))
+
+  end
+
   def update_market(params)
     logger.debug "entered update_market"
     cost = 0.0

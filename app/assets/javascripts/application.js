@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require_tree .
+//= require_tree
+jQuery(document).ready(function(){
+    jQuery('ul.sf-menu').superfish();
+});
+
