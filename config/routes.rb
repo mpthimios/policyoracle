@@ -5,6 +5,13 @@ Rails.application.routes.draw do
     resources :contracts, shallow: true
   end
 
+  resources :markets do
+    member do
+      get 'close'
+      post 'after_close'
+    end
+  end
+
   resources :users
   resources :sessions,      only: [:new, :create, :destroy]
   resources :holdings

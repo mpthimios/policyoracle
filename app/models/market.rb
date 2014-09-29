@@ -1,6 +1,8 @@
 class Market < ActiveRecord::Base
 	has_many :contracts, :dependent => :destroy
 
+  accepts_nested_attributes_for :contracts
+
 	# you need to add a position column to desired table:
 	# acts_as_list
 
@@ -71,4 +73,7 @@ class Market < ActiveRecord::Base
       
   end
 
+  def close
+    self.update(status: 'false')
+  end  
 end

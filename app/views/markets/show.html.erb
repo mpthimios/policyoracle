@@ -4,8 +4,14 @@
     <section class="content">
 
       <div class="wrapper">
-        <article class="grid_12 last-col">
+        <article class="grid_10 last-col">
           <div class="hello_box">  <%=  @market.name  %></div>
+        </article>
+
+        <article class="grid_2 last-col">
+          <% if signed_in? && current_user.admin? %>
+            <h2><%= link_to 'Market Expired?', close_market_path(@market), :class => "one" %></h2>
+          <% end %>
         </article>
       </div>
 
@@ -27,7 +33,7 @@
           <p id="center"> Modify the chances if you have a different opinion <br>by investing or changing your investments on the different outcomes </p>
 
           <article class="grid_6">
-            <table class="table table-hover">
+            <table class="table">
               <thead>
                 <tr class="transaction">
                   <th></th>
@@ -54,6 +60,8 @@
                 <% end %>
               </tbody>
             </table>
+
+
             <ul class="blog_pagination">
               <%= link_to 'Back to Forecasts', markets_path, :class => "one" %> 
               <% if signed_in? && current_user.admin? %>

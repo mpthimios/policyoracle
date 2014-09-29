@@ -64,6 +64,18 @@ class MarketsController < ApplicationController
     end
   end
 
+  def close
+    @market = Market.find(params[:id])
+    @contracts = @market.contracts.sorted
+  end
+
+  def after_close
+    @market = Market.close
+    logger.debug params["correct_id"].inspect
+    
+    redirect_to market_path
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -73,6 +85,6 @@ class MarketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def market_params
-      params.require(:market).permit(:name, :category, :type, :description, :published_date, :arbitration_date)
+      params.require(:market).permit(:name, :category, :type, :description, :published_date, :arbitration_date, :status)
     end
 end
