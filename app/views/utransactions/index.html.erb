@@ -26,7 +26,7 @@
                     <% else %> Sold
                     <% end %>
                 </td> 
-                <td><%= utransaction.created_at%></td>
+                <td><%= utransaction.created_at.to_date.to_s%></td>
               </tr>
             <% end %>
           </tbody>
