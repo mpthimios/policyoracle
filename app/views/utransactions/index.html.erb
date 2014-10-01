@@ -12,6 +12,7 @@
               <th>Price</th>
               <th>Quantity</th>
               <th>Action</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>
@@ -25,6 +26,7 @@
                     <% else %> Sold
                     <% end %>
                 </td> 
+                <td><%= utransaction.created_at%></td>
               </tr>
             <% end %>
           </tbody>

@@ -96,5 +96,10 @@ class Market < ActiveRecord::Base
 
   def close
     self.update(status: 'false')
-  end  
+    self.contracts.each do |contract|
+      contract.closing_price = contract.current_price 
+      contract.save
+    end
+  end 
+
 end
