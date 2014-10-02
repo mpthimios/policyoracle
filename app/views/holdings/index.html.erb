@@ -4,29 +4,36 @@
     <section class="">
       <div class="wrapper">
         <h2>My Orders (<%= @holdings.count %>)</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Forecast </th>
-              <th>Your Prediction </th>
-              <th>Current Prediction Price</th>
-              <th> Total Quantity</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @holdings.each do |holding| %>
-              <tr>
-                <td><%= holding.contract.market.name if holding.contract %></td>
-                <td><%= holding.contract.name if holding.contract %></td>
-                <td><%= holding.contract.current_price.round(2)*100 if holding.contract%></td>
-                <td><%= holding.quantity %></td> 
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        
+        <% @holdings.each do |holding| %>
+          <ol id="positions">
+            <li class="posotion_group">
+              <h2><%= holding.contract.market.name if holding.contract %></h2>
+              <table class="headertable">
+                <thead>
+                  <tr>
+                    <th><h4>YOUR PREDICTION </h4></th>
+                    <th><h4>CURRENT PROFIT/LOSS</h4></th>
+                    <th><h4>CROWD PREDICTION</h4></th>
+                    <th><h4>SHARES </h4></th>
+                    <th><h4>YOU'VE SPENT </h4></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="answered"><h4><%= holding.contract.name if holding.contract %></h4></td>
+                    <td class="prediction"><h4><%= %></h4></td>
+                    <td  class="prediction"><h4><%= holding.contract.current_price.round(2)*100 if holding.contract %>%</h4></td> 
+                    <td class="details"><h4><%= holding.quantity %></h4></td> 
+                    <td class="details"><h4><%=  %></h4></td> 
+                  </tr>
+                </tbody>
+              </table>
+              <p class="market_info">Closes: <%= holding.contract.market.arbitration_date %></p>
+            </li>
+            <br>
+          <ol>
+        <% end %>
         <%= will_paginate(@holdings, :renderer => WillPaginate::ActionView::LinkRenderer) %>
-
       </div>
     </section>
   </div>

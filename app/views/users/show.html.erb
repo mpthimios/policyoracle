@@ -3,26 +3,35 @@
   	<div class="container_12">
     	<section class="">
       		<div class="wrapper">
+      			<div class="user_performance">
+      				<ul>
+      					<li class="first">
+      						<div class="subheaders1">Cash Available</div>
+      						<h1><%= @user.cash_amount.round(2) %></h1>
+					        <table class="prerformancecontent">
+					          	<tbody>
+						            <tr>
+						                <td align="left">Investement amount:</td>
+						                <td align="right" valign="middle"><%= @user.investment_amount.round(2) %></td>
+					                </tr>
+					                <tr>
+						                <td align="left">Total cash:</td>
+						                <td align="right" valign="middle"><%= @user.cash_amount.round(2) %></td>
+					                </tr>						           
+					                <tr>
+						                <td align="left">Account value:</td>
+						                <td align="right" valign="middle"><%= @user.total_amount.round(2) %></td>
+					                </tr>
+					          	</tbody>
+					        </table>
+					    </li>
+					    <li>
+					    	<div class="subheaders1">Rank</div>
+      						<h1><%= @user.rank%> of <%= User.count %></h1>
+      					</li>
+      				</ul>
 
-		        <table class="table">
-          			<thead>
-		            	<tr>
-			            	<th>TOTAL AMOUNT </th>
-							<th>CASH AVAILABLE</th>
-							<th>INVESTMENT AMOUNT</th>
-							<th>RANK</th>
-						</tr>
-					</thead>
-		          	<tbody>
-			            <tr>
-			                <td><%= @user.total_amount.round(2)  %></td>
-			                <td><%= @user.cash_amount.round(2) %></td>
-			                <td><%= @user.investment_amount.round(2) %></td>
-			                <td><%= @user.rank %></td> 
-		              	</tr>
-		          	</tbody>
-		        </table>
-
+				</div>
       		</div>
     	</section>
   	</div>

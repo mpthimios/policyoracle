@@ -419,6 +419,38 @@ h2.ind2 {
 .borderbottom{
   border-bottom: 3px solid #eee;
 }
+
+/* SUBHEADERS & SUBNAVS */
+.subheaders1 { 
+color: #ec2624; 
+/* padding: 3px; 
+*/ 
+/* padding-left: 0; 
+*/ text-transform: uppercase; 
+margin-top: 20px; 
+margin-bottom: 10px; 
+font-weight: bold; 
+}
+
+.subheaders2 { 
+color: #000; 
+text-transform: capitalize; 
+}
+
+.subheaders3 { 
+/*GREEN */ 
+color: #6d8e07; 
+padding-bottom: 5px 
+}
+
+.subheaders4 { 
+border-bottom: 1px solid #ebebeb; 
+border-top: 1px solid #ebebeb; 
+padding: 3px; 
+width: 700px; 
+color: #000 
+}
+
 /*
 Home
 ========================================================
@@ -1921,5 +1953,255 @@ nav select {
   margin: 0;
   padding: 10px 20px;
 }
+
+
+/* DASHBOARD STYLES */
+.user_performance {margin-bottom: 40px}
+.user_performance .subheaders1 {
+  margin: 0;
+  padding: 0;
+}
+.user_performance h1 {
+  margin: 0;
+  padding: 5px 0 0 0;
+  color: #333;
+  font-size: 30px;
+  line-height: 1em
+}
+.user_performance ul {
+margin: 0 0 10px 0; 
+padding: 0;
+}
+
+.user_performance ul li {list-style-type: none; padding: 0 15px 0 15px; float: left; width: 22%; border-right: 1px solid #ebebeb;}
+.user_performance ul li.first {padding-left: 0;}
+.user_performance ul li.rank {width: 25%}
+.user_performance ul li.last {border-right: 0; padding-right: 0; width: 15%;}
+.user_performance table {margin: 5px 0 0 0; padding: 0}
+.user_performance table td {margin: 0; padding: 0; vertical-align: top}
+.user_performance table td h1 {padding-top: 0;}
+.user_performance .points_needed {
+  line-height: 1.2em;
+  font-size: 11px;
+  margin-top: 7px;
+  vertical-align: top;
+  color: #666;
+}
+
+.dashboardmarket {margin-left: 5px; width: 650px; border: 0px solid #000}
+table.performancecontent {width: 210px; margin: 10px 0}
+.current_answers h1, .discussion_market_notes h1 {margin: 10px 0 10px 0; color: #8b8b8b; font-size: 1.4em; font-weight: normal}
+ul.market_recommendations {list-style-type: none; padding: 0; margin: 10px 0 0 0}
+li.market_recommendation {font-size: 1.2em}
+.recommendationbgnd {-moz-border-radius:1ex; -webkit-border-radius:1ex; background: url(../images/recommendedbgnd.png) repeat-x bottom; border: 1px solid #e6e6e6; padding: 5px 10px 5px 10px; margin: 5px 0 20px 0;}
+#market_recommendations h1 {margin-top: 0; padding-top: 0; font-size: 14px; color: #6d8e07; margin-bottom: 10px}
+.discussionMarketTitle { padding-bottom: 5px; }
+.discussionMarketNotesList { list-style: none; margin: 3px 0 10px 5px; color: #57595d; padding: 0 }
+.performanceboxheader { background:#b8b8b8; border-right: 1px #b8b8b8 solid; border-bottom: 0px #b8b8b8 solid; border-top: 1px #b8b8b8 solid; border-left: 1px #b8b8b8 solid; padding: 3px; width: 220px; color: #fff; text-transform: capitalize }
+.performancebox { background: url(../images/performanceboxbgnd.gif) top repeat-x #fff; border-right: 1px #b8b8b8 solid; border-bottom: 1px #b8b8b8 solid; border-top: 0px #b8b8b8 solid; border-left: 1px #b8b8b8 solid; padding: 3px; width: 220px; height: 105px }
+.summationline { border-top: solid 1px #ADB2BC; }
+.refunded_trade .right { text-decoration: line-through; }
+.refunded_trade_message { text-align: right; color: #b50000 }
+#trade_details .dottedtable td {padding: 3px}
+
+ol#positions {
+  list-style-type: none;
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+  ol#positions li.position_group {
+    margin-bottom: 30px
+  }
+  
+  ol#positions li.position {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #positions h2 {margin: 0 0 10px 0; padding: 0; font-weight: bold; font-size: 18px}
+  #positions h3 {margin: 0; padding: 0; font-weight: normal; font-size: 16px}
+  #positions h4 {margin: 0; padding: 4px 0 0 0; font-size: 11px; text-transform: none}
+  
+  ol.positions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .position .manage_links {
+    display: block; 
+    text-align: center;
+    visibility: hidden;
+    margin-top: 2px;
+  }
+  
+  .position .up_amount {
+    display: block;
+    padding: 0 0 0 20px;
+    position: relative;
+  }
+  
+    .position .profit {
+      color: #789e2d !important;
+  background: #eefbdb !important
+    }
+    
+    .position .profit .up_amount {
+      background: url(../images/up.gif) #eefbdb no-repeat center left;
+    padding: 2px 2px 2px 25px;
+    }
+    
+    .position .loss {
+      color: #B00000 !important;
+  background: #f6d1d1 !important
+    }
+    
+    .position .loss .up_amount {
+      background: url(../images/down.gif) #f6d1d1 no-repeat center left;
+    padding: 2px 2px 2px 25px
+    }
+    
+    .position .unchanged {
+      color: #000 !important;
+  background: #e6e9ee !important
+    }
+    
+    .position .unchanged .up_amount {
+    padding: 0
+    }
+    
+  .position .action_icons {
+    display: block;
+    visibility: hidden;
+    padding: 3px 0 0 0;
+  }
+  
+    .position .action_icons .quick_trade {
+      float: left;
+    }
+  
+  .position a.liquidate_action {
+    font-size: 11px;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .position table.you, table.headertable {border-collapse: collapse}
+    .position table.you td.said {
+      width: 75px;
+      text-align: right;
+      padding-right: 5px;
+      color: #A5A5A5;
+    }
+  .headertable td {border-width: 1px 1px 1px 1px; padding: 2px 4px; border-style: solid; border-color: #bbb; background-color: #dedede; margin: 0; font-size: 10px; font-weight: bold; color: #555; text-transform: uppercase;}
+  .position table.you td {border-width: 0px 1px 1px 1px; padding: 3px 4px; border-style: solid; border-color: #bbb; background-color: #f1f1f1; margin: 0; color: #333; font-size: 13px; vertical-align: top;}
+  .position table.you td.answered, .headertable td.answered {width: 220px}
+  .position table.you td.answered h3 {color: #333}
+  .position table.you td.status, .headertable td.status {width: 130px}
+  .position table.you td.prediction, .headertable td.prediction {width: 165px}
+  .position table.you td.details, .headertable td.details {width: 90px}
+  .position table.you td.details_prob, .headertable td.details_prob {width: 165px;}
+  .position table.you td.details.history {font-size: 12px}
+  .position table.you td.liquidated_simple {width: 601px}
+  .position table.you td.liquidated_simple_ideas {width: 502px}  
+  .position table.you td.liquidated_advanced {width: 700px}
+  .position table.you td.liquidated_probability {width: 339px}
+
+    .position table.you td.answered .remove_link {
+      background: url(../images/position_remove.gif) no-repeat left; padding-left: 15px
+    }
+
+  .position .trades, .position .liquidation {
+    clear: both;
+    margin: 0px 6px 10px 15px;
+    padding: 20px; 
+    background-color: #f1f1f1;
+    color: #333; 
+  }
+  .position .carrot {position: relative; top: -21px; left: 20px}
+  
+  .position .trades table {
+    border: 1px solid #dedede;
+    border-collapse: collapse;
+  width: 80%;
+  margin: 0 0 10px 10px; padding: 10px
+  }
+  
+    .position .trades table th,
+    .position .trades table td {
+      border: 1px solid #dedede;
+      text-align: left;
+      vertical-align: middle;
+      font-size: 90%
+    }
+  
+    .position .trades table th {
+      padding: 5px 3px;
+      font-weight: 400; 
+      color: #878787; 
+      background-color: none;
+    }
+  
+    .position .trades table td {
+      padding: 3px;
+      background-color: white;
+      color: black;
+    }
+    
+    .position .trades table td.explanation {
+      font-size: 80%;
+      color: #878787;
+      background-color: transparent;
+      border-color: transparent;
+      padding: 3px 0 20px 3px;
+    }
+    
+    .position .trades table tr.refunded td {
+      text-decoration: line-through;
+    }
+  
+  .position .liquidation .slider {
+    margin-bottom: 40px;
+  }
+  
+  .position .liquidation .slider .value {
+      position: absolute; 
+      top: 20px;  
+      background-color: black; 
+      color: white;
+      font-size: 12px;
+      font-weight: normal;
+      padding: 3px 5px;
+      text-align: center;
+      -moz-border-radius: 3px; 
+      -webkit-border-radius: 3px;
+    }
+  
+  .position .liquidation .range {
+    position: relative;
+  }
+  
+  .position .liquidation .range .left_side {}
+  .position .liquidation .range .right_side {
+    position: absolute; 
+    right: 0; 
+    text-align: right;
+  }
+
+  #positions p.market_info {
+    clear: both;
+    margin: 0 0 0 0 ;
+    padding: 5px 0 0 4px;
+    color: #838383;
+    font-size: 11px;
+    font-weight: normal;
+  }
+
+  .closedposition, .closedposition td {background: url(../images/closedbgnd.gif) #fff}
+ 
+
+.sort {margin: 10px 0 20px 0; font-size: 120%; text-align: right}
+
+
 
 
