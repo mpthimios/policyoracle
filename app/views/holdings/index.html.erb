@@ -20,11 +20,11 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="answered"><h4><%= holding.contract.name if holding.contract %></h4></td>
-                    <td class="prediction"><h4><%= %></h4></td>
-                    <td  class="prediction"><h4><%= holding.contract.current_price.round(2)*100 if holding.contract %>%</h4></td> 
+                    <td class="answered"><%= holding.contract.name if holding.contract %></td>
+                    <td class="answered"><%= %></td>
+                    <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
                     <td class="details"><h4><%= holding.quantity %></h4></td> 
-                    <td class="details"><h4><%=  %></h4></td> 
+                    <td class="answered2"><%= (holding.avg_price * holding.quantity).round(4)*100 %><h4><%=  %></h4></td> 
                   </tr>
                 </tbody>
               </table>

@@ -22,9 +22,9 @@
           <article class="grid_4">
             <div class="feature">
               <% if contract.name == "YES" %>
-                <div class="feature-binary-left blue"><%= "#{contract.name} #{contract.current_price.round(2)*100}" %>%</div>
+                <div class="feature-binary-left blue"><%= "#{contract.name} #{contract.current_price.round(4)*100}" %>%</div>
               <%else%>
-                <div class="feature-binary-right blue"><%= "#{contract.name} #{contract.current_price.round(2)*100}" %>%</div>
+                <div class="feature-binary-right blue"><%= "#{contract.name} #{contract.current_price.round(4)*100}" %>%</div>
               <% end%>
             </div>
           </article>
@@ -92,7 +92,7 @@
 
 
         <article class="grid_2">
-          <p><strong>Arbitration date:</strong><br><%= @market.arbitration_date %></p>
+          <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
           <p><strong>Category:</strong><br><%= @market.category %></p>
         </article>
 

@@ -18,6 +18,7 @@ class UtransactionsController < ApplicationController
     end
     logger.debug params['utransaction'].inspect
     Utransaction.create(utransaction_params)
+    #@utransaction.cost=
     redirect_to current_user
   end
 

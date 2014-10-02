@@ -154,7 +154,7 @@ a.arrowlink:hover {
   background-position: 0 -16px;
 }
 .button {
-  padding: 3px 8px;
+  padding: 8px 8px;
   -webkit-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
   -moz-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
   -ms-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
@@ -226,7 +226,7 @@ a.arrowlink:hover {
 input[type="text"] {
   border-radius: 4px;
   background: #eee;
-  padding: 0px 5px;
+  padding: 0px 0px 3px 3px;
   font-size: 14px;
   line-height: 41px;
   height: 30px;
@@ -2020,7 +2020,8 @@ ol#positions {
   
   #positions h2 {margin: 0 0 10px 0; padding: 0; font-weight: bold; font-size: 18px}
   #positions h3 {margin: 0; padding: 0; font-weight: normal; font-size: 16px}
-  #positions h4 {margin: 0; padding: 4px 0 0 0; font-size: 11px; text-transform: none}
+  #positions h4 {margin: 0; padding: 0; font-weight: normal; font-size: 13px}
+  #positions h5 {margin: 0; padding: 4px 0 0 0; font-size: 11px; text-transform: none}
   
   ol.positions {
     list-style-type: none;
@@ -2093,12 +2094,12 @@ ol#positions {
       padding-right: 5px;
       color: #A5A5A5;
     }
-  .headertable td {border-width: 1px 1px 1px 1px; padding: 2px 4px; border-style: solid; border-color: #bbb; background-color: #dedede; margin: 0; font-size: 10px; font-weight: bold; color: #555; text-transform: uppercase;}
+  .headertable td {border-width: 1px 1px 1px 1px; padding: 2px 4px; border-style: solid; border-color: #bbb; background-color: #f1f1f1; margin: 0; font-size: 12px; /*font-weight: bold; */ color: #555; text-transform: uppercase;}
   .position table.you td {border-width: 0px 1px 1px 1px; padding: 3px 4px; border-style: solid; border-color: #bbb; background-color: #f1f1f1; margin: 0; color: #333; font-size: 13px; vertical-align: top;}
   .position table.you td.answered, .headertable td.answered {width: 220px}
   .position table.you td.answered h3 {color: #333}
   .position table.you td.status, .headertable td.status {width: 130px}
-  .position table.you td.prediction, .headertable td.prediction {width: 165px}
+  .position table.you td.prediction, .headertable td.prediction {width: 120px}
   .position table.you td.details, .headertable td.details {width: 90px}
   .position table.you td.details_prob, .headertable td.details_prob {width: 165px;}
   .position table.you td.details.history {font-size: 12px}

@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20140911134416) do
   create_table "holdings", force: true do |t|
     t.integer  "user_id"
     t.integer  "contract_id"
-    t.integer  "quantity",                                 default: 0
-    t.decimal  "price_purchased", precision: 15, scale: 8, default: 0.0
+    t.integer  "quantity",                             default: 0
+    t.decimal  "avg_price",   precision: 15, scale: 8, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140911134416) do
     t.integer  "contract_id"
     t.decimal  "contract_current_value",           precision: 15, scale: 8, default: 0.0
     t.decimal  "contract_new_value",               precision: 15, scale: 8, default: 0.0
+    t.decimal  "cost",                             precision: 15, scale: 8, default: 0.0
     t.string   "transaction_type",       limit: 1,                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"

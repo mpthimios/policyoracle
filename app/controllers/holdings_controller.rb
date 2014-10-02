@@ -4,6 +4,7 @@ class HoldingsController < ApplicationController
 	def index
     	@holdings = current_user.holdings.all
     	@holdings = current_user.holdings.paginate(page: params[:page], :per_page => 10)
+    	@utransactions = current_user.utransactions.all
   	end
 
 	def create
@@ -13,6 +14,6 @@ class HoldingsController < ApplicationController
 	private
 
     	def holdings_params
-      		params.require(:holding).permit(:contract_id, :user_id, :quantity, :price_purchased)
+      		params.require(:holding).permit(:contract_id, :user_id, :quantity)
     	end
 end

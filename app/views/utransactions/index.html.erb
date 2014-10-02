@@ -4,35 +4,40 @@
     <section class="">
       <div class="wrapper">
         <h2>My Tradings (<%= @utransactions.count %>)</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Forecast </th>
-              <th>Your Prediction </th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Action</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @utransactions.each do |utransaction| %>
-              <tr>
-                <td><%= utransaction.contract.market.name if utransaction.contract %></td>
-                <td><%= utransaction.contract.name if utransaction.contract %></td>
-                <td><%= utransaction.contract_current_value.round(2)*100 %></td>
-                <td><%= utransaction.quantity %></td>
-                <td><% if utransaction.transaction_type == 'B'%> Buyed
-                    <% else %> Sold
-                    <% end %>
-                </td> 
-                <td><%= utransaction.created_at.to_date.to_s%></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <ol id="positions">
+          <li class="posotion_group">
+            <table class="headertable">
+              <% if !@utransactions.blank? %>
+                <thead>
+                  <tr>
+                    <th><h4>Question</h4></th>
+                    <th><h4>Your Prediction</h4></th>
+                    <th><h4>You've Spent</h4></th>
+                    <th><h4>Shares</h4></th>
+                    <th><h4>Cost Per Share</h3></th>
+                    <th><h4>Transaction Date</h3></th>
+                  </tr>
+                </thead>
+              <% end %> 
+              <tbody class="you">
+                <% @utransactions.each do |utransaction| %>
+                  <tr>
+                    <td><%= utransaction.contract.market.name if utransaction.contract %></td>
+                    <td class="prediction"><%= utransaction.contract.name if utransaction.contract %></td>
+                    <td class="prediction"><%=  (utransaction.contract_current_value.round(4)*100) * utransaction.quantity %></td>
+                    <td class="details history"><%= utransaction.quantity %><% if utransaction.transaction_type == 'B'%> bought
+                        <% else %> sold
+                        <% end %>
+                    </td>
+                    <td class="prediction"><%= utransaction.contract_current_value.round(4)*100 %></td>
+                    <td><%= utransaction.created_at.to_date.to_s%></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </li>
+        </ol>
         <%= will_paginate(@utransactions, :renderer => WillPaginate::ActionView::LinkRenderer) %>
-
       </div>
     </section>
   </div>

@@ -100,6 +100,7 @@ class Market < ActiveRecord::Base
       contract.closing_price = contract.current_price 
       contract.save
     end
+    
   end 
 
 end
