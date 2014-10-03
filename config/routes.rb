@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   resources :markets do
     member do
       get 'close'
+    end
+  end
+
+  resources :contracts do
+    member do
       post 'after_close'
     end
   end

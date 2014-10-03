@@ -28,7 +28,7 @@ class UtransactionsController < ApplicationController
   # permit list between create and update. Also, you can specialize
   # this method with per-user checking of permissible attributes.
   def utransaction_params
-    params.require(:utransaction).permit(:transaction_type, :contract_id, :user_id, :quantity, :contract_current_value)
+    params.require(:utransaction).permit(:transaction_type, :contract_id, :user_id, :quantity, :contract_current_value, :cost)
   end
 
 end

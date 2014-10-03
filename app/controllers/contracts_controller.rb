@@ -68,6 +68,15 @@ class ContractsController < ApplicationController
     end
   end
 
+  def after_close
+    logger.debug params["correct_id"].inspect
+
+    @winning_contract = Contract.find_by_id(params["correct_id"]).close
+    flash[:notice] = "Market was successfully closed."
+    
+    redirect_to market_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contract

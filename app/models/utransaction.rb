@@ -16,6 +16,7 @@ class Utransaction < ActiveRecord::Base
     logger.debug "update_market_holdings_and_money"
 
     cost = Contract.find_by_id(self.contract_id).market.update_market(self)
+    self.cost = cost
     self.user.cash_amount += (-1) * cost
     self.user.investment_amount += (1) * cost
     self.user.save

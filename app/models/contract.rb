@@ -13,4 +13,12 @@ class Contract < ActiveRecord::Base
 
 	scope :sorted, lambda { order("contracts.name ASC")}
 
+	def close
+	    self.market.update(status: 'false')
+	    self.holdings.each do |holding|
+	    	User.find_by(id: holding.user_id).allocate_profit(self)
+
+	    end
+	end 
+
 end

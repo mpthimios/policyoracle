@@ -94,16 +94,4 @@ class Market < ActiveRecord::Base
       
   end
 
-  def close
-    self.update(status: 'false')
-    self.contracts.each do |contract|
-      contract.closing_price = contract.current_price 
-      #if contract.id ==  winning_contract.id
-       # contract.status = true
-      #end
-      contract.save
-    end
-    
-  end 
-
 end
