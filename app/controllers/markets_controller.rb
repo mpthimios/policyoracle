@@ -72,10 +72,9 @@ class MarketsController < ApplicationController
   def after_close
     logger.debug params["correct_id"].inspect
 
-    @contract = Contract.find_by_id(params["correct_id"])
-    @market = Market.find(@contract.market_id).close
+    @winning_contract = Contract.find_by_id(params["correct_id"])
+    @market = Market.find(@winning_contract.market_id).close
     flash[:notice] = "Market was successfully closed."
-    
     
     redirect_to market_path
   end

@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
 
 	has_many :holdings
 	has_many :utransactions
+  has_many :bhistories
 	has_many :contracts, :through => :holdings
 	has_many :contracts, :through => :utransactions
+  has_many :contracts, :through => :bhistories
 
 	before_save { self.email = email.downcase }
 	before_save { self.name = name.downcase }

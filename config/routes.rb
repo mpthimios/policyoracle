@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
  
+  get 'bhistories/index'
+
   resources :markets do
     resources :contracts, shallow: true
   end
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   resources :sessions,      only: [:new, :create, :destroy]
   resources :holdings
   resources :utransactions, only: [:create]
+  resources :bhistories,    only: [:create]
 
 
   root to: 'static_pages#home'
@@ -31,5 +34,6 @@ Rails.application.routes.draw do
   match '/about',                 to: 'static_pages#about',               via: 'get'
   match '/trade_history',         to: 'utransactions#index',              via: 'get'
   match '/my_orders',             to: 'holdings#index',                   via: 'get'
+  match '/bank_history',          to: 'bhistories#index',                 via: 'get'
 
 end

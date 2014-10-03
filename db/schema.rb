@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911134416) do
+ActiveRecord::Schema.define(version: 20141003081108) do
+
+  create_table "bhistories", force: true do |t|
+    t.integer "user_id"
+    t.integer "contract_id"
+    t.decimal "profit",      precision: 15, scale: 8, default: 0.0
+  end
+
+  add_index "bhistories", ["user_id", "contract_id"], name: "index_bhistories_on_user_id_and_contract_id", using: :btree
 
   create_table "contracts", force: true do |t|
     t.string   "name"
@@ -34,8 +42,8 @@ ActiveRecord::Schema.define(version: 20140911134416) do
   create_table "holdings", force: true do |t|
     t.integer  "user_id"
     t.integer  "contract_id"
-    t.integer  "quantity",                             default: 0
-    t.decimal  "avg_price",   precision: 15, scale: 8, default: 0.0
+    t.integer  "quantity",                              default: 0
+    t.decimal  "amount_spent", precision: 15, scale: 8, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,7 +89,6 @@ ActiveRecord::Schema.define(version: 20140911134416) do
     t.integer  "contract_id"
     t.decimal  "contract_current_value",           precision: 15, scale: 8, default: 0.0
     t.decimal  "contract_new_value",               precision: 15, scale: 8, default: 0.0
-    t.decimal  "cost",                             precision: 15, scale: 8, default: 0.0
     t.string   "transaction_type",       limit: 1,                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"

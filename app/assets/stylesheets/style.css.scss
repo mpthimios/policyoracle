@@ -223,6 +223,14 @@ a.arrowlink:hover {
 .inline-block {
   display: inline-block;
 }
+
+input[type="radio"], label{
+     float:left;
+     padding: 0px 0px 0px 10px;
+    }
+input{
+ clear:left;
+}
 input[type="text"] {
   border-radius: 4px;
   background: #eee;
@@ -539,6 +547,15 @@ h4 {
   color: #12212f;
   border-radius: 10px;
   border: 3px;
+
+}
+
+.feature-sell {
+  display: inline-block;
+  width: 10px;
+  height: 1px;
+  padding: 0px;
+  color: #333;
 
 }
 
