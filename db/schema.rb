@@ -14,9 +14,12 @@
 ActiveRecord::Schema.define(version: 20141003081108) do
 
   create_table "bhistories", force: true do |t|
-    t.integer "user_id"
-    t.integer "contract_id"
-    t.decimal "profit",      precision: 15, scale: 8, default: 0.0
+    t.integer  "user_id"
+    t.integer  "contract_id"
+    t.decimal  "profit",      precision: 6, scale: 4, default: 0.0
+    t.decimal  "loss",        precision: 6, scale: 4, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "bhistories", ["user_id", "contract_id"], name: "index_bhistories_on_user_id_and_contract_id", using: :btree

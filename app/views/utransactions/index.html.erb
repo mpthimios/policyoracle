@@ -3,7 +3,7 @@
   <div class="container_12">
     <section class="">
       <div class="wrapper">
-        <h2>My Tradings (<%= @utransactions.count %>)</h2>
+        <div class="hello_box"> My Tradings (<%= @utransactions.count %>) </div>
         <ol id="positions">
           <li class="posotion_group">
             <table class="headertable">
@@ -24,12 +24,12 @@
                   <tr>
                     <td><%= utransaction.contract.market.name if utransaction.contract %></td>
                     <td class="prediction"><%= utransaction.contract.name if utransaction.contract %></td>
-                    <td class="prediction"><%=  (utransaction.contract_current_value.round(4)*100) * utransaction.quantity %></td>
+                    <td class="prediction"><%=  utransaction.cost %></td>
                     <td class="details history"><%= utransaction.quantity %><% if utransaction.transaction_type == 'B'%> bought
                         <% else %> sold
                         <% end %>
                     </td>
-                    <td class="prediction"><%= utransaction.contract_current_value.round(4)*100 %></td>
+                    <td class="prediction"><%= (utransaction.cost / utransaction.quantity).round(2) %></td>
                     <td><%= utransaction.created_at.to_date.to_s%></td>
                   </tr>
                 <% end %>

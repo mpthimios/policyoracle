@@ -15,9 +15,19 @@ class Contract < ActiveRecord::Base
 
 	def close
 	    self.market.update(status: 'false')
-	    self.holdings.each do |holding|
-	    	User.find_by(id: holding.user_id).allocate_profit(self)
-
+	    #self.holdings.each do |holding|
+	    #	User.find_by(id: holding.user_id).allocate_profit(holding)
+	    #end
+	    win_id = self.id
+	    market = self.market
+	    market.contracts.each do |contract|
+	    	contract.holdings.each do |holding|
+	    		if holding.contract_id == win_id
+	    			User.find_by(id: holding.user_id).allocate_profit(holding)
+	    		else
+	    			User.find_by(id: holding.user_id).allocate_loss(holding)
+	    		end
+	    	end
 	    end
 	end 
 

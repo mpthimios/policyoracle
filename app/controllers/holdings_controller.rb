@@ -3,8 +3,7 @@ class HoldingsController < ApplicationController
 
 	def index
     	@holdings = current_user.holdings.all
-    	@holdings = current_user.holdings.paginate(page: params[:page], :per_page => 10)
-    	@utransactions = current_user.utransactions.all
+    	@holdings = current_user.holdings.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
   	end
 
 	def create

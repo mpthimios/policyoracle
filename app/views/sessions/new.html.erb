@@ -15,13 +15,13 @@
           			<%= form_for(:session, url: sessions_path) do |f| %>
           				<ul id="homehireus" class="project-filter">
           					<li>
-                  				<label>Email:</label>
-                  				<%= f.text_field :email %>
-               				</li>
+                  			<label>Email:</label>
+                  			<%= f.text_field :email %>
+               			</li>
           					<li>
-                  				<label>Password:</label>
-                  				<%= f.password_field :password %>
-               				</li>
+                  		<label>Password:</label>
+                  		<%= f.password_field :password %>
+               			</li>
 
 	      					<%= f.submit "Sign in", class: "button" %>
 	      				</ul>

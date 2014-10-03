@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
 
-	has_many :holdings
-	has_many :utransactions
-  has_many :bhistories
-	has_many :contracts, :through => :holdings
+	has_many :holdings 
+	has_many :utransactions 
+  has_many :bhistories 
+	has_many :contracts, :through => :holdings 
 	has_many :contracts, :through => :utransactions
   has_many :contracts, :through => :bhistories
 
@@ -37,7 +37,31 @@ class User < ActiveRecord::Base
       market.choose_b
       market.save
     end
+  end
 
+  def allocate_profit(params)
+    profit = params.quantity - params.amount_spent
+    self.total_amount = self.total_amount + profit
+    logger.debug "the total amount is: " + self.total_amount.to_s
+    self.investment_amount = self.investment_amount - params.amount_spent
+    logger.debug "the investment_amount is: " + self.investment_amount.to_s
+    self.cash_amount = self.total_amount - self.investment_amount
+    self.save
+    logger.debug "the profit is: " + profit.to_s
+    bhistory = Bhistory.new(user_id: self.id, contract_id: params.contract_id, profit: profit)
+    bhistory.save
+  end
+
+  def allocate_loss(params)
+    self.total_amount = self.total_amount - params.amount_spent
+    logger.debug "the total amount is: " + self.total_amount.to_s
+    self.investment_amount = self.investment_amount - params.amount_spent
+    logger.debug "the investment_amount is: " + self.investment_amount.to_s
+    self.cash_amount = self.total_amount - self.investment_amount
+    self.save
+    logger.debug "the loss is: " + params.amount_spent.to_s
+    bhistory = Bhistory.new(user_id: self.id, contract_id: params.contract_id, loss: params.amount_spent)
+    bhistory.save
   end
 
   private

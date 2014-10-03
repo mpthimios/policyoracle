@@ -11,14 +11,14 @@ class Holding < ActiveRecord::Base
   def update_attributes(params)
     case params.transaction_type
       when 'B'
-        self.amount_spent = self.amount_spent + (params.contract_current_value * params.quantity)
         self.quantity = self.quantity + params.quantity
+        self.amount_spent = self.amount_spent + params.cost
       when 'S'
-        self.avg_price = self.amount_spent + (params.contract_current_value * params.quantity)
         self.quantity = self.quantity - params.quantity
         if self.quantity < 0
           self.quantity = 0
         end
+        self.amount_spent = self.amount_spent - params.cost
         
       else
         #nothing to do

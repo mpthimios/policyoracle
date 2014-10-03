@@ -3,7 +3,7 @@
   <div class="container_12">
     <section class="">
       <div class="wrapper">
-        <h2>My Orders (<%= @holdings.count %>)</h2>
+        <div class="hello_box"> My Orders (<%= @holdings.count %>) </div>
         <% @holdings.each do |holding| %>
           <ol id="positions">
             <li class="posotion_group">
@@ -21,17 +21,19 @@
                 <tbody>
                   <tr>
                     <td class="answered"><%= holding.contract.name if holding.contract %>
-                      <h5><%= button_to 'Sell', {action: "new"}, {class: 'button-small'} %></h5>
-                      <h5><%= link_to '<button-small type="button">Cash out</button>'.html_safe, current_user %></h5>
                     </td>
                     <td class="answered"><%= %></td>
                     <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
                     <td class="details"><h4><%= holding.quantity %></h4></td> 
-                    <td class="answered2"><%= holding.amount_spent.round(4)*100 %><h4><%=  %></h4></td> 
+                    <td class="answered2"><%= holding.amount_spent %><h4><%=  %></h4></td> 
                   </tr>
                 </tbody>
               </table>
-              <p class="market_info">Closes: <%= holding.contract.market.arbitration_date %></p>
+              <% if holding.contract.market.status == true %>
+                <h5 class="market_info">Closes: <%= holding.contract.market.arbitration_date %></h5>
+              <% else %>
+                <h6 class="market_info">Closed: <%= holding.contract.market.arbitration_date %></h6>
+              <%end%>
             </li>
             <br>
           <ol>
