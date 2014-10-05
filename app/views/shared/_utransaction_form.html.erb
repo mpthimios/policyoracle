@@ -1,7 +1,7 @@
 <%= form_for Utransaction.new do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
   	<div class="field">
-    	<%= f.text_field :quantity, placeholder: "Place bet quantity ..." %> shares 
+    	<%= f.text_field :quantity %> shares 
 
     	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "button button-green small" %>
   	</div>

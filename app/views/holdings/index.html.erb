@@ -7,7 +7,7 @@
         <% @holdings.each do |holding| %>
           <ol id="positions">
             <li class="posotion_group">
-              <h2><%= holding.contract.market.name if holding.contract %></h2>
+              <h2><%= link_to holding.contract.market.name, holding.contract.market, :class => "three" %></h2>
               <table class="headertable">
                 <thead>
                   <tr>
