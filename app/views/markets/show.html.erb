@@ -10,9 +10,9 @@
 
           <article class="grid_2 last-col">
             <% if signed_in? && current_user.admin? && @market.status? %>
-              <h2><%= link_to 'Market Expired?', close_market_path(@market), :class => "one" %></h2>
+              <h3><%= link_to 'Market Closure', close_market_path(@market), :class => "one" %></h3>
             <%elsif @market.status == false%>
-              <h2>Market Expired</h2>
+              <h3>Market Expired</h3>
             <% end %>
           </article>
       </div>
@@ -55,6 +55,14 @@
                 </tbody>
               </table>
               <%end%>
+            </div>
+
+            <div class="post">
+              <div class="comments">
+                <h2>Discussion</h2>
+                <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
+                <%= render :partial => @market.microposts %>
+              </div>
             </div>
 
             <div class="post">

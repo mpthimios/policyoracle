@@ -1,5 +1,6 @@
 class Market < ActiveRecord::Base
 	has_many :contracts, :dependent => :destroy
+  has_many :microposts
 
   accepts_nested_attributes_for :contracts
 

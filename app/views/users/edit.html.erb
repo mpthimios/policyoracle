@@ -5,6 +5,10 @@
       <div class="wrapper">
         <article class="grid_12">
           <div class="hello_box"> Update your profile  </div>
+          <div align="left">
+            <%= gravatar_for @user %>
+            <a href="http://gravatar.com/emails">change</a>
+          </div>  <br>        
           <%= form_for(@user) do |f| %>
             <ul id="homehireus" class="hireform contactform">
               <%= render 'shared/error_messages', object: f.object %><br>

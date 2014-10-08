@@ -1,8 +1,8 @@
 <div class="borderbottom">
 	<% if market.status == true%>
-    	<h2><%= link_to market.name, market, :class => "two" %></h2>
+    	<h3><%= link_to market.name, market, :class => "three" %></h3>
     <% else %>
-    	<h2><%= link_to market.name, market, :class => "two" %><h5> Expired</h5></h2>
+    	<h3><%= link_to market.name, market, :class => "three" %></h3><h6> Expired</h6>
     <% end %>
     <a class="small secondary message_button" id="contracts_container_link<%=market.id%>" href="#" id="message_button_" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">show answers</a>
     <div id="contracts_container<%=market.id%>" class="hidden">

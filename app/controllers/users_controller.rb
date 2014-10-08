@@ -6,18 +6,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if current_user.admin? 
       @users = User.all
-      @users = User.paginate(page: params[:page], :per_page => 20)
-    else
-      redirect_to edit_user_path(@current_user)
-    end
+      @users = User.order("total_amount DESC").paginate(page: params[:page], :per_page => 20)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @holdings = @user.holdings.all
+    @holdings = @user.holdings.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /users/new

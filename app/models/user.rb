@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 	has_many :contracts, :through => :holdings 
 	has_many :contracts, :through => :utransactions
   has_many :contracts, :through => :bhistories
+  has_many :microposts, dependent: :destroy
 
 	before_save { self.email = email.downcase }
 	before_save { self.name = name.downcase }

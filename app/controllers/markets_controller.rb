@@ -13,6 +13,9 @@ class MarketsController < ApplicationController
   # GET /markets/1.json
   def show
     @contracts = @market.contracts.sorted
+    @market = Market.find(params[:id])
+    @micropost = current_user.microposts.build if signed_in?
+    @microposts = @market.microposts.paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /markets/new

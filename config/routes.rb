@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :holdings
   resources :utransactions, only: [:create]
   resources :bhistories,    only: [:create]
+  resources :microposts, only: [:create, :destroy]
 
 
   root to: 'static_pages#home'
