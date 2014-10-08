@@ -17,89 +17,95 @@
           </article>
       </div>
 
+
       <div class="wrapper">
-        <article class="grid_10">
-          <div id="tabs" >
-            <ul>
-              <% @contracts.each do |contract| %>   
-                <li class="feature-binary-left blue"><%= "#{contract.name} #{contract.current_price.round(4)*100}" %>%</li> 
-              <% end %><br>
-            </ul>
-          </div>
-            
-        </article>    
-        <br>
-        <article class="grid_10">
-          <% if @market.status? %>
-            <p id="center"> Modify the chances if you have a different opinion <br>by investing or changing your investments on the different outcomes </p>
-          <%end%>
-          <article class="grid_6">
-            <div class="trade_interface">
-              <% if @market.status? %>
-              <table>
-                <tbody class="transaction">
-                  <% @contracts.each do |contract| %>
-                    <tr>
-                      <td>Invest in</td>
-                      <td class="feature-binary-small blue" width="10%"><%= contract.name %></td>
-                      <% if signed_in?%>
-                          <td align="left"><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
-                      <% end %>
-                      
-                      <% if signed_in? && current_user.admin? %>
-                        <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
-                        <td><%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                      <% end %>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-              <%end%>
-            </div>
-
-            <div class="post">
-              <div class="comments">
-                <h2>Discussion</h2>
-                <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
-                <%= render :partial => @market.microposts %>
-              </div>
-            </div>
-
-            <div class="post">
-              <h2>Historical Trend</h2>
-            </div>
-            <div class="post">
-              <h2>Background Information</h2>
-              <p><%= @market.description %></p>
-            </div>
-
-            <ul class="blog_pagination">
-              <%= link_to 'Back to Forecasts', markets_path, :class => "one" %> 
-              <% if signed_in? && current_user.admin? && @market.status? %>
-                | <%= link_to 'New Contract', new_market_contract_path(@market) %> 
-                | <%= link_to 'Edit', edit_market_path(@market) %> 
-                | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% end %>
-            </ul>
+        <article class="grid_12">
+          <article class="grid_10">
+            <% if @market.contracts.count == 2 %>
+              <article class="grid_7">
+                <div id="tabs" >
+                  <ul>
+                    <% @contracts.each do |contract| %>   
+                      <li class="feature-binary-left blue"><%= "#{contract.name} #{contract.current_price.round(4)*100}" %>%</li> 
+                    <% end %><br>
+                  </ul>
+                </div>
+                <br>
+                <% if @market.status? %>
+                  <p id="center"> Modify the chances if you have a different opinion <br>by investing or changing your investments on the different outcomes </p>
+                <%end%>
+                <div class="trade_interface">
+                  <% if @market.status? %>
+                    <table>
+                      <tbody class="transaction">
+                        <% @contracts.each do |contract| %>
+                          <tr>
+                            <td>Invest in</td>
+                            <td class="feature-binary-small blue" width="10%"><%= contract.name %></td>
+                            <% if signed_in?%>
+                                <td align="left"><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
+                            <% end %>
+                            
+                            <% if signed_in? && current_user.admin? %>
+                              <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+                              <td><%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                            <% end %>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  <%end%>
+                </div>
+              </article>
+            <% else %>
+              <article class="grid_7">
+                <%= render "contracts/mchoice.contract" %>
+              </article>
+            <% end %>
+            <% if signed_in? && @market.status?%>
+              <article class="grid_3" style="margin:0">
+                <div id="list">
+                  <ul>
+                    <li>Cash amount: <%= current_user.cash_amount.round(2) %></li>
+                    <li>Total amount: <%= current_user.total_amount.round(2) %></li>
+                  </ul>
+                </div>
+              </article>
+            <% end %>
           </article>
 
-          <% if signed_in? && @market.status?%>
-            <article class="grid_3">
-              <div id="list">
-                <ul>
-                  <li>Cash amount: <%= current_user.cash_amount.round(2) %></li>
-                  <li>Total amount: <%= current_user.total_amount.round(2) %></li>
-                </ul>
-              </div>
-            </article>
-          <% end %>
-        </article>
+          <article class="grid_2" style="margin:0">
+            <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
+            <p><strong>Category:</strong><br><%= @market.category %></p>
+          </article>
+        </aritcle>
 
-        <article class="grid_2">
-          <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
-          <p><strong>Category:</strong><br><%= @market.category %></p>
-        </article>
+        <article class="grid_12">
+          <div class="post">
+            <div class="comments">
+              <h2>Discussion</h2>
+              <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
+              <%= render :partial => @market.microposts %>
+            </div>
+          </div>
 
+          <div class="post">
+            <h2>Historical Trend</h2>
+          </div>
+          <div class="post">
+            <h2>Background Information</h2>
+            <p><%= @market.description %></p>
+          </div>
+
+          <ul class="blog_pagination">
+            <%= link_to 'Back to Forecasts', markets_path, :class => "one" %> 
+            <% if signed_in? && current_user.admin? && @market.status? %>
+              | <%= link_to 'New Contract', new_market_contract_path(@market) %> 
+              | <%= link_to 'Edit', edit_market_path(@market) %> 
+              | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </ul>
+        </article>
       </div>
     </section>
   </div>

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions,      only: [:new, :create, :destroy]
   resources :holdings
-  resources :utransactions, only: [:create]
+  resources :utransactions, only: [:new, :create]
   resources :bhistories,    only: [:create]
   resources :microposts, only: [:create, :destroy]
 
@@ -41,5 +41,7 @@ Rails.application.routes.draw do
   match '/trade_history',         to: 'utransactions#index',              via: 'get'
   match '/my_orders',             to: 'holdings#index',                   via: 'get'
   match '/bank_history',          to: 'bhistories#index',                 via: 'get'
+
+  get "utransactions/new" => 'utransactions#new', :as => :new_transaction
 
 end

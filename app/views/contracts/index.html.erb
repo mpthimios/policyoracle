@@ -21,7 +21,7 @@
                 <td><%= contract.name %></td>
                 <td><%= contract.current_price %></td>
                 <% if signed_in?%>
-                    <td><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
+                    <td><%= render partial: 'shared/utransaction_binary_form', :locals => { :contract => contract} %></td>
                 <% end %>
                 <% if signed_in? && current_user.admin? %>
                   <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
