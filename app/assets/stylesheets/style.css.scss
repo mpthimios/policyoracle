@@ -2546,7 +2546,26 @@ aside {
   margin-right: 10px;
 }
 
+.contract .mchoice{
+    border-style: 5px solid;
+    border-bottom: thick solid #f1f1f1;
+    padding: 10px;
+    margin-bottom: 0px;
 
+}
+
+.contract .transaction {
+  display: none;
+}
+
+
+
+.contract:hover .transaction {
+    border-style: 5px solid;
+    border-bottom: thick solid #f1f1f1;
+  display: block;
+
+}
 
 
 

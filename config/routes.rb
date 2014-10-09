@@ -4,24 +4,19 @@ Rails.application.routes.draw do
   get 'bhistories/index'
 
   resources :markets do
-    resources :contracts, shallow: true
-  end
-
-  resources :markets do
     member do
       get 'close'
     end
-  end
-
-  resources :contracts do
-    member do
-      post 'after_close'
+    resources :contracts, shallow: true do
+      post 'after_close', on: :collection
     end
   end
 
   resources :users
   resources :sessions,      only: [:new, :create, :destroy]
-  resources :holdings
+  resources :holdings do
+    post 'sell'
+  end
   resources :utransactions, only: [:new, :create]
   resources :bhistories,    only: [:create]
   resources :microposts, only: [:create, :destroy]

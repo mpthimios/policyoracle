@@ -66,8 +66,8 @@
               <article class="grid_3" style="margin:0">
                 <div id="list">
                   <ul>
-                    <li>Cash amount: <%= current_user.cash_amount.round(2) %></li>
-                    <li>Total amount: <%= current_user.total_amount.round(2) %></li>
+                    <li style="text-align:left">Cash amount: <%= current_user.cash_amount.round(2) %></li>
+                    <li style="text-align:left">Total amount: <%= current_user.total_amount.round(2) %></li>
                   </ul>
                 </div>
               </article>
@@ -85,7 +85,8 @@
             <div class="comments">
               <h2>Discussion</h2>
               <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
-              <%= render :partial => @market.microposts %>
+              <%= render :partial => @microposts %>
+              <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
             </div>
           </div>
 

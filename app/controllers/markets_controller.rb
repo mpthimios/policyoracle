@@ -14,8 +14,7 @@ class MarketsController < ApplicationController
   def show
     @contracts = @market.contracts.sorted
     @market = Market.find(params[:id])
-    @micropost = current_user.microposts.build if signed_in?
-    @microposts = @market.microposts.paginate(page: params[:page], :per_page => 10)
+    @microposts = @market.microposts.order("created_at DESC").paginate(page: params[:page], :per_page => 8)
   end
 
   # GET /markets/new
