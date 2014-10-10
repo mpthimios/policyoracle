@@ -10,6 +10,16 @@ class HoldingsController < ApplicationController
 	    @holding = current_user.holdings.build(holdings_params)
 	end
 
+	def cash_out
+		@holding = Holding.find(params[:holding_id]).sell
+
+		#@holding.destroy
+	    respond_to do |format|
+	    	format.html { redirect_to current_user, notice: 'Holding was succesfully sold.' }
+	    	format.json { head :no_content }
+    	end
+	end
+
 	private
 
     	def holdings_params

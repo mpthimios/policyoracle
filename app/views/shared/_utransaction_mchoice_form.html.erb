@@ -1,0 +1,11 @@
+<%= form_for Utransaction.new do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+  	<div class="field">
+    	<%= f.text_field :quantity %> shares 
+
+    	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "button button-green small" %>
+  	</div>
+    <%= f.hidden_field :user_id, 				:value => current_user.id %>
+    <%= f.hidden_field :contract_id, 			:value => contract.id %>
+    <%= f.hidden_field :contract_current_value, :value => contract.current_price %>
+<% end %>

@@ -34,8 +34,7 @@ class Market < ActiveRecord::Base
     logger.debug initial_price
 
     self.b_value = ((-1.0 ) * number_of_users * users_default_cash_amount) / \
-      (Math.log((1.0 - initial_price)/(1.0 - price_change_to)))
-
+      Math.log((number_of_contracts * (1 - price_change_to)) / (number_of_contracts - 1))
   end
 
   def update_market(params)

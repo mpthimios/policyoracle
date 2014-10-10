@@ -1,0 +1,2 @@
+module BhistoriesHelper
+end

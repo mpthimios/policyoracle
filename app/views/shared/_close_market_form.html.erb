@@ -1,0 +1,12 @@
+<%= form_for(@market, url: after_close_market_contracts_path(:market_id => @market), method: :post) do |f| %>
+  <% @contracts.each do |contract| %>
+    <div type="radio">
+      <%= radio_button_tag("correct_id", contract.id) %>
+      <%=   f.label( :contract, contract.name)  %>
+    </div>
+    <br>  
+  <% end %>
+  <div>
+    <%= f.submit("Submit") %>
+  </div>
+<% end %> 

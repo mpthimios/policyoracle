@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions,      only: [:new, :create, :destroy]
   resources :holdings do
-    post 'sell'
+    post 'cash_out'
   end
   resources :utransactions, only: [:new, :create]
   resources :bhistories,    only: [:create]
