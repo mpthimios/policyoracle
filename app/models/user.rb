@@ -42,27 +42,36 @@ class User < ActiveRecord::Base
 
   def allocate_profit(params)
     profit = params.quantity - params.amount_spent
+    logger.debug "the profit is: " + profit.to_s
+
     self.total_amount = self.total_amount + profit
     logger.debug "the total amount is: " + self.total_amount.to_s
+
     self.investment_amount = self.investment_amount - params.amount_spent
     logger.debug "the investment_amount is: " + self.investment_amount.to_s
-    self.cash_amount = self.total_amount - self.investment_amount
-    self.save
-    logger.debug "the profit is: " + profit.to_s
+
+    self.cash_amount = self.cash_amount + params.quantity
+    logger.debug "the cash amount is: " + self.cash_amount.to_s
+
+    self.save!
+
     bhistory = Bhistory.new(user_id: self.id, contract_id: params.contract_id, profit: profit)
-    bhistory.save
+    bhistory.save!
   end
 
   def allocate_loss(params)
     self.total_amount = self.total_amount - params.amount_spent
     logger.debug "the total amount is: " + self.total_amount.to_s
+
     self.investment_amount = self.investment_amount - params.amount_spent
     logger.debug "the investment_amount is: " + self.investment_amount.to_s
-    self.cash_amount = self.total_amount - self.investment_amount
-    self.save
+
+    self.save!
+
     logger.debug "the loss is: " + params.amount_spent.to_s
+
     bhistory = Bhistory.new(user_id: self.id, contract_id: params.contract_id, loss: params.amount_spent)
-    bhistory.save
+    bhistory.save!
   end
 
   private

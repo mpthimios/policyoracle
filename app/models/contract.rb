@@ -19,10 +19,11 @@ class Contract < ActiveRecord::Base
 	    #	User.find_by(id: holding.user_id).allocate_profit(holding)
 	    #end
 	    win_id = self.id
+	    logger.debug "the win id is " + win_id.to_s
 	    market = self.market
 	    market.contracts.each do |contract|
 	    	contract.holdings.each do |holding|
-	    		if holding.contract_id == win_id
+	    		if holding.contract_id.to_s == win_id.to_s
 	    			User.find_by(id: holding.user_id).allocate_profit(holding)
 	    		else
 	    			User.find_by(id: holding.user_id).allocate_loss(holding)

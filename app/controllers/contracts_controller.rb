@@ -75,7 +75,7 @@ class ContractsController < ApplicationController
     @winning_contract = Contract.find_by_id(params["correct_id"]).close
     flash[:notice] = "Market was successfully closed."
     
-    redirect_to market_path
+    redirect_to markets_path
   end
 
   private
