@@ -1,6 +1,7 @@
 class MarketsController < ApplicationController
 
   before_action :set_market, only: [:show, :edit, :update, :destroy]
+  allow_cors :graph_data
 
   # GET /markets
   # GET /markets.json
@@ -69,6 +70,11 @@ class MarketsController < ApplicationController
   def close
     @market = Market.find(params[:id])
     @contracts = @market.contracts.sorted
+  end
+
+  def graph_data
+    @market = Market.find(params[:id])
+    render :json => @market.graph_data
   end
 
   private

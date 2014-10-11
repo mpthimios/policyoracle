@@ -1,6 +1,7 @@
 class Market < ActiveRecord::Base
 	has_many :contracts, :dependent => :destroy
   has_many :microposts
+  has_many :utransactions
 
   accepts_nested_attributes_for :contracts
 
@@ -91,6 +92,28 @@ class Market < ActiveRecord::Base
     #cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before)
 
       
+  end
+
+  def graph_data
+    data = {}
+    data[:prices] = []
+    data[:volume] = []
+    data[:dates] = []
+    self.contracts.each do |contract|
+      data[:prices] << {:key => contract.name, :values => []}
+    end
+    self.utransactions.each do |transaction|
+      new_contract_values = transaction.new_contract_values
+      i = 0
+      new_contract_values.each do |key, value|
+        logger.debug value
+        data[:prices][i][:values] << value.round(2)
+        i +=1
+      end
+      data[:dates] << transaction.created_at.strftime("%Y-%m-%d %H:%M")
+      data[:volume] << transaction.quantity
+    end
+    data
   end
 
 end
