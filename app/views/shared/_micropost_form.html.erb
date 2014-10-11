@@ -1,7 +1,7 @@
 <%= form_for Micropost.new do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new comment..." %>
+    <%= f.text_area :content, placeholder: "Compose new comment...", :cols => "30", :rows => "5" %>
   </div>
   <%= f.hidden_field :user_id, 		:value => current_user.id %>
   <%= f.hidden_field :market_id, 	:value => market_id %>

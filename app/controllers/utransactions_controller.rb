@@ -6,12 +6,6 @@ class UtransactionsController < ApplicationController
     @utransactions = current_user.utransactions.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
   end
 
-  def new
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
 
   def create
     logger.debug params['utransaction'].inspect
@@ -24,8 +18,7 @@ class UtransactionsController < ApplicationController
         #do nothing
     end
     logger.debug params['utransaction'].inspect
-    Utransaction.create(utransaction_params)
-    #@utransaction.cost=
+    utransaction = Utransaction.create!(utransaction_params)
     redirect_to current_user
   end
 

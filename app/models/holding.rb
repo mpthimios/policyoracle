@@ -26,4 +26,11 @@ class Holding < ActiveRecord::Base
     self.save
   end
 
+  def sell
+    avg_contract_price = self.amount_spent / self.quantity
+    Utransaction.new(transaction_type: "Sell",         user_id: self.user_id, 
+                        contract_id: self.contract_id, quantity: self.quantity,
+                        contract_current_value: avg_contract_price)
+  end
+
 end

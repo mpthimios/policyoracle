@@ -26,7 +26,7 @@
                 <div id="tabs" >
                   <ul>
                     <% @contracts.each do |contract| %>   
-                      <li class="feature-binary-left blue"><%= "#{contract.name} #{contract.current_price.round(4)*100}" %>%</li> 
+                      <li class="feature-binary-left"><%= "#{contract.name} #{contract.current_price.round(4)*100}" %>%</li> 
                     <% end %><br>
                   </ul>
                 </div>
@@ -41,7 +41,7 @@
                         <% @contracts.each do |contract| %>
                           <tr>
                             <td>Invest in</td>
-                            <td class="feature-binary-small blue" width="10%"><%= contract.name %></td>
+                            <td><%= contract.name %></td>
                             <% if signed_in?%>
                                 <td align="left"><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
                             <% end %>

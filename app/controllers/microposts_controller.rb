@@ -10,7 +10,9 @@ class MicropostsController < ApplicationController
         		format.html { redirect_to market_path(@market, :anchor => "comment-#{@micropost.id}"), notice: 'Comment was successfully created.' }
         		format.json { render :show}
       		else
-        		redirect_to :back
+      			@market = @micropost.market_id
+        		flash.now[:error] = 'Invalid length of comment'
+        		format.json { render json: @micropost.market.errors, status: :unprocessable_entity }
       		end
     	end
 	end

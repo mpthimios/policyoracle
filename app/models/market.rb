@@ -78,7 +78,7 @@ class Market < ActiveRecord::Base
     sum_of_prices = 0.0
     self.contracts.each do |contract|
       contract.current_price = numerators[contract[:id]]/denominator
-      contract.save
+      contract.save!
       sum_of_prices = sum_of_prices + contract.current_price
       logger.debug "the sum_of_prices is " + sum_of_prices.to_s
     end
