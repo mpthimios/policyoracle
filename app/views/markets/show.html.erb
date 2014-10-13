@@ -8,54 +8,74 @@
           <div class="hello_box">  <%=  @market.name  %></div>
         </article>
 
-          <article class="grid_2 last-col">
-            <% if signed_in? && current_user.admin? && @market.status? %>
-              <h3><%= link_to 'Market Closure', close_market_path(@market), :class => "one" %></h3>
-            <%elsif @market.status == false%>
-              <h3>Market Expired</h3>
-            <% end %>
-          </article>
+        <article class="grid_2 last-col">
+          <% if signed_in? && current_user.admin? && @market.status? %>
+            <h3><%= link_to 'Market Closure', close_market_path(@market), :class => "one" %></h3>
+          <% elsif @market.status == false %>
+            <h3>Market Expired</h3>
+          <% end %>
+        </article>
       </div>
-
 
       <div class="wrapper">
         <article class="grid_12">
           <article class="grid_10">
             <% if @market.contracts.count == 2 %>
               <article class="grid_7">
-                <div id="tabs" >
-                  <ul>
-                    <% @contracts.each do |contract| %>   
-                      <li class="feature-binary-left"><%= "#{contract.name} #{contract.current_price.round(4)*100}" %>%</li> 
-                    <% end %><br>
-                  </ul>
-                </div>
-                <br>
-                <% if @market.status? %>
-                  <p id="center"> Modify the chances if you have a different opinion <br>by investing or changing your investments on the different outcomes </p>
-                <%end%>
-                <div class="trade_interface">
-                  <% if @market.status? %>
-                    <table>
-                      <tbody class="transaction">
-                        <% @contracts.each do |contract| %>
-                          <tr>
-                            <td>Invest in</td>
-                            <td><%= contract.name %></td>
-                            <% if signed_in?%>
+                <article class="grid_3">
+                  <% @contracts.each do |contract| %>   
+                    <% if contract.name === "YES" %>
+                      <ul style="text-align: center">
+                        <li><%= image_tag "yes.png" %> </li>
+                        <li style="color:#ebdf1b"><%= "#{contract.name}" %> </li>
+                        <li style="margin-top:20px">Posibility: 
+                          <p3 style="font-size: 16px"><%= "#{contract.current_price.round(4)*100}" %>%</p3></li>
+                      </ul>
+                      <div class="trade_interface">
+                        <% if @market.status? %>
+                          <table>
+                            <tr>
+                              <% if signed_in?%>
                                 <td align="left"><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
-                            <% end %>
-                            
-                            <% if signed_in? && current_user.admin? %>
-                              <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
-                              <td><%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                            <% end %>
-                          </tr>
+                              <% end %>
+                            </tr>
+                          </table>
+                          <% if signed_in? && current_user.admin? %>
+                            <p style="text-align: center"><%= link_to 'Edit', edit_contract_path(contract) %> |
+                            <%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+                          <% end %>
                         <% end %>
-                      </tbody>
-                    </table>
-                  <%end%>
-                </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </article>
+                <article class="grid_3">
+                  <% @contracts.each do |contract| %>   
+                    <% if contract.name === "NO" %>
+                      <ul style="text-align: center">
+                        <li><%= image_tag "no.png" %> </li>
+                        <li style="color:#343c3a"><%= "#{contract.name}" %> </li>
+                        <li style="margin-top:20px">Posibility: 
+                          <p3 style="font-size: 16px"><%= "#{contract.current_price.round(4)*100}" %>%</p3></li>
+                      </ul>
+                      <div class="trade_interface">
+                        <% if @market.status? %>
+                          <table>
+                            <tr>
+                              <% if signed_in?%>
+                                <td align="left"><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
+                              <% end %>
+                            </tr>
+                          </table>
+                          <% if signed_in? && current_user.admin? %>
+                            <p style="text-align: center"><%= link_to 'Edit', edit_contract_path(contract) %> |
+                            <%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </article>
               </article>
             <% else %>
               <article class="grid_7">
