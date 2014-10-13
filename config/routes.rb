@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
- 
-  get 'bhistories/index'
+  default_url_options :host => "policyoracle.com"
 
   resources :markets do
     member do
@@ -21,6 +19,7 @@ Rails.application.routes.draw do
   resources :utransactions, only: [:new, :create]
   resources :bhistories,    only: [:create]
   resources :microposts, only: [:create, :destroy]
+  resources :password_resets
 
 
   root to: 'static_pages#home'

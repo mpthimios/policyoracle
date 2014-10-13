@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006162350) do
+ActiveRecord::Schema.define(version: 20141013125026) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -83,14 +83,16 @@ ActiveRecord::Schema.define(version: 20141006162350) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.decimal  "total_amount",      precision: 15, scale: 8, default: 200.0
-    t.decimal  "cash_amount",       precision: 15, scale: 8, default: 200.0
-    t.decimal  "investment_amount", precision: 15, scale: 8, default: 0.0
-    t.integer  "rank",                                       default: 0
+    t.decimal  "total_amount",           precision: 15, scale: 8, default: 200.0
+    t.decimal  "cash_amount",            precision: 15, scale: 8, default: 200.0
+    t.decimal  "investment_amount",      precision: 15, scale: 8, default: 0.0
+    t.integer  "rank",                                            default: 0
     t.string   "remember_token"
-    t.boolean  "admin",                                      default: false
+    t.boolean  "admin",                                           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
