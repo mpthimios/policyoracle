@@ -84,7 +84,9 @@
           <div class="post">
             <div class="comments">
               <h2>Discussion</h2>
-              <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
+               <% if signed_in?%>
+                <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
+              <% end %>
               <%= render :partial => @microposts %>
               <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
             </div>

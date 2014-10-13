@@ -11,8 +11,10 @@
         	   <h3 class="mchoice"><%= contract.current_price.round(4)*100%>%</h3>
             
     	</article>
-        <article class="grid_3 transaction" style="text-align:right; margin:0">
-            <%= render partial:'shared/utransaction_form', :locals => { :contract => contract} %>
-        </article>
+         <% if signed_in?%>
+            <article class="grid_3 transaction" style="text-align:right; margin:0">
+                <%= render partial:'shared/utransaction_form', :locals => { :contract => contract} %>
+            </article>
+        <% end %>
     </div>
 <% end %>
