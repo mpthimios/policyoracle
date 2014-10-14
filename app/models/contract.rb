@@ -8,7 +8,7 @@ class Contract < ActiveRecord::Base
 	has_many :users, :through => :utransactions
 	has_many :users, :through => :bhistories
 
-	validates_presence_of :name, :market_id, :opening_price
+	validates_presence_of :name, :market
 	validates_length_of :name, :maximum => 255
 
 	scope :sorted, lambda { order("contracts.name ASC")}
