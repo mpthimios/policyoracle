@@ -2,9 +2,9 @@
 	<%= render 'shared/error_messages', object: f.object %>
 	<ul style="text-align: center">
 
-    	<li>Invest <%= f.text_field :quantity, :class => "input-mir"%> shares </li> 
+    	<li style="margin-top:20px; margin-left:50px"><%= f.text_field :quantity, :class => "input-mir", :style => "width:100px"%> <br> shares </li> 
 
-    	<li style="margin-top:20px;"><%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "button large"%></li>
+    	<li style="margin-top:5px; margin-left:50px"><%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample"%></li>
     </ul>
     <%= f.hidden_field :user_id, 				:value => current_user.id %>
     <%= f.hidden_field :contract_id, 			:value => contract.id %>

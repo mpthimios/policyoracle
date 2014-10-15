@@ -96,14 +96,10 @@ class Market < ActiveRecord::Base
     end
 
     cost = (self.b_value*Math.log((cur_price*(Math.exp(params.quantity/self.b_value)-1))+1))
-    logger.debug "the true cost is " + cost.to_s
-
     if params.transaction_type == 'B'
       cost = cost.ceil2(2)
-      logger.debug "the ceiled cost is " + cost.to_s
     elsif params.transaction_type == 'S'
       cost = cost.floor2(2)
-      logger.debug "the rounded cost is " + cost.to_s
     end
     #cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before)
 
