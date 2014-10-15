@@ -13,7 +13,7 @@
     	</article>
          <% if signed_in?%>
             <article class="grid_3 transaction" style="text-align:right; margin:0">
-                <%= render partial:'shared/utransaction_form', :locals => { :contract => contract} %>
+                <%= render partial:'shared/utransaction_mchoice_form', :locals => { :contract => contract} %>
             </article>
         <% end %>
     </div>

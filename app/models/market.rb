@@ -56,6 +56,7 @@ class Market < ActiveRecord::Base
     cur_price = 0.0
     sum_before = 0.0
     denominator = 0.0
+    cost = 0.0
     numerators = Hash.new
     self.contracts.each do |contract|
       value = Math.exp(contract[:total_shares]/self.b_value)
@@ -84,10 +85,15 @@ class Market < ActiveRecord::Base
       logger.debug "the sum_of_prices is " + sum_of_prices.to_s
     end
 
+    cost = (self.b_value*Math.log((cur_price*(Math.exp(params.quantity/self.b_value)-1))+1))
+    logger.debug "the true cost is " + cost.to_s
+
     if params.transaction_type == 'B'
-      cost = (self.b_value*Math.log((cur_price*(Math.exp(params.quantity/self.b_value)-1))+1)).ceil
+      cost = cost.ceil2(2)
+      logger.debug "the ceiled cost is " + cost.to_s
     elsif params.transaction_type == 'S'
-      cost = (self.b_value*Math.log((cur_price*(Math.exp(params.quantity/self.b_value)-1))+1)).floor
+      cost = cost.floor2(2)
+      logger.debug "the rounded cost is " + cost.to_s
     end
     #cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before)
 

@@ -15,10 +15,10 @@ class Holding < ActiveRecord::Base
         self.amount_spent = self.amount_spent + params.cost
       when 'S'
         self.quantity = self.quantity - params.quantity
-        if self.quantity < 0
-          self.quantity = 0
-        end
         self.amount_spent = self.amount_spent - params.cost
+        if self.quantity < 0 || self.quantity == 0
+          self.destroy
+        end
         
       else
         #nothing to do

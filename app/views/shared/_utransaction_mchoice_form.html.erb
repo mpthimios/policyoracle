@@ -1,10 +1,7 @@
-<%= form_for Utransaction.new do |f| %>
+<%= form_for Utransaction.new, :html => {:class =>"form-inline", :style => "padding:0px 0px 4px 0px"} do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-  	<div class="field">
-    	<%= f.text_field :quantity %> shares 
-
-    	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "button button-green small" %>
-  	</div>
+  	<%= f.text_field :quantity, :class => "input-mir"%>   shares 
+  	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "button small"%>
     <%= f.hidden_field :user_id, 				:value => current_user.id %>
     <%= f.hidden_field :contract_id, 			:value => contract.id %>
     <%= f.hidden_field :contract_current_value, :value => contract.current_price %>

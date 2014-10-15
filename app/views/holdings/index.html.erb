@@ -23,8 +23,8 @@
                     <td class="answered"><%= holding.contract.name if holding.contract %>
                       <%= link_to 'Sell', holding_sell_path(holding), method: :post, data: { confirm: 'Are you sure?' } %>
                     </td>
-                    <td class="answered"><%= %></td>
-                    <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
+                    <td class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %></h4></td>
+                    <td class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
                     <td class="details"><h4><%= holding.quantity %></h4></td> 
                     <td class="answered2"><%= holding.amount_spent %><h4><%=  %></h4></td> 
                   </tr>
