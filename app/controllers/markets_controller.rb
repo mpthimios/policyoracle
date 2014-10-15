@@ -16,8 +16,6 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
     @contracts = @market.contracts.sorted
     @microposts = @market.microposts.order("created_at DESC").paginate(page: params[:page], :per_page => 8)
-    logger.debug @contracts.count
-
   end
 
   # GET /markets/new
