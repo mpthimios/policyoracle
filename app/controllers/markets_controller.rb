@@ -13,14 +13,15 @@ class MarketsController < ApplicationController
   # GET /markets/1
   # GET /markets/1.json
   def show
-    @contracts = @market.contracts.sorted
     @market = Market.find(params[:id])
+    @contracts = @market.contracts.sorted
     @microposts = @market.microposts.order("created_at DESC").paginate(page: params[:page], :per_page => 8)
   end
 
   # GET /markets/new
   def new
     @market = Market.new
+    contracts = @market.contracts.build
   end
 
   # GET /markets/1/edit
@@ -30,7 +31,14 @@ class MarketsController < ApplicationController
   # POST /markets
   # POST /markets.json
   def create
-    @market = Market.new(market_params)
+    new_market_params = market_params
+    new_market_params[:published_date] = Date.strptime(market_params[:published_date],
+                                                  '%m/%d/%Y %k:%M %p')
+    new_market_params[:arbitration_date] = Date.strptime(market_params[:arbitration_date],
+                                                   '%m/%d/%Y %k:%M %p')
+
+    logger.debug new_market_params
+    @market = Market.new(new_market_params)
 
     respond_to do |format|
       if @market.save
@@ -85,6 +93,6 @@ class MarketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def market_params
-      params.require(:market).permit(:name, :category, :type, :description, :published_date, :arbitration_date, :status)
+      params.require(:market).permit(:name, :category, :market_type, :description, :published_date, :arbitration_date, :status, contracts_attributes: [:name])
     end
 end

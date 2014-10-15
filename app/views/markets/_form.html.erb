@@ -10,33 +10,77 @@
       </ul>
     </div>
   <% end %>
+    <div class="container">
+  <div class="form-group">
+    <label for="market_name">Your Question</label>
+    <input type="text" class="form-control" id="market_name" name="market[name]"  placeholder="Enter your question">
+  </div>
+  <div class="form-vertical">
+      <div class="form-group">
+        <div class="col-xs-10" style="padding-left: 0px;">
+        <label for="market_category">Choose a Category</label>
+          </div>
+        <select class="form-control input-large" name="market[category]">
+          <option value="" selected disabled>Please select</option>
+          <%@market.get_categories.each do |category|%>
+              <option><%= category%></option>
+          <%end%>
+        </select>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="market_type">Tags (a list of keywords describing your question)</label>
+    <input id="market_market_type" class="form-control" name="market[market_type]" type="text" placeholder="Enter a set of tags seperated by commas ','">
+  </div>
+  <div class="form-group">
+    <label for="market_description">Description</label>
+    <textarea id="market_description" name="market[description]" class="form-control" rows="6" placeholder="Enter a short synopsis"></textarea>
+  </div>
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <div class="form-group">
+            <label for="market_published_date">Date and time to publish the question</label>
+            <input type='text' class="form-control" id='publish_date' name="market[published_date]"></input>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :market_type %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :published_date %><br>
-    <%= f.datetime_select :published_date %>
-  </div>
-  <div class="field">
-    <%= f.label :arbitration_date %><br>
-    <%= f.datetime_select :arbitration_date %>
+
+   <div class="container">
+        <div class="row">
+      <div class="span4">
+        <div class="form-group">
+          <label for="market_published_date">Date and time to end the question</label>
+          <input type='text' class="form-control" id='end_date' name="market[arbitration_date]"></input>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="container" id="answers_container">
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="span4" >
+        <button type="button" class="btn btn-primary btn-lg" id="add_answer" onclick="add_new_answer();">
+          <span class="glyphicon glyphicon-plus"></span> Add a new Answer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="margin-top: 15px;">
+    <div class="row">
+      <div class="span4" >
+        <button name="commit" type="submit"  class="btn btn-success btn-lg"> Create Market </button>
+      </div>
+      <div class="span4" >
+        <a name="cancel"  class="btn btn-danger btn-lg" href="<%= markets_path%>"> Cancel </a>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -168,64 +168,7 @@ a.arrowlink {
 a.arrowlink:hover {
   background-position: 0 -16px;
 }
-.button {
-  padding: 8px 8px;
-  -webkit-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-  -moz-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-  -ms-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-  -o-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-  transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
-  border: 0px;
-  border: none;
-  cursor: pointer;
-  background: #12212F;
-  border-radius: 3px;
-  color: #fff;
-}
-.button:hover {
-  color: white;
-  background: #E35845;
-}
-.button.small {
-  font-size: 12px;
-}
-.button.medium {
-  font-size: 16px;
-}
-.button.large {
-  font-size: 16px;
-  padding: 8px 30px;
-}
-.button-red {
-  background: #E35845;
-}
-.button-red:hover {
-  background: #bc2e1b;
-}
-.button-green {
-  background: #94c11c;
-}
-.button-green:hover {
-  background: #759e07;
-}
-.button-blue {
-  background: #4593e3;
-}
-.button-blue:hover {
-  background: #2073c8;
-}
-.button-grey {
-  background: #bbbbbb;
-}
-.button-grey:hover {
-  background: #727272;
-}
-.button-green {
-  background: #94c11c;
-}
-.button-green:hover {
-  background: #759e07;
-}
+
 .ui-widget .ui-state-highlight p, .ui-widget .ui-state-error p {
   margin-bottom: 0;
   padding: 10px 20px;
@@ -250,19 +193,16 @@ input[type="radio"], label{
 input{
  clear:left;
 }
+
 input[type="text"] {
   border-radius: 4px;
   background: #eee;
-  padding: 0px 0px 3px 3px;
-  font-size: 14px;
-  line-height: 41px;
+  font-size: 18px;
   height: 30px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   outline: none;
-  color: #6a6a6a;
-  width: 25%;
 }
 
 input[type="quantity"] {
@@ -428,19 +368,19 @@ h3 {
   margin-bottom: 15px;
 }
 h5{
-  color: #12212f; 
-  margin: 0; 
-  padding: 4px 0 0 0; 
-  font-size: 11px; 
+  color: #12212f;
+  margin: 0;
+  padding: 4px 0 0 0;
+  font-size: 11px;
   text-transform: none
 }
 h6{
-  color: #ec2624; 
-  margin: 0; 
-  padding: 4px 0 0 0; 
-  font-size: 11px; 
+  color: #ec2624;
+  margin: 0;
+  padding: 4px 0 0 0;
+  font-size: 11px;
   text-transform: none
-  
+
 }
 #content, .content {
   padding: 0px 0px 7px 0px;
@@ -480,34 +420,34 @@ h6{
 }
 
 /* SUBHEADERS & SUBNAVS */
-.subheaders1 { 
-color: #ec2624; 
-/* padding: 3px; 
-*/ 
-/* padding-left: 0; 
-*/ text-transform: uppercase; 
-margin-top: 20px; 
-margin-bottom: 10px; 
-font-weight: bold; 
+.subheaders1 {
+color: #ec2624;
+/* padding: 3px;
+*/
+/* padding-left: 0;
+*/ text-transform: uppercase;
+margin-top: 20px;
+margin-bottom: 10px;
+font-weight: bold;
 }
 
-.subheaders2 { 
-color: #000; 
-text-transform: capitalize; 
+.subheaders2 {
+color: #000;
+text-transform: capitalize;
 }
 
-.subheaders3 { 
-/*GREEN */ 
-color: #6d8e07; 
-padding-bottom: 5px 
+.subheaders3 {
+/*GREEN */
+color: #6d8e07;
+padding-bottom: 5px
 }
 
-.subheaders4 { 
-border-bottom: 1px solid #ebebeb; 
-border-top: 1px solid #ebebeb; 
-padding: 3px; 
-width: 700px; 
-color: #000 
+.subheaders4 {
+border-bottom: 1px solid #ebebeb;
+border-top: 1px solid #ebebeb;
+padding: 3px;
+width: 700px;
+color: #000
 }
 
 /*
@@ -616,13 +556,13 @@ h4 {
 #list ul{
   list-style: none;
   text-align: right;
- 
+
 }
 #list li{
   list-style: none;
   text-align: right;
   margin-right: 0px;
- 
+
 }
 
 .p {
@@ -2045,7 +1985,7 @@ nav select {
   line-height: 1em
 }
 .user_performance ul {
-margin: 0 0 10px 0; 
+margin: 0 0 10px 0;
 padding: 0;
 }
 
@@ -2088,12 +2028,12 @@ ol#positions {
   ol#positions li.position_group {
     margin-bottom: 30px
   }
-  
+
   ol#positions li.position {
     margin: 0;
     padding: 0;
   }
-  
+
   #positions h2 {margin: 0 0 10px 0; padding: 0; font-weight: bold; font-size: 18px}
   #positions h3 {margin: 0; padding: 0; font-weight: normal; font-size: 16px}
   #positions h4 {margin: 0; padding: 0; font-weight: normal; font-size: 13px}
@@ -2105,59 +2045,59 @@ ol#positions {
     margin: 0;
     padding: 0;
   }
-  
+
   .position .manage_links {
-    display: block; 
+    display: block;
     text-align: center;
     visibility: hidden;
     margin-top: 2px;
   }
-  
+
   .position .up_amount {
     display: block;
     padding: 0 0 0 20px;
     position: relative;
   }
-  
+
     .position .profit {
       color: #789e2d !important;
   background: #eefbdb !important
     }
-    
+
     .position .profit .up_amount {
       background: url(../images/up.gif) #eefbdb no-repeat center left;
     padding: 2px 2px 2px 25px;
     }
-    
+
     .position .loss {
       color: #B00000 !important;
   background: #f6d1d1 !important
     }
-    
+
     .position .loss .up_amount {
       background: url(../images/down.gif) #f6d1d1 no-repeat center left;
     padding: 2px 2px 2px 25px
     }
-    
+
     .position .unchanged {
       color: #000 !important;
   background: #e6e9ee !important
     }
-    
+
     .position .unchanged .up_amount {
     padding: 0
     }
-    
+
   .position .action_icons {
     display: block;
     visibility: hidden;
     padding: 3px 0 0 0;
   }
-  
+
     .position .action_icons .quick_trade {
       float: left;
     }
-  
+
   .position a.liquidate_action {
     font-size: 11px;
     position: relative;
@@ -2181,7 +2121,7 @@ ol#positions {
   .position table.you td.details_prob, .headertable td.details_prob {width: 165px;}
   .position table.you td.details.history {font-size: 12px}
   .position table.you td.liquidated_simple {width: 601px}
-  .position table.you td.liquidated_simple_ideas {width: 502px}  
+  .position table.you td.liquidated_simple_ideas {width: 502px}
   .position table.you td.liquidated_advanced {width: 700px}
   .position table.you td.liquidated_probability {width: 339px}
 
@@ -2192,19 +2132,19 @@ ol#positions {
   .position .trades, .position .liquidation {
     clear: both;
     margin: 0px 6px 10px 15px;
-    padding: 20px; 
+    padding: 20px;
     background-color: #f1f1f1;
-    color: #333; 
+    color: #333;
   }
   .position .carrot {position: relative; top: -21px; left: 20px}
-  
+
   .position .trades table {
     border: 1px solid #dedede;
     border-collapse: collapse;
   width: 80%;
   margin: 0 0 10px 10px; padding: 10px
   }
-  
+
     .position .trades table th,
     .position .trades table td {
       border: 1px solid #dedede;
@@ -2212,20 +2152,20 @@ ol#positions {
       vertical-align: middle;
       font-size: 90%
     }
-  
+
     .position .trades table th {
       padding: 5px 3px;
-      font-weight: 400; 
-      color: #878787; 
+      font-weight: 400;
+      color: #878787;
       background-color: none;
     }
-  
+
     .position .trades table td {
       padding: 3px;
       background-color: white;
       color: black;
     }
-    
+
     .position .trades table td.explanation {
       font-size: 80%;
       color: #878787;
@@ -2233,36 +2173,36 @@ ol#positions {
       border-color: transparent;
       padding: 3px 0 20px 3px;
     }
-    
+
     .position .trades table tr.refunded td {
       text-decoration: line-through;
     }
-  
+
   .position .liquidation .slider {
     margin-bottom: 40px;
   }
-  
+
   .position .liquidation .slider .value {
-      position: absolute; 
-      top: 20px;  
-      background-color: black; 
+      position: absolute;
+      top: 20px;
+      background-color: black;
       color: white;
       font-size: 12px;
       font-weight: normal;
       padding: 3px 5px;
       text-align: center;
-      -moz-border-radius: 3px; 
+      -moz-border-radius: 3px;
       -webkit-border-radius: 3px;
     }
-  
+
   .position .liquidation .range {
     position: relative;
   }
-  
+
   .position .liquidation .range .left_side {}
   .position .liquidation .range .right_side {
-    position: absolute; 
-    right: 0; 
+    position: absolute;
+    right: 0;
     text-align: right;
   }
 
@@ -2276,7 +2216,7 @@ ol#positions {
   }
 
   .closedposition, .closedposition td {background: url(../images/closedbgnd.gif) #fff}
- 
+
 
 .sort {margin: 10px 0 20px 0; font-size: 120%; text-align: right}
 
@@ -2295,9 +2235,9 @@ ol#positions {
     width: 103%;
     height: 102%;
     background-color: #fff;
-    opacity: 0.9;    
+    opacity: 0.9;
   }
-  
+
   .trade_interface .processing p {
     font-size: 30px;
     padding: 20px 0 0 20px;
@@ -2306,7 +2246,7 @@ ol#positions {
 p.outcome_alert {
   background-color: #FEF8C9;
 }
-  
+
 div.simple_interface,
 div.advanced_interface {
   display: none;
@@ -2324,7 +2264,7 @@ div.advanced_interface {
   vertical-align: top;
 }
 
-.trade_interface .trade_submit { 
+.trade_interface .trade_submit {
   width: auto;
   overflow: visible;
 }
@@ -2348,7 +2288,7 @@ div.advanced_interface {
   height: 50px;
   margin-top: 10px;
 }
-  
+
 .advanced_interface .mode label {
   display: block;
   position: absolute;
@@ -2392,7 +2332,7 @@ div.advanced_interface {
   top: 24px; font-size: 14px; padding: 3px
 }
 
-.advanced_interface .buy_mode, 
+.advanced_interface .buy_mode,
 .advanced_interface .buy_mode input,
 .advanced_interface label.buy_label {
   color: #7A8743;
@@ -2402,23 +2342,23 @@ div.advanced_interface {
     font-weight: bold;
     background: #B9D537;
   }
-  
+
   .advanced_interface .buy_mode input.custom_quantity {
     top: -6px;
     border: 2px solid #B9D537;
   }
 
-.advanced_interface .sell_mode, 
+.advanced_interface .sell_mode,
 .advanced_interface .sell_mode input,
 .advanced_interface  label.sell_label {
   color: #3E6A75;
 }
   .advanced_interface .sell_mode label.sell_label {
     color: white;
-    font-weight: bold;    
+    font-weight: bold;
     background: #ED2824;
 }
-  
+
   .advanced_interface .sell_mode input.custom_quantity {
     top: 16px;
     border: 2px solid #ED2824;
@@ -2434,7 +2374,7 @@ div.advanced_interface {
     font-size: 16px;
     padding: 0px 2px;
   }
-  
+
   span.higher {
     left: 0;
     top: 110px;
@@ -2456,21 +2396,21 @@ div.advanced_interface {
 }
 
 .willpaginate .current {
-  background: #fff4b7; 
-  padding: 4px 8px 2px 8px; 
-  border: 1px solid #ccc; 
-  color: #606060; 
-  text-shadow: 1px 1px 0px #fff; 
+  background: #fff4b7;
+  padding: 4px 8px 2px 8px;
+  border: 1px solid #ccc;
+  color: #606060;
+  text-shadow: 1px 1px 0px #fff;
   margin: 0 3px 0 3px;
   width: 200px;
 }
 
 .willpaginate a, .willpaginate a:visited {
-  background: #F2F2F2; 
-  padding: 4px 8px 2px 8px; 
-  border: 1px solid #ccc; 
-  color: #606060; 
-  text-shadow: 1px 1px 0px #fff; 
+  background: #F2F2F2;
+  padding: 4px 8px 2px 8px;
+  border: 1px solid #ccc;
+  color: #606060;
+  text-shadow: 1px 1px 0px #fff;
   margin: 0 3px 0 3px;
   width: 200px;
 }
@@ -2482,7 +2422,7 @@ div.advanced_interface {
 
 .simple_interface .shadow { background: #f8f8f8; padding: 10px; width: 225px}
 .simple_interface .trade_infobox {background: #fff; padding: 5px; border: 1px solid #f8f8f8; border-top: 1px solid #ebebeb; border-left: 1px solid #ebebeb; width: 215px}
-  
+
   .current .trade_quote,
   .current .intro {
     border: 0;
@@ -2490,15 +2430,15 @@ div.advanced_interface {
     padding: 10px 0 0 0;
     border-top: 1px dashed #ccc;
   }
-  
+
   .current .intro {
     padding: 35px 0 28px 0;
   }
-  
+
   .current .up_or_down {
     color: inherit !important;
   }
-  
+
 .trade_quote_buy td.amount { color: #7A8743; }
 .trade_quote_sell td.amount { color: #3E6A75; }
 .trade_infobox table { width: 100%;}

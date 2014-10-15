@@ -1,5 +1,5 @@
 class Market < ActiveRecord::Base
-	has_many :contracts, :dependent => :destroy
+	has_many :contracts, :dependent => :destroy, :inverse_of => :market
   has_many :microposts
   has_many :utransactions
 
@@ -8,17 +8,19 @@ class Market < ActiveRecord::Base
 	# you need to add a position column to desired table:
 	# acts_as_list
 
-	#CATEGORY_TYPES = ['Economics', 'Politics', 'Environment']
+	CATEGORY_TYPES = ['Economics', 'Politics', 'Environment']
 
 	validates_presence_of :name, :description, :published_date, :arbitration_date, :category
 	validates_length_of :name, :maximum => 255
 	validates_uniqueness_of :name
-	#validates_inclusion_of :category, :in => CATEGORY_TYPES, :message => "must be one of: #{CATEGORY_TYPES.join(',')}"
+	validates_inclusion_of :category, :in => CATEGORY_TYPES, :message => "must be one of: #{CATEGORY_TYPES.join(',')}"
 
   scope :sorted, lambda { order("markets.id ASC")}
   scope :newest_first, lambda { order("markets.published_date DESC")}
 
-  before_create :choose_b
+  accepts_nested_attributes_for :contracts
+
+  before_create :choose_b, :fill_attributes
 
   def choose_b
     users_default_cash_amount = 200.0
@@ -36,6 +38,14 @@ class Market < ActiveRecord::Base
 
     self.b_value = ((-1.0 ) * number_of_users * users_default_cash_amount) / \
       Math.log((number_of_contracts * (1 - price_change_to)) / (number_of_contracts - 1))
+  end
+
+  def fill_attributes
+    opening_price = 100/self.contracts.size.to_f
+    self.contracts.each do |contract|
+      contract.opening_price = opening_price
+    end
+    self.status = 1
   end
 
   def update_market(params)
@@ -120,6 +130,10 @@ class Market < ActiveRecord::Base
       data[:volume] << transaction.quantity
     end
     data
+  end
+
+  def get_categories
+    CATEGORY_TYPES
   end
 
 end
