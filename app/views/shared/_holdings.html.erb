@@ -25,7 +25,13 @@
                         <%= link_to 'Cash Out',  utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => @avg_price}), method: :post, data: { confirm: 'Are you sure?' } %>
                       <% end %>
                     </td>
-                    <td class="answered"><h4><%= (holding.contract.current_price.ceil * holding.quantity) - holding.amount_spent if holding.contract %></td>
+                    <td class="answered"><h4>
+                      <% if (holding.contract.current_price * holding.quantity) - holding.amount_spent >= 0 %>
+                        + <%= ((holding.contract.current_price * holding.quantity) - holding.amount_spent).floor(2) %>
+                      <% else %>
+                        - <%= (holding.amount_spent - (holding.contract.current_price * holding.quantity)).floor(2)  %>
+                      <% end %>
+                    </td>
                     <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
                     <td class="details"><h4><%= holding.quantity %></h4></td> 
                     <td class="answered2"><%= holding.amount_spent %><h4><%=  %></h4></td> 
