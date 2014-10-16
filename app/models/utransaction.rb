@@ -22,8 +22,14 @@ class Utransaction < ActiveRecord::Base
     cost = market.update_market(self)
     self.cost = cost
     self.market = market
-    self.user.cash_amount = self.user.cash_amount - cost
-    self.user.investment_amount += (1) * cost
+    case self.transaction_type
+      when 'B'
+        self.user.cash_amount = self.user.cash_amount - cost
+        self.user.investment_amount += (1) * cost
+      when 'S'
+        self.user.cash_amount = self.user.cash_amount + cost
+        self.user.investment_amount += (-1) * cost
+    end
     self.user.save!
     logger.debug "the transaction cost is: " + cost.to_s
     Holding.find_or_initialize_by(user_id: self.user_id, contract_id: self.contract_id) \

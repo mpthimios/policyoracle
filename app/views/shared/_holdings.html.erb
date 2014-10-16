@@ -20,9 +20,8 @@
                 <tbody>
                   <tr>
                     <td class="answered"><%= holding.contract.name if holding.contract %><br>
-                      <% @avg_price = holding.amount_spent / holding.quantity %>
                       <% if holding.contract.market.status == true %>
-                        <%= link_to 'Cash Out',  utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => @avg_price}), method: :post, data: { confirm: 'Are you sure?' } %>
+                        <%= button_to 'Cash Out', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), data: { confirm: 'Are you sure?' } %>
                       <% end %>
                     </td>
                     <td class="answered"><h4>
