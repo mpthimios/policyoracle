@@ -39,5 +39,25 @@
     	</section>
   	</div>
 </div>
-<%= render partial: 'shared/holdings' %>
+<div class="hireus_block">
+  <div class="container_12">
+    <section class="">
+      <div class="wrapper">
+        <div id="proftab">
+          <ul class="nav nav-tabs">
+            <li class="active"> <a href="my_orders" data-target="#my_orders" data-toggle="tab">My Orders</a></li>
+            <li><a href="#trade_history" data-target="" data-toggle="tab">Trade History</a></li>
+            <li><a href="#bank_history" data-target="" data-toggle="tab">Bank History</a></li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active fade in" id="my_orders"><%= render partial: 'shared/holdings' %></div>
+          <div class="tab-pane" id="trade_history"><%= render partial: 'shared/utransactions' %></div>
+          <div class="tab-pane" id="bank_history"><%= render partial: 'shared/bhistories' %></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
 

@@ -85,10 +85,22 @@
             <% if signed_in? && @market.status?%>
               <article class="grid_3" style="margin:0">
                 <div id="list">
-                  <ul>
-                    <li style="text-align:left">Cash amount: <%= current_user.cash_amount.round(2) %></li>
-                    <li style="text-align:left">Total amount: <%= current_user.total_amount.round(2) %></li>
-                  </ul>
+                  <table class="prerformancecontent">
+                      <tbody>
+                        <tr>
+                            <td align="left">Investement amount:</td>
+                            <td align="right" valign="middle"><%= current_user.investment_amount.round(2) %></td>
+                          </tr>
+                          <tr>
+                            <td align="left">Total cash:</td>
+                            <td align="right" valign="middle"><%= current_user.cash_amount.round(2) %></td>
+                          </tr>                      
+                          <tr>
+                            <td align="left">Account value:</td>
+                            <td align="right" valign="middle" class="summationline"><%= current_user.total_amount.round(2) %></td>
+                          </tr>
+                      </tbody>
+                  </table>
                 </div>
               </article>
             <% end %>

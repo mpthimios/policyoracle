@@ -16,6 +16,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @holdings = @user.holdings.all
     @holdings = @user.holdings.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
+    @utransactions = @user.utransactions.order("created_at DESC").paginate(page: params[:page], :per_page => 20)
+    @bhistories = @user.bhistories.order("created_at DESC").paginate(page: params[:page], :per_page => 20)
   end
 
   # GET /users/new
