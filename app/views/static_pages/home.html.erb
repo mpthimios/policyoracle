@@ -27,7 +27,7 @@
             <div class="grid_3">
               <div class="offer"> <%= image_tag("predict.png", alt: "Predict") %>
                 <div class="title">Predict</div>
-                Navigate in running predictions and make known your forecast about a future event which interests you.<br>
+                Navigate in running foracasts and make known your prediction about a future event which interests you.<br>
               </div>
             </div>
             <div class="grid_3 last-col">
@@ -53,7 +53,7 @@
     <section class="content">
       <div class="wrapper featured_work">
         <article class="grid_3">
-          <h2>Latest Forecasts</h2>
+          <h2>Latest Forecast</h2>
             <p><%= link_to @market.name, market_path(@market) if !@market.nil? && @market.name%></p>
 
           <!-- <a href="project-details.html" class="arrowlink">Details</a>&nbsp; 
