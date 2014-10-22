@@ -1,4 +1,4 @@
-<% provide(:title, 'Forecasts') %>
+<% provide(:title, 'Question') %>
 <div class="block2">
   <div class="container_12">
     <section class="content">
@@ -10,7 +10,7 @@
 
         <article class="grid_2 last-col">
           <% if signed_in? && current_user.admin? && @market.status? %>
-            <h3><%= link_to 'Market Closure', close_market_path(@market), :class => "one" %></h3>
+            <h3><%= link_to 'Question Closure', close_market_path(@market), :class => "one" %></h3>
           <% elsif @market.status == false %>
             <h3>Market Expired</h3>
           <% end %>
@@ -107,7 +107,7 @@
           </article>
 
           <article class="grid_2" style="margin:0">
-            <p><strong>Forecast Ends:</strong><br><%= @market.arbitration_date %></p>
+            <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
             <p><strong>Category:</strong><br><%= @market.category %></p>
           </article>
         </article>

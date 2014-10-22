@@ -1,10 +1,10 @@
-<% provide(:title, 'All Markets') %>
+<% provide(:title, 'All Questions') %>
 
 <div class="block2">
   <div class="container_12">
     <section class="content">
         <div class="row clearfix">
-          <div class="hello_box"> Listing all forecasts </div>
+          <div class="hello_box"> Listing all Questions</div>
           <article class="grid_10">
             <ul class="blog_pagination">
               <%= render @markets %>
@@ -13,7 +13,7 @@
           </article>
           <article class="grid_2">
             <% if signed_in? && current_user.admin? %>
-              <h3><%= link_to 'New Market', new_market_path, :class => "one" %></h3>
+              <h3><%= link_to 'New Question', new_market_path, :class => "one" %></h3>
             <% end %>
           </article>
         </div>
