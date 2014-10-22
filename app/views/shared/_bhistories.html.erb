@@ -1,0 +1,32 @@
+<ol id="positions">
+  <li class="posotion_group">
+    <table class="headertable">
+      <% if !@bhistories.blank? %>
+        <thead>
+          <tr>
+            <th><h4>Forecast</h4></th>
+            <th><h4>Your Prediction</h4></th>
+            <th><h4>Profit/Loss</h4></th>
+            <th><h4>Forecast Expired</h4></th>
+          </tr>
+        </thead>
+      <% end %> 
+      <tbody class="you">
+        <% @bhistories.each do |bhistory| %>
+          <tr>
+            <td><%= bhistory.contract.market.name if bhistory.contract %></td>
+            <td class="prediction"><%= bhistory.contract.name if bhistory.contract %></td>
+            <td class="prediction"> 
+              <% if bhistory.profit != 0 %>
+                <%= image_tag "up-small.png"%> <%=bhistory.profit %></td>
+              <% else %>
+                <%= image_tag "down-small.png"%> -<%=bhistory.loss %></td>
+              <% end %>
+            <td><%= bhistory.created_at.to_date.to_s%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </li>
+</ol>
+<%= will_paginate(@bhistories, :renderer => WillPaginate::ActionView::LinkRenderer) %>

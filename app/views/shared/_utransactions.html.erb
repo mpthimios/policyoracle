@@ -1,0 +1,52 @@
+<ol id="positions">
+  <li class="posotion_group">
+    <table class="headertable">
+      <% if !@utransactions.blank? %>
+        <thead>
+          <tr>
+            <th><h4>Forecast</h4></th>
+            <th><h4>Your Prediction</h4></th>
+            <th><h4>You've Spent/Earned</h4></th>
+            <th><h4>Shares</h4></th>
+            <th><h4>Cost Per Share</h3></th>
+            <th><h4>Transaction Date</h3></th>
+          </tr>
+        </thead>
+      <% end %> 
+      <tbody class="you">
+        <% @utransactions.each do |utransaction| %>
+          <tr>
+            <td><%= utransaction.contract.market.name if utransaction.contract %></td>
+            <td class="prediction"><%= utransaction.contract.name if utransaction.contract %></td>
+            <td class="details_prob">
+              <% @contract_id = utransaction.contract_id %>
+              <% if utransaction.transaction_type == "B" %>
+                - <%=  utransaction.cost %></td>
+              <% elsif utransaction.transaction_type == "S" %>
+                <%= puts "Mpika" %>
+                <% @holdings.each do |holding| %>
+                  <% if holding.contract_id == @contract_id %>
+                    <%= puts "Mpika +" %>
+                    <% if (holding.amount_spent - utransaction.cost * utransaction.quantity) > 0 %>
+                      + <%=  holding.amount_spent - utransaction.cost %></td>
+                    <% else %>
+                      <%= puts "Mpika -" %>
+                      + <%=  utransaction.cost - holding.amount_spent %></td>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </td>
+            <td class="details history"><%= utransaction.quantity %><% if utransaction.transaction_type == 'B'%> bought
+                <% else %> sold
+                <% end %>
+            </td>
+            <td class="prediction"><%= (utransaction.cost / utransaction.quantity).round(2) %></td>
+            <td><%= utransaction.created_at.to_date.to_s%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </li>
+</ol>
+<%= will_paginate(@utransactions, :renderer => WillPaginate::ActionView::LinkRenderer) %>
