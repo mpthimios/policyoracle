@@ -44,6 +44,7 @@ class Market < ActiveRecord::Base
     opening_price = 100/self.contracts.size.to_f
     self.contracts.each do |contract|
       contract.opening_price = opening_price
+      contract.current_price = opening_price
     end
     self.status = 1
   end

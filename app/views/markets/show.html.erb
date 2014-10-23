@@ -29,7 +29,7 @@
                         <li><%= image_tag "yes.png" %> </li>
                         <li style="color:#ebdf1b"><%= "#{contract.name}" %> </li>
                         <li style="margin-top:20px">Posibility: 
-                          <p3 style="font-size: 16px"><%= "#{contract.current_price.round(4)*100}" %>%</p3></li>
+                          <p3 style="font-size: 16px"><%= "#{contract.current_price.round(2)}" %>%</p3></li>
                       </ul>
                       <div class="trade_interface">
                         <% if @market.status? %>
@@ -56,7 +56,7 @@
                         <li><%= image_tag "no.png" %> </li>
                         <li style="color:#343c3a"><%= "#{contract.name}" %> </li>
                         <li style="margin-top:20px">Posibility: 
-                          <p3 style="font-size: 16px"><%= "#{contract.current_price.round(4)*100}" %>%</p3></li>
+                          <p3 style="font-size: 16px"><%= "#{contract.current_price.round(2)}" %>%</p3></li>
                       </ul>
                       <div class="trade_interface">
                         <% if @market.status? %>
