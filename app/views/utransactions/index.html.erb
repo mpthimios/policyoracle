@@ -24,14 +24,17 @@
                   <tr>
                     <td><%= utransaction.contract.market.name if utransaction.contract %></td>
                     <td class="prediction"><%= utransaction.contract.name if utransaction.contract %></td>
-                    <td class="prediction">
+                    <td class="details_prob">
+                      <% @contract_id = utransaction.contract_id %>
                       <% if utransaction.transaction_type == "B" %>
                         - <%=  utransaction.cost %></td>
-                      <% else %>
-                        <% @contract_id = utransaction.contract_id %>
+                      <% elsif utransaction.transaction_type == "S" %>
+                        TRANSACTION TYPE:  <%= utransaction.transaction_type %>
                         <% @holdings.each do |holding| %>
+                          FOUND HOLDINGS
                           <% if holding.contract_id == @contract_id %>
-                            <% if (holding.amount_spent - utransaction.cost * utransaction.quantity) >= 0 %>
+                            FOUND A HOLDING
+                            <% if (holding.amount_spent - utransaction.cost * utransaction.quantity) > 0 %>
                               + <%=  holding.amount_spent - utransaction.cost %></td>
                             <% else %>
                               + <%=  utransaction.cost - holding.amount_spent %></td>
