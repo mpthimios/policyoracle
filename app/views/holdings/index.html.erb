@@ -1,0 +1,44 @@
+<% @holdings.each do |holding| %>
+  <ol id="positions">
+    <li class="posotion_group">
+      <h2><%= link_to holding.contract.market.name, holding.contract.market, :class => "three" %></h2>
+      <table class="headertable">
+        <thead>
+          <tr>
+            <th><h4>YOUR PREDICTION </h4></th>
+            <th><h4>CURRENT PROFIT/LOSS</h4></th>
+            <th><h4>CROWD PREDICTION</h4></th>
+            <th><h4>SHARES </h4></th>
+            <th><h4>YOU'VE SPENT </h4></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="answered"><%= holding.contract.name if holding.contract %><br>
+              <% if holding.contract.market.status == true %>
+                <%= button_to 'Cash Out', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}),  class: "btn-link", :popup => ['new_window_name', 'height=300,width=600'], data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+            <td class="answered"><h4>
+              <% if (holding.contract.current_price * holding.quantity) - holding.amount_spent >= 0 %>
+                + <%= ((holding.contract.current_price * holding.quantity) - holding.amount_spent).floor(2) %>
+              <% else %>
+                - <%= (holding.amount_spent - (holding.contract.current_price * holding.quantity)).floor(2)  %>
+              <% end %>
+            </td>
+            <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
+            <td class="details"><h4><%= holding.quantity %></h4></td> 
+            <td class="answered2"><%= holding.amount_spent %><h4><%=  %></h4></td> 
+          </tr>
+        </tbody>
+      </table>
+      <% if holding.contract.market.status == true %>
+        <h5 class="market_info">Closes: <%= holding.contract.market.arbitration_date %></h5>
+      <% else %>
+        <h6 class="market_info">Closed: <%= holding.contract.market.arbitration_date %></h6>
+      <%end%>
+    </li>
+    <br>
+  <ol>
+<% end %>
+<%= will_paginate(@holdings, :renderer => WillPaginate::ActionView::LinkRenderer) %>

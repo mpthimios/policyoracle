@@ -1,72 +1,69 @@
-<% provide(:title, 'Contracts') %>
+<% provide(:title) %>
 <div class="hireus_block">
 	<div class="container_12">
     	<section class="content">
-
 	      	<div class="wrapper">
 		        <article class="grid_12 last-col">
-		          <div class="hello_box">  <%=  @contract.name  %></div>
+		          <div class="hello_box" style="margin:10px">  <%=  @contract.market.name  %></div>
+		           <div class="hello_box" style="font-size:25px; margin:5px; padding:0px 0px 0px 50px">  <%=  @contract.name  %></div>
 		        </article>
-		      </div>
+		    </div>
+		    <div class="wrapper">
+        		<article class="grid_12">
+          			<article class="grid_10">
+          				<article class="grid_7">
+				            <div class="feature">
+				                <div class="feature-binary-left"><%= "#{@contract.current_price.round(2)*100}" %>%</div>
+				            </div><br><br>
+		          			<p id="center"> Modify the chances if you have a different opinion <br>by investing or changing your investments on the different outcomes </p>
+							<div class="trade_interface">
+		                        <% if @contract.market.status? %>
+		                          <table>
+		                            <tr>
+		                              <% if signed_in?%>
+		                                <td align="left"><%= render partial: 'shared/utransaction_mchoice_form', :locals => { :contract => @contract} %></td>
+		                              <% end %>
+		                            </tr>
+		                          </table>
+		                        <% end %>
+                      		</div>
+				            <ul class="blog_pagination">
+				              	<%= link_to 'Back to Forecasts', markets_path(@contract.market), :class => "one" %> 
+				              	<% if signed_in? && current_user.admin? %>
+		                            |<%= link_to 'Edit', edit_contract_path(@contract) %> |
+		                            <%= link_to 'Delete', @contract, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+		                        <% end %>
+				            </ul>
+		          		</article>
+		          		<% if signed_in? && @contract.market.status?%>
+			              <article class="grid_3" style="margin:0">
+			                <div id="list">
+			                  <table class="prerformancecontent">
+			                      <tbody>
+			                        <tr>
+			                            <td align="left">Investement amount:</td>
+			                            <td align="right" valign="middle"><%= current_user.investment_amount.round(2) %></td>
+			                          </tr>
+			                          <tr>
+			                            <td align="left">Total cash:</td>
+			                            <td align="right" valign="middle"><%= current_user.cash_amount.round(2) %></td>
+			                          </tr>                      
+			                          <tr>
+			                            <td align="left">Account value:</td>
+			                            <td align="right" valign="middle" class="summationline"><%= current_user.total_amount.round(2) %></td>
+			                          </tr>
+			                      </tbody>
+			                  </table>
+			                </div>
+			              </article>
+            			<% end %>  
+		        	</article>
 
-		      <div class="wrapper">
-		          <article class="grid_4">
-		            <div class="feature">
-		                <div class="feature-binary-left blue"><%= "#{@contract.name} #{@contract.current_price.round(2)*100}" %>%</div>
-		            </div>
-		          </article>  
-		        <br>
-
-		        <article class="grid_10">
-		          <p id="center"> Modify the chances if you have a different opinion <br>by investing or changing your investments on the different outcomes </p>
-
-		          <article class="grid_6">
-		            <table class="table table-hover">
-		              <thead>
-		                <tr class="transaction">
-		                  <th></th>
-		                  <th></th>
-		                  <th></th>
-		                  <th></th>  
-		                  <th></th>              
-		                </tr>
-		              </thead>
-		              <tbody>
-		                  <tr >
-		                    <td width="20%">Invest in</td>
-		                    <td class="feature-binary-small blue" width="10%"><%= @contract.name %></td>
-		                    <% if signed_in?%>
-		                        <td align="right"><%= render partial: 'shared/utransaction_form', :locals => { :contract => @contract} %></td>
-		                    <% end %>
-		                    
-		                    <% if signed_in? && current_user.admin? %>
-		                      <td width="10%"><%= link_to 'Edit', edit_contract_path(@contract) %></td>
-		                      <td width="10%"><%= link_to 'Delete', @contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		                    <% end %>
-		                  </tr>
-		              </tbody>
-		            </table>
-		            <ul class="blog_pagination">
-		              <%= link_to 'Back to Forecasts', markets_path(@market), :class => "one" %> 
-		          </article>
-
-		          <% if signed_in? %>
-		            <article class="grid_3">
-		              <div id="list">
-		                <ul>
-		                  <li>Cash amount: <%= current_user.cash_amount.round(2) %></li>
-		                  <li>Total amount:  <%= current_user.total_amount.round(2) %></li>
-		                </ul>
-		              </div>
-		            </article>
-		          <% end %>
-		        </article>
-
-		        <article class="grid_2">
-		          <p><strong>Arbitration date:</strong><br><%= @contract.market.arbitration_date %></p>
-		          <p><strong>Category:</strong><br><%= @contract.market.category %></p>
-		        </article>
-
+			        <article class="grid_2" style="margin:0">
+			          <p><strong>Arbitration date:</strong><br><%= @contract.market.arbitration_date %></p>
+			          <p><strong>Category:</strong><br><%= @contract.market.category %></p>
+			        </article>
+			    </article>
       		</div>
     	</section>
   	</div>
