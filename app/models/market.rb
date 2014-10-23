@@ -41,7 +41,7 @@ class Market < ActiveRecord::Base
   end
 
   def fill_attributes
-    opening_price = 100/self.contracts.size.to_f
+    opening_price = 1/self.contracts.size.to_f
     self.contracts.each do |contract|
       contract.opening_price = opening_price
       contract.current_price = opening_price

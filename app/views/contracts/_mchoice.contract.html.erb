@@ -4,7 +4,7 @@
         	<h3 class="mchoice"><%= contract.name %></h3>
         </article>
         <article class="grid_1" style="margin:0" >
-        	   <h3 class="mchoice"><%= contract.current_price.round(2)%>%</h3>
+        	   <h3 class="mchoice"><%= contract.current_price.round(2)*100%>%</h3>
     	</article>
          <% if signed_in?%>
             <article class="grid_3 transaction" style="text-align:right; margin:0">
