@@ -8,7 +8,9 @@ class MarketsController < ApplicationController
   def index
     @markets = Market.all
     @markets = Market.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
+
     respond_to do |format|
+      format.html { render :layout => 'application' }
       format.rss { render :layout => false }
     end
   end
