@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     post 'cash_out'
   end
   resources :utransactions, only: [:new, :create]
-  resources :bhistories,    only: [:create]
+  resources :bhistories,    only: [:new, :create]
   resources :microposts, only: [:create, :destroy]
   resources :password_resets
 
