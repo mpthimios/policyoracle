@@ -29,6 +29,7 @@ class Holding < ActiveRecord::Base
         else
           bhistory = Bhistory.new(user_id: self.id, contract_id: self.contract_id, loss: diff )
         end
+        bhistory.save!
         
       else
         #nothing to do
