@@ -358,12 +358,14 @@ function createChart(data){
     }
 }
 
+/*
 $( document ).ready( function() {
     d3.xhr( "/markets/1/graph_data", function( json ) {
         console.log(json.response)
         createChart(JSON.parse(json.response));
     });
 });
+*/
 
 
 

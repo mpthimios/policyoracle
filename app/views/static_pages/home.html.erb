@@ -3,18 +3,41 @@
     <!--==============================content================================-->
     <section class="content">
       <div class="wrapper">
-        <article class="grid_12 last-col">
-          <div class="hello_box"> An innovative prediction market. </div>
-        </article>
+        <div class="grid_6">
+          <div class="hello_box"> PolicyOracle is a crowdsourced nowcasting platform for Global Systems Science. </div>
+        </div>
+        <div class="grid_6" style="border: 3px solid #5A79A5; padding: 5px;">
+          <div class="hello_box">
+            Latest Questions
+          </div>
+            <%@markets.each do |market|%>
+                <div class="grid_7">
+                  <div class="questions_box">
+                        <%= link_to market.name, market_path(market) if !market.nil? && market.name%>
+                    </div>
+                </div>
+            <%end%>
+            <div class="hello_box">
+              <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-plus"></span> View More
+              </button>
+            </div>
+        </div>
       </div>
+    </section>
+  </div>
+</div>
+<div class="featured_block">
+  <div class="container_12">
+    <section class="content">
       <div class="wrapper offers_box">
         <article class="grid_3">
-          <h2 class="clearfix"> <span class="f_left">How Policy Oracle Works</span> 
-          <!--
-          <a id="next" class="next"></a> <a id="prev" class="prev"></a> </h2>
-          <p>  PolicyOracle is based on the idea that the collective wisdom of an informed and diverse group is often more accurate at forecasting the outcome of events than that of one individual expert. 
-             <a href="project-fourcol.html" class="arrowlink">Our Portfolio</a> 
-          </p> -->
+          <h2 class="clearfix"> <span class="f_left">How Policy Oracle Works</span>
+            <!--
+            <a id="next" class="next"></a> <a id="prev" class="prev"></a> </h2>
+            <p>  PolicyOracle is based on the idea that the collective wisdom of an informed and diverse group is often more accurate at forecasting the outcome of events than that of one individual expert.
+               <a href="project-fourcol.html" class="arrowlink">Our Portfolio</a>
+            </p> -->
         </article>
         <div class="grid_12">
           <div id="home-services">
@@ -44,26 +67,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-</div>
-<div class="featured_block">
-  <div class="container_12">
-    <section class="content">
-      <div class="wrapper featured_work">
-        <article class="grid_3">
-          <h2>Latest Forecast</h2>
-            <p><%= link_to @market.name, market_path(@market) if !@market.nil? && @market.name%></p>
-
-          <!-- <a href="project-details.html" class="arrowlink">Details</a>&nbsp; 
-           <a href="contact.html" class="arrowlink">Contact Us</a> -->
-        </article>
-        <article class="grid_9 last">
-          <div class="flexslider" id="home-page-slider-secondary">
-            <div class="imgwrap lifted"><%= image_tag("contracts/gdp.jpg", alt: "Featured") %></div>
-          </div>
-        </article>
       </div>
     </section>
   </div>

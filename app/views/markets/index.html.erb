@@ -4,18 +4,25 @@
   <div class="container_12">
     <section class="content">
         <div class="row clearfix">
-          <div class="hello_box"> Listing all Questions</div>
-          <article class="grid_10">
+          <h2> Listing all Questions </h2>
+          <div class="grid_10">
             <ul class="blog_pagination">
               <%= render @markets %>
             </ul>
-            <%= will_paginate(@markets, :renderer => WillPaginate::ActionView::LinkRenderer) %>
-          </article>
-          <article class="grid_2">
+            <!--= will_paginate(@markets, :renderer => WillPaginate::ActionView::LinkRenderer) -->
+            <div id="with-button">
+              <%= will_paginate(@markets, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+            </div>
+
+            <% if @markets.next_page %>
+                <div id="load_more_questions" class="btn btn-primary btn-lg">More posts</div>
+            <% end %>
+          </div>
+          <div class="grid_2">
             <% if signed_in? && current_user.admin? %>
               <h3><%= link_to 'New Question', new_market_path, :class => "one" %></h3>
             <% end %>
-          </article>
+          </div>
         </div>
 
     </section>
