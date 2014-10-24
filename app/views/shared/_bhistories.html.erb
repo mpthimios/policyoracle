@@ -18,9 +18,9 @@
             <td class="prediction"><%= bhistory.contract.name if bhistory.contract %></td>
             <td class="prediction"> 
               <% if bhistory.profit != 0 %>
-                <%= image_tag "up-small.png"%> <%=bhistory.profit %></td>
+                <%= image_tag "up-small.png"%> <%= bhistory.profit %></td>
               <% else %>
-                <%= image_tag "down-small.png"%> -<%=bhistory.loss %></td>
+                <%= image_tag "down-small.png"%> -<%= bhistory.loss %></td>
               <% end %>
             <td><%= bhistory.created_at.to_date.to_s%></td>
           </tr>

@@ -19,6 +19,16 @@ class Holding < ActiveRecord::Base
         if self.quantity < 0 || self.quantity == 0
           self.destroy
         end
+        diff = params.cost - self.amount_spent
+        self.user.investment_amount += (-1) * self.amount_spent
+        self.user.cash_amount += (1) * params.cost
+        self.user.total_amount += (1) * diff
+        self.user.save!
+        if params.cost >= self.amount_spent 
+          bhistory = Bhistory.new(user_id: self.id, contract_id: self.contract_id, profit: diff)
+        else
+          bhistory = Bhistory.new(user_id: self.id, contract_id: self.contract_id, loss: diff )
+        end
         
       else
         #nothing to do
