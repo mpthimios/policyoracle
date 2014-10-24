@@ -14,16 +14,16 @@ class Holding < ActiveRecord::Base
         self.quantity = self.quantity + params.quantity
         self.amount_spent = self.amount_spent + params.cost
       when 'S'
-        self.quantity = self.quantity - params.quantity
-        self.amount_spent = self.amount_spent - params.cost
-        if self.quantity < 0 || self.quantity == 0
-          self.destroy
-        end
         diff = params.cost - self.amount_spent
         self.user.investment_amount += (-1) * self.amount_spent
         self.user.cash_amount += (1) * params.cost
         self.user.total_amount += (1) * diff
         self.user.save!
+        self.quantity = self.quantity - params.quantity
+        self.amount_spent = self.amount_spent - params.cost
+        if self.quantity < 0 || self.quantity == 0
+          self.destroy
+        end
         if params.cost >= self.amount_spent 
           bhistory = Bhistory.new(user_id: self.id, contract_id: self.contract_id, profit: diff)
         else
