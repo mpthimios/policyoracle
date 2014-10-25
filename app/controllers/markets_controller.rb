@@ -6,7 +6,13 @@ class MarketsController < ApplicationController
   # GET /markets
   # GET /markets.json
   def index
-    @markets = Market.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
+    if params[:category]
+      @markets = Market.where(category: params[:category])
+    else
+      @markets = Market.all
+    end
+
+    @markets = @markets.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
     respond_to do |format|
       format.html { render :layout => 'application' }
       format.rss { render :layout => false }

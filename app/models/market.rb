@@ -8,7 +8,7 @@ class Market < ActiveRecord::Base
 	# you need to add a position column to desired table:
 	# acts_as_list
 
-	CATEGORY_TYPES = ['Economics', 'Politics', 'Environment']
+	CATEGORY_TYPES = ['Economics', 'Energy', 'Environment']
 
 	validates_presence_of :name, :description, :published_date, :arbitration_date, :category
 	validates_length_of :name, :maximum => 255

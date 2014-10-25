@@ -6,7 +6,6 @@
           <tr>
             <th><h4>Question</h4></th>
             <th><h4>Your Prediction</h4></th>
-            <th><h4>You've Spent/Earned</h4></th>
             <th><h4>Shares</h4></th>
             <th><h4>Cost Per Share</h3></th>
             <th><h4>Transaction Date</h3></th>
@@ -18,22 +17,6 @@
           <tr>
             <td><%= utransaction.contract.market.name if utransaction.contract %></td>
             <td class="prediction"><%= utransaction.contract.name if utransaction.contract %></td>
-            <td class="details_prob">
-              <% @contract_id = utransaction.contract_id %>
-              <% if utransaction.transaction_type == "B" %>
-                - <%=  utransaction.cost %></td>
-              <% elsif utransaction.transaction_type == "S" %>
-                <% @holdings.each do |holding| %>
-                  <% if holding.contract_id == @contract_id %>
-                    <% if (holding.amount_spent - utransaction.cost * utransaction.quantity) > 0 %>
-                      + <%=  holding.amount_spent - utransaction.cost %></td>
-                    <% else %>
-                      + <%=  utransaction.cost - holding.amount_spent %></td>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
             <td class="details history"><%= utransaction.quantity %><% if utransaction.transaction_type == 'B'%> bought
                 <% else %> sold
                 <% end %>

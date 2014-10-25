@@ -14,7 +14,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="answered"><%= holding.contract.name if holding.contract %><br>
+            <td class="answered" ><%= holding.contract.name if holding.contract %><br>
               <% if holding.contract.market.status == true %>
                 <%= button_to 'Cash Out', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}),  class: "btn-link", :popup => ['new_window_name', 'height=300,width=600'], data: { confirm: 'Are you sure?' } %>
               <% end %>

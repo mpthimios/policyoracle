@@ -150,6 +150,23 @@ a.three {
   cursor: pointer;
 
 }
+a.four {
+  color: #12212f;
+  background-color: #d6d9dc; 
+  border-color: #d6d9dc; 
+  border-radius: 5px;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  vertical-align: middle;
+  display: table-cell;
+}
+
 a:hover {
   color: #62676d;
   text-decoration: none;
@@ -282,6 +299,43 @@ fieldset[disabled] .btn-sample.active {
   background-color: #FFFFFF; 
 }
 
+.btn-signup {
+  color: #FFFFFF; 
+  background-color: #E35845; 
+  border-color: #E35845; 
+  border-radius: 5px;
+  width:1300px;
+  height:50px;
+} 
+
+.btn-signup:hover, 
+.btn-signup:focus, 
+.btn-signup:active, 
+.btn-signup.active, 
+.open .dropdown-toggle.btn-signup { 
+  color: #FFFFFF; 
+  background-color: #12212F; 
+  border-color: #12212F; 
+} 
+
+.btn-category {
+  color: #12212F; 
+  background-color: #d6d9dc; 
+  border-color: #d6d9dc; 
+  border-radius: 5px;
+} 
+
+.btn-category :hover, 
+.btn-category :focus, 
+.btn-category :active, 
+.btn-category .active, 
+.open .dropdown-toggle.btn-category  { 
+  color: #E35845; 
+  background-color: #d6d9dc; 
+  border-color: #d6d9dc; 
+} 
+
+
 btn-link {
     background:none!important;
      border:none; 
@@ -408,7 +462,7 @@ header .logo .underline:hover {
 Headings and Panels
 ========================================================
 */
-h2, h3, h4 {
+h2, h3, h4, h5, h6, h7 {
   font-weight: normal;
 }
 h2 {
@@ -457,7 +511,15 @@ h6{
   margin: 0;
   padding: 4px 0 0 0;
   font-size: 11px;
-  text-transform: none
+  text-transform: none;
+
+}
+h7{
+  font-size: 20px;
+  line-height: 22px;
+  color: #12212f;
+  padding-bottom:  30px;
+  margin-bottom: 50px;
 
 }
 #content, .content {
@@ -557,11 +619,11 @@ Home
   margin-bottom: 0px !important;
 }
 .featured_block {
-  background: #9CAAC6;
+  background: #d6d9dc;
   color: #000;
 }
 .featured_block h2 {
-  color: #fff;
+  color: #12212f;
   border-color: #F3B2AA;
 }
 .featured_block p {
@@ -1209,8 +1271,8 @@ Hire us
 
 .hireform li input[type="password"] {
   border: none;
-  background: #eee;
-  width: 224px;
+  background: #d6d9dc;
+  width: 330px;
   height: 49px;
   padding: 0px 5px 0px 115px;
   font-size: 14px;
@@ -1269,8 +1331,8 @@ Hire us
   background: #fff;
 }
 .contactform li input[type="text"] {
-  background: #eee;
-  width: 323px;
+  background: #d6d9dc;
+  width: 330px;
 }
 .contactform li textarea {
   border: none;

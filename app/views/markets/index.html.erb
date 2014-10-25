@@ -1,11 +1,17 @@
-<% provide(:title, 'All Questions') %>
+<% provide(:title, 'Questions') %>
 
 <div class="block2">
   <div class="container_12">
     <section class="content">
         <div class="row clearfix">
-          <h2> Listing all Questions </h2>
-          <div class="grid_10">
+          <div class="hello_box">
+            <% if params[:category] %>
+              Listing Questions about <%= params[:category] %> 
+            <% else %>
+              Listing All Questions
+            <% end %>
+          </div>
+          <div class="grid_9">
             <ul class="blog_pagination">
               <%= render @markets %>
             </ul>
@@ -18,10 +24,15 @@
                 <div id="load_more_questions" class="btn btn-primary btn-lg">More posts</div>
             <% end %>
           </div>
-          <div class="grid_2">
+          <div class="grid_3">
             <% if signed_in? && current_user.admin? %>
               <h3><%= link_to 'New Question', new_market_path, :class => "one" %></h3>
             <% end %>
+            <%= link_to "All", markets_path, :class => "four"%><br>
+            <%  Market::CATEGORY_TYPES.each do |category| %> 
+              <%= link_to category, markets_path(:category => category), :class => "four"%><br>
+            <% end %>
+
           </div>
         </div>
 

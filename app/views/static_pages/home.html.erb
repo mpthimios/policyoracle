@@ -19,7 +19,7 @@
             <%end%>
             <div class="hello_box">
               <button type="button" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-plus"></span> View More
+                <span class="glyphicon glyphicon-plus"></span> <%= link_to "View More", markets_path , :class => "two" %> 
               </button>
             </div>
         </div>
@@ -76,8 +76,12 @@
   <div class="container_12">
     <section class="">
       <div class="wrapper">
-    	 <h2>Impressed? Want to Sign Up?</h2>
-    	 <%= link_to "Sign up now!", signup_path, class: "button large" %>
+        <div class="grid_4 ">
+    	     <h2>Impressed? Want to Sign Up? </h2>
+        </div>
+         <div class="grid_8 ">
+    	     <%= button_to "SIGN UP NOW!", signup_path, class: "btn-signup", :method => :get %>
+        </div> 
 
 	    </div>
 	  </section>

@@ -144,7 +144,7 @@
 
           <ul class="blog_pagination">
             <%= link_to 'Back to Forecasts', markets_path, :class => "one" %> 
-            <% if signed_in? && current_user.admin? && @market.status? %>
+            <% if signed_in? && current_user.admin? %>
               | <%= link_to 'New Contract', new_market_contract_path(@market) %> 
               | <%= link_to 'Edit', edit_market_path(@market) %> 
               | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>

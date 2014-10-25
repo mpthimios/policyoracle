@@ -1,11 +1,34 @@
 <% provide(:title, 'Contact') %>
-<div class="hireus_block">
-  <div class="container_12">
-    <section class="">
-      <div class="wrapper">
-      	<h2>Contact</h2>
-		<p> This is the contact page </p>
-	  </div>
-	</section>
-  </div>
+<% provide(:title, 'How to Play') %>
+<div class="block2" style="height:500px">
+  	<div class="container_12">
+    	<section class="content">
+      		<div class="wrapper projects">
+        		<div class="hello_box"> Contact Us</div>
+
+    			<div class="grid_7">
+					<h7> Send us e-mail to <%= mail_to "policyoracle@gmail.com" %> for</h7> <br>
+
+					<h7>  General Inquiries | Technical Support | Questions about our Research</h7><br>
+					
+				</div>
+				<div class="grid_1">
+					<ul class="social">
+					    <li> <a href="https://twitter.com/thepolicyoracle">
+					    <figure><%= image_tag "soc1.png" %></figure></a>  </li>
+					    <li> <a href="https://www.facebook.com/pages/PolicyOracle/652289414884739">
+					    <figure><%= image_tag "soc2.png" %></figure></a> </li>
+					</ul>
+				</div>
+				<div class="grid_4">
+					<ul class="social" style="font-size:20px; margin:0px">
+					    <li style="margin:0px 0px 30px 0px"> <a href="https://twitter.com/thepolicyoracle">
+					        @thepolicyoracle</a> </li>
+					    <li> <a href="https://www.facebook.com/pages/PolicyOracle/652289414884739">
+					        facebook.com/PolicyOracle</a> </li>
+					</ul>
+				</div>
+	  		</div>
+		</section>
+  	</div>
 </div>

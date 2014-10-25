@@ -8,7 +8,7 @@
         </article>
 
           <article class="grid_12">
-            <p> Get #### to start making predictions</p>
+            <p> Get 200 points and start making predictions</p>
             <%= form_for(@user) do |f| %>
               <ul id="homehireus" class="hireform contactform">
 
@@ -20,13 +20,13 @@
                 </li>
 
                 <li>
-                  <label>Email:<span class="required" tabindex="2">*</span></label>
-                  <%= f.text_field :email %>
-                </li>
-
-                <li>
                   <label>Password:<span class="required" tabindex="3">*</span></label>
                   <%= f.password_field :password %>
+                </li>
+                
+                <li>
+                  <label>Email:<span class="required" tabindex="2">*</span></label>
+                  <%= f.text_field :email %>
                 </li>
 
                 <li>
@@ -35,7 +35,7 @@
                 </li>
 
                 <br>
-                <%= f.submit "Create my account", class: "button" %>
+                <%= f.submit "Create my account", class: "btn-sample" %>
               </ul>
             <% end %>
           </article>
