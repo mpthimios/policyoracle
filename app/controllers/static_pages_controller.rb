@@ -4,12 +4,12 @@ class StaticPagesController < ApplicationController
     @market = Market.last
   end
 
-  def how_works
-    @title = "How Works"
+  def howtoplay
+    @title = "How to Play"
   end
 
-  def trader_manual
-    @title = "Trader Manual"
+  def player_manual
+    @title = "Player Manual"
   end
 
   def faq
