@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
   def home
     @title = "Home"
     @market = Market.last
+    @markets = Market.last(5)
   end
 
   def howtoplay

@@ -1,0 +1,7 @@
+$('.blog_pagination').append('<%= j render @markets %>');
+<% if @markets.next_page %>
+$('.pagination').replaceWith('<%= j will_paginate @markets %>');
+$('.pagination').hide();
+<% else %>
+$('.pagination, #load_more_questions').remove();
+<% end %>
