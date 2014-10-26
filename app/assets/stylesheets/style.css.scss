@@ -1469,6 +1469,12 @@ Blog
   margin-bottom: 48px;
   margin-top: 60px;
 }
+
+.post table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
 .post-meta {
   font-size: 12px;
   background: url(../images/post-meta-bg.png);
