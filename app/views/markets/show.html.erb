@@ -129,7 +129,6 @@
             <chart></chart>
             <script>
                 $( document ).ready( function() {
-                    alert('thimios');
                     d3.xhr( "/markets/<%=@market.id%>/graph_data", function( json ) {
                         console.log(json.response)
                         createChart(JSON.parse(json.response));
@@ -137,7 +136,7 @@
                 });
             </script>
           </div>
-          <div class="post">
+          <div class="description">
             <h2>Background Information</h2>
             <p><%= @market.description.html_safe %></p>
           </div>

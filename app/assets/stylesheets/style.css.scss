@@ -1470,10 +1470,6 @@ Blog
   margin-top: 60px;
 }
 
-.post table, th, td {
-  border: 1px solid black;
-  text-align: center;
-}
 
 .post-meta {
   font-size: 12px;
@@ -2680,4 +2676,20 @@ aside {
 #load_more_questions {
   display: none;
   margin-bottom: 10px; /* Some margin to separate it from the footer */
+}
+
+.description table{
+  border: 1px solid black;
+  text-align: center;
+}
+
+.description tr{
+  border-bottom: 1px solid black;
+  text-align: center;
+  vertical-align:middle;
+}
+
+.description td{
+  border-left: 1px solid black;
+  text-align: center;
 }
