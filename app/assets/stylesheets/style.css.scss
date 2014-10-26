@@ -2692,12 +2692,24 @@ aside {
 .description td{
   border-left: 1px solid black;
   text-align: center;
+  margin: 0px;
+  margin-left:0px;
+  margin-bottom:0px;
+}
+
+#latest_questions {
+  font-size: 18px;
+  margin-left:0px;
+  margin-bottom:10px;
 }
 
 #latest_questions li{
-  font-size: 20px;
-  list-style-type: square;
-  padding: 5px;
+  padding: 5px 0px 5px 5px;
+
+}
+#latest_questions li:before {
+    content: "• ";
+    color: #12212f; 
 }
 
 
