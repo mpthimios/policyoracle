@@ -6,22 +6,22 @@
         <div class="grid_6">
           <div class="hello_box"> PolicyOracle is a crowdsourced nowcasting platform for Global Systems Science. </div>
         </div>
-        <div class="grid_6" style="border: 3px solid #5A79A5; padding: 5px;">
+        <div class="grid_6" style="padding: 5px; background-color: #e6e8e4">
           <div class="hello_box">
             Latest Questions
           </div>
+          <ul id="latest_questions">
             <%@markets.each do |market|%>
-                <div class="grid_7">
-                  <div class="questions_box">
-                        <%= link_to market.name, market_path(market) if !market.nil? && market.name%>
-                    </div>
-                </div>
+              <li>
+                <%= link_to market.name, market_path(market) if !market.nil? && market.name%>
+              </li>
             <%end%>
-            <div class="hello_box">
-              <button type="button" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-plus"></span> <%= link_to "View More", markets_path , :class => "two" %> 
-              </button>
-            </div>
+          </ul>
+          <div class="hello_box">
+            <button type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-plus"></span> <%= link_to "View More", markets_path , :class => "two" %> 
+            </button>
+          </div>
         </div>
       </div>
     </section>
