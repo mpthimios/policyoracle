@@ -1,13 +1,13 @@
 <% @market.contracts.each do |contract| %>
     <div class="grid_7 contract">
-    	<article class="grid_2" style="margin:0" >
+    	<article class="grid_2" style="margin:0; padding:0" >
         	<h3 class="mchoice"><%= contract.name %></h3>
         </article>
-        <article class="grid_1" style="margin:0" >
+        <article class="grid_1" style="margin:0; padding:0" >
         	   <h3 class="mchoice"><%= contract.current_price.round(2)*100%>%</h3>
     	</article>
          <% if signed_in?%>
-            <article class="grid_3 transaction" style="text-align:right; margin:0; padding-top:10px">
+            <article class="grid_3 transaction" style="text-align:right; margin:0px;">
                 <%= render partial:'shared/utransaction_mchoice_form', :locals => { :contract => contract} %>
             </article>
         <% end %>

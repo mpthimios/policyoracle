@@ -1,5 +1,5 @@
-<% @holdings.each do |holding| %>
-  <ol id="positions">
+<ol id="positions">
+  <% @holdings.each do |holding| %>
     <li class="posotion_group">
       <h2><%= link_to holding.contract.market.name, holding.contract.market, :class => "three" %></h2>
       <table class="headertable">
@@ -14,9 +14,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="answered" ><%= holding.contract.name if holding.contract %><br>
+            <td class="answered"><%= holding.contract.name if holding.contract %><br>
               <% if holding.contract.market.status == true %>
-                <%= button_to 'Cash Out', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}),  class: "btn-link", :popup => ['new_window_name', 'height=300,width=600'], data: { confirm: 'Are you sure?' } %>
+                <%= link_to'Cash Out', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </td>
             <td class="answered"><h4>
@@ -39,6 +39,6 @@
       <%end%>
     </li>
     <br>
-  <ol>
-<% end %>
+  <% end %>
+<ol>
 <%= will_paginate(@holdings, :renderer => WillPaginate::ActionView::LinkRenderer) %>

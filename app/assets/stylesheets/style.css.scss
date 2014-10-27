@@ -335,13 +335,16 @@ fieldset[disabled] .btn-sample.active {
   border-color: #d6d9dc; 
 } 
 
-
+button_to {
+  margin:0px;
+}
 btn-link {
-    background:none!important;
-     border:none; 
-     padding:0!important;
-    /*border is optional*/
-     cursor: pointer;
+  background:none!important;
+   border:none; 
+   padding:0!important;
+  /*border is optional*/
+   cursor: pointer;
+   margin-bottom: 0px;
 }
 .btn-link:hover {
   font-size: 14px;
@@ -2667,8 +2670,8 @@ aside {
 
 
 .contract:hover .transaction {
-    border-style: 5px solid;
-    border-bottom: thick solid #f1f1f1;
+  border-style: 5px solid;
+  border-bottom: thick solid #f1f1f1;
   display: block;
 
 }
