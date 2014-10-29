@@ -13,18 +13,18 @@
             <ul id="homehireus" class="hireform contactform">
               <%= render 'shared/error_messages', object: f.object %><br>
               <li>
-                <label>Name:<span tabindex="1"></span></label>
-                <%= f.text_field :name %>
-              </li>
-              <li>
                 <label>Password:<span tabindex="3"></span></label>
                 <%= f.password_field :password %>
+              </li>
+              <li>
+                <label>Name:<span tabindex="1"></span></label>
+                <%= f.text_field :name %>
               </li>
               <li>
                 <label>Password <br> confirmation:<span tabindex="4"></span></label>
                 <%= f.password_field :password_confirmation %><br>
               </li>
-              <%= f.submit "Save changes", class: "button" %>
+              <%= f.submit "Save changes", class: "btn-sample" %>
             </ul>
           <% end %>
         </article>

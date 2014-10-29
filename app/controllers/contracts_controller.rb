@@ -64,7 +64,7 @@ class ContractsController < ApplicationController
   def destroy
     @contract.destroy
     respond_to do |format|
-      format.html { redirect_to market_contracts_path(@contract.market), notice: 'Contract was successfully destroyed.' }
+      format.html { redirect_to market_path(@contract.market), notice: 'Contract was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
