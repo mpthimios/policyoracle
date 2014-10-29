@@ -28,7 +28,7 @@
                       <ul style="text-align: center">
                         <li><%= image_tag "yes.png" %> </li>
                         <li style="color:#ebdf1b"><%= "#{contract.name}" %> </li>
-                        <li style="margin-top:20px">Posibility: 
+                        <li style="margin-top:20px">Possibility: 
                           <p3 style="font-size: 16px"><%= "#{contract.current_price.round(2)*100}" %>%</p3></li>
                       </ul>
                       <div class="trade_interface">
@@ -55,7 +55,7 @@
                       <ul style="text-align: center">
                         <li><%= image_tag "no.png" %> </li>
                         <li style="color:#343c3a"><%= "#{contract.name}" %> </li>
-                        <li style="margin-top:20px">Posibility: 
+                        <li style="margin-top:20px">Possibility: 
                           <p3 style="font-size: 16px"><%= "#{contract.current_price.round(2)*100}" %>%</p3></li>
                       </ul>
                       <div class="trade_interface">
@@ -88,15 +88,15 @@
                   <table class="prerformancecontent">
                       <tbody>
                         <tr>
-                            <td align="left">Investement amount:</td>
+                            <td align="left">Invested points:</td>
                             <td align="right" valign="middle"><%= current_user.investment_amount.round(2) %></td>
                           </tr>
                           <tr>
-                            <td align="left">Total cash:</td>
+                            <td align="left">Available points:</td>
                             <td align="right" valign="middle"><%= current_user.cash_amount.round(2) %></td>
                           </tr>                      
                           <tr>
-                            <td align="left">Account value:</td>
+                            <td align="left">Total points:</td>
                             <td align="right" valign="middle" class="summationline"><%= current_user.total_amount.round(2) %></td>
                           </tr>
                       </tbody>
