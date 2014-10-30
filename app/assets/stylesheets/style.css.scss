@@ -215,7 +215,7 @@ input[type="text"] {
   border-radius: 4px;
   background: #eee;
   font-size: 18px;
-  height: 30px;
+  height: 40px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -242,14 +242,11 @@ input[type="password"] {
   background: #eee;
   padding: 0px 5px;
   font-size: 14px;
-  line-height: 41px;
-  height: 30px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
+  height: 40px;
+  vertical-align: middle;
   border-radius: 3px;
   outline: none;
   color: #6a6a6a;
-  width: 25%;
 }
 
 .btn-sample { 
@@ -1262,12 +1259,12 @@ Hire us
   background: #ffffff;
   width: 224px;
   height: 49px;
-  padding: 0px 5px 0px 77px;
   font-size: 14px;
   line-height: 49px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  vertical-align: middle;
   outline: none;
   color: #6a6a6a;
 }
