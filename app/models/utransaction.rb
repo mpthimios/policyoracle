@@ -9,6 +9,7 @@ class Utransaction < ActiveRecord::Base
   validates :user_id, presence: true
   validates :contract_id, presence: true
   validates :quantity, :numericality => {greater_than_or_equal_to: 1}, presence: true
+  validates :comment, length: { maximum: 140 }
 
   after_validation :update_market_holdings_and_money, :on => :update
 

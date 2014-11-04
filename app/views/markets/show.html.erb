@@ -109,21 +109,40 @@
           <article class="grid_2" style="margin:0">
             <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
             <p><strong>Category:</strong><br><%= @market.category %></p>
+            <p><strong>Tags:</strong><br><%= @market.market_type %></p>
+            <p><strong>Predictions Up to Now:</strong><br><%= @utransactions.count %></p>
           </article>
         </article>
 
         <article class="grid_12">
-          <div class="post">
-            <div class="comments">
-              <h2>Discussion</h2>
-               <% if signed_in?%>
-                <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
-              <% end %>
-              <%= render :partial => @microposts %>
-              <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+          <article class="grid_10">
+            <div class="post">
+              <div class="comments">
+                <h2>Discussion</h2>
+                 <% if signed_in?%>
+                  <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
+                <% end %>
+                <%= render :partial => @microposts %>
+                <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+              </div>
             </div>
-          </div>
+          </article>
 
+          <article class="grid_2" style="margin:0">
+            <div class="post">
+              <div class="comments">
+                <h2>Reasons of prediction:</h2>
+                <% @utransactions.each do |utransaction| %>
+                  <% if utransaction.comment != nil %>
+                    "<%= utransaction.comment %>"
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </article>
+        </article>
+
+        <article class="grid_12">
           <div class="post">
             <h2>Historical Trend</h2>
             <chart></chart>

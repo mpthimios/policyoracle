@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013125026) do
+ActiveRecord::Schema.define(version: 20141104155412) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20141013125026) do
     t.datetime "updated_at"
     t.text     "new_contract_values"
     t.integer  "market_id"
+    t.string   "comment"
   end
 
   add_index "utransactions", ["user_id", "contract_id"], name: "index_utransactions_on_user_id_and_contract_id", using: :btree
