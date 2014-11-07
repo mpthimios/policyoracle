@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :contracts, :through => :bhistories
   has_many :microposts, dependent: :destroy
 
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 	before_save { self.email = email.downcase }
 	before_save { self.name = name.downcase }
 	before_create :create_remember_token
@@ -79,6 +79,7 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
 
+  # Activates an account.
   def activate
     update_attribute(:activated,    true)
     update_attribute(:activated_at, Time.zone.now)
@@ -99,6 +100,11 @@ class User < ActiveRecord::Base
   # Sends password reset email.
   def send_password_reset_email
     UserMailer.password_reset(self).deliver
+  end
+
+  # Returns true if a password reset has expired.
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
   end
 
   def update_markets
@@ -144,6 +150,12 @@ class User < ActiveRecord::Base
   end
 
   private
+    
+    # Converts email to all lower-case.
+    def downcase_email
+      self.email = email.downcase
+    end
+
     def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
     end
@@ -151,7 +163,8 @@ class User < ActiveRecord::Base
     def validate_password?
       password_digest.nil?
     end
-
+    
+    # Creates and assigns the activation token and digest.
     def create_activation_digest
     # Create the token and digest.
       self.activation_token  = User.new_token

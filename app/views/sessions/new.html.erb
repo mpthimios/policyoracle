@@ -6,36 +6,34 @@
     		<article class="grid_12 last-col">
       			<div class="hello_box"> Sign in  </div>
     		</article>
-
-      		<article class="grid_3">
-      			<%= link_to 'I forgot my username / password', new_password_reset_path %>
-      		</article>
 		
-      		<article class="grid_5">
-      			<%= form_for(:session, url: sessions_path) do |f| %>
-      				<ul id="homehireus" class="project-filter">
-      					<li>
-              			<label style="width:80px">Email:</label>     
-              			<%= f.text_field :email %>
-           			</li>
-      					<li>
-              		<label style="width:80px;">Password:</label>
-              		<%= f.password_field :password %>
-           			</li>
-                <li style="margin-left:60px;">
-                  <%= f.label :remember_me, class: "checkbox inline" do %>
-                    <%= f.check_box :remember_me %>
-                    <span>Remember me on this computer</span>
-                  <% end %><br>
-                </li>
-      					<li style="margin-left:80px;">
-                  <%= f.submit "Sign in", class: "btn-sample" %>
-                </li>
-    				   </ul>
-  			    <% end %>
+    		<article class="grid_6">
+    			<%= form_for(:session, url: signin_path) do |f| %>
+    				<ul id="homehireus" class="project-filter">
+    					<li>
+            			<label style="width:125px">Email:</label>     
+            			<%= f.text_field :email %>
+         			</li>
+    					<li>
+            		<label style="width:125px; margin-bottom:0px">
+                  Password: <br> <%= link_to '(forgot password)', new_password_reset_path, :class => "one" %>
+                </label>
+            		<%= f.password_field :password %>
+         			</li>
+              <li style="margin-left:100px; margin-top:20px">
+                <%= f.label :remember_me, class: "checkbox inline" do %>
+                  <%= f.check_box :remember_me %>
+                  <span>Remember me on this computer</span>
+                <% end %><br>
+              </li>
+    					<li style="text-align:center">
+                <%= f.submit "Sign in", class: "btn-sample" %>
+              </li>
+  				   </ul>
+			    <% end %>
 
-  			    <p style="margin-left:105px">New user? <%= link_to "Sign up now!", signup_path %></p>
-  		   </article>
+			    <p style="text-align:center">New user? <%= link_to "Sign up now!", signup_path %></p>
+		   </article>
 	  	</div>
 		</section>
   </div>

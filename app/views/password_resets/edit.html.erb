@@ -1,35 +1,31 @@
-<% provide(:title, "Update Password") %>
+<% provide(:title, "Reset Password") %>
 <div class="block2">
   <div class="container_12">
     <section class="content">
       <div class="wrapper">
         <article class="grid_12 last-col">
-            <div class="hello_box"> Update Password </div>
+            <div class="hello_box"> Reset Password </div>
         </article>
-
-        <article class="grid_9 last">
-          <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
-            <% if @user.errors.any? %>
-              <div class="error_messages">
-                <h2>Form is invalid</h2>
-                <ul>
-                  <% for message in @user.errors.full_messages %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-            <div class="field">
-              <%= f.label :password %>
-              <%= f.password_field :password %>
-            </div>
-            <div class="field">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation %>
-            </div>
-            <div class="actions"><%= f.submit "Update Password" %></div>
+        <article class="grid_6">
+          <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+            <%= render 'shared/error_messages' %>
+            <%= hidden_field_tag :email, @user.email %>
+            <ul id="homehireus" class="project-filter">
+              <li>
+                  <label style="width:125px">Password:</label>     
+                  <%= f.password_field :password %>
+              </li>
+              <li>
+                <label style="width:125px; margin-bottom:0px">Password <br> Confirmation:
+                </label>
+                <%= f.password_field :password_confirmation %>
+              </li>
+              <li style="text-align:center">
+                <%= f.submit "Reset Password", class: "btn-sample" %>
+              </li>
+             </ul>
           <% end %>
-        </article>
+       </article>
       </div>
     </section>
   </div>

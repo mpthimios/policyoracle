@@ -110,7 +110,7 @@ strike {
   display: none;
 }
 .close {
-  background: url(../images/close.png) no-repeat left 3px;
+  background: url() no-repeat left 3px;
   border: 0;
   text-indent: -9999px;
   width: 16px;
@@ -176,7 +176,6 @@ a:hover {
 .links a:visited:hover {color: #444}
 a.arrowlink {
   padding-left: 23px;
-  background: url(../images/down_marker1.png) 0 1px no-repeat;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -532,7 +531,7 @@ h7{
   background: #e35845;
 }
 .block2 {
-  background: url(../images/block2.jpg) 50% 0 repeat-x #fff; padding: 40px;
+  background: url() 50% 0 repeat-x #fff; padding: 40px;
 }
 .block3 {
 }
@@ -863,19 +862,19 @@ Our Process
 .our_process {
 }
 .our_process .img1 {
-  background: url(../images/icon-plan.png) no-repeat;
+  background: url() no-repeat;
   padding-left: 70px;
 }
 .our_process .img2 {
-  background: url(../images/icon-design.png) no-repeat;
+  background: url() no-repeat;
   padding-left: 70px;
 }
 .our_process .img3 {
-  background: url(../images/icon-develop.png) no-repeat;
+  background: url() no-repeat;
   padding-left: 70px;
 }
 .our_process .img4 {
-  background: url(../images/icon-delivery.png) no-repeat;
+  background: url() no-repeat;
   padding-left: 70px;
 }
 .gmap {
@@ -910,7 +909,7 @@ Featured Work Services Page
 .prev, .next {
   display: block;
   float: right;
-  background: url(../images/pagination.png) no-repeat;
+  background: url() no-repeat;
   width: 19px;
   height: 19px;
   cursor: pointer;
@@ -931,7 +930,7 @@ Featured Work Services Page
 .down-vert, .up-vert {
   display: block;
   float: right;
-  background: url(../images/pagination-vert.png) no-repeat;
+  background: url() no-repeat;
   width: 19px;
   height: 19px;
   cursor: pointer;
@@ -960,14 +959,14 @@ Featured Work Services Page
   margin-bottom: 0px;
 }
 .quotes-pagi a {
-  background-image: url('../images/featured-pagi.png');
+  background-image: url();
   width: 14px;
   height: 14px;
   display: inline-block;
   text-indent: -999px;
 }
 .quotes-pagi a.selected {
-  background-image: url('../images/featured-pagi-active.png');
+  background-image: url();
   width: 14px;
   height: 14px;
   display: inline-block;
@@ -1107,7 +1106,7 @@ Project filter
   color: white;
 }
 .projectdetails .flex-prev {
-  background: url(../images/arrows.png) no-repeat;
+  background: url() no-repeat;
   width: 43px;
   height: 58px;
   float: left;
@@ -1115,7 +1114,7 @@ Project filter
   margin-left: 22px;
 }
 .projectdetails .flex-next {
-  background: url(../images/arrows.png) no-repeat -43px;
+  background: url() no-repeat -43px;
   width: 43px;
   height: 58px;
   float: left;
@@ -1144,7 +1143,7 @@ span.zoom-icon {
   margin-top: -18px;
   position: absolute;
   z-index: 3;
-  background: url(../images/img-view.png) 0 0 no-repeat;
+  background: url() 0 0 no-repeat;
 }
 span.zoom-link {
   left: 50%;
@@ -1159,7 +1158,7 @@ span.zoom-link a {
   width: 48px;
   position: absolute;
   z-index: 3;
-  background: url(../images/img-link.png) 0 0 no-repeat;
+  background: url() 0 0 no-repeat;
   text-indent: -9999px;
 }
 span.zoom-text {
@@ -1473,7 +1472,7 @@ Blog
 
 .post-meta {
   font-size: 12px;
-  background: url(../images/post-meta-bg.png);
+  background: url();
   position: absolute;
   color: #fff;
   margin-top: -58px;
@@ -2159,12 +2158,12 @@ table.performancecontent {width: 210px; margin: 10px 0}
 .current_answers h1, .discussion_market_notes h1 {margin: 10px 0 10px 0; color: #8b8b8b; font-size: 1.4em; font-weight: normal}
 ul.market_recommendations {list-style-type: none; padding: 0; margin: 10px 0 0 0}
 li.market_recommendation {font-size: 1.2em}
-.recommendationbgnd {-moz-border-radius:1ex; -webkit-border-radius:1ex; background: url(../images/recommendedbgnd.png) repeat-x bottom; border: 1px solid #e6e6e6; padding: 5px 10px 5px 10px; margin: 5px 0 20px 0;}
+.recommendationbgnd {-moz-border-radius:1ex; -webkit-border-radius:1ex; background: url() repeat-x bottom; border: 1px solid #e6e6e6; padding: 5px 10px 5px 10px; margin: 5px 0 20px 0;}
 #market_recommendations h1 {margin-top: 0; padding-top: 0; font-size: 14px; color: #6d8e07; margin-bottom: 10px}
 .discussionMarketTitle { padding-bottom: 5px; }
 .discussionMarketNotesList { list-style: none; margin: 3px 0 10px 5px; color: #57595d; padding: 0 }
 .performanceboxheader { background:#b8b8b8; border-right: 1px #b8b8b8 solid; border-bottom: 0px #b8b8b8 solid; border-top: 1px #b8b8b8 solid; border-left: 1px #b8b8b8 solid; padding: 3px; width: 220px; color: #fff; text-transform: capitalize }
-.performancebox { background: url(../images/performanceboxbgnd.gif) top repeat-x #fff; border-right: 1px #b8b8b8 solid; border-bottom: 1px #b8b8b8 solid; border-top: 0px #b8b8b8 solid; border-left: 1px #b8b8b8 solid; padding: 3px; width: 220px; height: 105px }
+.performancebox { background: url() top repeat-x #fff; border-right: 1px #b8b8b8 solid; border-bottom: 1px #b8b8b8 solid; border-top: 0px #b8b8b8 solid; border-left: 1px #b8b8b8 solid; padding: 3px; width: 220px; height: 105px }
 .summationline { border-top: solid 1px #ADB2BC; }
 .refunded_trade .right { text-decoration: line-through; }
 .refunded_trade_message { text-align: right; color: #b50000 }
@@ -2217,7 +2216,7 @@ ul {list-style:none;}
     }
 
     .position .profit .up_amount {
-      background: url(../images/up.gif) #eefbdb no-repeat center left;
+      background: url() #eefbdb no-repeat center left;
     padding: 2px 2px 2px 25px;
     }
 
@@ -2227,7 +2226,7 @@ ul {list-style:none;}
     }
 
     .position .loss .up_amount {
-      background: url(../images/down.gif) #f6d1d1 no-repeat center left;
+      background: url() #f6d1d1 no-repeat center left;
     padding: 2px 2px 2px 25px
     }
 
@@ -2278,7 +2277,7 @@ ul {list-style:none;}
   .position table.you td.liquidated_probability {width: 339px}
 
     .position table.you td.answered .remove_link {
-      background: url(../images/position_remove.gif) no-repeat left; padding-left: 15px
+      background: url() no-repeat left; padding-left: 15px
     }
 
   .position .trades, .position .liquidation {
@@ -2367,7 +2366,7 @@ ul {list-style:none;}
     font-weight: normal;
   }
 
-  .closedposition, .closedposition td {background: url(../images/closedbgnd.gif) #fff}
+  .closedposition, .closedposition td {background: url() #fff}
 
 
 .sort {margin: 10px 0 20px 0; font-size: 120%; text-align: right}

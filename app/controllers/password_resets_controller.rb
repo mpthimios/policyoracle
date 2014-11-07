@@ -1,25 +1,57 @@
 class PasswordResetsController < ApplicationController
+	
+	before_action :get_user, only: [:edit, :update]
+
 	def new
 	end
 
 	def create
-	  user = User.find_by_email(params[:email])
-	  user.send_password_reset if user
-	  redirect_to signin_path, :notice => "Email sent with password reset instructions."
+	    @user = User.find_by(email: params[:password_reset][:email].downcase)
+	    if @user
+	      @user.create_reset_digest
+	      @user.send_password_reset_email
+	      flash[:info] = "Email sent with password reset instructions"
+	      redirect_to signin_path
+	    else
+	      flash.now[:danger] = "Email address not found"
+	      render 'new'
+	    end
 	end
 
 	def edit
-	  @user = User.find_by_password_reset_token!(params[:id])
+
 	end
 
 	def update
-	  @user = User.find_by_password_reset_token!(params[:id])
-	  if @user.password_reset_sent_at < 2.hours.ago
-	    redirect_to new_password_reset_path, :alert => "Password reset has expired."
-	  elsif @user.update_attributes(params[:user])
-	    redirect_to signin_path, :notice => "Password has been reset!"
-	  else
-	    render :edit
-	  end
+	    if @user.password_reset_expired?
+	      flash[:danger] = "Password reset has expired."
+	      redirect_to new_password_reset_path
+	    elsif @user.update_attributes(user_params)
+	      if (params[:user][:password].blank? &&
+	          params[:user][:password_confirmation].blank?)
+	        flash.now[:danger] = "Password/confirmation can't be blank"
+	        render 'edit'
+	      else
+	        flash[:success] = "Password has been reset."
+	        sign_in @user
+	        redirect_to @user
+	      end
+	    else
+	      render 'edit'
+	    end
 	end
+
+	private
+
+    def user_params
+      params.require(:user).permit(:password, :password_confirmation)
+    end
+
+    def get_user
+      @user = User.find_by(email: params[:email])
+      unless (@user && @user.activated? &&
+              @user.authenticated?(:reset, params[:id]))
+        redirect_to root_path
+      end
+    end
 end
