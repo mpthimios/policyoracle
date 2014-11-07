@@ -115,17 +115,54 @@ class Market < ActiveRecord::Base
     self.contracts.each do |contract|
       data[:prices] << {:key => contract.name, :values => []}
     end
-    self.utransactions.each do |transaction|
-      new_contract_values = transaction.new_contract_values
-      i = 0
-      new_contract_values.each do |key, value|
-        logger.debug value
-        data[:prices][i][:values] << value.round(2)
-        i +=1
-      end
-      data[:dates] << transaction.created_at.strftime("%Y-%m-%d %H:%M")
-      data[:volume] << transaction.quantity
+
+    #add the initial value
+    i=0
+    self.contracts.each do |contract|
+      data[:prices][i][:values] << contract.opening_price.round(2)
+      i = i + 1
     end
+    data[:dates] << self.created_at.strftime("%Y-%m-%d %H:%M")
+    data[:volume] << 0
+
+    #add transactions
+    n = 1
+    self.utransactions.order("created_at").each do |transaction|
+
+      date = transaction.created_at.strftime("%Y-%m-%d %H:%M")
+      index = data[:dates].index(date)
+
+      if index.nil?
+        new_contract_values = transaction.new_contract_values
+        i = 0
+        new_contract_values.each do |key, value|
+          data[:prices][i][:values] << value.round(2)
+          i +=1
+        end
+        data[:dates] << date
+        data[:volume] << transaction.quantity
+        i = 1
+      else
+        i = 0
+        n=n+1
+        new_contract_values = transaction.new_contract_values
+        new_contract_values.each do |key, value|
+          data[:prices][i][:values][index] = ((n-1)*data[:prices][i][:values][index] + value.round(2))/n
+          i +=1
+        end
+        data[:volume][index] = ((n-1)*data[:volume][index] + transaction.quantity)/n
+      end
+    end
+
+    #add another point for the current time
+    i=0
+    self.contracts.each do |contract|
+      data[:prices][i][:values] << contract.current_price.round(2)
+      i = i + 1
+    end
+    data[:dates] << DateTime.now.strftime("%Y-%m-%d %H:%M")
+    data[:volume] << 0
+
     data
   end
 

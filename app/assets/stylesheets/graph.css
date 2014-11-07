@@ -1,5 +1,6 @@
 svg {
     font: 10px sans-serif;
+    background: #EEEEEE;
 }
 
 .area {
@@ -49,8 +50,8 @@ svg {
 }
 
 .grid .tick {
-    stroke: #eee;
-    stroke-width: .5px;
+    stroke: #FFF;
+    stroke-width: 1px;
     opacity: 1;
 }
 
