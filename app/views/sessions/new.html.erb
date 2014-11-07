@@ -19,9 +19,15 @@
               			<%= f.text_field :email %>
            			</li>
       					<li>
-              		<label style="width:80px">Password:</label>
+              		<label style="width:80px;">Password:</label>
               		<%= f.password_field :password %>
            			</li>
+                <li style="margin-left:60px;">
+                  <%= f.label :remember_me, class: "checkbox inline" do %>
+                    <%= f.check_box :remember_me %>
+                    <span>Remember me on this computer</span>
+                  <% end %><br>
+                </li>
       					<li style="margin-left:80px;">
                   <%= f.submit "Sign in", class: "btn-sample" %>
                 </li>

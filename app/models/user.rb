@@ -8,15 +8,18 @@ class User < ActiveRecord::Base
   has_many :contracts, :through => :bhistories
   has_many :microposts, dependent: :destroy
 
+  attr_accessor :remember_token, :activation_token
 	before_save { self.email = email.downcase }
 	before_save { self.name = name.downcase }
 	before_create :create_remember_token
+  before_create :create_activation_digest
   after_save :update_markets
 	#validates :name, presence: true, :length => { maximum: 32 },
 	#				 uniqueness: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   has_secure_password
   #Automatically create the virtual attribute 'password_confirmation'
@@ -24,12 +27,33 @@ class User < ActiveRecord::Base
 
   scope :sorted, lambda { order("users.rank ASC")}
 
-	def User.new_remember_token
+  # Returns a random token.
+  def User.new_token
     SecureRandom.urlsafe_base64
   end
 
-  def User.digest(token)
-    Digest::SHA1.hexdigest(token.to_s)
+  # Remembers a user in the database for use in persistent sessions.
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  # Returns true if the given token matches the digest.
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  # Forgets a user.
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
   end
 
   def send_password_reset
@@ -39,10 +63,42 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
+  end
+
+  def activate
+    update_attribute(:activated,    true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  # Sends activation email.
+  def send_activation_email
+    UserMailer.account_activation(self).deliver
+  end
+
+  # Sets the password reset attributes.
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # Sends password reset email.
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver
   end
 
   def update_markets
@@ -88,13 +144,18 @@ class User < ActiveRecord::Base
   end
 
   private
-
     def create_remember_token
       self.remember_token = User.digest(User.new_remember_token)
     end
 
     def validate_password?
       password_digest.nil?
+    end
+
+    def create_activation_digest
+    # Create the token and digest.
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
     end
 
 end

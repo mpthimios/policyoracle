@@ -13,6 +13,11 @@ gem 'mysql2'
 #needed for windows
 gem 'tzinfo-data'
 
+group :development do
+  gem "letter_opener"
+  gem "byebug"
+end
+
 group :development, :test do
   gem 'sqlite3', '1.3.9'
   gem 'rspec-rails', '3.0.2'
@@ -46,7 +51,7 @@ end
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'acts_as_list', '~> 0.4.0'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 4.0.4'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'

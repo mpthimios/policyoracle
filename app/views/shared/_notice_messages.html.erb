@@ -1,0 +1,10 @@
+<div id="error_explanation">
+	<div class="alert alert-error">
+        <% if flash[:notice] %>
+      		<h7><%= flash[:notice] %></h7>
+     	<% end %>
+     	<% if flash[:alert] %>
+    		<h7><%= flash[:alert] %></h7>
+  		<% end %>
+    </div>
+</div>

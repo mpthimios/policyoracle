@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   default_url_options :host => "policyoracle.com"
 
   resources :markets do
@@ -20,12 +21,14 @@ Rails.application.routes.draw do
   resources :bhistories,    only: [:new, :create]
   resources :microposts, only: [:create, :destroy]
   resources :password_resets
+  resources :account_activations, only: [:edit]
 
 
   root to: 'static_pages#home'
 
   match '/signup',                to: 'users#new',                        via: 'get'
   match '/signin',                to: 'sessions#new',                     via: 'get'
+  match '/signin',                to: 'sessions#create',                  via: 'post'
   match '/signout',               to: 'sessions#destroy',                 via: 'delete'
   #match '/home',    to: 'static_pages#home',    via: 'get'
   match '/howtoplay',             to: 'static_pages#howtoplay',           via: 'get'
@@ -38,5 +41,6 @@ Rails.application.routes.draw do
   match '/bank_history',          to: 'bhistories#index',                 via: 'get'
 
   get "utransactions/new" => 'utransactions#new', :as => :new_transaction
+
 
 end

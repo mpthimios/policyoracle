@@ -28,7 +28,11 @@
         <%= render 'layouts/header' %>
       </div>
     </div>
-
+      <div class="block2">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+      </div>
       <%= yield %>
 
     <div class="block3"> 
