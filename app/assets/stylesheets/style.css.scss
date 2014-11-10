@@ -253,6 +253,7 @@ input[type="password"] {
   background-color: #12212F; 
   border-color: #12212F; 
   border-radius: 5px;
+  width: 300px;
 } 
  
 .btn-sample:hover, 
@@ -395,13 +396,7 @@ header .logo {
 header .logo .underline {
   border-bottom: 2px solid #EBDF1B;
 }
-header .logo:hover {
-  color: #EBDF1B;
-  text-shadow: 1px 1px 0px #381511;
-}
-header .logo .underline:hover {
-  border-bottom: 2px solid #fff;
-}
+
 
 .homeabout {
 }
@@ -1043,8 +1038,8 @@ Project filter
 .project-filter li {
   margin-bottom: 10px;
 }
-.project-filter .active, .project-filter a:hover {
-  background: #12212F;
+.project-filter .active {
+  background: #fff;
   border-radius: 3px;
   padding: 3px 5px;
   color: white;
