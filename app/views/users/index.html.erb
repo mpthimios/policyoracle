@@ -14,7 +14,7 @@
                         <tr>
                           <th><h4>Position</h4></th>
                           <th><h4>User Name</h4></th>
-                          <th><h4>Account Value</h4></th>
+                          <th><h4>Total Points</h4></th>
                           <% if current_user.admin? %>
                             <th><h4>Settings</h4></th>
                           <%end%>
@@ -27,7 +27,11 @@
                           <td><%= i+1 %></td>
                           <td class="prediction"><%= user.name %></td>
                           <td class="prediction"><%= user.total_amount %> </td>
-                          <td><%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %></td>
+                          <td>
+                            <% if current_user.admin? %>
+                              <%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %>
+                            <% end %>    
+                          </td>
                         </tr>
                       <% end %>
                     </tbody>
@@ -37,7 +41,9 @@
             <%= will_paginate(@users, :renderer => WillPaginate::ActionView::LinkRenderer) %>
           </article>
           <article class="grid_2">
-            <h2><%= link_to 'New User', new_user_path, :class => "one" %></h2>
+            <% if current_user.admin? %>
+              <h2><%= link_to 'New User', new_user_path, :class => "one" %></h2>
+            <% end %>
           </article>
       </div>
     </section>
