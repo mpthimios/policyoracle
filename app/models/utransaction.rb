@@ -36,6 +36,7 @@ class Utransaction < ActiveRecord::Base
     new_contract_values = {}
     market.contracts.each do |contract|
       new_contract_values[contract.id] = contract.current_price
+      logger.debug "the new contract value is: " + contract.current_price.to_s
     end
     self.new_contract_values = new_contract_values
 

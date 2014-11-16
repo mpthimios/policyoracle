@@ -20,15 +20,16 @@
               <% end %>
             </td>
             <td class="answered"><h4>
-              <% if (holding.contract.current_price * holding.quantity) - holding.amount_spent >= 0 %>
-                + <%= ((holding.contract.current_price * holding.quantity) - holding.amount_spent).floor(2) %>
+              <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
+              <% if holding.amount_spent - @cost >= 0 %>
+                + <%= (holding.amount_spent - @cost).floor(2) %>
               <% else %>
-                - <%= (holding.amount_spent - (holding.contract.current_price * holding.quantity)).floor(2)  %>
+                - <%= (holding.amount_spent - @cost).floor(2) %>
               <% end %>
             </td>
             <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
             <td class="details"><h4><%= holding.quantity %></h4></td> 
-            <td class="answered2"><%= holding.amount_spent %><h4><%=  %></h4></td> 
+            <td class="answered2"><%= holding.amount_spent.round(2) %><h4><%=  %></h4></td> 
           </tr>
         </tbody>
       </table>

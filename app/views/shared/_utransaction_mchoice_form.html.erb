@@ -1,8 +1,10 @@
 <%= form_for Utransaction.new, :html => {:class =>"form-inline", :style => "padding:0px 0px 1px 0px"} do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
   	<%= f.text_field :quantity, :class => "col-xs-3", :style => "margin-bottom:10px; margin-left:70px" %>   shares 
-  	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample"%>
+  	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample" %>
     <%= f.hidden_field :user_id, 				:value => current_user.id %>
     <%= f.hidden_field :contract_id, 			:value => contract.id %>
     <%= f.hidden_field :contract_current_value, :value => contract.current_price %>
-<% end %>
+<% end %>    
+
+
