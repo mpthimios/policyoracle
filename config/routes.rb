@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :utransactions do
+    member do
+      get 'simulate'
+    end
+  end
+
   resources :users
   resources :sessions,      only: [:new, :create, :destroy]
   resources :holdings do

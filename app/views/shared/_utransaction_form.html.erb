@@ -2,7 +2,8 @@
 	<%= render 'shared/error_messages', object: f.object %>
 	<ul style="text-align: center">
 
-    	<li style="margin-top:0px; margin-left:40px"><%= f.text_field :quantity, :class => "input-mini", :style => "width:40px"%> shares </li>
+    	<li style="margin-top:0px; margin-left:40px"><%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :class => "input-mini",
+                                                                      :style => "width:40px", :onkeyup=>"window.update_price(#{contract.id}); return false;"%> shares </li>
 
     	<li style="margin-top:10px; margin-left:25px;"><%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample" %></li>
     </ul>

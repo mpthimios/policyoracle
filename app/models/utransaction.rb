@@ -15,7 +15,7 @@ class Utransaction < ActiveRecord::Base
 
   serialize :new_contract_values
 
-  def update_market_holdings_and_money
+  def update_market_holdings_and_money(save = true)
 
     logger.debug "update_market_holdings_and_money"
 
@@ -28,19 +28,35 @@ class Utransaction < ActiveRecord::Base
         self.user.cash_amount = self.user.cash_amount - cost
         self.user.investment_amount += (1) * cost
     end
-    self.user.save!
+    #self.user.save!
     logger.debug "the transaction cost is: " + cost.to_s
-    Holding.find_or_initialize_by(user_id: self.user_id, contract_id: self.contract_id) \
-      .update_attributes(self)
+    #Holding.find_or_initialize_by(user_id: self.user_id, contract_id: self.contract_id) \
+    #  .update_attributes(self)
 
-    new_contract_values = {}
-    market.contracts.each do |contract|
-      new_contract_values[contract.id] = contract.current_price
-      logger.debug "the new contract value is: " + contract.current_price.to_s
+    if save
+      self.user.save!
+      Holding.find_or_initialize_by(user_id: self.user_id, contract_id: self.contract_id) \
+        .update_attributes(self)
+      new_contract_values = {}
+      market.contracts.each do |contract|
+        new_contract_values[contract.id] = contract.current_price
+        logger.debug "the new contract value is: " + contract.current_price.to_s
+        contract.save!
+      end
+      self.new_contract_values = new_contract_values
     end
-    self.new_contract_values = new_contract_values
+  end
 
-
+  def simulate
+    update_market_holdings_and_money(save = false)
+    data = {}
+    data[:cost] = self.cost.round(2)
+    data[:cash] = self.user.cash_amount.round(2)
+    data[:contracts] = {}
+    self.market.contracts.each do |contract|
+      data[:contracts][contract.id] = contract.current_price.round(4)*100
+    end
+    data
   end
 
 end
