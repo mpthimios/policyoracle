@@ -28,7 +28,7 @@
 		                        <% end %>
                       		</div>
 				            <ul class="blog_pagination">
-				              	<%= link_to 'Back to Questions', markets_path(@contract.market), :class => "one" %> 
+				              	<%= link_to 'Back to Questions', markets_path(@contract.market.id), :class => "one" %> 
 				              	<% if signed_in? && current_user.admin? %>
 		                            |<%= link_to 'Edit', edit_contract_path(@contract) %> |
 		                            <%= link_to 'Delete', @contract, method: :delete, data: { confirm: 'Are you sure?' } %></p>

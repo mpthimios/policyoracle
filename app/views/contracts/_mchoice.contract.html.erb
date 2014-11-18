@@ -1,15 +1,16 @@
 <% @market.contracts.each do |contract| %>
     <div class="grid_7 contract">
     	<article class="grid_2" style="margin:0; padding:0" >
-        	<h3 class="mchoice"><%= contract.name %></h3>
+            <% if @market.status? %>
+                <%= link_to contract.name, new_transaction_path(:utransaction => {:contract_id => contract.id, :contract_current_value => contract.current_price}), {:remote => true,  'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "two", :style => "font-size: 14pt; margine-bottom:20px"} %>
+            <% else %>
+                <%= contract.name %>
+            <% end %>
         </article>
-        <article class="grid_1" style="margin:0; padding:0" >
-        	   <h3 class="mchoice" id="current_price_<%= contract.id %>"><%= contract.current_price.round(4)*100%>%</h3>
+        <article class="grid_1" style="margin:0; padding:0;" >
+        	   <h7 style="font-size: 14pt; padding:0px 0px 0px 10px; margin-bottom:20px" id="current_price_<%= contract.id %>"><%= contract.current_price.round(4)*100%>%</h7>
     	</article>
-         <% if signed_in?%>
-            <article class="grid_3 transaction" style="text-align:right; margin:0px;">
-                <%= render partial:'shared/utransaction_mchoice_form', :locals => { :contract => contract} %>
-            </article>
-        <% end %>
     </div>
 <% end %>
+
+<div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>

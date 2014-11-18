@@ -167,6 +167,10 @@ a.four {
   display: table-cell;
 }
 
+a.two:hover {
+  color: #12212f;
+  text-decoration: none;
+}
 a:hover {
   color: #62676d;
   text-decoration: none;
@@ -2720,5 +2724,6 @@ aside {
   margin-left: 0;
 }
 
+  
 
 

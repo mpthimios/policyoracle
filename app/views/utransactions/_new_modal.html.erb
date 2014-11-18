@@ -1,0 +1,37 @@
+<div class="modal-header" style="margin: 0px; padding:5px">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h2><%= @contract.market.name %></h2>
+    <h2 style="font-style: italic; padding-left:30px"><%= @contract.name %></h2>
+</div>
+<div class="modal-body">
+	<div class="grid_3">
+	    <%= form_for Utransaction.new, :html => {:class =>"form-inline", :style => "padding:0px 0px 20px 0px"} do |f| %>
+	        <%= render 'shared/error_messages', object: f.object %>
+	        <%= f.text_field :quantity, :id => "@contract_" + @contract.id.to_s, :style => "width:40px; margin-bottom: 10px;", :onkeyup=>"window.update_price(#{@contract.id}); return false;" %>   shares<br>
+	        <h4>Why are you making this prediction?</h4>
+	        <%= f.text_field :comment, :style =>"margin-bottom:20px" %> 
+	        <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample" %>
+	        <%= f.hidden_field :user_id,                :value => current_user.id %>
+	        <%= f.hidden_field :contract_id, :value => params['utransaction']['contract_id']%>
+	        <%= f.hidden_field :contract_current_value, :value => params['utransaction']['contract.current_price'] %>
+	    <% end %>
+	</div>
+	<div class="grid_3" style="margin: 0px;">
+		<% if signed_in? %>
+			<div id="trade_help" style="margin-top:5px; color:red;">
+            	<span>Specify where you want to invest and press the buy button!</span>
+          	</div>
+          	<div id="trade_details" style="margin-top:5px; color:green; display:none">
+            	<span>The details of your transaction:</span>
+          	</div>
+          	<div id="trade_info" style="display:none">
+            	<div id="points_needed">Points needed: 100</div>
+            	<div id="points_available_after">Points available after: 200</div>
+            	<div id="shares_buying">You will be buying 2 shares</div>
+          	</div>
+		<% end %>
+	</div>
+</div>
+<div class="modal-footer" style="margin: 0px;">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>

@@ -1,6 +1,15 @@
 class UtransactionsController < ApplicationController
 	before_action :signed_in_user
 
+  def new
+    @contract = Contract.find(params['utransaction']['contract_id'])
+    @market = @contract.market
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def index
     @utransactions = current_user.utransactions.all
     @utransactions = current_user.utransactions.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
