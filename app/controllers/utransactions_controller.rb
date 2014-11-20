@@ -22,7 +22,9 @@ class UtransactionsController < ApplicationController
     case params['utransaction']['transaction_type']
       when 'Sell'
         params['utransaction']['transaction_type'] = "S"
-      when 'Buy'
+      when 'Buy' 
+        params['utransaction']['transaction_type'] = "B"
+      when 'Submit'
         params['utransaction']['transaction_type'] = "B"
       else
         #do nothing

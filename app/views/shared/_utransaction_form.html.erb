@@ -1,13 +1,35 @@
 <%= form_for Utransaction.new, :html => {:class =>"form-inline"} do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-	<ul style="text-align: center">
+	<ul style="text-align: center; margin-left:60px">
+    	<li><%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :class => "input-mini", :style => "width:40px; text-align:center", :onkeyup=>"window.update_price(#{contract.id}); return false;"%> shares </li>
 
-    	<li style="margin-top:0px; margin-left:40px"><%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :class => "input-mini",
-                                                                      :style => "width:40px", :onkeyup=>"window.update_price(#{contract.id}); return false;"%> shares </li>
-
-    	<li style="margin-top:10px; margin-left:25px;"><%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample" %></li>
+    	<li style="margin-top:10px; margin-left:20px">
+    		<button type="button" class="btn-sample" data-toggle="modal" data-target="#modal-window<%=contract.id.to_s%>" style="width:40px">Buy</button>	
+    	</li>
     </ul>
     <%= f.hidden_field :user_id, 				:value => current_user.id %>
     <%= f.hidden_field :contract_id, 			:value => contract.id %>
     <%= f.hidden_field :contract_current_value, :value => contract.current_price %>
+
+
+	<div id="modal-window<%=contract.id.to_s%>" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="left:45%; width:50%; bottom:55%; background-color:transparent; box-shadow: 0px 0px 0px 0px; border: 0px;">
+		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<h4 class="modal-title" id="myModalLabel">Please comment on your choice (optional)</h4>
+      			</div>
+      			<div class="modal-body">
+
+      				<%= f.text_area :comment, :style =>"margin-bottom:20px" %> <br>
+
+					<%= f.submit :value => "Submit", :name => 'utransaction[transaction_type]', class: "btn-sample" %>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
 <% end %>
+
+
+

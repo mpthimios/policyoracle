@@ -33,7 +33,7 @@
                       </ul>
                       <div class="trade_interface">
                         <% if @market.status? %>
-                          <table>
+                          <table class="trade_interface">
                             <tr>
                               <% if signed_in?%>
                                 <td align="left"><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
@@ -108,6 +108,21 @@
                           </tr>
                       </tbody>
                   </table>
+                </div>
+                <% if @market.contracts.count == 2 %>
+                  <div id="trade_help" style="margin-top:5px; color:red;">
+                    <span>Specify where you want to invest and press the buy button!</span>
+                  </div>
+                  
+                  <div id="trade_details" style="margin-top:5px; color:green; display:none">
+                    <span>The details of your transaction:</span>
+                  </div>
+                  <div id="trade_info" style="display:none">
+                    <div id="points_needed">Points needed: 100</div>
+                    <div id="points_available_after">Points available after: 200</div>
+                    <div id="shares_buying">You will be buying 2 shares</div>
+                  </div>
+                <% end %>
               </article>
             <% end %>
           </article>
