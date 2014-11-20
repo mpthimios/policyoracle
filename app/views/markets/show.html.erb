@@ -4,11 +4,11 @@
     <section class="content">
 
       <div class="wrapper">
-        <article class="grid_10 last-col">
+        <article class="grid_9 last-col">
           <div class="hello_box">  <%=  @market.name  %></div>
         </article>
 
-        <article class="grid_2 last-col">
+        <article class="grid_3 last-col">
           <% if signed_in? && current_user.admin? && @market.status? %>
             <h3><%= link_to 'Question Closure', close_market_path(@market), :class => "one" %></h3>
           <% elsif @market.status == false %>
@@ -19,10 +19,10 @@
 
       <div class="wrapper">
         <article class="grid_12">
-          <article class="grid_10">
+          <article class="grid_9">
             <% if @market.contracts.count == 2 %>
-              <article class="grid_7">
-                <article class="grid_3">
+              <article class="grid_6">
+                <article class="grid_3" style="margin:0">
                   <% @contracts.each do |contract| %>   
                     <% if contract.name === "YES" %>
                       <ul style="text-align: center">
@@ -49,7 +49,7 @@
                     <% end %>
                   <% end %>
                 </article>
-                <article class="grid_3">
+                <article class="grid_3" style="margin:0">
                   <% @contracts.each do |contract| %>   
                     <% if contract.name === "NO" %>
                       <ul style="text-align: center">
@@ -78,12 +78,12 @@
                 </article>
               </article>
             <% else %>
-              <article class="grid_7">
+              <article class="grid_6">
                 <article class="grid_2">
                   <p> Possible Answers </p>
                 </article>
                 <article class="grid_2" style="margin:0">
-                  <p> Current Prediction </p>
+                  <p> Current Probability </p>
                 </article>
 
                 <%= render "contracts/mchoice.contract" %>
@@ -108,22 +108,11 @@
                           </tr>
                       </tbody>
                   </table>
-                  <div id="trade_help" style="margin-top:5px; color:red;">
-                      <span>Specify where you want to invest and press the buy button!</span>
-                  </div>
-                  <div id="trade_details" style="margin-top:5px; color:green; display:none">
-                    <span>The details of your transaction:</span>
-                  </div>
-                  <div id="trade_info" style="display:none">
-                    <div id="points_needed">Points needed: 100</div>
-                    <div id="points_available_after">Points available after: 200</div>
-                    <div id="shares_buying">You will be buying 2 shares</div>
-                  </div>
               </article>
             <% end %>
           </article>
 
-          <article class="grid_2" style="margin:0">
+          <article class="grid_3" style="margin:0">
             <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
             <p><strong>Category:</strong><br><%= @market.category %></p>
             <p><strong>Tags:</strong><br><%= @market.market_type %></p>
@@ -132,7 +121,7 @@
         </article>
 
         <article class="grid_12">
-          <article class="grid_10">
+          <article class="grid_9">
             <div class="post">
               <div class="comments">
                 <h2>Discussion</h2>
@@ -145,13 +134,13 @@
             </div>
           </article>
 
-          <article class="grid_2" style="margin:0">
+          <article class="grid_3" style="margin:0">
             <div class="post">
               <div class="comments">
-                <h2>Reasons of prediction:</h2>
+                <h3>Reasons of prediction:</h3>
                 <% @utransactions.each do |utransaction| %>
-                  <% if utransaction.comment != nil %>
-                    "<%= utransaction.comment %>"
+                  <% unless utransaction.comment.blank? %>
+                    "<%= "#{utransaction.comment}" %>"
                   <% end %>
                 <% end %>
               </div>

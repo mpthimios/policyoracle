@@ -4,19 +4,21 @@
     <h2 style="font-style: italic; padding-left:30px"><%= @contract.name %></h2>
 </div>
 <div class="modal-body">
-	<div class="grid_3">
+	<div class="grid_5" style="margin: 0px">
 	    <%= form_for Utransaction.new, :html => {:class =>"form-inline", :style => "padding:0px 0px 20px 0px"} do |f| %>
 	        <%= render 'shared/error_messages', object: f.object %>
 	        <%= f.text_field :quantity, :id => "@contract_" + @contract.id.to_s, :style => "width:40px; margin-bottom: 10px;", :onkeyup=>"window.update_price(#{@contract.id}); return false;" %>   shares<br>
-	        <h4>Why are you making this prediction?</h4>
-	        <%= f.text_field :comment, :style =>"margin-bottom:20px" %> 
-	        <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample" %>
+	        <h4>Please comment on your choice (optional)</h4>
+	        <%= f.text_area :comment, :style =>"margin-bottom:20px" %> <br>
+	        <% if signed_in?%>
+	        	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample", :style =>"width:30%" %>
+	        <% end %>
 	        <%= f.hidden_field :user_id,                :value => current_user.id %>
 	        <%= f.hidden_field :contract_id, :value => params['utransaction']['contract_id']%>
 	        <%= f.hidden_field :contract_current_value, :value => params['utransaction']['contract.current_price'] %>
 	    <% end %>
 	</div>
-	<div class="grid_3" style="margin: 0px;">
+	<div class="grid_3" style="margin: 0px">
 		<% if signed_in? %>
 			<div id="trade_help" style="margin-top:5px; color:red;">
             	<span>Specify where you want to invest and press the buy button!</span>
