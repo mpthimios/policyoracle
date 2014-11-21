@@ -141,7 +141,9 @@
               <div class="comments">
                 <h2>Discussion</h2>
                  <% if signed_in?%>
-                  <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
+                    <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
+                  <% else %>
+                    <h4><%= link_to "Sign Up", signup_path, :class => 'one' %> in order to make your predictions and leave your comments </h4>
                 <% end %>
                 <%= render :partial => @microposts %>
                 <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
@@ -153,11 +155,13 @@
             <div class="post">
               <div class="comments">
                 <h3>Reasons of prediction:</h3>
-                <% @utransactions.each do |utransaction| %>
-                  <% unless utransaction.comment.blank? %>
-                    "<%= "#{utransaction.comment}" %>"
+                <ul style="margin:0px">
+                  <% @utransactions.each do |utransaction| %>
+                    <% unless utransaction.comment.blank? %>
+                      <li>"<%= "#{utransaction.comment}" %>"</li>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </ul>
               </div>
             </div>
           </article>
