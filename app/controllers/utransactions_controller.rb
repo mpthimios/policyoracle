@@ -18,6 +18,7 @@ class UtransactionsController < ApplicationController
 
 
   def create
+    session[:return_to] ||= request.referer
     logger.debug params['utransaction'].inspect
     case params['utransaction']['transaction_type']
       when 'Sell'
@@ -30,8 +31,13 @@ class UtransactionsController < ApplicationController
         #do nothing
     end
     logger.debug params['utransaction'].inspect
-    utransaction = Utransaction.create!(utransaction_params)
-    redirect_to current_user
+    utransaction = Utransaction.new(utransaction_params)
+    if utransaction.save
+      redirect_to current_user
+    else
+      flash[:notice] = utransaction.errors.full_messages.to_sentence
+      redirect_to :back
+    end
   end
 
   def simulate
