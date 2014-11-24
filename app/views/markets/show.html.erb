@@ -4,17 +4,27 @@
     <section class="content">
 
       <div class="wrapper">
-        <article class="grid_9 last-col">
-          <div class="hello_box">  <%=  @market.name  %></div>
-        </article>
-
-        <article class="grid_3 last-col">
-          <% if signed_in? && current_user.admin? && @market.status? %>
-            <h3><%= link_to 'Question Closure', close_market_path(@market), :class => "one" %></h3>
-          <% elsif @market.status == false %>
-            <h3>Market Expired</h3>
+        <% if signed_in? && current_user.admin? && @market.status? %>
+          <article class="grid_9 last-col">
+            <div class="hello_box">  <%=  @market.name  %></div>
+          </article>
+          <% if @market.status? %>
+            <article class="grid_3 last-col">
+              <h3><%= link_to 'Question Closure', close_market_path(@market), :class => "one" %></h3>
+            <% elsif @market.status == false %>
+              <h3>Market Expired</h3>
+            </article>
           <% end %>
-        </article>
+        <% elsif signed_in? %>
+          <article class="grid_12 last-col">
+            <div class="hello_box">  <%=  @market.name  %></div>
+          </article>
+        <% else %>
+          <article class="grid_12 last-col">
+            <h4 style="margin-bottom:30px; margin-top:0px;"><%= link_to "Sign Up", signup_path, :class => 'one' %> in order to make your predictions and leave your comments </h4>
+            <div class="hello_box">  <%=  @market.name  %></div>
+          </article>
+        <% end %>
       </div>
 
       <div class="wrapper">
@@ -79,10 +89,10 @@
               </article>
             <% else %>
               <article class="grid_6">
-                <article class="grid_2">
+                <article class="grid_3">
                   <p> Possible Answers </p>
                 </article>
-                <article class="grid_2" style="margin:0">
+                <article class="grid_3" style="margin:0">
                   <p> Current Probability </p>
                 </article>
 
@@ -122,6 +132,10 @@
                     <div id="points_available_after">Points available after: 200</div>
                     <div id="shares_buying">You will be buying 2 shares</div>
                   </div>
+                <% else %>
+                  <div style="margin-top:5px; color:red;">
+                    <span>Click on where you want to invest </span>
+                  </div>
                 <% end %>
               </article>
             <% end %>
@@ -140,10 +154,8 @@
             <div class="post">
               <div class="comments">
                 <h2>Discussion</h2>
-                 <% if signed_in?%>
-                    <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
-                  <% else %>
-                    <h4><%= link_to "Sign Up", signup_path, :class => 'one' %> in order to make your predictions and leave your comments </h4>
+                <% if signed_in?%>
+                  <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
                 <% end %>
                 <%= render :partial => @microposts %>
                 <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
