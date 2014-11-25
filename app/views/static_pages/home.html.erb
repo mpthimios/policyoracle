@@ -95,14 +95,14 @@
         <div class="wrapper">
           <div class="grid_12">
             <div class="grid_8 ">
-              <h2 style="color:red;"> News</h2>
+              <h2 style="color:red;"> Activities</h2>
               <% @utransactions.each do |utransaction| %>
                <% @max_value = utransaction.market.contracts.maximum('current_price') %>
                <% @contract = utransaction.market.contracts.order("current_price DESC").first %>
                 <div class="row">
                   <div class="grid_8">
-                    <h3><%= link_to utransaction.contract.market.name, market_path(utransaction.contract.market), :class => 'three' %> </h3>
-                    <h4><%= @contract.name %> currently leads with probability <%= @max_value.round(4)*100 %>%</h4>
+                    <h7><%= link_to utransaction.contract.market.name, market_path(utransaction.contract.market), :class => 'three' %> </h7><br>
+                    <h4 style=" display:inline;"><%= @contract.name %> </h4><p style="display:inline;"> currently leads with probability </p><h4 style=" display:inline;"><%= @max_value.round(4)*100 %>%</h4>
                     <div class="discussioncontainer gainlayout">
                       <div class="left hidegravatars" style="width:60px">
                         <%= link_to gravatar_for(utransaction.user), utransaction.user %>
