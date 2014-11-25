@@ -18,11 +18,15 @@
 			</div><!-- grid_3 -->
 			<div class="grid_3 last-col">
 			<h2>Navigate</h2>
-			<ul class="navigate">
-				<li><%= link_to "Contact", contact_path %></li>
+			<ul class="navigate" style="margin:0">
+				<li><%= link_to "Browse Forecasts", markets_path %></li>
 			    <li><%= link_to "How to Play?", howtoplay_path %></li>
-			    <li><%= link_to "FAQ", faq_path %></li>
-			    <li><%= link_to "Sign Up", signup_path %></li>
+			    <% if signed_in? %>
+			    	<li><%= link_to "My Portfolio", current_user %></li>
+			    <% else %>
+			    	<li><%= link_to "Sign Up", signup_path %></li>
+			    <% end %>
+			    <li><%= link_to "Contact", contact_path %></li>
 			</ul>
 			</div><!-- grid_3 last-col -->
 	</div><!-- wrapper -->
