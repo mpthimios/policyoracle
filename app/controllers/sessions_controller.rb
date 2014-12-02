@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
 
+  layout "static"
+
   def new
+
   end
 
   def create

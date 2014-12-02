@@ -1,4 +1,4 @@
-@import "bootstrap";
+//@import "bootstrap";
 
 /* mixins, variables, etc. */
 @import "reset.css.scss";
@@ -16,7 +16,7 @@ mark, rp, rt, ruby, summary, time {
 Global properties
 ========================================================
 */
-
+/*
 @font-face {
   font-family: 'ClarendonLTStdLight';
   src: url('fonts/clarendonltstd-light-webfont.eot');
@@ -38,6 +38,7 @@ Global properties
   font-weight: normal;
   font-style: normal;
 }
+*/
 html {
   width: 100%
 }
@@ -217,17 +218,19 @@ input{
 input[type="text"] {
   border-radius: 4px;
   background: #eee;
+  border: 1px solid #cccccc;
   font-size: 18px;
   height: 40px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  outline: none;
 }
+
 
 input[type="quantity"] {
   border-radius: 4px;
   background: #eee;
+  border: 1px solid #cccccc;
   padding: 0px 3px;
   font-size: 14px;
   line-height: 25px;
@@ -243,6 +246,7 @@ input[type="quantity"] {
 input[type="password"] {
   border-radius: 4px;
   background: #eee;
+  border: 1px solid #cccccc;
   padding: 0px 5px;
   font-size: 14px;
   height: 40px;
@@ -257,7 +261,7 @@ input[type="password"] {
   background-color: #12212F; 
   border-color: #12212F; 
   border-radius: 5px;
-  width: 300px;
+  width: 100%;
 } 
  
 .btn-sample:hover, 
@@ -305,7 +309,7 @@ fieldset[disabled] .btn-sample.active {
   background-color: #E35845; 
   border-color: #E35845; 
   border-radius: 5px;
-  width:1300px;
+//  width:1300px;
   height:50px;
 } 
 
@@ -1237,73 +1241,7 @@ Hire us
 .required {
   color: #e35845;
 }
-.hireform {
-}
-.hireform li {
-  float: left;
-  position: relative;
-  width: 50%;
-  margin-bottom: 24px;
-}
-.hireform li label {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 14px;
-  font-weight: 400;
-}
-.hireform li input[type="text"] {
-  border: none;
-  background: #ffffff;
-  width: 224px;
-  height: 49px;
-  font-size: 14px;
-  line-height: 49px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  vertical-align: middle;
-  outline: none;
-  color: #6a6a6a;
-}
 
-.hireform li input[type="password"] {
-  border: none;
-  background: #d6d9dc;
-  width: 330px;
-  height: 49px;
-  padding: 0px 5px 0px 115px;
-  font-size: 14px;
-  line-height: 49px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  outline: none;
-  color: #6a6a6a;
-}
-
-.hireform li input[type="button"] {
-  border: none;
-  background: #12212f;
-  color: #fff;
-  width: 310px;
-  height: 41px;
-  padding: 0 10px;
-  font-size: 14px;
-  line-height: 41px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  outline: none;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-.hireform li input[type="button"]:hover, .hireform li input[type="button"]:focus {
-  background: #e35845;
-}
 .big {
   border: none;
   background: #eee;
@@ -2027,16 +1965,7 @@ nav ul {
 nav select {
   display: none;
 }
-.hireform li {
-  display: block;
-  width: 100%;
-}
-.hireform li input[type="text"] {
-  width: 80%;
-}
-.hireform li input[type="button"] {
-  width: 95%;
-}
+
 }
  @media only screen and (max-width: 767px) {
 body {
@@ -2617,7 +2546,7 @@ div.advanced_interface {
   display: block;
 }
 .timestamp {
-  color: $grayLight;
+  color: #999999;
   font-size: 11px;
 }
 

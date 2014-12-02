@@ -47,7 +47,14 @@ class MarketsController < ApplicationController
     new_market_params[:arbitration_date] = Date.strptime(market_params[:arbitration_date],
                                                    '%m/%d/%Y %k:%M %p')
 
+    if new_market_params[:market_type] == "Yes/No"
+      new_market_params[:contracts_attributes] = []
+      new_market_params[:contracts_attributes] << {:name => "YES"}
+      new_market_params[:contracts_attributes] << {:name => "NO"}
+    end
+
     logger.debug new_market_params
+    new_market_params.permit!
     @market = Market.new(new_market_params)
 
     respond_to do |format|
@@ -103,6 +110,7 @@ class MarketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def market_params
-      params.require(:market).permit(:name, :category, :market_type, :description, :published_date, :arbitration_date, :status, contracts_attributes: [:name])
+      params.require(:market).permit(:name, :category, :market_type, :description, :published_date,
+                                     :arbitration_date, :status, :tags, contracts_attributes: [:name])
     end
 end

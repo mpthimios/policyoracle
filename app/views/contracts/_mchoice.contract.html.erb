@@ -2,7 +2,7 @@
     <div class="grid_7 contract">
     	<article class="grid_3" style="margin:0; padding:5px 0 10px 0" >
             <% if signed_in? && @market.status? %>
-                <%= link_to contract.name, new_transaction_path(:utransaction => {:contract_id => contract.id, :contract_current_value => contract.current_price}), {:remote => true,  'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "two", :style => "font-size: 14pt; margine-bottom:20px"} %>
+                <%= link_to contract.name, new_transaction_path(:utransaction => {:contract_id => contract.id, :contract_current_value => contract.current_price}), { 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "two", :style => "font-size: 14pt; margine-bottom:20px"} %>
             <% else %>
                 <h7><%= contract.name %></h7>
             <% end %>
@@ -13,4 +13,9 @@
     </div>
 <% end %>
 
-<div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="left:40%; width:66%; bottom:27%; border-radius:10px;"></div>
+<div id="modal-window" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>

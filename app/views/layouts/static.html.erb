@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link data-turbolinks-track="false" href="/assets/style.css?body=1" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+
+    <%= auto_discovery_link_tag(:rss, "http://policyoracle.com") %>
+  </head>
+  <body>
+    <div class="block1 p_bottom_zero">
+      <div class="container_12"> 
+        <%= render 'layouts/header' %>
+      </div>
+    </div>
+      <%= yield %>
+    <div class="block3"> 
+      <div class="container_12">
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
+    <% if signed_in? && current_user.admin? %>
+      <%= debug(params) if Rails.env.development? %>
+    <% end %>
+  </body>
+</html>     

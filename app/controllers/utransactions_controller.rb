@@ -5,7 +5,7 @@ class UtransactionsController < ApplicationController
     @contract = Contract.find(params['utransaction']['contract_id'])
     @market = @contract.market
     respond_to do |format|
-      format.html
+      format.html {render "new", :layout => false }
       format.js
     end
   end

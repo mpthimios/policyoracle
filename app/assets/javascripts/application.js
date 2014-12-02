@@ -11,31 +11,11 @@
 // about supported directives.
 //
 //= require turbolinks
-//= require bootstrap
-//= require bootstrap-modal
-//= require jquery
 //= require jquery_ujs
 //= require_tree
+
 jQuery(document).ready(function(){
     jQuery('ul.sf-menu').superfish();
-    $('#publish_date').datetimepicker();
-    $('#end_date').datetimepicker();
-    $('.pagination').hide();
-    $('#load_more_questions').show().click(function() {
-        var $this, loading_posts, more_posts_url;
-        if (!loading_posts) {
-            loading_posts = true;
-            more_posts_url = $('.pagination a.next_page').attr('href');
-            $this = $(this);
-            $this.html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />').addClass('disabled');
-            $.getScript(more_posts_url, function() {
-                if ($this) {
-                    $this.text('More posts').removeClass('disabled');
-                }
-                return loading_posts = false;
-            });
-        }
-    });
 });
 
 

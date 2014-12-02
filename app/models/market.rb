@@ -1,4 +1,6 @@
 class Market < ActiveRecord::Base
+
+  include TenantScoped
 	has_many :contracts, :dependent => :destroy, :inverse_of => :market
   has_many :microposts
   has_many :utransactions
@@ -9,11 +11,14 @@ class Market < ActiveRecord::Base
 	# acts_as_list
 
 	CATEGORY_TYPES = ['Economics', 'Energy', 'Environment']
+  MARKET_TYPES = ['Yes/No', 'Multiple Choices']
 
 	validates_presence_of :name, :description, :published_date, :arbitration_date, :category
 	validates_length_of :name, :maximum => 255
 	validates_uniqueness_of :name
 	validates_inclusion_of :category, :in => CATEGORY_TYPES, :message => "must be one of: #{CATEGORY_TYPES.join(',')}"
+  validates_inclusion_of :market_type, :in => MARKET_TYPES, :message => "must be one of: #{MARKET_TYPES.join(',
+')}"
 
   scope :sorted, lambda { order("markets.id ASC")}
   scope :newest_first, lambda { order("markets.published_date DESC")}
@@ -170,6 +175,10 @@ class Market < ActiveRecord::Base
 
   def get_categories
     CATEGORY_TYPES
+  end
+
+  def get_market_types
+    MARKET_TYPES
   end
 
 end

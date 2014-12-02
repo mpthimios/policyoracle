@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include SessionsHelper
+  before_filter	:set_tenant
+
+  def set_tenant
+    @tenant = Tenant.current = Tenant.where(:host => (request.subdomain.nil? ? "" : request.subdomain) ).first
+    logger.debug(@tenant)
+    # TODO tenant not found
+  end
 
   # allow_cors takes in arbitrarily many symbols representing actions that
   # CORS should be enabled for

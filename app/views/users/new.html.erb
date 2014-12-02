@@ -3,40 +3,51 @@
   <div class="container_12">
     <section class="content">
       <div class="wrapper">
-        <article class="grid_12 last-col">
+        <article class="container last-col">
           <div class="hello_box"> Sign up and become a member of Policy Oracle  </div>
+          <% flash.each do |key, value| %>
+              <div class="col-xs-4 alert alert-<%= key %>"><%= value %></div>
+          <% end %>
         </article>
 
-          <article class="grid_12">
-            <p> Get 200 points and start making predictions</p>
-            <%= form_for(@user) do |f| %>
-              <ul id="homehireus" class="project-filter">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12"><p> Get 200 points and start making predictions</p></div>
+            </div>
+
+            <%= form_for @user, :html => {:class => 'form-horizontal'} do |f| %>
 
                 <%= render 'shared/user_error_messages', object: f.object %> <br>
-                <li>
-                  <label style="width:100px">Name:<span class="required" tabindex="1">*</span></label>     
-                  <%= f.text_field :name %>
-                </li>
-                <li>
-                  <label style="width:100px">Email:<span class="required" tabindex="1">*</span></label>     
-                  <%= f.text_field :email %>
-                </li>
-                <li>
-                  <label style="width:100px">Password:<span class="required" tabindex="1">*</span></label>
-                  <%= f.password_field :password %>
-                </li>
-                <li>
-                  <label style="width:100px">Password <br>Confirmation:<span class="required" tabindex="1">*</span></label>
-                  <%= f.password_field :password_confirmation %> 
-                </li>
+
+                <div class="form-group">
+                  <div class="col-xs-2"><label>Name:<span class="required" tabindex="1">*</span></label></div>
+                  <div class="col-xs-4"><%= f.text_field :name %></div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-2"><label>Email:<span class="required" tabindex="1">*</span></label></div>
+                  <div class="col-xs-4"><%= f.text_field :email %></div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-2"><label>Password:<span class="required" tabindex="1">*</span></label></div>
+                  <div class="col-xs-4"><%= f.password_field :password %></div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-2"><label>Password <br>Confirmation:<span class="required"
+                                                                               tabindex="1">*</span></label></div>
+                  <div class="col-xs-4"><%= f.password_field :password_confirmation %></div>
+                </div>
 
                 <br>
-                <li style="margin-left:100px">
-                  <%= f.submit "Create my account", class: "btn-sample" %>
-                </li>
-              </ul>
+
+                <div class="row">
+                  <div class="col-sm-3 col-md-offset-2"><%= f.submit "Create my account", class: "btn-sample" %></div>
+                </div>
+
             <% end %>
-          </article>
+          </div>
       </div>
     </section>
   </div>

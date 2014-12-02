@@ -3,37 +3,39 @@
     <h2><%= @contract.market.name %></h2>
     <h2 style="font-style: italic; padding-left:30px"><%= @contract.name %></h2>
 </div>
-<div class="modal-body">
-	<div class="grid_5" style="margin: 0px">
-	    <%= form_for Utransaction.new, :html => {:class =>"form-inline", :style => "padding:0px 0px 20px 0px"} do |f| %>
-	        <%= render 'shared/error_messages', object: f.object %>
-	        <%= f.text_field :quantity, :id => "@contract_" + @contract.id.to_s, :value => 1, :style => "width:40px; margin-bottom: 10px;", :onkeyup=>"window.update_price(#{@contract.id}); return false;" %>   shares<br>
-	        <h4>Please comment on your choice (optional)</h4>
-	        <%= f.text_area :comment, :style =>"margin-bottom:20px" %> <br>
-	        <% if signed_in?%>
-	        	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample", :style =>"width:30%" %>
-	        <% end %>
-	        <%= f.hidden_field :user_id,                :value => current_user.id %>
-	        <%= f.hidden_field :contract_id, :value => params['utransaction']['contract_id']%>
-	        <%= f.hidden_field :contract_current_value, :value => params['utransaction']['contract.current_price'] %>
-	    <% end %>
-	</div>
-	<div class="grid_3" style="margin: 0px">
-		<% if signed_in? %>
-			<div id="trade_help" style="margin-top:5px; color:red; text-align:center;">
-            	<span>Specify how many points you want to invest and press the buy button!</span>
-          	</div>
-          	<div id="trade_details" style="margin-top:5px; color:green; display:none">
-            	<span>The details of your transaction:</span>
-          	</div>
-          	<div id="trade_info" style="display:none">
-            	<div id="points_needed">Points needed: 100</div>
-            	<div id="points_available_after">Points available after: 200</div>
-            	<div id="shares_buying">You will be buying 2 shares</div>
-          	</div>
-		<% end %>
-	</div>
+<div class="modal-body row">
+    <div class="col-md-6">
+
+        <%= form_for Utransaction.new, :html => {:class =>"form-inline", :style => "padding:0px 0px 20px 0px"} do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <%= f.text_field :quantity, :id => "@contract_" + @contract.id.to_s, :value => 1, :style => "width:40px; margin-bottom: 10px;", :onkeyup=>"window.update_price(#{@contract.id}); return false;" %>   shares<br>
+            <h4>Please comment on your choice (optional)</h4>
+            <%= f.text_area :comment, :style =>"margin-bottom:20px" %> <br>
+            <% if signed_in?%>
+                <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample", :style =>"width:30%" %>
+            <% end %>
+            <%= f.hidden_field :user_id,                :value => current_user.id %>
+            <%= f.hidden_field :contract_id, :value => params['utransaction']['contract_id']%>
+            <%= f.hidden_field :contract_current_value, :value => params['utransaction']['contract.current_price'] %>
+        <% end %>
+
+    </div>
+    <div class="col-md-6">
+        <% if signed_in? %>
+            <div id="trade_help" style="margin-top:5px; color:red; text-align:center;">
+                <span>Specify how many points you want to invest and press the buy button!</span>
+            </div>
+            <div id="trade_details" style="margin-top:5px; color:green; display:none">
+                <span>The details of your transaction:</span>
+            </div>
+            <div id="trade_info" style="display:none">
+                <div id="points_needed">Points needed: 100</div>
+                <div id="points_available_after">Points available after: 200</div>
+                <div id="shares_buying">You will be buying 2 shares</div>
+            </div>
+        <% end %>
+    </div>
 </div>
-<div class="modal-footer" style="margin: 0px;">
+<div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 </div>

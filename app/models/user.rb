@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  include TenantScoped
+
 	has_many :holdings 
 	has_many :utransactions 
   has_many :bhistories 

@@ -30,64 +30,9 @@
       <div class="wrapper">
         <article class="grid_12">
           <article class="grid_9">
-            <% if @market.contracts.count == 2 %>
-              <article class="grid_6">
-                <article class="grid_3" style="margin:0">
-                  <% @contracts.each do |contract| %>   
-                    <% if contract.name === "YES" %>
-                      <ul style="text-align: center">
-                        <li><%= image_tag "yes.png" %> </li>
-                        <li style="color:#ebdf1b"><%= "#{contract.name}" %> </li>
-                        <li style="margin-top:20px">Probability: 
-                          <p3 style="font-size: 16px" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(2)*100}" %>%</p3></li>
-                      </ul>
-                      <div class="trade_interface">
-                        <% if @market.status? %>
-                          <table class="trade_interface">
-                            <tr>
-                              <% if signed_in?%>
-                                <td align="left"><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
-                              <% end %>
-                            </tr>
-                          </table>
-                          <% if signed_in? && current_user.admin? %>
-                            <p style="text-align: center"><%= link_to 'Edit', edit_contract_path(contract) %> |
-                            <%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-                          <% end %>
-                        <% end %>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </article>
-                <article class="grid_3" style="margin:0">
-                  <% @contracts.each do |contract| %>   
-                    <% if contract.name === "NO" %>
-                      <ul style="text-align: center">
-                        <li><%= image_tag "no.png" %> </li>
-                        <li style="color:#343c3a"><%= "#{contract.name}" %> </li>
-                        <li style="margin-top:20px">Probability: 
-                          <p3 style="font-size: 16px" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(2)*100}" %>%</p3></li>
-                      </ul>
-                      <div class="trade_interface">
-                        <% if @market.status? %>
-                          <table>
-                            <tr>
-                              <% if signed_in?%>
-                                <td align="left"><%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %></td>
-                              <% end %>
-                            </tr>
-                          </table>
-                          <% if signed_in? && current_user.admin? %>
-                            <p style="text-align: center"><%= link_to 'Edit', edit_contract_path(contract) %> |
-                            <%= link_to 'Delete', contract, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-                          <% end %>
-                        <% end %>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </article>
-              </article>
-            <% else %>
+            <% if @market.market_type == "Yes/No" %>
+                <%= render "contracts/yesno.contract" %>
+            <% elsif @market.market_type == "Multiple Choices" %>
               <article class="grid_6">
                 <article class="grid_3">
                   <p> Possible Answers </p>
@@ -119,7 +64,7 @@
                       </tbody>
                   </table>
                 </div>
-                <% if @market.contracts.count == 2 %>
+                <% if @market.market_type == "Yes/No" %>
                   <div id="trade_help" style="margin-top:5px; color:red;">
                     <span>Specify where you want to invest and press the buy button!</span>
                   </div>
