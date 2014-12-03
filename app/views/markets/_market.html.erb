@@ -1,10 +1,10 @@
 <div class="borderbottom">
 	<% if market.status == true%>
-    	<h3><%= link_to market.name, market, :class => "three" %></h3>
+    	<h3 style="text-transform: none;"><%= link_to market.name, market, :class => "three" %></h3>
     <% else %>
-    	<h3><%= link_to market.name, market, :class => "three" %></h3><h6> Expired</h6>
+    	<h3 style="text-transform: none;"><%= link_to market.name, market, :class => "three" %></h3><h6> Expired</h6>
     <% end %>
-    <a class="small secondary message_button" id="contracts_container_link<%=market.id%>" href="#" id="message_button_" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">show answers</a>
+    <a class="small secondary message_button" style="background-color" id="contracts_container_link<%=market.id%>" href="#" id="message_button_" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">show answers</a>
     <div id="contracts_container<%=market.id%>" class="hidden">
         <%= render market.contracts %>
     </div>

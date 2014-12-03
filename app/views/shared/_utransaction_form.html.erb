@@ -1,6 +1,6 @@
 <%= form_for Utransaction.new, :html => {:class =>"form-inline"} do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-	<ul style="text-align: center; margin-left:60px">
+	<ul style="text-align: center; margin-left:30px">
     	<li><%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :value => 1, :class => "input-mini", :style => "width:40px; text-align:center", :onkeyup=>"window.update_price(#{contract.id}); return false;"%> shares </li>
 
     	<li style="margin-top:10px; margin-left:20px">

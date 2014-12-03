@@ -5,44 +5,44 @@
 
       <div class="wrapper">
         <% if signed_in? && current_user.admin? && @market.status? %>
-          <article class="grid_9 last-col">
+          <div class="grid_9 last-col">
             <div class="hello_box">  <%=  @market.name  %></div>
-          </article>
+          </div>
           <% if @market.status? %>
-            <article class="grid_3 last-col">
+            <div class="grid_3 last-col">
               <h3><%= link_to 'Question Closure', close_market_path(@market), :class => "one" %></h3>
             <% elsif @market.status == false %>
               <h3>Market Expired</h3>
-            </article>
+            </div>
           <% end %>
         <% elsif signed_in? %>
-          <article class="grid_12 last-col">
+          <div class="grid_12 last-col">
             <div class="hello_box">  <%=  @market.name  %></div>
-          </article>
+          </div>
         <% else %>
-          <article class="grid_12 last-col">
+          <div class="grid_12 last-col">
             <h4 style="margin-bottom:30px; margin-top:0px;"><%= link_to "Sign Up", signup_path, :class => 'one' %> in order to make your predictions and leave your comments </h4>
             <div class="hello_box">  <%=  @market.name  %></div>
-          </article>
+          </div>
         <% end %>
       </div>
 
       <div class="wrapper">
-        <article class="grid_12">
-          <article class="grid_9">
+        <div class="grid_12">
+          <div class="grid_9">
             <% if @market.market_type == "Yes/No" %>
                 <%= render "contracts/yesno.contract" %>
             <% elsif @market.market_type == "Multiple Choices" %>
-              <article class="grid_6">
-                <article class="grid_3">
+              <div class="grid_6">
+                <div class="grid_3">
                   <p> Possible Answers </p>
-                </article>
-                <article class="grid_3" style="margin:0">
+                </div>
+                <div class="grid_3" style="margin:0">
                   <p> Current Probability </p>
-                </article>
+                </div>
 
                 <%= render "contracts/mchoice.contract" %>
-              </article>
+              </div>
             <% end %>
             <% if signed_in? && @market.status?%>
               <article class="grid_3" style="margin:0">
@@ -84,18 +84,18 @@
                 <% end %>
               </article>
             <% end %>
-          </article>
+          </div>
 
-          <article class="grid_3" style="margin:0">
+          <div class="grid_3" style="margin:0">
             <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
             <p><strong>Category:</strong><br><%= @market.category %></p>
             <p><strong>Tags:</strong><br><%= @market.market_type %></p>
             <p><strong>Predictions Up to Now:</strong><br><%= @utransactions.count %></p>
-          </article>
-        </article>
+          </div>
+        </div>
 
-        <article class="grid_12">
-          <article class="grid_9">
+        <div class="grid_12">
+          <div class="grid_9">
             <div class="post">
               <div class="comments">
                 <h2>Discussion</h2>
@@ -106,9 +106,9 @@
                 <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
               </div>
             </div>
-          </article>
+          </div>
 
-          <article class="grid_3" style="margin:0">
+          <div class="grid_3" style="margin:0">
             <div class="post">
               <div class="comments">
                 <h3>Reasons of prediction:</h3>
@@ -121,10 +121,10 @@
                 </ul>
               </div>
             </div>
-          </article>
-        </article>
+          </div>
+        </div>
 
-        <article class="grid_12">
+        <div class="grid_12">
           <div class="post">
             <h2>Historical Trend</h2>
             <chart></chart>
@@ -150,7 +150,7 @@
               | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
           </ul>
-        </article>
+        </div>
       </div>
     </section>
   </div>

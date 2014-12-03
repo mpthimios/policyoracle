@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107094204) do
+ActiveRecord::Schema.define(version: 20141202203151) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20141107094204) do
   add_index "holdings", ["user_id", "contract_id"], name: "index_holdings_on_user_id_and_contract_id", using: :btree
 
   create_table "markets", force: true do |t|
-    t.string   "name"
+    t.text     "name"
     t.string   "category"
     t.text     "description"
     t.string   "market_type"
@@ -66,7 +66,11 @@ ActiveRecord::Schema.define(version: 20141107094204) do
     t.float    "b_value",          limit: 24, default: 10.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tenant_id"
+    t.string   "tags"
   end
+
+  add_index "markets", ["tenant_id"], name: "index_markets_on_tenant_id", using: :btree
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -78,6 +82,17 @@ ActiveRecord::Schema.define(version: 20141107094204) do
 
   add_index "microposts", ["market_id"], name: "index_microposts_on_market_id", using: :btree
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
+
+  create_table "tenants", force: true do |t|
+    t.string   "name"
+    t.string   "host"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "pitch_text"
+  end
+
+  add_index "tenants", ["host"], name: "index_tenants_on_host", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -97,11 +112,13 @@ ActiveRecord::Schema.define(version: 20141107094204) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer  "tenant_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
+  add_index "users", ["email", "tenant_id"], name: "index_users_on_email_and_tenant_id", using: :btree
+  add_index "users", ["name", "tenant_id"], name: "index_users_on_name_and_tenant_id", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["tenant_id"], name: "index_users_on_tenant_id", using: :btree
 
   create_table "utransactions", force: true do |t|
     t.integer  "quantity",                                                  default: 0

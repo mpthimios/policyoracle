@@ -1,7 +1,7 @@
 <ol id="positions">
   <% @holdings.each do |holding| %>
     <li class="posotion_group">
-      <h2><%= link_to holding.contract.market.name, holding.contract.market, :class => "three" %></h2>
+      <h2 style="text-transform: none;"><%= link_to holding.contract.market.name, holding.contract.market, :class => "three" %></h2>
       <table class="headertable">
         <thead>
           <tr>
@@ -24,7 +24,7 @@
               <% if holding.amount_spent - @cost >= 0 %>
                 + <%= (holding.amount_spent - @cost).floor(2) %>
               <% else %>
-                - <%= (holding.amount_spent - @cost).floor(2) %>
+                <%= (holding.amount_spent - @cost).floor(2) %>
               <% end %>
             </td>
             <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 

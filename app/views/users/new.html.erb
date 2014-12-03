@@ -3,51 +3,48 @@
   <div class="container_12">
     <section class="content">
       <div class="wrapper">
-        <article class="container last-col">
+        <div class="container last-col">
           <div class="hello_box"> Sign up and become a member of Policy Oracle  </div>
           <% flash.each do |key, value| %>
-              <div class="col-xs-4 alert alert-<%= key %>"><%= value %></div>
+            <div class="col-xs-12 alert alert-<%= key %>"><%= value %></div>
           <% end %>
-        </article>
+        </div>
 
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12"><p> Get 200 points and start making predictions</p></div>
-            </div>
-
-            <%= form_for @user, :html => {:class => 'form-horizontal'} do |f| %>
-
-                <%= render 'shared/user_error_messages', object: f.object %> <br>
-
-                <div class="form-group">
-                  <div class="col-xs-2"><label>Name:<span class="required" tabindex="1">*</span></label></div>
-                  <div class="col-xs-4"><%= f.text_field :name %></div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-xs-2"><label>Email:<span class="required" tabindex="1">*</span></label></div>
-                  <div class="col-xs-4"><%= f.text_field :email %></div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-xs-2"><label>Password:<span class="required" tabindex="1">*</span></label></div>
-                  <div class="col-xs-4"><%= f.password_field :password %></div>
-                </div>
-
-                <div class="form-group">
-                  <div class="col-xs-2"><label>Password <br>Confirmation:<span class="required"
-                                                                               tabindex="1">*</span></label></div>
-                  <div class="col-xs-4"><%= f.password_field :password_confirmation %></div>
-                </div>
-
-                <br>
-
-                <div class="row">
-                  <div class="col-sm-3 col-md-offset-2"><%= f.submit "Create my account", class: "btn-sample" %></div>
-                </div>
-
-            <% end %>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12"><p> Get 200 points and start making predictions</p></div>
           </div>
+
+          <%= form_for @user, :html => {:class => 'form-horizontal'} do |f| %>
+
+              <%= render 'shared/user_error_messages', object: f.object %> <br>
+
+              <div class="form-group">
+                <div class="col-xs-2"><label>Name:<span class="required" tabindex="1">*</span></label></div>
+                <div class="col-xs-4"><%= f.text_field :name %></div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2"><label>Email:<span class="required" tabindex="1">*</span></label></div>
+                <div class="col-xs-4"><%= f.text_field :email %></div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2"><label>Password:<span class="required" tabindex="1">*</span></label></div>
+                <div class="col-xs-4"><%= f.password_field :password %></div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2"><label>Password <br>Confirmation:<span class="required" tabindex="1">*</span></label></div>
+                <div class="col-xs-4"><%= f.password_field :password_confirmation %></div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-3 col-md-offset-2"><%= f.submit "Create my account", class: "btn-sample", :style => "width:200px" %></div>
+              </div>
+
+          <% end %>
+        </div>
       </div>
     </section>
   </div>

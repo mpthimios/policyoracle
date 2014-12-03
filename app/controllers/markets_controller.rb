@@ -56,7 +56,7 @@ class MarketsController < ApplicationController
     logger.debug new_market_params
     new_market_params.permit!
     @market = Market.new(new_market_params)
-
+    @market.save
     respond_to do |format|
       if @market.save
         format.html { redirect_to @market, notice: 'Market was successfully created.' }

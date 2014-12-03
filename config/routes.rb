@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   match '/signin',                to: 'sessions#new',                     via: 'get'
   match '/signin',                to: 'sessions#create',                  via: 'post'
   match '/signout',               to: 'sessions#destroy',                 via: 'delete'
+  match '/signout',               to: 'sessions#destroy',                 via: 'get'
   #match '/home',    to: 'static_pages#home',    via: 'get'
   match '/howtoplay',             to: 'static_pages#howtoplay',           via: 'get'
   match '/player_manual',         to: 'static_pages#player_manual',       via: 'get'

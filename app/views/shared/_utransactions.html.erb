@@ -15,7 +15,7 @@
       <tbody class="you">
         <% @utransactions.each do |utransaction| %>
           <tr>
-            <td><%= utransaction.contract.market.name if utransaction.contract %></td>
+            <td  style="text-transform: none;"><%= utransaction.contract.market.name if utransaction.contract %></td>
             <td class="prediction"><%= utransaction.contract.name if utransaction.contract %></td>
             <td class="details history"><%= utransaction.quantity %><% if utransaction.transaction_type == 'B'%> bought
                 <% else %> sold
