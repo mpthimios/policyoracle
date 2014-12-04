@@ -1,3 +1,9 @@
 <div class="borderbottom">
-    <h3><%= link_to contract.name, contract, :class => "two" %></h3>
+    <div class="grid_3"  >
+        <p style="margin-top:0; margin-bottom:0; font-size:16px; color:"><%= contract.name %></p>
+    </div>
+    <div class="grid_3" >
+        <p style="margin-top:0; margin-bottom:0; font-size:16px"><%= contract.current_price.round(4)*100%>%</p>
+    </div>
 </div>
+<br>
