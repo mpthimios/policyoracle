@@ -1,5 +1,9 @@
 class ChangeNameTypeOfMarkets < ActiveRecord::Migration
-  def change
-  	change_column :markets, :name, :text
-  end
+	def self.up
+		change_column :markets, :name, :text
+	end
+
+  	def self.down
+  		change_column :markets, :name, :string
+	end
 end
