@@ -1,4 +1,6 @@
 class Tenant < ActiveRecord::Base
+  has_many :categories
+
   class << self
     def current
       Thread.current[:current_tenant]

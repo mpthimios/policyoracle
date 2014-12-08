@@ -29,8 +29,8 @@
               <h3><%= link_to 'New Question', new_market_path, :class => "one" %></h3>
             <% end %>
             <%= link_to "All", markets_path, :class => "four"%><br>
-            <%  Market::CATEGORY_TYPES.each do |category| %> 
-              <%= link_to category, markets_path(:category => category), :class => "four"%><br>
+            <%  @tenant.categories.each do |category| %> 
+              <%= link_to category.name, markets_path(:category => category.name), :class => "four"%><br>
             <% end %>
 
           </div>

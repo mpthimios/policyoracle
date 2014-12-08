@@ -10,13 +10,13 @@ class Market < ActiveRecord::Base
 	# you need to add a position column to desired table:
 	# acts_as_list
 
-	CATEGORY_TYPES = ['Economics', 'Energy', 'Environment']
+
   MARKET_TYPES = ['Yes/No', 'Multiple Choices']
 
 	validates_presence_of :name, :description, :published_date, :arbitration_date, :category
 	validates_length_of :name, :maximum => 255
 	validates_uniqueness_of :name
-	validates_inclusion_of :category, :in => CATEGORY_TYPES, :message => "must be one of: #{CATEGORY_TYPES.join(',')}"
+	
   validates_inclusion_of :market_type, :in => MARKET_TYPES, :message => "must be one of: #{MARKET_TYPES.join(',
 ')}"
 
@@ -173,9 +173,6 @@ class Market < ActiveRecord::Base
     data
   end
 
-  def get_categories
-    CATEGORY_TYPES
-  end
 
   def get_market_types
     MARKET_TYPES

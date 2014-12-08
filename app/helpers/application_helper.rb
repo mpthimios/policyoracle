@@ -2,7 +2,7 @@ module ApplicationHelper
 
 	# Returns a title on a per-page basis
 	def full_title(page_title)
-	    base_title = "Policy Oracle"
+	    base_title = "PolicyOracle"
 	    if page_title.empty?
 	      base_title
 	    else

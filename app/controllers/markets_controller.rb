@@ -6,6 +6,7 @@ class MarketsController < ApplicationController
   # GET /markets
   # GET /markets.json
   def index
+    @tenant = Tenant.current
     if params[:category]
       @markets = Market.where(category: params[:category])
     else
@@ -32,6 +33,7 @@ class MarketsController < ApplicationController
   def new
     @market = Market.new
     contracts = @market.contracts.build
+    @tenant = Tenant.current
   end
 
   # GET /markets/1/edit
@@ -42,6 +44,7 @@ class MarketsController < ApplicationController
   # POST /markets.json
   def create
     new_market_params = market_params
+    new_market_params[:tenant_id] = Tenant.current
     new_market_params[:published_date] = Date.strptime(market_params[:published_date],
                                                   '%m/%d/%Y %k:%M %p')
     new_market_params[:arbitration_date] = Date.strptime(market_params[:arbitration_date],
@@ -111,6 +114,6 @@ class MarketsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def market_params
       params.require(:market).permit(:name, :category, :market_type, :description, :published_date,
-                                     :arbitration_date, :status, :tags, contracts_attributes: [:name])
+                                     :arbitration_date, :tenant_id, :status, :tags, contracts_attributes: [:name])
     end
 end

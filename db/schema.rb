@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202203151) do
+ActiveRecord::Schema.define(version: 20141208132449) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20141202203151) do
   end
 
   add_index "bhistories", ["user_id", "contract_id"], name: "index_bhistories_on_user_id_and_contract_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "tenant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["tenant_id"], name: "index_categories_on_tenant_id", using: :btree
 
   create_table "contracts", force: true do |t|
     t.string   "name"
