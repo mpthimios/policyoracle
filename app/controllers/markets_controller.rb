@@ -92,7 +92,7 @@ class MarketsController < ApplicationController
   def destroy
     @market.destroy
     respond_to do |format|
-      format.html { redirect_to markets_url, notice: 'Market was successfully destroyed.' }
+      format.html { redirect_to markets_path, notice: 'Market was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -120,7 +120,6 @@ class MarketsController < ApplicationController
     end
 
     def admin_user
-      flash[:error] = "unauthorized access"
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to root_path unless current_user.admin?
     end
 end
