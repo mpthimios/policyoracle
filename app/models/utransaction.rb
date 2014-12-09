@@ -1,5 +1,7 @@
 class Utransaction < ActiveRecord::Base
 
+  include TenantScoped
+
   before_save :update_market_holdings_and_money
 
   belongs_to :user
