@@ -13,7 +13,7 @@
   <div class="container">
     <div class="form-group">
       <label for="market_name">Your Question</label><br>
-      <%= f.text_field :name, :class => "form-control" %>
+      <%= f.text_field :name, :class => "form-control",  :style => "width:100%" %>
     </div>
     <div class="form-vertical">
       <div class="form-group">
@@ -22,16 +22,25 @@
         </div>
         <select class="form-control input-large" name="market[category]">
           <option value="" selected disabled>Please select</option>
-          <%@market.get_categories.each do |category|%>
-            <option><%= category%></option>
+          <% @tenant.categories.each do |category|%>
+            <option><%= category.name %></option>
           <%end%>
         </select>
       </div>
     </div><br>
-    <div class="form-group">
-      <label for="market_name">Tags</label><br>
-      <%= f.text_field :market_type, :class => "form-control" %>
-    </div>
+    <div class="form-vertical">
+      <div class="form-group">
+        <div class="col-xs-10" style="padding-left: 0px;">
+          <label for="market_name">Tags</label><br>
+        </div>
+        <select class="form-control input-large" name="market[market_type]">
+            <option value="" selected disabled>Please select</option>
+            <% @market.get_market_types.each do |market_type|%>
+              <option><%= market_type%></option>
+          <%end%>
+        </select>
+      </div>
+    </div><br>
     <div class="form-group">
       <label for="market_description">Description</label><br>
       <%= f.text_area :description, :class => "form-control" %>

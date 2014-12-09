@@ -38,6 +38,7 @@ class MarketsController < ApplicationController
 
   # GET /markets/1/edit
   def edit
+    @tenant = Tenant.current
   end
 
   # POST /markets
