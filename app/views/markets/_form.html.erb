@@ -24,7 +24,7 @@
             </div>
             <select class="form-control input-large" name="market[market_type]">
               <option value="" selected disabled>Please select</option>
-              <%@market.get_market_types.each do |market_type|%>
+              <% @market.get_market_types.each do |market_type| %>
                   <option><%= market_type%></option>
               <%end%>
             </select>
@@ -36,7 +36,7 @@
             </div>
             <select class="form-control input-large" name="market[category]">
               <option value="" selected disabled>Please select</option>
-              <% @tenant.categories.each do |category|%>
+              <% @tenant.categories.each do |category| %>
                   <option><%= category.name %></option>
               <%end%>
             </select>
