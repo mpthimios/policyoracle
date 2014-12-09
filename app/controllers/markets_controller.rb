@@ -2,6 +2,7 @@ class MarketsController < ApplicationController
 
   before_action :set_market, only: [:show, :edit, :update, :destroy]
   allow_cors :graph_data
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /markets
   # GET /markets.json
@@ -116,5 +117,10 @@ class MarketsController < ApplicationController
     def market_params
       params.require(:market).permit(:name, :category, :market_type, :description, :published_date,
                                      :arbitration_date, :tenant_id, :status, :tags, contracts_attributes: [:name])
+    end
+
+    def admin_user
+      flash[:error] = "unauthorized access"
+      redirect_to(root_path) unless current_user.admin?
     end
 end
