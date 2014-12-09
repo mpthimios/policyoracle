@@ -1,5 +1,5 @@
 class MarketsController < ApplicationController
-
+  before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_market, only: [:show, :edit, :update, :destroy]
   allow_cors :graph_data
   before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
@@ -117,6 +117,13 @@ class MarketsController < ApplicationController
     def market_params
       params.require(:market).permit(:name, :category, :market_type, :description, :published_date,
                                      :arbitration_date, :tenant_id, :status, :tags, contracts_attributes: [:name])
+    end
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_path, notice: "Please sign in."
+      end
     end
 
     def admin_user
