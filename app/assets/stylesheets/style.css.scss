@@ -2633,13 +2633,32 @@ aside {
 }
 
 #latest_questions li{
+  font: 200 20px/1.5;
   padding: 5px 0px 5px 5px;
+  border-bottom: 1px solid #ccc;
+}
 
+#latest_questions li:last-child{
+  border: none;
 }
-#latest_questions li:before {
-    content: "• ";
-    color: #12212f; 
+
+#latest_questions li a {
+  text-decoration: none;
+  color: #428bca;
+ 
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
 }
+
+#latest_questions li a:hover {
+  font-size: 22px;
+  color: rgb(98, 103, 109);
+  background: #f6f6f6;
+}
+
 
 .checkbox {
   margin-top: -10px;
