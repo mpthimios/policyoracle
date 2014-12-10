@@ -32,7 +32,6 @@ class UtransactionsController < ApplicationController
     end
     logger.debug params['utransaction'].inspect
     utransaction = Utransaction.new(utransaction_params)
-    byebug
     if utransaction.save
       redirect_to current_user
     else
