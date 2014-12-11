@@ -2674,6 +2674,33 @@ aside {
   margin-left: 0;
 }
 
+.alert {
+   font-weight: bold;
+   -moz-border-radius: 4px 4px 4px 4px;
+   -webkit-border-radius: 4px 4px 4px 4px;
+   border-radius: 4px 4px 4px 4px;
+   margin-bottom: 18px;
+   padding: 12px 25px 12px 24px;
+}
+
+.alert-notice {
+   background-color: #ffecd8;
+   border-color: #ffecd8;
+   width: 100%;
+   color: rgb(98, 103, 109);
+   padding-top: 20px;
+}
+
+.alert-error {
+   background-color: #e8dedb;
+   border-color: #e8dedb;
+   width: 100%;
+   color: rgb(98, 103, 109);
+   padding-top: 20px;
+}
+
+
+
   
 
 

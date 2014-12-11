@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false, scope: :tenant_id }
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :tenant_id }
+  validates_numericality_of :total_amount, :greater_than_or_equal_to => 0, :message => " cant be negative" 
+  validates_numericality_of :investment_amount, :greater_than_or_equal_to => 0, :message => "cant be negative"
+  validates_numericality_of :cash_amount, :greater_than_or_equal_to => 0, :message => " cant be negative"
 
   has_secure_password
   #Automatically create the virtual attribute 'password_confirmation'
