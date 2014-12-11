@@ -3,7 +3,7 @@
 <p>Hi <%= @user.name %>,</p>
 
 <p>
-Welcome to the <h2><%= Tenant.current.name %> </h2> PolicyOracle! Click on the link below to activate your account:
+Welcome to the <p style="text-transform: uppercase;"><%= Tenant.current.name %> </p> PolicyOracle! Click on the link below to activate your account:
 </p>
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
