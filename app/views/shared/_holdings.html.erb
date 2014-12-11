@@ -14,7 +14,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="answered"><%= holding.contract.name if holding.contract %><br>
+            <td class="answered" style="text-transform: none;">
+              <%= holding.contract.name if holding.contract %>
+              <br>
               <% if holding.contract.market.status == true %>
                 <%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %>
               <% end %>

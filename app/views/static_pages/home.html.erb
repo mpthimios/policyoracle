@@ -14,6 +14,7 @@
             <% @markets.each do |market|%>
               <li>
                 <%= link_to market.name, market_path(market) if !market.nil? && market.name%>
+
               </li>
             <%end%>
           </ul>
