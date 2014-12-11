@@ -2692,14 +2692,23 @@ aside {
 }
 
 .alert-error {
-   background-color: #e8dedb;
-   border-color: #e8dedb;
-   width: 100%;
-   color: rgb(98, 103, 109);
-   padding-top: 20px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  width: 100%;
+  padding-top: 20px;
 }
 
 
+#alert alert-danger{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  ul {
+    color: #a94442;
+    margin: 0 0 30px 0;
+  }
+}
 
   
 
