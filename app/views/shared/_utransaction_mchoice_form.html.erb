@@ -3,7 +3,7 @@
   	<%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :value => 1, :class => "col-xs-3", :style => "margin-bottom:10px; margin-left:70px", :onkeyup=>"window.update_price(#{contract.id}); return false;" %>   shares
   	<%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample" %>
     <%= f.hidden_field :user_id, 				:value => current_user.id %>
-    <%= f.hidden_field :contract_id, 			:value => contract.id %>
+    <%= f.hidden_field :contract_id, 			:value => contract_id %>
     <%= f.hidden_field :contract_current_value, :value => contract.current_price %>
 <% end %>    
 
