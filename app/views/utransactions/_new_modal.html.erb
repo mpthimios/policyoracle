@@ -15,7 +15,7 @@
                 <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample", :style =>"width:30%" %>
             <% end %>
             <%= f.hidden_field :user_id,                :value => current_user.id %>
-            <%= f.hidden_field :contract_id, :value => params['utransaction']['contract_id']%>
+            <%= f.hidden_field :contract_id,            :value => params['utransaction']['contract_id']%>
             <%= f.hidden_field :contract_current_value, :value => params['utransaction']['contract_current_value'] %>
         <% end %>
 
