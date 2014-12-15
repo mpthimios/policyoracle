@@ -3,31 +3,79 @@
   <div class="container_12">
     <section class="content">
       <div class="wrapper">
-        <article class="grid_12">
+        <div class="container">
           <div class="hello_box"> Update your profile  </div>
           <div align="left">
             <%= gravatar_for @user %>
             <a href="http://gravatar.com/emails">change</a>
-          </div>  <br>        
-          <%= form_for(@user) do |f| %>
-            <ul id="homehireus" class="hireform contactform">
+          </div>  <br>   
+            <%= form_for @user, :html => {:class => 'form-horizontal'} do |f| %>
               <%= render 'shared/error_messages', object: f.object %><br>
-              <li>
-                <label>Password:<span tabindex="3"></span></label>
-                <%= f.password_field :password %>
-              </li>
-              <li>
-                <label>Name:<span tabindex="1"></span></label>
-                <%= f.text_field :name, :style =>"padding-left:70px; padding-bottom:12px;"%>
-              </li>
-              <li>
-                <label>Password <br> confirmation:<span tabindex="4"></span></label>
-                <%= f.password_field :password_confirmation %><br>
-              </li>
-              <%= f.submit "Save changes", class: "btn-sample" %>
-            </ul>
-          <% end %>
-        </article>
+              <div class="form-group">
+                <div class="col-xs-2"><label>Username:<span class="required" tabindex="1">*</span></label></div>
+                <div class="col-xs-4"><%= f.text_field :name, :style =>"padding-bottom:12px;"%></div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-2"><label>Password:<span class="required" tabindex="1">*</span></label></div>
+                <div class="col-xs-4"><%= f.password_field :password %></div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2"><label>Password <br>Confirmation:<span class="required" tabindex="1">*</span></label></div>
+                <div class="col-xs-4"><%= f.password_field :password_confirmation %></div>
+              </div>
+              <div class="horizontalRule" runat="server"></div>
+              <div class="col-sm-12"><p>The following demographic information are anonymous and optional. We use them for research purposes </p></div>
+
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <label for="user_gender">Gender</label>
+                </div>
+                <div class="col-xs-4">
+                  <%= f.select(:gender, User::GENDER_TYPES, prompt: "Please select") %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <label for="user_gender">Year of birth</label>
+                </div>
+                <div class="col-xs-4">
+                  <%= f.select(:birth_year, 1920..2000, prompt: "Please select", :style=>"width:130%") %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <label for="user_gender">Country</label>
+                </div>
+                <div class="col-xs-4"> 
+                  <%= f.country_select :country, priority_countries: ["DE", "ES","GR", "IT"], prompt: "Please select", :style=>"width:80%" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2" >
+                  <label for="user_education">Education</label>
+                </div>
+                <div class="col-xs-4">
+                  <%= f.select(:education, User::EDUCATION, prompt: "Please select") %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <label for="user_market_knowledge">Knowledge <br>of Markets</label>
+                </div> 
+                <div class="col-xs-4">
+                  <%= f.select(:market_knowledge, User::MARKET_KNOWLEDGE, prompt: "Please select") %>
+                </div>
+              </div>
+
+              <%= f.submit "Save changes", class: "btn-sample", style: "width: 15%" %>
+
+            <% end %>
+        </div>
       </div>
     </section>
   </div>

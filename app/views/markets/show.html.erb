@@ -38,16 +38,17 @@
                   <p> Possible Answers </p>
                 </div>
                 <div class="grid_3" style="margin:0">
-                  <p> Current Probability </p>
+                  <p> Current Price </p>
                 </div>
 
                 <%= render "contracts/mchoice.contract" %>
               </div>
             <% end %>
             <% if signed_in? && @market.status?%>
-              <article class="grid_3" style="margin:0">
+              <div class="grid_3" style="margin:0; background-color: #d6d9d2">
                 <div id="list">
-                  <table class="prerformancecontent">
+                  <h1 style="margin-top:0; font-size:21px;"> Your portfolio</h1>
+                  <table class="prerformancecontent" style="margin:0; ">
                       <tbody>
                         <tr>
                             <td align="left">Invested points:</td>
@@ -82,12 +83,16 @@
                     <span>Click on where you want to invest </span>
                   </div>
                 <% end %>
-              </article>
+              </div>
             <% end %>
           </div>
 
           <div class="grid_3" style="margin:0">
-            <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
+            <% if @market.status? %>
+              <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
+            <% else %>
+             <p style="color:#ec2624"><strong>Question Expired:</strong><br><%= @market.arbitration_date %></p>
+            <% end %>
             <p><strong>Category:</strong><br><%= @market.category %></p>
             <p><strong>Tags:</strong><br><%= @market.tags %></p>
             <p><strong>Predictions Up to Now:</strong><br><%= @utransactions.count %></p>
@@ -95,31 +100,14 @@
         </div>
 
         <div class="grid_12">
-          <div class="grid_9">
-            <div class="post">
-              <div class="comments">
-                <h2>Discussion</h2>
-                <% if signed_in?%>
-                  <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
-                <% end %>
-                <%= render :partial => @microposts %>
-                <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid_3" style="margin:0">
-            <div class="post">
-              <div class="comments">
-                <h3>Reasons of prediction:</h3>
-                <ul style="margin:0px">
-                  <% @utransactions.each do |utransaction| %>
-                    <% unless utransaction.comment.blank? %>
-                      <li>"<%= "#{utransaction.comment}" %>"</li>
-                    <% end %>
-                  <% end %>
-                </ul>
-              </div>
+          <div class="post">
+            <div class="comments">
+              <h2>Discussion</h2>
+              <% if signed_in?%>
+                <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
+              <% end %>
+              <%= render :partial => @microposts %>
+              <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
             </div>
           </div>
         </div>

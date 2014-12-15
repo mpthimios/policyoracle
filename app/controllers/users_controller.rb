@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     @holdings = @user.holdings.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
     @utransactions = @user.utransactions.order("created_at DESC").paginate(page: params[:page], :per_page => 20)
     @bhistories = @user.bhistories.order("created_at DESC").paginate(page: params[:page], :per_page => 20)
+    @visible_transactions =0
+    if current_user.id == @user.id || current_user.admin?
+      @visible_transactions = 1
+    end
   end
 
   # GET /users/new
@@ -72,8 +76,8 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :password,:password_confirmation, :country, :gender,
+        :birth_year, :education, :market_knowledge)
     end
 
     # Before filters

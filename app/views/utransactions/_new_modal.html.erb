@@ -8,9 +8,7 @@
 
         <%= form_for Utransaction.new, :html => {:class =>"form-inline", :style => "padding:0px 0px 20px 0px"} do |f| %>
             <%= render 'shared/error_messages', object: f.object %>
-            <%= f.text_field :quantity, :id => "contract_" + @contract.id.to_s, :value => 1, :style => "width:40px; margin-bottom: 10px;", :onkeyup=>"window.update_price(#{@contract.id}); return false;" %>   shares<br>
-            <h4>Please comment the reason of your prediction (optional)</h4>
-            <%= f.text_area :comment, :style =>"margin-bottom:20px" %> <br>
+            <%= f.text_field :quantity, :id => "contract_" + @contract.id.to_s, :value => 0, :style => "width:40px; margin-bottom: 10px;", :onkeyup=>"window.update_price(#{@contract.id}); return false;" %>   shares<br>
             <% if signed_in?%>
                 <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample", :style =>"width:30%" %>
             <% end %>

@@ -1,63 +1,67 @@
 <% provide(:title, @user.name) %>
 <div class="block2">
-  	<div class="container_12">
-    	<section class="">
-      		<div class="wrapper">
-      			<div class="user_performance">
-      				<ul>
-      					<li class="first">
-                  <%= gravatar_for @user %>
-                  <h1><%= @user.name %></h1>
-                </li>
-                <li>
-      						<div class="subheaders1">Available Points</div>
-      						<h1><%= @user.cash_amount.round(2) %></h1>
-					        <table class="prerformancecontent">
-					          <tbody>
-					            <tr>
-					              <td align="left">Invested points:</td>
-					              <td align="right" valign="middle"><%= @user.investment_amount.round(2) %></td>
-				              </tr>
-				              <tr>
-					              <td align="left">Available points:</td>
-					              <td align="right" valign="middle"><%= @user.cash_amount.round(2) %></td>
-				              </tr>						           
-				              <tr>
-					              <td align="left">Total points:</td>
-					              <td align="right" valign="middle" class="summationline"><%= @user.total_amount.round(2) %></td>
-				              </tr>
-					          </tbody>
-					        </table>
-					      </li>
-                <!--
-  					    <li>
-  					    	<div class="subheaders1">Rank</div>
-        					<h1><%= @user.rank %> of <%= User.count %></h1>
-        				</li>
-              -->
-      				</ul>
-				    </div>
-      		</div>
-    	</section>
-  	</div>
+	<div class="container_12">
+  	<section class="">
+  		<div class="wrapper">
+  			<div class="user_performance">
+  				<ul>
+  					<li class="first">
+              <%= gravatar_for @user %>
+              <h1><%= @user.name %></h1>
+            </li>
+            <li>
+  						<div class="subheaders1">Available Points</div>
+  						<h1><%= @user.cash_amount.round(2) %></h1>
+			        <table class="prerformancecontent">
+			          <tbody>
+			            <tr>
+			              <td align="left">Invested points:</td>
+			              <td align="right" valign="middle"><%= @user.investment_amount.round(2) %></td>
+		              </tr>
+		              <tr>
+			              <td align="left">Available points:</td>
+			              <td align="right" valign="middle"><%= @user.cash_amount.round(2) %></td>
+		              </tr>						           
+		              <tr>
+			              <td align="left">Total points:</td>
+			              <td align="right" valign="middle" class="summationline"><%= @user.total_amount.round(2) %></td>
+		              </tr>
+			          </tbody>
+			        </table>
+			      </li>
+            <!--
+				    <li>
+				    	<div class="subheaders1">Rank</div>
+    					<h1><%= @user.rank %> of <%= User.count %></h1>
+    				</li>
+          -->
+  				</ul>
+		    </div>
+  		</div>
+  	</section>
+	</div>
 </div>
-<div class="hireus_block">
-  <div class="container_12">
-    <section class="">
-      <div class="wrapper">
-        <div id="proftab">
-          <ul class="nav nav-tabs">
-            <li class="active"> <a href="my_orders" data-target="#my_orders" data-toggle="tab">My Orders</a></li>
-            <li><a href="#trade_history" data-target="" data-toggle="tab">Trade History</a></li>
-          </ul>
+<% if @visible_transactions == 1 %>
+  <div class="hireus_block">
+    <div class="container_12">
+      <section class="">
+        <div class="wrapper">
+          <div id="proftab">
+            <ul class="nav nav-tabs">
+              <li class="active"> <a href="my_orders" data-target="#my_orders" data-toggle="tab">My Orders</a></li>
+              <li><a href="#trade_history" data-target="" data-toggle="tab">Trade History</a></li>
+              <li><a href="#balance_history" data-target="" data-toggle="tab">Balance History</a></li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane active fade in" id="my_orders"><%= render partial: 'shared/holdings' %></div>
+            <div class="tab-pane" id="trade_history"><%= render partial: 'shared/utransactions' %></div>
+            <div class="tab-pane" id="balance_history"><%= render partial: 'shared/bhistories' %></div>
+          </div>
         </div>
-        <div class="tab-content">
-          <div class="tab-pane active fade in" id="my_orders"><%= render partial: 'shared/holdings' %></div>
-          <div class="tab-pane" id="trade_history"><%= render partial: 'shared/utransactions' %></div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
-</div>
+<% end %>
 
 

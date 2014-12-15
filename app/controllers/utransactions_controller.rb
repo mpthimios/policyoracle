@@ -37,7 +37,7 @@ class UtransactionsController < ApplicationController
     else
       flash[:notice] = utransaction.errors.full_messages.to_sentence
       if utransaction.user.errors
-        flash[:notice] = "Available points cant be negative"
+        flash[:notice] = "Available coins cant be negative"
       end
       redirect_to :back
     end

@@ -27,11 +27,11 @@
                           <td style="width:60px"><%= i+1 %></td>
                           <td class="prediction" ><%= user.name %></td>
                           <td class="prediction"><%= user.total_amount.round(2) %> </td>
-                          <td>
-                            <% if current_user.admin? %>
+                          <% if current_user.admin? %>
+                            <td>
                               <%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %>
-                            <% end %>    
-                          </td>
+                            </td>
+                          <% end %> 
                         </tr>
                       <% end %>
                     </tbody>

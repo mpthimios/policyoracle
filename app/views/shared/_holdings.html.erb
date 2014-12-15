@@ -1,46 +1,40 @@
 <ol id="positions">
   <% @holdings.each do |holding| %>
-    <li class="posotion_group">
-      <h2 style="text-transform: none;"><%= link_to holding.contract.market.name, holding.contract.market, :class => "three" %></h2>
-      <table class="headertable">
-        <thead>
-          <tr>
-            <th><h4>YOUR PREDICTION </h4></th>
-            <th><h4>CURRENT PROFIT/LOSS</h4></th>
-            <th><h4>CURRENT PREDICTION</h4></th>
-            <th><h4>SHARES </h4></th>
-            <th><h4>YOU'VE SPENT </h4></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="answered" style="text-transform: none;">
-              <%= holding.contract.name if holding.contract %>
-              <br>
-              <% if holding.contract.market.status == true %>
-                <%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %>
-              <% end %>
-            </td>
-            <td class="answered"><h4>
-              <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
-              <% if holding.amount_spent - @cost >= 0 %>
-                + <%= (holding.amount_spent - @cost).floor(2) %>
-              <% else %>
-                <%= (holding.amount_spent - @cost).floor(2) %>
-              <% end %>
-            </td>
-            <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
-            <td class="details"><h4><%= holding.quantity %></h4></td> 
-            <td class="answered2"><%= holding.amount_spent.round(2) %><h4><%=  %></h4></td> 
-          </tr>
-        </tbody>
-      </table>
-      <% if holding.contract.market.status == true %>
-        <h5 class="market_info">Closes: <%= holding.contract.market.arbitration_date %></h5>
-      <% else %>
-        <h6 class="market_info">Closed: <%= holding.contract.market.arbitration_date %></h6>
-      <%end%>
-    </li>
+    <% if holding.contract.market.status == true %>
+      <li class="posotion_group">
+        <h2 style="text-transform: none;"><%= link_to holding.contract.market.name, holding.contract.market, :class => "three" %></h2>
+        <table class="headertable">
+          <thead>
+            <tr>
+              <th><h4>YOUR PREDICTION </h4></th>
+              <th><h4>CURRENT PROFIT/LOSS</h4></th>
+              <th><h4>CURRENT PRICE</h4></th>
+              <th><h4>SHARES </h4></th>
+              <th><h4>YOU'VE SPENT </h4></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="answered" style="text-transform: none;">
+                <%= holding.contract.name if holding.contract %>
+                <br>
+                <% if holding.contract.market.status == true %>
+                  <%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => holding.user_id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              </td>
+              <td class="answered"><h4>
+                <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
+                  <%= (@cost - holding.amount_spent).round(2) %>
+              </td>
+              <td  class="answered"><h4><%= holding.contract.current_price.round(2) if holding.contract %></h4></td> 
+              <td class="details"><h4><%= holding.quantity %></h4></td> 
+              <td class="answered2"><%= holding.amount_spent.round(2) %><h4><%=  %></h4></td> 
+            </tr>
+          </tbody>
+        </table>
+          <h5 class="market_info">Closes: <%= holding.contract.market.arbitration_date %></h5>
+      </li>
+    <%end%>
     <br>
   <% end %>
 <ol>

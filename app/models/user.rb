@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
   before_create :create_activation_digest
   after_save :update_markets
+  GENDER_TYPES = ['Male', 'Female']
+  EDUCATION = ['High school', 'Bachelor/College degree', 'Master degree', 'PhD/Post-grad research degree']
+  MARKET_KNOWLEDGE = ['Excellent', 'Very Good', 'Good', 'Low', 'Very Low', 'None']
 	#validates :name, presence: true, :length => { maximum: 32 },
 	#				 uniqueness: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -25,10 +28,12 @@ class User < ActiveRecord::Base
   validates_numericality_of :total_amount, :greater_than_or_equal_to => 0, :message => " cant be negative" 
   validates_numericality_of :investment_amount, :greater_than_or_equal_to => 0, :message => "cant be negative"
   validates_numericality_of :cash_amount, :greater_than_or_equal_to => 0, :message => " cant be negative"
-
+  
   has_secure_password
   #Automatically create the virtual attribute 'password_confirmation'
   validates :password, length: { minimum: 6 }, :if => :validate_password?
+
+  attr_accessor :country_code
 
   scope :sorted, lambda { order("users.rank ASC")}
 
@@ -149,9 +154,30 @@ class User < ActiveRecord::Base
     self.save!
 
     logger.debug "the loss is: " + params.amount_spent.to_s
-
+    
     bhistory = Bhistory.new(user_id: self.id, contract_id: params.contract_id, loss: params.amount_spent)
     bhistory.save!
+  end
+
+  def country_name
+    country = Country[country_code]
+    country.translations[I18n.locale.to_s] || country.name
+  end
+  
+  def get_gender_types
+    GENDER_TYPES
+  end
+
+  def get_education_types
+    EDUCATION
+  end
+  
+  def get_market_knowledge_types
+    MARKET_KNOWLEDGE
+  end
+
+  def get_years_of_birth
+    select_year(Date.today, start_year: 2005, end_year: 1900)
   end
 
   private

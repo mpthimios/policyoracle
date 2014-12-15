@@ -14,11 +14,6 @@
 //= require jquery_ujs
 //= require_tree
 
-$('#modal').on('hidden', function() {
-    $(this).removeData('modal');
-});
-
-
 jQuery(document).ready(function(){
     jQuery('ul.sf-menu').superfish();
 });

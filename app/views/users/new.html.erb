@@ -39,6 +39,68 @@
                 <div class="col-xs-4"><%= f.password_field :password_confirmation %></div>
               </div>
 
+              <div class="horizontalRule" runat="server"></div>
+              <div class="col-sm-12"><p>The following demographic information are anonymous and optional. We use them for research purposes</p></div>
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <label for="user_gender">Gender</label>
+                </div>
+                <div class="col-xs-4">
+                  <select class="form-control input-large" name="user[gender]" style=" width:70%">
+                    <option value="" selected disabled>Please select</option>
+                    <% @user.get_gender_types.each do |gender_type| %>
+                      <option><%= gender_type %></option>
+                    <%end%>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <label for="user_market_knowledge">Year of birth</label>
+                </div>
+                <div class="col-xs-4">
+                  <%= f.select(:birth_year, 1920..2000, prompt: "Please select", :style=>"width:130%") %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <label for="user_gender">Country</label>
+                </div>
+                <div class="col-xs-4"> 
+                  <%= f.country_select :country, priority_countries: ["DE", "ES","GR", "IT"], prompt: "Please select", :style=>"width:80%" %>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <div class="col-xs-2" >
+                  <label for="user_education">Education</label>
+                </div>
+                <div class="col-xs-4">
+                  <select class="form-control input-large" name="user[education]" style=" width:70%">
+                    <option value="" selected disabled>Please select</option>
+                    <% @user.get_education_types.each do |education_type| %>
+                      <option><%= education_type %></option>
+                    <%end%>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-2">
+                  <label for="user_market_knowledge">Knowledge <br>of Markets</label>
+                </div>
+                <div class="col-xs-4">
+                  <select class="form-control input-large" name="user[market_knowledge]" style=" width:70%">
+                    <option value="" selected disabled>Please select</option>
+                    <% @user.get_market_knowledge_types.each do |market_knowledge_type| %>
+                      <option><%= market_knowledge_type %></option>
+                    <%end%>
+                  </select>
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-sm-3 col-md-offset-2"><%= f.submit "Create my account", class: "btn-sample", :style => "width:200px" %></div>
               </div>

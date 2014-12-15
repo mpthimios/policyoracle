@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209052508) do
+ActiveRecord::Schema.define(version: 20141214191654) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -123,6 +123,11 @@ ActiveRecord::Schema.define(version: 20141209052508) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.integer  "tenant_id"
+    t.string   "country"
+    t.string   "gender"
+    t.integer  "birth_year"
+    t.string   "education"
+    t.string   "market_knowledge"
   end
 
   add_index "users", ["email", "tenant_id"], name: "index_users_on_email_and_tenant_id", using: :btree

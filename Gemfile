@@ -58,6 +58,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'd3js-rails', '~> 3.1.6'
+gem 'country_select', github: 'stefanpenner/country_select'
 
 
 group :doc do

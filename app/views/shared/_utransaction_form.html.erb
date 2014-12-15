@@ -1,35 +1,15 @@
 <%= form_for Utransaction.new, :html => {:class =>"form-inline"} do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<ul style="text-align: center; margin-left:30px">
-    	<li><%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :value => 1, :class => "input-mini", :style => "width:40px; text-align:center", :onkeyup=>"window.update_price(#{contract.id}); return false;"%> shares </li>
+    	<li><%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :value => 0, :class => "input-mini", :style => "width:40px; text-align:center", :onkeyup=>"window.update_price(#{contract.id}); return false;"%> shares </li>
 
     	<li style="margin-top:10px; margin-left:20px">
-    		<button type="button" class="btn-sample" data-toggle="modal" data-target="#modal-window<%=contract.id.to_s%>" style="width:40px">Buy</button>	
+        <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample", style: "width:40px" %>
     	</li>
     </ul>
     <%= f.hidden_field :user_id, 				:value => current_user.id %>
     <%= f.hidden_field :contract_id, 			:value => contract.id %>
     <%= f.hidden_field :contract_current_value, :value => contract.current_price %>
-
-
-
-	<div id="modal-window<%=contract.id.to_s%>" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-    		<div class="modal-content">
-      			<div class="modal-header">
-        			<h4 class="modal-title" id="myModalLabel">Please comment the reason of your prediction (optional)</h4>
-      			</div>
-      			<div class="modal-body">
-
-      				<%= f.text_area :comment, :style =>"margin-bottom:20px; width:100%" %> <br>
-
-					<%= f.submit :value => "Submit", :name => 'utransaction[transaction_type]', class: "btn-sample" %>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
 <% end %>
 
 
