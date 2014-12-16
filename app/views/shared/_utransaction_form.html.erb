@@ -3,8 +3,9 @@
 	<ul style="text-align: center; margin-left:30px">
     	<li><%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :value => 0, :class => "input-mini", :style => "width:40px; text-align:center", :onkeyup=>"window.update_price(#{contract.id}); return false;"%> shares </li>
 
-    	<li style="margin-top:10px; margin-left:20px">
-        <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample", style: "width:40px" %>
+    	<li style="margin-top:10px;">
+        <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample",
+                     style: "width:100%" %>
     	</li>
     </ul>
     <%= f.hidden_field :user_id, 				:value => current_user.id %>
