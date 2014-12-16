@@ -15,6 +15,7 @@ class Contract < ActiveRecord::Base
 
 	def close
 	    self.market.update(status: 'false')
+	    self.market.update(correct_contract_id: self.id)
 	    #self.holdings.each do |holding|
 	    #	User.find_by(id: holding.user_id).allocate_profit(holding)
 	    #end

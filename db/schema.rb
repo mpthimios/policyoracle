@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214191654) do
+ActiveRecord::Schema.define(version: 20141216140728) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -70,16 +70,18 @@ ActiveRecord::Schema.define(version: 20141214191654) do
     t.string   "market_type"
     t.datetime "published_date"
     t.datetime "arbitration_date"
-    t.integer  "shares_to_users",             default: 0
-    t.string   "mechanism",                   default: "AMM"
-    t.boolean  "status",                      default: false
-    t.float    "b_value",          limit: 24, default: 10.0
+    t.integer  "shares_to_users",                default: 0
+    t.string   "mechanism",                      default: "AMM"
+    t.boolean  "status",                         default: false
+    t.float    "b_value",             limit: 24, default: 10.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tenant_id"
     t.string   "tags"
+    t.integer  "correct_contract_id"
   end
 
+  add_index "markets", ["correct_contract_id"], name: "index_markets_on_correct_contract_id", using: :btree
   add_index "markets", ["tenant_id"], name: "index_markets_on_tenant_id", using: :btree
 
   create_table "microposts", force: true do |t|
