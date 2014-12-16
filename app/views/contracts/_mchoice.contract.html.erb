@@ -1,5 +1,5 @@
 <% @market.contracts.each do |contract| %>
-    <div class="grid_7 contract">
+    <div class="grid_9 contract">
     	<div class="grid_3" style="margin:0; padding:5px 0 10px 0" >
             <% if signed_in? && @market.status? %>
                 <%= link_to contract.name, new_transaction_path(:utransaction => {:contract_id => contract.id, :contract_current_value => contract.current_price}), { 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "two", :style => "font-size: 14pt; margine-bottom:20px"} %>
@@ -12,7 +12,7 @@
                 <% end %>
             <% end %>
         </div>
-        <div class="grid_3" style="margin:0; padding:5px 0 10px 0;" >
+        <div class="grid_2" style="margin:0; padding:5px 0 10px 0;" >
             <% if contract.market.correct_contract_id == contract.id %> 
                 <div style="padding:0 0 1px 0; border-top-right-radius: 5px; border-bottom-right-radius:5px; background-color:#cadef0">         
                 <h7 style="font-size: 14pt; padding:0px 0px 0px 10px; margin-bottom:20px" id="current_price_<%= contract.id %>"><%= contract.current_price.round(4)*100 %>%</h7></div>
@@ -20,6 +20,11 @@
                 <h7 style="font-size: 14pt; padding:0px 0px 0px 10px; margin-bottom:20px" id="current_price_<%= contract.id %>"><%= contract.current_price.round(4)*100 %>%</h7>
             <% end %>
     	</div>
+        <div class="grid_2" style="margin:0; padding:5px 0 0 0;" >
+            <% if contract.market.correct_contract_id == contract.id %> 
+                <p style="padding:0px 0px 0px 10px; margin:0">Correct Answer</p>
+            <% end %>
+        </div>
     </div>
 <% end %>
 
