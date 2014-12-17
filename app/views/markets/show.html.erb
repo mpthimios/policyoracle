@@ -37,7 +37,7 @@
                   <p> Possible Answers </p>
                 </div>
                 <div class="grid_3" style="margin:0">
-                  <p> Current Price </p>
+                  <p> Current Prediction </p>
                 </div>
 
                 <%= render "contracts/mchoice.contract" %>
@@ -99,6 +99,11 @@
             <p><strong>Category:</strong><br><%= @market.category %></p>
             <p><strong>Tags:</strong><br><%= @market.tags %></p>
             <p><strong>Predictions Up to Now:</strong><br><%= @utransactions.count %></p>
+            <p><strong>Latest Predictions:</strong><br>
+                <% @utransactions.each do |utransaction| %>
+                  "<%= "#{utransaction.contract.name}" %>"<br>
+                <% end %>
+            </p>
           </div>
         </div>
 

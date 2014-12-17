@@ -27,7 +27,7 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
     @contracts = @market.contracts.sorted
     @utransactions = @market.utransactions.last(5)
-    @microposts = @market.microposts.order("created_at DESC").paginate(page: params[:page], :per_page => 8)
+    @microposts = @market.microposts.order("created_at DESC").paginate(page: params[:page], :per_page => 4)
   end
 
   # GET /markets/new
