@@ -32,11 +32,11 @@
             <% if @market.market_type == "Yes/No" %>
                 <%= render "contracts/yesno.contract" %>
             <% elsif @market.market_type == "Multiple Choices" %>
-              <div class="grid_6">
+              <div class="grid_5">
                 <div class="grid_3">
                   <p> Possible Answers </p>
                 </div>
-                <div class="grid_3" style="margin:0">
+                <div class="grid_2" style="margin:0">
                   <p> Current Prediction </p>
                 </div>
 
@@ -44,7 +44,7 @@
               </div>
             <% end %>
             <% if signed_in? && @market.status?%>
-              <div class="grid_3" style="margin:0; background-color: #d6d9d2">
+              <div class="grid_4" style="margin:0; background-color: #d6d9d2">
                 <div id="list">
                   <h1 style="margin-top:0; font-size:21px;"> Your portfolio</h1>
                   <table class="prerformancecontent" style="margin:0; ">
