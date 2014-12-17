@@ -44,7 +44,11 @@
               </div>
             <% end %>
             <% if signed_in? && @market.status?%>
-              <div class="grid_4" style="margin:0; background-color: #d6d9d2">
+              <% if @market.market_type == "Yes/No" %>
+                <div class="grid_3" style="margin:0; background-color: #d6d9d2">
+              <% elsif @market.market_type == "Multiple Choices" %>
+                <div class="grid_4" style="margin:0; background-color: #d6d9d2">
+              <% end %>
                 <div id="list">
                   <h1 style="margin-top:0; font-size:21px;"> Your portfolio</h1>
                   <table class="prerformancecontent" style="margin:0; ">
