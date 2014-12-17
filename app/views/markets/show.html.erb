@@ -102,9 +102,9 @@
             <% end %>
             <p><strong>Category:</strong><br><%= @market.category %></p>
             <p><strong>Tags:</strong><br><%= @market.tags %></p>
-            <p><strong>Predictions Up to Now:</strong><br><%= @utransactions.count %></p>
+            <p><strong>Predictions Up to Now:</strong><br><%= @utransactions_all.count %></p>
             <p><strong>Latest Predictions:</strong><br>
-                <% @utransactions.each do |utransaction| %>
+                <% @utransactions_latest.each do |utransaction| %>
                   "<%= "#{utransaction.contract.name}" %>"<br>
                 <% end %>
             </p>
