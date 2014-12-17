@@ -45,7 +45,7 @@
             <div class="grid_3">
               <div class="offer"> <%= image_tag("register.png", alt: "Register") %>
                 <div class="title">Register</div>
-                Want to play in a market about Economic, Environmental or Energy Questions? Register today for FREE and we'll set you up with 200 points. The rest is up to you.<br>
+                Want to play in a market about topics that interest you? Register today for FREE and we'll set you up with 200 points. The rest is up to you.<br>
               </div>
             </div>
             <div class="grid_3">
@@ -96,7 +96,7 @@
         <div class="wrapper">
           <div class="grid_12">
             <div class="grid_8 ">
-              <h2 style="color:red;"> Activities</h2>
+              <h2 style="color:red;"> Latest Predictions</h2>
               <% @utransactions.each do |utransaction| %>
                <% @max_value = utransaction.market.contracts.maximum('current_price') %>
                <% @contract = utransaction.market.contracts.order("current_price DESC").first %>
