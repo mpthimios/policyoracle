@@ -2,7 +2,6 @@
 <div class="block2">
   <div class="container_12">
     <section class="content">
-
       <div class="wrapper">
         <% if signed_in? && current_user.admin? && @market.status? %>
           <div class="grid_9 last-col">
@@ -10,7 +9,7 @@
           </div>
           <% if @market.status? %>
             <div class="grid_3 last-col">
-              <h3><%= link_to 'Question Closure', close_market_path(@market), :class => "one" %></h3>
+              <h3><%= link_to 'Close this Question', close_market_path(@market), :class => "one" %></h3>
             <% elsif @market.status == false %>
               <h3>Market Expired</h3>
             </div>
@@ -49,19 +48,23 @@
                 <div id="list">
                   <h1 style="margin-top:0; font-size:21px;"> Your portfolio</h1>
                   <table class="prerformancecontent" style="margin:0; ">
-                      <tbody>
-                        <tr>
-                            <td align="left">Invested points:</td>
-                            <td align="right" valign="middle"><%= current_user.investment_amount.round(2) %></td>
-                          </tr>
-                          <tr>
-                            <td align="left">Available points:</td>
-                            <td align="right" valign="middle"><%= current_user.cash_amount.round(2) %></td>
-                          </tr>                      
-                          <tr>
-                            <td align="left">Total points:</td>
-                            <td align="right" valign="middle" class="summationline"><%= current_user.total_amount.round(2) %></td>
-                          </tr>
+                    <tbody>
+                      <tr>
+                        <td align="left">Available points:</td>
+                        <td align="right" valign="middle"><%= current_user.cash_amount.round(2) %></td>
+                      </tr>
+                      <% @contracts.each do |contract| %>
+                        <% contract.holdings.each do |holding| %>
+                          <% if holding.user_id == current_user.id %>
+                            <tr>
+                              <td align="left">You hold:</td>
+                              <td align="right" valign="middle" ><%= holding.quantity %> shares of 
+                                <%= contract.name %>
+                              </td>
+                            </tr>
+                          <% end %>
+                        <% end %>
+                      <% end %>
                       </tbody>
                   </table>
                 </div>
@@ -89,7 +92,7 @@
 
           <div class="grid_3" style="margin:0">
             <% if @market.status? %>
-              <p><strong>Question Ends:</strong><br><%= @market.arbitration_date %></p>
+              <p><strong>You can play until:</strong><br><%= @market.arbitration_date %></p>
             <% else %>
              <p style="color:#ec2624"><strong>Question Expired:</strong><br><%= @market.arbitration_date %></p>
             <% end %>
