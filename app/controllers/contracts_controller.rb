@@ -1,6 +1,7 @@
 class ContractsController < ApplicationController
   before_action :set_contract, only: [:show, :edit, :update, :destroy]
   before_action :set_market, only: [:index, :new, :create]
+  before_action :admin_user, only: [:show, :edit, :new, :create]
 
   # GET /contracts
   # GET /contracts.json
@@ -91,5 +92,9 @@ class ContractsController < ApplicationController
 
     def set_market
       @market = Market.find(params[:market_id])
+    end
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
     end
 end

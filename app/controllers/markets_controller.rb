@@ -2,7 +2,7 @@ class MarketsController < ApplicationController
   before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_market, only: [:show, :edit, :update, :destroy]
   allow_cors :graph_data
-  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy, :close]
 
   # GET /markets
   # GET /markets.json
