@@ -15,8 +15,14 @@
 			        <table class="prerformancecontent">
 			          <tbody>
 			            <tr>
-			              <td align="left">Invested points:</td>
-			              <td align="right" valign="middle"><%= @user.investment_amount.round(2) %></td>
+			              <td align="left">Current holdings:</td>
+			              <td align="right" valign="middle">
+                      <% @current_holdings = 0 %> 
+                      <% @user.holdings.each do |holding| %>
+                        <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
+                        <% @current_holdings += @cost %>
+                      <% end %>
+                      <%= @current_holdings.round(2) %></td>
 		              </tr>
 		              <tr>
 			              <td align="left">Available points:</td>
