@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
     @title = "Home"
     @market = Market.last
     @markets = Market.last(3)
-    @utransactions = Utransaction.order("created_at DESC").last(6)
+    @utransactions = Utransaction.order("created_at DESC").first(6)
   end
 
   def howtoplay
