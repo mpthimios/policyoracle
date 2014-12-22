@@ -4,10 +4,10 @@
       <% if !@bhistories.blank? %>
         <thead>
           <tr>
-            <th><h4>Question</h4></th>
+            <th><h4>Expired Questions</h4></th>
             <th><h4>Your Prediction</h4></th>
-            <th><h4>Profit/Loss</h4></th>
-            <th><h4>Expired Date</h4></th>
+            <th><h4>You Earned/Lost</h4></th>
+            <th><h4>Question Expired Date</h4></th>
           </tr>
         </thead>
       <% end %> 
@@ -18,9 +18,9 @@
             <td class="prediction" style="text-transform: none;"><%= bhistory.contract.name if bhistory.contract %></td>
             <td class="prediction"> 
               <% if bhistory.profit != 0 %>
-                <%= image_tag "up-small.png"%> <%= bhistory.profit.round(2) %></td>
+                <h4 style="color:#018311; display: inline;"><%= bhistory.profit.round(2) %> points</h4> </td>
               <% else %>
-                <%= image_tag "down-small.png"%> -<%= bhistory.loss.round(2)  %></td>
+                <h4 style="color:#bd1902">-<%= bhistory.loss.round(2) %> points</h4></td>
               <% end %>
             <td><%= bhistory.created_at.to_date.to_s%></td>
           </tr>
