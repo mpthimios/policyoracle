@@ -7,7 +7,6 @@
             <th><h4>Question</h4></th>
             <th><h4>Your Prediction</h4></th>
             <th><h4>Shares</h4></th>
-            <th><h4>Cost Per Share</h3></th>
             <th><h4>Transaction Date</h3></th>
           </tr>
         </thead>
@@ -21,7 +20,6 @@
                 <% else %> sold
                 <% end %>
             </td>
-            <td class="prediction"><%= (utransaction.cost / utransaction.quantity).round(2) %></td>
             <td><%= utransaction.created_at.to_date.to_s%></td>
           </tr>
         <% end %>

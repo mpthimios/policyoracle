@@ -2192,13 +2192,13 @@ ul {list-style:none;}
       padding-right: 5px;
       color: #A5A5A5;
     }
-  .headertable td {border-width: 1px 1px 1px 1px; padding: 2px 4px; border-style: solid; border-color: #bbb; background-color: #f1f1f1; margin: 0; font-size: 12px; /*font-weight: bold; */ color: #555; text-transform: uppercase;}
+  .headertable td {border-width: 1px 1px 1px 1px; padding: 2px 4px; border-style: solid; border-color: #bbb; background-color: #f1f1f1; margin: 0; font-size: 12px; /*font-weight: bold; */ color: #555; text-transform: none;}
   .position table.you td {border-width: 0px 1px 1px 1px; padding: 3px 4px; border-style: solid; border-color: #bbb; background-color: #f1f1f1; margin: 0; color: #333; font-size: 13px; vertical-align: top;}
-  .position table.you td.answered, .headertable td.answered {width: 220px}
+  .position table.you td.answered, .headertable td.answered {width: 170px}
   .position table.you td.answered h3 {color: #333}
   .position table.you td.status, .headertable td.status {width: 130px}
   .position table.you td.prediction, .headertable td.prediction {width: 120px}
-  .position table.you td.details, .headertable td.details {width: 90px}
+  .position table.you td.details, .headertable td.details {width: 110px}
   .position table.you td.details_prob, .headertable td.details_prob {width: 165px;}
   .position table.you td.details.history {font-size: 12px}
   .position table.you td.liquidated_simple {width: 601px}

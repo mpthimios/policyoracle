@@ -8,9 +8,11 @@
             <tr>
               <th><h4>YOUR PREDICTION </h4></th>
               <th><h4>CURRENT PROFIT/LOSS</h4></th>
-              <th><h4>CURRENT PRICE</h4></th>
+              <th><h4>CURRENT PRΕDICTION</h4></th>
               <th><h4>SHARES </h4></th>
-              <th><h4>YOU'VE SPENT </h4></th>
+              <th><h4>POINTS SPENT </h4></th>
+              <th><h4>MAX PROFIT </h4></th>
+              <th><h4>MAX LOSS </h4></th>
             </tr>
           </thead>
           <tbody>
@@ -24,11 +26,19 @@
               </td>
               <td class="answered"><h4>
                 <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
-                  <%= (@cost - holding.amount_spent).round(2) %>
+                <% @diff = @cost - holding.amount_spent %>
+                  <% if @diff.round(2) > 0 %>
+                    <%= image_tag "up-small.png"%> <%= @diff.round(2) %>
+                  <% elsif @diff.round(2) < 0  %>
+                    <%= image_tag "down-small.png"%><%= @diff.round(2) %>
+                  <% elsif @diff.round(2) == 0  %> 0
+                  <% end %>
               </td>
-              <td  class="answered"><h4><%= holding.contract.current_price.round(2) if holding.contract %></h4></td> 
+              <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
               <td class="details"><h4><%= holding.quantity %></h4></td> 
-              <td class="answered2"><%= holding.amount_spent.round(2) %><h4><%=  %></h4></td> 
+              <td class="details"><h4><%= holding.amount_spent.round(2) %></h4></td> 
+              <td class="details"><h4><%= holding.quantity %> points</h4></td> 
+              <td class="details"><h4><%= holding.amount_spent.round(2) %> points</h4></td> 
             </tr>
           </tbody>
         </table>
