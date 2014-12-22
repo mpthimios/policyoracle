@@ -30,7 +30,7 @@
 		              </tr>						           
 		              <tr>
 			              <td align="left">Total points:</td>
-			              <td align="right" valign="middle" class="summationline"><%= @user.total_amount.round(2) %></td>
+			              <td align="right" valign="middle" class="summationline"><%= @user.total_amount= @current_holdings.round(2) +  @user.cash_amount.round(2)%></td>
 		              </tr>
 			          </tbody>
 			        </table>
