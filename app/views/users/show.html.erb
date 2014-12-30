@@ -19,9 +19,12 @@
 			              <td align="right" valign="middle">
                       <% @current_holdings = 0 %> 
                       <% @user.holdings.each do |holding| %>
-                        <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
-                        <% @current_holdings += @cost %>
+                        <% if holding.contract.market.status == true %>
+                          <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
+                          <% @current_holdings += @cost %>
+                        <% end %>
                       <% end %>
+
                       <%= @current_holdings.round(2) %></td>
 		              </tr>
 		              <tr>
@@ -30,7 +33,7 @@
 		              </tr>						           
 		              <tr>
 			              <td align="left">Total value:</td>
-			              <td align="right" valign="middle" class="summationline"><%= @user.total_amount = @current_holdings.round(2) +  @user.cash_amount.round(2)%></td>
+			              <td align="right" valign="middle" class="summationline"><%= @user.total_amount = @current_holdings.round(2) +  @user.cash_amount.round(2) %></td>
 		              </tr>
 			          </tbody>
 			        </table>
