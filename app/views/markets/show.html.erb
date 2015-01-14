@@ -106,7 +106,8 @@
             <p><strong>Predictions Up to Now:</strong><br><%= @utransactions_all.count %></p>
             <p><strong>Latest Predictions:</strong><br>
                 <% @utransactions_latest.each do |utransaction| %>
-                  "<%= "#{utransaction.contract.name}" %>"<br>
+                  "<%= "#{utransaction.contract.name}" %>" raised
+                  <%= (utransaction.contract_new_value - utransaction.contract_current_value).round(4)*100 %>% <br>
                 <% end %>
             </p>
           </div>

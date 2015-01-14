@@ -46,6 +46,8 @@ class Utransaction < ActiveRecord::Base
         contract.save!
       end
       self.new_contract_values = new_contract_values
+      self.contract_new_value = new_contract_values[contract_id]
+
     end
   end
 
