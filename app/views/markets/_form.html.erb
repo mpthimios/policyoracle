@@ -21,7 +21,7 @@
           <div class="form-group">
             <div class="col-xs-10" style="padding-left: 0px;">
               <label for="market_category">Choose the Type of the Question</label>
-            </div>
+            </div><br>
             <select class="form-control input-large" name="market[market_type]">
               <option value="" selected disabled>Please select</option>
               <% @market.get_market_types.each do |market_type| %>
@@ -33,7 +33,7 @@
           <div class="form-group">
             <div class="col-xs-10" style="padding-left: 0px;">
               <label for="market_category">Choose a Category</label>
-            </div>
+            </div><br>
             <select class="form-control input-large" name="market[category]">
               <option value="" selected disabled>Please select</option>
               <% @tenant.categories.each do |category| %>
@@ -47,7 +47,7 @@
           <input id="market_market_type" class="form-control" name="market[tags]" type="text" style="width:100%" placeholder="Enter a set of tags seperated by commas ','">
         </div>
         <div class="form-group">
-          <label for="market_description">Description</label>
+          <label for="market_description">Description</label><br>
           <textarea id="market_description" name="market[description]" class="form-control" rows="6" style="width:100%" placeholder="Enter a short synopsis"></textarea>
         </div>
         <div class="form-group">

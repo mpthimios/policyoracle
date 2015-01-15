@@ -177,7 +177,7 @@ class User < ActiveRecord::Base
   end
 
   def get_years_of_birth
-    select_year(Date.today, start_year: 2005, end_year: 1900)
+    select_year(Date.today, start_year: 2005, end_year: 1920)
   end
 
   private
