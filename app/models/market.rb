@@ -28,8 +28,11 @@ class Market < ActiveRecord::Base
   before_create :choose_b, :fill_attributes
 
   def choose_b
-    users_default_cash_amount = 200.0
-    number_of_users = User.count.to_f
+    users_total_cash_amount = 0
+    users = User.all
+    users.each do |user|
+      users_total_cash_amount = users_total_cash_amount + user.total_amount
+    end
     number_of_contracts = 2.0
     unless !self.contracts.nil?
       number_of_contracts = self.contracts.size.to_f
@@ -37,11 +40,11 @@ class Market < ActiveRecord::Base
     initial_price = 1.0/number_of_contracts
     price_change_to = 0.99
 
-    logger.debug number_of_users
+    logger.debug users_total_cash_amount
     logger.debug number_of_contracts
     logger.debug initial_price
 
-    self.b_value = ((-1.0 ) * number_of_users * users_default_cash_amount) / \
+    self.b_value = ((-1.0 ) * users_total_cash_amount) / \
       Math.log((number_of_contracts * (1 - price_change_to)) / (number_of_contracts - 1))
   end
 
