@@ -120,8 +120,10 @@ class User < ActiveRecord::Base
   def update_markets
     markets = Market.all
     markets.each do |market|
-      market.choose_b
-      market.save
+      if marker.status == true
+        market.choose_b
+        market.save
+      end
     end
   end
 
