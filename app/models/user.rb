@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 	before_save { self.name = name.downcase }
 	before_create :create_remember_token
   before_create :create_activation_digest
-  after_save :update_markets
+  after_create :update_markets
   GENDER_TYPES = ['Male', 'Female']
   EDUCATION = ['High school', 'Bachelor/College degree', 'Master degree', 'PhD/Post-grad research degree']
   MARKET_KNOWLEDGE = ['Excellent', 'Very Good', 'Good', 'Low', 'Very Low', 'None']
@@ -120,8 +120,9 @@ class User < ActiveRecord::Base
   def update_markets
     markets = Market.all
     markets.each do |market|
-      if marker.status == true
+      if market.status == true
         market.choose_b
+        market.market_maker_buys_shares
         market.save
       end
     end

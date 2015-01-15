@@ -48,6 +48,17 @@ class Market < ActiveRecord::Base
       Math.log((number_of_contracts * (1 - price_change_to)) / (number_of_contracts - 1))
   end
 
+  def market_maker_buys_shares
+    b = self.b_value
+    self.contracts.each do |contract|
+      shares_to_purchase =  b * Math.log(contract.current_price)
+      contract.market_maker_shares = contract.market_maker_shares + shares_to_purchase
+      contract.total_shares = contract.total_shares + shares_to_purchase
+
+      logger.debug contract.market_maker_shares
+    end
+  end
+
   def fill_attributes
     opening_price = 1/self.contracts.size.to_f
     self.contracts.each do |contract|
