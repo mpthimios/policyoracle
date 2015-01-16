@@ -19,7 +19,7 @@
       <div class="form-group">
         <div class="col-xs-10" style="padding-left: 0px;">
           <label for="market_category">Type of the Question</label>
-        </div>
+        </div><br>
         <select class="form-control input-large" name="market[market_type]">
             <option value="" selected disabled>Please select</option>
             <% @market.get_market_types.each do |market_type|%>
@@ -32,7 +32,7 @@
       <div class="form-group">
         <div class="col-xs-10" style="padding-left: 0px;">
           <label for="market_category">Category</label>
-        </div>
+        </div><br>
         <select class="form-control input-large" name="market[category]">
           <option value="" selected disabled>Please select</option>
           <% @tenant.categories.each do |category|%>
@@ -50,7 +50,7 @@
     <div class="form-group">
       <label for="market_description">Description</label><br>
       <%= f.text_area :description, :class => "form-control" %>
-    </div>
+    </div><br>
     <div class="form-group">
       <label for="market_description">Publication Date and time </label><br>
       <%= f.text_field :published_date, :class => "form-control" %>
