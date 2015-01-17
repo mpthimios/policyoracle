@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115132235) do
+ActiveRecord::Schema.define(version: 20150117140150) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 20150115132235) do
     t.decimal  "opening_price",        precision: 15, scale: 8
     t.datetime "opening_date"
     t.datetime "end_date"
-    t.integer  "total_shares",                                  default: 0
+    t.decimal  "total_shares",         precision: 15, scale: 8, default: 0.0
     t.decimal  "total_amount_wagered", precision: 15, scale: 8, default: 0.0
     t.integer  "volume_traded",                                 default: 0
     t.boolean  "status",                                        default: false
     t.integer  "market_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "market_maker_shares",                           default: 0
+    t.decimal  "market_maker_shares",  precision: 15, scale: 8, default: 0.0
   end
 
   add_index "contracts", ["market_id"], name: "index_contracts_on_market_id", using: :btree

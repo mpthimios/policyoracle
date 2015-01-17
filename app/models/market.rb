@@ -53,9 +53,7 @@ class Market < ActiveRecord::Base
     self.contracts.each do |contract|
       shares_to_purchase =  b * Math.log(contract.current_price)
       contract.market_maker_shares = contract.market_maker_shares + shares_to_purchase
-      contract.total_shares = contract.total_shares + shares_to_purchase
-
-      logger.debug contract.market_maker_shares
+      contract.total_shares = shares_to_purchase
     end
   end
 
@@ -88,26 +86,38 @@ class Market < ActiveRecord::Base
     denominator = 0.0
     cost = 0.0
     numerators = Hash.new
+
     self.contracts.each do |contract|
-      value = Math.exp(contract[:total_shares]/self.b_value)
-      sum_before = sum_before + value
       if contract[:id] == params.contract_id
         case params.transaction_type
           when 'B'
             contract[:total_shares] = contract[:total_shares] + params.quantity
+            contract[:volume_traded] = contract[:volume_traded] + params.quantity
             cur_price = contract[:current_price]
-            logger.debug "the price purchased is " + cur_price.to_s
           when 'S'
             contract[:total_shares] = contract[:total_shares] - params.quantity
+            contract[:volume_traded] = contract[:volume_traded] - params.quantity
             cur_price = contract[:current_price]
         end
-        value = Math.exp(contract[:total_shares]/self.b_value)
       end
+    end
+
+    self.contracts.each do |contract|
+      value = Math.exp(contract[:total_shares]/self.b_value)
+
+      logger.debug "contract id:" + contract[:id].to_s
+      logger.debug "total shares are " + contract[:total_shares].to_s
+      logger.debug "the value is" + value.to_s
+      
+      sum_before = sum_before + value
       denominator = denominator + value
       numerators[contract[:id]] =  value
     end
 
+    logger.debug "the denominator is" + denominator.to_s
+
     sum_of_prices = 0.0
+
     self.contracts.each do |contract|
       contract.current_price = numerators[contract[:id]]/denominator
       #contract.save!
@@ -123,9 +133,8 @@ class Market < ActiveRecord::Base
       cost = (-self.b_value*Math.log((cur_price*(Math.exp((-params.quantity)/self.b_value)-1))+1))
       cost = cost.floor2(6)
     end
-    #cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before)
+    #cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before) 
 
-      
   end
 
   def graph_data
