@@ -9,9 +9,9 @@ class MarketsController < ApplicationController
   def index
     @tenant = Tenant.current
     if params[:category]
-      @markets = Market.where(category: params[:category])
+      @markets = Market.where(category: params[:category], status: 1)
     else
-      @markets = Market.all
+      @markets = Market.where(status: 1)
     end
     @markets = @markets.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
     respond_to do |format|
