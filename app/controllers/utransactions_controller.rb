@@ -37,7 +37,7 @@ class UtransactionsController < ApplicationController
     else
       flash[:notice] = utransaction.errors.full_messages.to_sentence
       if utransaction.user.errors
-        flash[:notice] = "Some error occured. Next time check that the available points won't be negative after your transaction. "
+        flash[:notice] = "Some error occured. Please try again "
       end
       redirect_to :back
     end
