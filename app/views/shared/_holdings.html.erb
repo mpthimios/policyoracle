@@ -42,13 +42,14 @@
           <tbody>
             <td class="sell" style="border-top: none;border-left:solid; border-color: #bbb;"> 
               <% if holding.contract.market.status == true %>
-                <h4 style="font-size: 14px"><%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => current_user.id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %> now and you'll 
+                <h4 style="font-size: 14px"><%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => current_user.id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %> now and you will 
                 <% @diff = @cost - holding.amount_spent %>
                 <% if @diff.round(2) > 0 %>
                   earn <%= @diff.round(2) %> points
                 <% elsif @diff.round(2) < 0  %>
                   loose <%= @diff.abs.round(2) %> points
                 <% elsif @diff.round(2) == 0  %> 0
+                  not earn any points
                 <% end %>
                 </h4>
               <% end %>
