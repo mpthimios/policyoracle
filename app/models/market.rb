@@ -4,6 +4,7 @@ class Market < ActiveRecord::Base
 	has_many :contracts, :dependent => :destroy, :inverse_of => :market
   has_many :microposts
   has_many :utransactions
+  has_many :holdings
 
   accepts_nested_attributes_for :contracts
 
