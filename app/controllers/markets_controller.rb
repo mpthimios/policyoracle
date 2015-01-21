@@ -27,7 +27,7 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
     @contracts = @market.contracts.sorted
     @utransactions_all = @market.utransactions
-    @utransactions_latest =@market.utransactions.where(transaction_type: 'B').last(3)
+    @utransactions_latest =@market.utransactions.last(3)
     @microposts = @market.microposts.order("created_at DESC").paginate(page: params[:page], :per_page => 4)
   end
 

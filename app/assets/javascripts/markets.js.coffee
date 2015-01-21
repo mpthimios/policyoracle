@@ -24,7 +24,7 @@ window.update_price = (contract_id) ->
       console.log data
       for k, v of data.contracts
         contract_value_container = '#current_price_' + k
-        $(contract_value_container).text(v+"%")
+        $(contract_value_container).text(v)
         console.log k + " " + v
       $("#price_per_share").text("Price per share: "+(data.cost/quantity).toFixed(2))
       $("#points_needed").text("Points needed: "+data.cost)

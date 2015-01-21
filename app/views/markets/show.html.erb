@@ -37,7 +37,7 @@
                   <p> Possible Answers </p>
                 </div>
                 <div class="grid_2" style="margin:0">
-                  <p> Current Prediction </p>
+                  <p> Price/Probability: </p>
                 </div>
 
                 <%= render "contracts/mchoice.contract" %>
@@ -103,11 +103,16 @@
             <% end %>
             <p><strong>Category:</strong><br><%= @market.category %></p>
             <p><strong>Tags:</strong><br><%= @market.tags %></p>
-            <p><strong>Predictions Up to Now:</strong><br><%= @utransactions_all.count %></p>
-            <p><strong>Latest Predictions:</strong><br>
+            <p><strong>Number of Transactions:</strong><br><%= @utransactions_all.count %></p>
+            <p><strong>Latest Transactions:</strong><br>
                 <% @utransactions_latest.each do |utransaction| %>
-                  "<%= "#{utransaction.contract.name}" %>" raised
-                  <%= (utransaction.contract_new_value - utransaction.contract_current_value).round(4)*100 %>% <br>
+                  <% if utransaction.transaction_type == "B" %>
+                    "<%= "#{utransaction.contract.name}" %>" raised
+                    <%= (utransaction.contract_new_value - utransaction.contract_current_value).round(2)%> <br>
+                  <% elsif utransaction.transaction_type == "S" %>
+                    "<%= "#{utransaction.contract.name}" %>" descreased
+                    <%= (utransaction.contract_new_value - utransaction.contract_current_value).abs.round(2) %> <br>
+                  <% end %>
                 <% end %>
             </p>
           </div>
