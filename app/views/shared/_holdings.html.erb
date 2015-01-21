@@ -1,68 +1,74 @@
 <ol id="positions">
-  <% @holdings.each do |holding| %>
-    <% if holding.contract.market.status == true %>
+  <% @markets_group.each do |m| %>
+    <% id = m.market_id %>
+    <% @market = Market.find(id) %>
+    <% if @market.status == true %>
+      <h2 style="text-transform: none;"><%= link_to @market.name, @market, :class => "three" %></h2>
       <li class="posotion_group">
-        <h2 style="text-transform: none;"><%= link_to holding.contract.market.name, holding.contract.market, :class => "three" %></h2>
         <table class="headertable">
           <thead>
-            <tr>
-              <th><h4>YOUR PREDICTION </h4></th>
-              <th><h4>CURRENT PRΕDICTION</h4></th>
-              <th><h4>SHARES </h4></th>
-              <th><h4>POINTS SPENT </h4></th>
-              <th><h4>CURRENT PROFIT/LOSS</h4></th>
-            </tr>
+            <th class="answered"><h4>YOUR PREDICTION </h4></th>
+            <th class="answered"><h4>CURRENT PRΕDICTION</h4></th>
+            <th class="details"><h4>SHARES </h4></th>
+            <th class="details"><h4>POINTS SPENT </h4></th>
+            <th class="answered"><h4>CURRENT PROFIT/LOSS</h4></th>
           </thead>
-          <tbody>
-            <tr>
-              <td class="answered" style="text-transform: none; border-left:solid; border-color: #bbb;">
-                <%= holding.contract.name if holding.contract %>
-              </td>
-              <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
-              <td class="details"><h4><%= holding.quantity %></h4></td> 
-              <td class="details"><h4><%= holding.amount_spent.round(2) %></h4></td> 
-              <td class="answered"><h4>
-                <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
-                <% @diff = @cost - holding.amount_spent %>
-                  <% if @diff.round(2) > 0 %>
-                    <%= image_tag "up-small.png"%> <%= @diff.round(2) %>
-                  <% elsif @diff.round(2) < 0  %>
-                    <%= image_tag "down-small.png"%><%= @diff.round(2) %>
-                  <% elsif @diff.round(2) == 0  %> 0
-                  <% end %>
-              </td>
-            </tr>
-          </tbody>
         </table>
-        <table class="headertable">
-          <thead>
-            <th></th>
-            <th></th>
-          </thead>
-          <tbody>
-            <td class="sell" style="border-top: none;border-left:solid; border-color: #bbb;"> 
-              <% if holding.contract.market.status == true %>
-                <h4 style="font-size: 14px"><%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => current_user.id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %> now and you will 
-                <% @diff = @cost - holding.amount_spent %>
-                <% if @diff.round(2) > 0 %>
-                  earn <%= @diff.round(2) %> points
-                <% elsif @diff.round(2) < 0  %>
-                  loose <%= @diff.abs.round(2) %> points
-                <% elsif @diff.round(2) == 0  %> 
-                  not earn any points
-                <% end %>
-                </h4>
-              <% end %>
-            </td>
-            <td class="correct" style="border-top: none;">
-              <h4 style="font-size: 14px">If your prediction is correct, you will earn <%= (holding.quantity - holding.amount_spent).round(2) %> points</h4>
-            </td>
-          </tbody>
-        </table>
-          <h5 class="market_info">Closes: <%= holding.contract.market.arbitration_date %></h5>
       </li>
-    <%end%>
-    <br>
+      <% @holdings.each do |holding| %>
+        <li class="posotion_group">
+          <% if holding.market_id == @market.id %>
+            <table class="headertable" style="margin-top:7px">
+              <tbody>
+                <tr>
+                  <td class="answered" style="text-transform: none; border-left:solid; border-color: #bbb;">
+                    <%= holding.contract.name if holding.contract %>
+                  </td>
+                  <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
+                  <td class="details"><h4><%= holding.quantity %></h4></td> 
+                  <td class="details"><h4><%= holding.amount_spent.round(2) %></h4></td> 
+                  <td class="answered"><h4>
+                    <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
+                    <% @diff = @cost - holding.amount_spent %>
+                      <% if @diff.round(2) > 0 %>
+                        <%= image_tag "up-small.png"%> <%= @diff.round(2) %>
+                      <% elsif @diff.round(2) < 0  %>
+                        <%= image_tag "down-small.png"%><%= @diff.round(2) %>
+                      <% elsif @diff.round(2) == 0  %> 0
+                      <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="headertable">
+              <thead>
+                <th></th>
+                <th></th>
+              </thead>
+              <tbody>
+                <td class="sell" style="border-top: none;border-left:solid; border-color: #bbb;"> 
+                  <h4 style="font-size: 14px"><%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => current_user.id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %> now and you will 
+                  <% @diff = @cost - holding.amount_spent %>
+                  <% if @diff.round(2) > 0 %>
+                    earn <%= @diff.round(2) %> points
+                  <% elsif @diff.round(2) < 0  %>
+                    loose <%= @diff.abs.round(2) %> points
+                  <% elsif @diff.round(2) == 0  %> 
+                    not earn any points
+                  <% end %>
+                  </h4>
+                </td>
+                <td class="correct" style="border-top: none;">
+                  <h4 style="font-size: 14px">If your prediction is correct, you will earn <%= (holding.quantity - holding.amount_spent).round(2) %> points</h4>
+                </td>
+              </tbody>
+            </table>
+          <% end %>
+        </li>
+      <% end %>
+      <h5 class="market_info">Closes: <%= @market.arbitration_date %></h5>
+      <br>
+    <% end %>
   <% end %>
 <ol>
 <%= will_paginate(@holdings, :renderer => WillPaginate::ActionView::LinkRenderer) %>

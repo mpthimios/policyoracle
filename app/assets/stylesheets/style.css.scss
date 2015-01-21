@@ -2196,7 +2196,7 @@ ul {list-style:none;}
   .position table.you td {border-width: 0px 1px 1px 1px; padding: 3px 4px; border-style: solid; border-color: #bbb; background-color: #f1f1f1; margin: 0; color: #333; font-size: 13px; vertical-align: top;}
   .position table.you td.answered, .headertable td.answered {width: 170px}
   .position table.you td.answered h3 {color: #333}
-  .position table.you td.sell, .headertable td.sell {width: 340px}
+  .position table.you td.sell, .headertable td.sell {width: 341px}
   .position table.you td.sell h3 {color: #333; font-size:14px;}
   .position table.you td.correct, .headertable td.correct {width: 390px}
   .position table.you td.correct h3 {color: #333; font-size:14px;}
@@ -2210,7 +2210,22 @@ ul {list-style:none;}
   .position table.you td.liquidated_advanced {width: 700px}
   .position table.you td.liquidated_probability {width: 339px}
 
-    .position table.you td.answered .remove_link {
+  .position table.you th.answered, .headertable th.answered {width: 170px}
+  .position table.you th.answered h3 {color: #333}
+  .position table.you th.sell, .headertable th.sell {width: 340px}
+  .position table.you th.sell h3 {color: #333; font-size:14px;}
+  .position table.you th.correct, .headertable th.correct {width: 390px}
+  .position table.you th.correct h3 {color: #333; font-size:14px;}
+  .position table.you th.status, .headertable th.status {width: 130px}
+  .position table.you th.prediction, .headertable th.prediction {width: 120px}
+  .position table.you th.details, .headertable th.details {width: 110px}
+  .position table.you th.details_prob, .headertable th.details_prob {width: 165px;}
+  .position table.you th.details.history {font-size: 12px}
+  .position table.you th.liquidated_simple {width: 601px}
+  .position table.you th.liquidated_simple_ideas {width: 502px}
+  .position table.you th.liquidated_advanced {width: 700px}
+  .position table.you th.liquidated_probability {width: 339px}
+    .position table.you th.answered .remove_link {
       background: url() no-repeat left; padding-left: 15px
     }
 
