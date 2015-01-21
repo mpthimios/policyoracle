@@ -7,10 +7,11 @@
       <li class="posotion_group">
         <table class="headertable">
           <thead>
-            <th class="answered"><h4>YOUR PREDICTION </h4></th>
-            <th class="answered"><h4>CURRENT PRΕDICTION</h4></th>
-            <th class="details"><h4>SHARES </h4></th>
-            <th class="details"><h4>POINTS SPENT </h4></th>
+            <th class="answered"><h4>ASSET NAME</h4></th>
+            <th class="price"><h4>CURRENT PRICE/PROBABILITY</h4></th>
+            <th class="value"><h4>AVERAGE COST</h4></th>
+            <th class="details"><h4># SHARES</h4></th>
+            <th class="value"><h4>CURRENT VALUE</h4></th>
             <th class="answered"><h4>CURRENT PROFIT/LOSS</h4></th>
           </thead>
         </table>
@@ -21,14 +22,15 @@
             <table class="headertable" style="margin-top:7px">
               <tbody>
                 <tr>
-                  <td class="answered" style="text-transform: none; border-left:solid; border-color: #bbb;">
+                  <td class="answered">
                     <%= holding.contract.name if holding.contract %>
                   </td>
-                  <td  class="answered"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
+                  <td  class="price"><h4><%= holding.contract.current_price.round(4)*100 if holding.contract %>%</h4></td> 
+                  <td class="value"><h4><%= (holding.amount_spent / holding.quantity).round(2) %></h4></td> 
                   <td class="details"><h4><%= holding.quantity %></h4></td> 
-                  <td class="details"><h4><%= holding.amount_spent.round(2) %></h4></td> 
+                  <td class="value"><h4> <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %> <%= @cost.round(2) %></h4></td> 
                   <td class="answered"><h4>
-                    <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
+                   
                     <% @diff = @cost - holding.amount_spent %>
                       <% if @diff.round(2) > 0 %>
                         <%= image_tag "up-small.png"%> <%= @diff.round(2) %>
