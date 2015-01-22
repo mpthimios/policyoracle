@@ -59,7 +59,7 @@ class Utransaction < ActiveRecord::Base
     data[:cash] = self.user.cash_amount.round(2)
     data[:contracts] = {}
     self.market.contracts.each do |contract|
-      data[:contracts][contract.id] = contract.current_price.round(4)*100
+      data[:contracts][contract.id] = contract.current_price.round(2)
     end
     data
   end
