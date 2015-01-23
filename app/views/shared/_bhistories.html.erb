@@ -14,7 +14,7 @@
       <tbody class="you">
         <% @bhistories.each do |bhistory| %>
           <tr>
-            <td style="text-transform: none;"><%= bhistory.contract.market.name if bhistory.contract %></td>
+            <td style="text-transform: none;"><%= link_to bhistory.contract.market.name, bhistory.contract.market, :class => "three" if bhistory.contract %></td>
             <td class="prediction" style="text-transform: none;"><%= bhistory.contract.name if bhistory.contract %></td>
             <td class="prediction"> 
               <% if bhistory.profit != 0 %>

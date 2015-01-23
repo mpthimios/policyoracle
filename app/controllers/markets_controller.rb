@@ -26,6 +26,7 @@ class MarketsController < ApplicationController
   def show
     @market = Market.find(params[:id])
     @contracts = @market.contracts.sorted
+    @holdings = @market.holdings.where(user_id: current_user)
     @utransactions_all = @market.utransactions
     @utransactions_latest =@market.utransactions.last(3)
     @microposts = @market.microposts.order("created_at DESC").paginate(page: params[:page], :per_page => 4)
