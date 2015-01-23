@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121090525) do
+ActiveRecord::Schema.define(version: 20150122185658) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20150121090525) do
   end
 
   add_index "contracts", ["market_id"], name: "index_contracts_on_market_id", using: :btree
+
+  create_table "feedbacks", force: true do |t|
+    t.string   "name"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tenant_id"
+  end
+
+  add_index "feedbacks", ["tenant_id"], name: "index_feedbacks_on_tenant_id", using: :btree
 
   create_table "holdings", force: true do |t|
     t.integer  "user_id"

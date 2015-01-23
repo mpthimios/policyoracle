@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'feedback/new'
+
   resources :markets do
     member do
       get 'close'
@@ -44,6 +46,8 @@ Rails.application.routes.draw do
   match '/trade_history',         to: 'utransactions#index',              via: 'get'
   match '/my_orders',             to: 'holdings#index',                   via: 'get'
   match '/bank_history',          to: 'bhistories#index',                 via: 'get'
+  match '/feedback/new',          to: 'feedback#new',                     via: 'post'
+  match '/feedback/form',          to: 'feedback#form',                     via: 'get'
 
   get "utransactions/new" => 'utransactions#new', :as => :new_transaction
 

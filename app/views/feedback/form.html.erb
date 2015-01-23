@@ -1,0 +1,25 @@
+<div class="feedback_title "><span class="">Send us a message</span></div>
+<form class="feedback_me_form">
+  <ul>
+    <% if signed_in?%>
+        <input type="hidden" class="feedback_name" name="name" value="<%=current_user.name%>">
+        <li>
+          <label for="feedback_message">Message</label>
+          <textarea rows="7" class="feedback_message" placeholder="Go ahead, type your message here..."></textarea>
+        </li>
+    <%else%>
+      <li>
+        <label for="feedback_name">Name</label>
+        <input type="text" class="feedback_name" required="" placeholder="Name please">
+      </li>
+        <li>
+          <label for="feedback_message">Message</label>
+          <textarea rows="5" class="feedback_message" placeholder="Go ahead, type your message here..."></textarea>
+        </li>
+    <% end %>
+
+      <li>
+        <button type="submit" onclick="fm.stopPropagation(event);fm.sendFeedback(event,'right-top');" class="feedback_submit  btn btn-primary ">Send</button>
+      </li>
+  </ul>
+</form>
