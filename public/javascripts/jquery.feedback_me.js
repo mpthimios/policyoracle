@@ -628,6 +628,11 @@ var fm = (function ($) {
 			radio_list_value: $fm_content.find(".feedback_me_form input[name=feedback_radio]:checked").val()
 		};
 
+        if ($fm_content.find('.feedback_csrf').length){
+            fm_options.custom_params.authenticity_token = $fm_content.find(".feedback_csrf").val();
+            console.log(fm_options.custom_params.authenticity_token);
+        }
+
 		dataArray = $.extend(fm_options.custom_params, dataArray);
 
 		$.ajax({
@@ -777,13 +782,12 @@ $(document).ready(function () {
         html_url : "/feedback/form",
         feedback_url: "feedback/new",
         custom_params: {
-            csrf: "my_secret_token",
+            authenticity_token: "my_secret",
             user_id: "john_doe",
             feedback_type: "bootstarp"
-        },
+        }
     };
 
     //init feedback_me plugin
     fm.init(fm_options);
-
 });

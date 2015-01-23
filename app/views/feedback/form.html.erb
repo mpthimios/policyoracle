@@ -1,6 +1,7 @@
 <div class="feedback_title "><span class="">Send us a message</span></div>
 <form class="feedback_me_form">
   <ul>
+    <input name="authenticity_token" class="feedback_csrf" type="hidden" value="<%= form_authenticity_token %>">
     <% if signed_in?%>
         <input type="hidden" class="feedback_name" name="name" value="<%=current_user.name%>">
         <li>
@@ -18,8 +19,9 @@
         </li>
     <% end %>
 
+
       <li>
-        <button type="submit" onclick="fm.stopPropagation(event);fm.sendFeedback(event,'right-top');" class="feedback_submit  btn btn-primary ">Send</button>
+        <button type="button" onclick="fm.stopPropagation(event);fm.sendFeedback(event,'right-top');" class="feedback_submit  btn btn-primary ">Send</button>
       </li>
   </ul>
 </form>
