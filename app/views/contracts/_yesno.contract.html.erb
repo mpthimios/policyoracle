@@ -1,9 +1,9 @@
-<div class="grid_6">
+<div class="grid_6" style="margin:0">
   <% if @market.status? %>
     <div class="grid_3" style="margin:0">
       <% @contracts.each do |contract| %>
         <% if contract.name === "YES" %>
-          <ul style="text-align: center">
+          <ul style="text-align: center; padding-left:0;">
             <li><%= image_tag "yes.png" %> </li>
             <li style="color:#ebdf1b"><%= "#{contract.name}" %> </li>
             <li style="margin-top:20px">Price/Probability:
@@ -55,12 +55,12 @@
                 <li style="font-size:16px; padding:0; margin:0; color:#92b5d5;">Correct Answer
                 </li>
                 <li style="margin-top:5px">Probability:
-                  <p3 style="font-size: 16px" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(4)*100}" %>%</p3>
+                  <p3 style="font-size: 16px" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(2)}" %></p3>
                 </li>
               <% else %>
                 <li style="color:#ebdf1b;opacity: 0.5;"><%= "#{contract.name}" %> </li>
                 <li style="margin-top:35px; opacity: 0.5;">Probability:
-                  <p3 style="font-size: 16px" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(4)*100}" %>%</p3>
+                  <p3 style="font-size: 16px" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(2)}" %></p3>
                 </li>
               <% end %>
           </ul>
@@ -79,13 +79,13 @@
               <li style="color:#ebdf1b; border-radius: 5px; border: 3px solid #92b5d5; "><%= "#{contract.name}" %> </li>
               <li style="font-size:16px; padding:5px 0px 0px 10px; margin:0; color:#92b5d5;">Correct Answer</li>
               <li style="margin-top:5px">Probability:
-              <p3 style="font-size: 16px" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(4)*100}"%>%</p3>
+              <p3 style="font-size: 16px" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(2)}"%></p3>
             </li>
 
             <% else %>
               <li style="color:#343c3a; opacity: 0.5;"><%= "#{contract.name}" %> </li>
               <li style="margin-top:35px; opacity: 0.5; ">Probability:
-              <p3 style="font-size: 16px;" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(4)*100}"%>%</p3>
+              <p3 style="font-size: 16px;" id="current_price_<%= contract.id %>"><%= "#{contract.current_price.round(2)}"%></p3>
             </li>
             <% end %>
           </ul>

@@ -28,15 +28,15 @@
 
       <div class="wrapper">
         <div class="grid_12">
-          <div class="grid_9">
+          <div class="grid_9" style="margin:0">
             <% if @market.market_type == "Yes/No" %>
                 <%= render "contracts/yesno.contract" %>
             <% elsif @market.market_type == "Multiple Choices" %>
-              <div class="grid_5">
-                <div class="grid_3">
+              <div class="grid_6" style="margin:0">
+                <div class="grid_3" style="margin:0">
                   <p> Possible Answers </p>
                 </div>
-                <div class="grid_2" style="margin:0">
+                <div class="grid_3" style="margin:0">
                   <p> Price/Probability: </p>
                 </div>
 
@@ -44,38 +44,31 @@
               </div>
             <% end %>
             <% if signed_in? && @market.status?%>
-              <% if @market.market_type == "Yes/No" %>
-                <div class="grid_3" style="margin:0; background-color: #d6d9d2">
-              <% elsif @market.market_type == "Multiple Choices" %>
-                <div class="grid_4" style="margin:0; background-color: #d6d9d2">
-              <% end %>
-                <div id="list">
+              <div class="grid_3" style="margin:0; background-color: #d6d9d2">
+                <div class="list">
                   <h1 style="margin-top:0; font-size:21px;"> <%= link_to "Your Portfolio", current_user, :class => "two" %></h1>
-                  <table class="prerformancecontent" style="margin:0; ">
-                    <tbody>
-                      <tr>
-                        <td align="left">Available points:</td>
-                        <td align="right" valign="middle"><%= current_user.cash_amount.round(2) %></td>
-                      </tr>
-                      <% @contracts.each do |contract| %>
-                        <% contract.holdings.each do |holding| %>
-                          <% if holding.user_id == current_user.id %>
-                            <tr>
-                              <td align="left">You hold:</td>
-                              <td align="right" valign="middle" ><%= holding.quantity %> shares of 
-                                <%= contract.name %>
-                              </td>
-                            </tr>
-                          <% end %>
-                        <% end %>
-                      <% end %>
-                      </tbody>
-                  </table>
+                  <div class="grid_2" style="margin:0">
+                    <p style="margin:0">Available points:</p>
+                  </div>
+                  <div class="grid_1" style="margin:0">
+                    <p style="margin:0"><%= current_user.cash_amount.round(2) %></p>
+                  </div>
                 </div>
+                <% if !@holdings.blank? %>
+                  <div class="list">
+                    <div class="grid_3" style="margin:0">
+                      <p style="margin:0; text-align:left">You hold:</p>
+                      <% @holdings.each do |holding| %>
+                          <p style="margin:0; text-align:right"><%= holding.quantity %> shares of 
+                                <%= holding.contract.name %></p>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
                 <% if @market.market_type == "Yes/No" %>
-                  <!--div id="trade_help" style="margin-top:5px; color:red;">
-                    <span>Specify where you want to invest and press the buy button!</span>
-                  </div!-->
+                  <div id="trade_help" style="margin-top:5px; color:red;">
+                    <span>Specify where you want to invest and press the Buy button!</span>
+                  </div>
                   
                   <div id="trade_details" style="margin-top:5px; color:green; display:none">
                     <span>The details of your transaction:</span>
@@ -94,7 +87,6 @@
               </div>
             <% end %>
           </div>
-
           <div class="grid_3" style="margin:0">
             <% if @market.status? %>
               <p><strong>You can play until:</strong><br><%= @market.arbitration_date %></p>
