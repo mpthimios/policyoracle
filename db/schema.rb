@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122185658) do
+ActiveRecord::Schema.define(version: 20150126081827) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
     t.integer  "contract_id"
-    t.decimal  "profit",      precision: 6, scale: 4, default: 0.0
-    t.decimal  "loss",        precision: 6, scale: 4, default: 0.0
+    t.decimal  "profit",      precision: 15, scale: 8, default: 0.0
+    t.decimal  "loss",        precision: 15, scale: 8, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
