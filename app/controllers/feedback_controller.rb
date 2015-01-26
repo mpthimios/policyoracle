@@ -5,6 +5,7 @@ class FeedbackController < ApplicationController
     feedback_params[:message] = params[:message]
     @feedback = Feedback.new(feedback_params)
     @feedback.save
+    render :layout => false
   end
 
   def form
