@@ -45,18 +45,23 @@ class UtransactionsController < ApplicationController
 
   def simulate
     logger.debug params['utransaction'].inspect
-    case params['utransaction']['transaction_type']
-      when 'Sell'
-        params['utransaction']['transaction_type'] = "S"
-      when 'Buy'
-        params['utransaction']['transaction_type'] = "B"
-      else
-        #do nothing
+    if params['utransaction']['quantity'].is_number?
+      case params['utransaction']['transaction_type']
+        when 'Sell'
+          params['utransaction']['transaction_type'] = "S"
+        when 'Buy'
+          params['utransaction']['transaction_type'] = "B"
+        else
+          #do nothing
+      end
+      logger.debug 'thimios'
+      logger.debug params['utransaction']['quantity'].is_number?
+      utransaction = Utransaction.new(utransaction_params)
+      data = utransaction.simulate
+      render :json => data
+    else
+      render :json => 'false'
     end
-
-    utransaction = Utransaction.new(utransaction_params)
-    data = utransaction.simulate
-    render :json => data
   end
 
   private
