@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
       @users = User.all
-      @users = User.order("total_amount DESC").paginate(page: params[:page], :per_page => 20)
+      @users = User.order("rank ASC").paginate(page: params[:page], :per_page => 20)
   end
 
   # GET /users/1
@@ -65,6 +65,14 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_path
+  end
+
+  def update_ranking
+    #operations are performed for all tenants
+    User.update_ranking
+    @tenant = Tenant.current = Tenant.where(:host => (request.subdomain.nil? ? "" : request.subdomain) ).first
+    logger.debug(@tenant)
+    render :text => "OK"
   end
 
   private
