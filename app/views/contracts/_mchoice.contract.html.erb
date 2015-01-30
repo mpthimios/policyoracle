@@ -1,8 +1,11 @@
 <% @market.contracts.each do |contract| %>
     <div class="grid_9 contract">
-    	<div class="grid_3" style="margin:0; padding:5px 0 10px 0" >
+        <div class="grid_4" style="margin:0; padding:5px 0 10px 0" >
             <% if signed_in? && @market.status? %>
-                <%= link_to contract.name, new_transaction_path(:utransaction => {:contract_id => contract.id, :contract_current_value => contract.current_price}), { 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "two", :style => "font-size: 14pt; margine-bottom:20px"} %>
+                <a class="small secondary message_button" style="background-color; margin:0; padding:0; font-size: 14pt;" id="transaction_container_link<%=contract.id%>" href="#"><%= contract.name %></a>
+                <div class="transaction_container hidden">
+                  <%= render partial: 'shared/utransaction_form', :locals => { :contract => contract} %>
+                </div>
             <% else %>
                 <% if contract.market.correct_contract_id == contract.id %>
                     <div style="padding:0;border-radius: 5px 0px 0px 5px; border: 3px solid #92b5d5; border-right:none;">         
@@ -12,15 +15,15 @@
                 <% end %>
             <% end %>
         </div>
-        <div class="grid_2" style="margin:0 0 0 -2px; padding:5px 25px 10px 0;" >
+        <div class="grid_1" style="margin:0; padding:8px 25px 10px 20px;" >
             <% if contract.market.correct_contract_id == contract.id %> 
-                <div style="padding:0 0 1px 0; border-radius: 0px 5px 5px 0px; border: 3px solid #92b5d5; border-left:none;">         
-                <h7 style="font-size: 14pt; padding:0px 0px 0px 10px; margin-bottom:20px" id="current_price_<%= contract.id %>"><%= contract.current_price.round(2) %></h7></div>
+                <div style="padding:0 0 1px 0;">         
+                <h7 style="font-size: 14pt; padding:0px 0px 3px 10px; margin:0 0 20px -20px; border-radius: 0px 5px 5px 0px; border: 3px solid #92b5d5; border-left:none;" id="current_price_<%= contract.id %>"><%= contract.current_price.round(2) %></h7></div>
             <% else %>
-                <h7 style="font-size: 14pt; padding:0px 0px 0px 10px; margin-bottom:20px; opacity: 0.5;" id="current_price_<%= contract.id %>"><%= contract.current_price.round(2) %> </h7>
+                <h7 style="font-size: 14pt; padding:0px 0px 0px -10px; margin:0 0 20px -10px; opacity: 0.5;" id="current_price_<%= contract.id %>"><%= contract.current_price.round(2) %> </h7>
             <% end %>
-    	</div>
-        <div class="grid_2" style="margin:0; padding:5px 0 0 0;" >
+        </div>
+        <div class="grid_2" style="margin:0; padding-top:2px;" >
             <% if contract.market.correct_contract_id == contract.id %> 
                 <p style="font-size:16px; padding:5px 0px 0px 10px; margin:0; color:#92b5d5;">Correct Answer</p>
             <% end %>

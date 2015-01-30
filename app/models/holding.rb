@@ -17,8 +17,6 @@ class Holding < ActiveRecord::Base
         self.amount_spent = self.amount_spent + params.cost
       when 'S'
         diff = params.cost - self.amount_spent
-        self.user.investment_amount += (-1) * self.amount_spent
-        self.user.cash_amount += (1) * params.cost
         self.user.total_amount += (1) * diff
         self.user.save!
         self.quantity = self.quantity - params.quantity

@@ -29,6 +29,9 @@ class Utransaction < ActiveRecord::Base
       when 'B'
         self.user.cash_amount = self.user.cash_amount - cost
         self.user.investment_amount += (1) * cost
+      when 'S'
+        self.user.cash_amount = self.user.cash_amount + cost
+        self.user.investment_amount = self.user.investment_amount - cost
     end
     #self.user.save!
     logger.debug "the transaction cost is: " + cost.to_s
@@ -48,13 +51,17 @@ class Utransaction < ActiveRecord::Base
       end
       self.new_contract_values = new_contract_values
       self.contract_new_value = new_contract_values[contract_id]
-
+      logger.debug "contract values done "
     end
   end
 
   def simulate
     update_market_holdings_and_money(save = false)
     data = {}
+    if transaction_type == 'S'
+      holding = self.user.holdings.where(contract_id: self.contract_id).first
+      data[:current_quantity] = holding.quantity
+    end
     data[:cost] = self.cost.round(2)
     data[:cash] = self.user.cash_amount.round(2)
     data[:contracts] = {}

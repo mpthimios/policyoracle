@@ -29,20 +29,19 @@
       <div class="wrapper">
         <div class="grid_12">
           <div class="grid_9" style="margin:0">
-            <% if @market.market_type == "Yes/No" %>
-                <%= render "contracts/yesno.contract" %>
-            <% elsif @market.market_type == "Multiple Choices" %>
-              <div class="grid_6" style="margin:0">
-                <div class="grid_3" style="margin:0">
-                  <p> Possible Answers </p>
-                </div>
-                <div class="grid_3" style="margin:0">
-                  <p> Price/Probability: </p>
-                </div>
-
-                <%= render "contracts/mchoice.contract" %>
+            <div class="grid_6" style="margin:0">
+              <div class="grid_3" style="margin:0">
+                <p> Possible Answers </p>
               </div>
-            <% end %>
+              <div class="grid_3" style="margin:0; text-align:right;padding-right:20px">
+                <p> Price/Probability: </p>
+              </div>
+              <% if @market.market_type == "Yes/No" %>
+                <%= render "contracts/yesno.contract" %>
+              <% elsif @market.market_type == "Multiple Choices" %>
+                <%= render "contracts/mchoice.contract" %>
+              <% end %>
+            </div>
             <% if signed_in? && @market.status?%>
               <div class="grid_3" style="margin:0; background-color: #d6d9d2">
                 <div class="list">
@@ -65,25 +64,19 @@
                     </div>
                   </div>
                 <% end %>
-                <% if @market.market_type == "Yes/No" %>
-                  <div id="trade_help" style="margin-top:5px; color:red;">
-                    <span>Specify where you want to invest and press the Buy button!</span>
-                  </div>
-                  
-                  <div id="trade_details" style="margin-top:5px; color:green; display:none">
-                    <span>The details of your transaction:</span>
-                  </div>
-                  <div id="trade_info" style="display:none">
-                    <div id="price_per_share">Price per share: 1</div>
-                    <div id="points_needed">Points needed: 100</div>
-                    <div id="points_available_after">Points available after: 200</div>
-                    <div id="shares_buying">You will be buying 2 shares</div>
-                  </div>
-                <% else %>
-                  <div style="margin-top:5px; color:red;">
-                    <span>Click on where you want to invest </span>
-                  </div>
-                <% end %>
+                <div id="trade_help" style="margin-top:5px; color:red;">
+                  <span>Click on where you want to invest</span>
+                </div>
+                
+                <div id="trade_details" style="margin-top:5px; color:green; display:none">
+                  <span>The details of your transaction:</span>
+                </div>
+                <div id="trade_info" style="display:none">
+                  <div id="price_per_share">Price per share: 1</div>
+                  <div id="points_needed">Points needed: 100</div>
+                  <div id="points_available_after">Points available after: 200</div>
+                  <div id="shares_buying">You will be buying 2 shares</div>
+                </div>
               </div>
             <% end %>
           </div>

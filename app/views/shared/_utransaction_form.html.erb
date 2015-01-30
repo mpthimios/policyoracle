@@ -1,13 +1,17 @@
-<%= form_for Utransaction.new, :html => {:class =>"form-inline"} do |f| %>
+<%= form_for Utransaction.new, :html => {:id => "form-contract-#{contract.id}", :class =>"contract-form form-inline"} do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-	<ul style="text-align: center; margin-left:30px">
-    	<li><%= f.text_field :quantity, :id => "contract_" + contract.id.to_s, :value => 0, :class => "input-mini", :style => "width:40px; text-align:center", :onkeyup=>"window.update_price(#{contract.id}); return false;"%> shares </li>
-
-    	<li style="margin-top:10px;">
-        <%= f.submit :value => "Buy", :name => 'utransaction[transaction_type]', class: "btn-sample",
-                     style: "width:100%" %>
-    	</li>
-    </ul>
+    <div class="grid_1" style="margin:0">
+        <%= f.radio_button :transaction_type, 'Buy', :checked => true %> 
+        <%= label :transaction_type, 'Buy', :value => 'Buy' %>
+        <%= f.radio_button :transaction_type, 'Sell' %>
+        <%= label :transaction_type, 'Sell', :value =>'Sell' %>
+    </div>
+    <div class="grid_2"  style="margin:0; padding-top:7px">
+	   <%= f.text_field :quantity, :id => "contract_id" + contract.id.to_s, :value => 0, :class => "quantity input-mini", :style => "width:40px; text-align:center"%> shares 
+    </div>
+    <div class="grid_1"  style="margin:0; float:left; padding-top:12px">
+        <%= f.submit 'Submit', class: "btn-sample", style: "width:100%;" %>
+    </div>
     <%= f.hidden_field :user_id, 				:value => current_user.id %>
     <%= f.hidden_field :contract_id, 			:value => contract.id %>
     <%= f.hidden_field :contract_current_value, :value => contract.current_price %>

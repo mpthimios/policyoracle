@@ -25,8 +25,6 @@ class UtransactionsController < ApplicationController
         params['utransaction']['transaction_type'] = "S"
       when 'Buy' 
         params['utransaction']['transaction_type'] = "B"
-      when 'Submit'
-        params['utransaction']['transaction_type'] = "B"
       else
         #do nothing
     end

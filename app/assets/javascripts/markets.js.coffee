@@ -5,30 +5,51 @@ window.toggle_show_contracts = (market_id) ->
   contracts_container = '#contracts_container' + market_id
   $(contracts_container).toggleClass('hidden')
 
-window.update_price = (contract_id) ->
-  console.log contract_id
-  contract = '#contract_' + contract_id
-  $('#trade_help').hide()
-  $('#trade_details').show()
-  $('#trade_info').show()
-  utransaction = []
-  utransaction["transaction_type"] = "Buy"
-  quantity = $(contract).val()
+$ ->
+  $('.contract-form .quantity').keyup update_price
+  $('.message_button').click (e) ->
+    e.preventDefault()
+    console.log $(this).data()
+    tc = $(this).siblings('.transaction_container')
+    was_hidden = tc.hasClass('hidden')
 
-  $.getJSON '/utransactions/12/simulate',{
-      "utransaction[transaction_type]":"Buy",
-      "utransaction[user_id]": $("#utransaction_user_id").val(),
-      "utransaction[contract_id]": contract_id,
-      "utransaction[quantity]": quantity
-    },  (data) ->
-      console.log data
+    $('.transaction_container').addClass('hidden')
+    tc.removeClass('hidden') if was_hidden
+
+window.update_price = () ->
+  form = $(this).parents('form')
+  quantity = $(this).val()
+  transaction_type = form.find("input:radio[name='utransaction[transaction_type]']:checked").val()
+  
+  $('#trade_help').hide()
+  $('#trade_details').hide()
+  $('#trade_info').hide()
+  $("#trade_not_enough_points").hide()
+  $("#trade_error_enter_shares").hide()
+  $('#trade_loading').show()
+
+  $.getJSON '/utransactions/12/simulate',form.serializeArray(),  (data) ->
+      $('#trade_loading').hide()
+
+      if (!data)
+        $("#trade_error_enter_shares").show()
+        return
+
+      if (data.cash < 0)
+        $("#trade_not_enough_points").show()
+        return
+
+      $('#trade_details').show()
+      $('#trade_info').show()
       for k, v of data.contracts
         contract_value_container = '#current_price_' + k
         $(contract_value_container).text(v)
-        console.log k + " " + v
-      $("#price_per_share").text("Price per share: "+(data.cost/quantity).toFixed(2))
-      $("#points_needed").text("Points needed: "+data.cost)
-      $("#points_available_after").text("Points available after: "+data.cash)
-      $("#shares_buying").text("You will be buying #{quantity} shares")
 
-
+      $("#price_per_share").text("Price per share: " + (data.cost/quantity).toFixed(2))
+      $("#points_needed").text("Points needed: " + data.cost)
+      $("#points_available_after").text("Points available after: " + data.cash)
+      
+      if (transaction_type == 'Buy') 
+        $("#shares_buying").text("You will be buying #{quantity} shares")
+      else
+        $("#shares_buying").text("After you will have #{data.current_quantity - quantity} shares")
