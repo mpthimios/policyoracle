@@ -2750,3 +2750,11 @@ margin-bottom:10px;
 textarea#micropost_content{
   resize: none;
 }
+
+#trade_loading{
+  height: 84px;
+  background: rgba( 255, 255, 255, .8 )
+  url('/images/spinner.gif')
+  50% 50%
+  no-repeat;
+}

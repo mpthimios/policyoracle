@@ -14,7 +14,7 @@
                         <tr>
                           <th><h4>Position</h4></th>
                           <th><h4>Username</h4></th>
-                          <th><h4>Total Points</h4></th>
+                          <th><h4>Total Value</h4></th>
                           <% if current_user.admin? %>
                             <th><h4>Settings</h4></th>
                           <%end%>
@@ -24,9 +24,9 @@
                     <tbody class="you">
                       <% @users.each_with_index do |user, i| %>
                         <tr>
-                          <td style="width:60px"><%= i+1 %></td>
+                          <td style="width:60px"><%= user.rank %></td>
                           <td class="prediction" ><%= user.name %></td>
-                          <td class="prediction"><%= user.total_amount.round(2) %> </td>
+                          <td class="prediction"><%= user.worth.round(2) %> </td>
                           <% if current_user.admin? %>
                             <td>
                               <%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %>

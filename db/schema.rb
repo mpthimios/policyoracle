@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126081827) do
+ActiveRecord::Schema.define(version: 20150128171941) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -122,17 +122,17 @@ ActiveRecord::Schema.define(version: 20150126081827) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.decimal  "total_amount",      precision: 15, scale: 8, default: 200.0
-    t.decimal  "cash_amount",       precision: 15, scale: 8, default: 200.0
-    t.decimal  "investment_amount", precision: 15, scale: 8, default: 0.0
-    t.integer  "rank",                                       default: 0
+    t.decimal  "total_amount",                 precision: 15, scale: 8, default: 200.0
+    t.decimal  "cash_amount",                  precision: 15, scale: 8, default: 200.0
+    t.decimal  "investment_amount",            precision: 15, scale: 8, default: 0.0
+    t.integer  "rank",                                                  default: 0
     t.string   "remember_token"
-    t.boolean  "admin",                                      default: false
+    t.boolean  "admin",                                                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_digest"
     t.string   "activation_digest"
-    t.boolean  "activated",                                  default: false
+    t.boolean  "activated",                                             default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(version: 20150126081827) do
     t.integer  "birth_year"
     t.string   "education"
     t.string   "market_knowledge"
+    t.float    "worth",             limit: 24,                          default: 0.0
+    t.datetime "worth_updated_at"
   end
 
   add_index "users", ["email", "tenant_id"], name: "index_users_on_email_and_tenant_id", using: :btree

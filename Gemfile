@@ -12,6 +12,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'mysql2'
 #needed for windows
 gem 'tzinfo-data'
+gem 'whenever', :require => false
 
 group :development do
   gem "letter_opener"

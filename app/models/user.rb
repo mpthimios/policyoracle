@@ -183,6 +183,43 @@ class User < ActiveRecord::Base
     select_year(Date.today, start_year: 2005, end_year: 1920)
   end
 
+  def self.update_ranking
+    #operations are performed for all tenants
+    tenants = Tenant.all
+    tenants.each do |tenant|
+      #first update the worth of all users
+      @tenant = Tenant.current = tenant
+      logger.debug(@tenant)
+      @users = User.all
+      @users.each do |user|
+        user.calculate_worth
+      end
+      #then update the rank
+      rankedUsers = User.order("worth DESC")
+      rankedUsers.each_with_index do |user, index|
+        user.rank = index + 1
+        user.save
+      end
+    end
+  end
+
+  def calculate_worth
+    holdings_worth = 0.0
+    holdings = self.holdings
+    holdings.each do |holding|
+      utransaction = Utransaction.new
+      utransaction.transaction_type = 'S'
+      utransaction.quantity = holding.quantity
+      utransaction.contract_id = holding.contract_id
+      utransaction.user_id = self.id
+      data = utransaction.simulate
+      holdings_worth = holdings_worth + data[:cost]
+    end
+    self.worth = holdings_worth + self.cash_amount
+    self.worth_updated_at = DateTime.now
+    save
+  end
+
   private
     
     # Converts email to all lower-case.
