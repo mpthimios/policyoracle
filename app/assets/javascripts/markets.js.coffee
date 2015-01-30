@@ -9,7 +9,6 @@ $ ->
   $('.contract-form .quantity').keyup update_price
   $('.message_button').click (e) ->
     e.preventDefault()
-    console.log $(this).data()
     tc = $(this).siblings('.transaction_container')
     was_hidden = tc.hasClass('hidden')
 
@@ -18,6 +17,7 @@ $ ->
 
 window.update_price = () ->
   form = $(this).parents('form')
+  console.log $(this).parents('form')
   quantity = $(this).val()
   transaction_type = form.find("input:radio[name='utransaction[transaction_type]']:checked").val()
   
