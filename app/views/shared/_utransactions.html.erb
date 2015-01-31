@@ -4,10 +4,11 @@
       <% if !@utransactions.blank? %>
         <thead>
           <tr>
-            <th><h4>Question</h4></th>
-            <th><h4>Your Prediction</h4></th>
-            <th><h4>Shares</h4></th>
-            <th><h4>Transaction Date</h3></th>
+            <th><h4>QUESTION</h4></th>
+            <th><h4>ASSET NAME</h4></th>
+            <th><h4># SHARES</h4></th>
+            <th><h4>AMOUNT SPENT/GAINED</h4></th>
+            <th><h4>TRANSACTION DATE</h3></th>
           </tr>
         </thead>
       <% end %> 
@@ -20,6 +21,7 @@
                 <% else %> sold
                 <% end %>
             </td>
+            <td class="answered"><%= utransaction.cost.round(2) if utransaction.contract %> points</td>
             <td><%= utransaction.created_at.to_date.to_s%></td>
           </tr>
         <% end %>

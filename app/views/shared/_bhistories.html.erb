@@ -4,10 +4,10 @@
       <% if !@bhistories.blank? %>
         <thead>
           <tr>
-            <th><h4>Expired Questions</h4></th>
-            <th><h4>Your Prediction</h4></th>
-            <th><h4>You Earned/Lost</h4></th>
-            <th><h4>Question Expired Date</h4></th>
+            <th><h4>EXPIRED QUESTION</h4></th>
+            <th><h4>ASSET NAME</h4></th>
+            <th><h4>YOU EARNED/LOST</h4></th>
+            <th><h4>EXPIRED DATE</h4></th>
           </tr>
         </thead>
       <% end %> 
@@ -16,13 +16,13 @@
           <tr>
             <td style="text-transform: none;"><%= link_to bhistory.contract.market.name, bhistory.contract.market, :class => "three" if bhistory.contract %></td>
             <td class="prediction" style="text-transform: none;"><%= bhistory.contract.name if bhistory.contract %></td>
-            <td class="prediction"> 
+            <td class="answered"> 
               <% if bhistory.profit != 0 %>
                 <h4 style="color:#018311; display: inline;"><%= bhistory.profit.round(2) %> points</h4> </td>
               <% else %>
                 <h4 style="color:#bd1902">-<%= bhistory.loss.round(2) %> points</h4></td>
               <% end %>
-            <td><%= bhistory.created_at.to_date.to_s%></td>
+            <td ><%= bhistory.created_at.to_date.to_s%></td>
           </tr>
         <% end %>
       </tbody>
