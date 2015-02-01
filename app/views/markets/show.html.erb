@@ -20,7 +20,7 @@
           </div>
         <% else %>
           <div class="grid_12 last-col">
-            <h4 style="margin-bottom:30px; margin-top:0px;"><%= link_to "Sign Up", signup_path, :class => 'one' %> in order to make your predictions and leave your comments </h4>
+            <h4 class="signup"><%= link_to "Sign Up", signup_path, :class => 'one' %> in order to make your predictions and leave your comments </h4>
             <div class="hello_box">  <%=  @market.name  %></div>
           </div>
         <% end %>
@@ -28,12 +28,12 @@
 
       <div class="wrapper">
         <div class="grid_12">
-          <div class="grid_9" style="margin:0">
-            <div class="grid_6" style="margin:0">
-              <div class="grid_3" style="margin:0">
+          <div class="grid_9 no_margin">
+            <div class="grid_6 no_margin">
+              <div class="grid_3 no_margin">
                 <p> Possible Answers </p>
               </div>
-              <div class="grid_3" style="margin:0; text-align:right;padding-right:20px">
+              <div class="grid_3 price_column">
                 <p> Price/Probability: </p>
               </div>
               <% if @market.market_type == "Yes/No" %>
@@ -43,42 +43,42 @@
               <% end %>
             </div>
             <% if signed_in? && @market.status?%>
-              <div class="grid_3" style="margin:0; background-color: #d6d9d2">
+              <div class="grid_3" id="your_portfolio">
                 <div class="list">
-                  <h1 style="margin-top:0; font-size:21px;"> <%= link_to "Your Portfolio", current_user, :class => "two" %></h1>
-                  <div class="grid_2" style="margin:0">
-                    <p style="margin:0">Available points:</p>
+                  <h1 class="title"> <%= link_to "Your Portfolio", current_user, :class => "two" %></h1>
+                  <div class="grid_2 no_margin">
+                    <p class="no_margin">Available points:</p>
                   </div>
-                  <div class="grid_1" style="margin:0">
-                    <p style="margin:0"><%= current_user.cash_amount.round(2) %></p>
+                  <div class="grid_1 no_margin">
+                    <p class="no_margin"><%= current_user.cash_amount.round(2) %></p>
                   </div>
                 </div>
                 <% if !@holdings.blank? %>
                   <div class="list">
-                    <div class="grid_3" style="margin:0">
-                      <p style="margin:0; text-align:left">You hold:</p>
+                    <div class="grid_3 no_margin">
+                      <p class="holdings">You hold:</p>
                       <% @holdings.each do |holding| %>
-                          <p style="margin:0; text-align:right"><%= holding.quantity %> shares of 
+                          <p class="holding_quantity"><%= holding.quantity %> shares of 
                                 <%= holding.contract.name %></p>
                       <% end %>
                     </div>
                   </div>
                 <% end %>
-                <div id="trade_help" style="margin-top:5px; color:red;">
+                <div id="trade_help" class="select_contract">
                   <span>Select a contract to trade!</span>
                 </div>
 
-                <div id="trade_loading" style="margin-top:30px; display:none"></div>
+                <div id="trade_loading" class="loading"></div>
 
-                <div id="trade_error_enter_shares" style="margin-top:5px; color:red; display:none">
+                <div id="trade_error_enter_shares" class="quantity_message">
                   <span>Please enter the number of shares to buy or sell!</span>
                 </div>
 
-                <div id="trade_not_enough_points" style="margin-top:5px; color:red; display:none">
+                <div id="trade_not_enough_points" class="quantity_message ">
                   <span>You don't have enough points to buy so many shares!</span>
                 </div>
                 
-                <div id="trade_details" style="margin-top:5px; color:green; display:none">
+                <div id="trade_details" class="trade_details">
                   <span>The details of your transaction:</span>
                 </div>
                 <div id="trade_info" style="display:none">
@@ -90,7 +90,7 @@
               </div>
             <% end %>
           </div>
-          <div class="grid_3" style="margin:0">
+          <div class="grid_3 no_margin">
             <% if @market.status? %>
               <p><strong>You can play until:</strong><br><%= @market.arbitration_date %></p>
             <% else %>

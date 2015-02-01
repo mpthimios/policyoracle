@@ -2874,3 +2874,54 @@ textarea#micropost_content{
   margin:0 0 20px -10px; 
   opacity: 0.5;
 }
+
+.signup {
+  margin-bottom:30px; 
+  margin-top:0px;
+}
+
+.price_column {
+  margin:0; 
+  text-align:right;
+  padding-right:20px
+}
+
+.no_margin{
+  margin:0;
+}
+
+#your_portfolio{
+  margin:0; 
+  background-color: #d6d9d2
+}
+#your_portfolio .title{
+  margin-top:0; font-size:21px;
+}
+#your_portfolio .holdings{
+  margin:0; text-align:left
+}
+#your_portfolio .holding_quantity{
+  margin:0;
+  text-align:right
+}
+
+.select_contract{
+  margin-top:5px; 
+  color:red;
+}
+.loading{
+  margin-top:30px; 
+  display:none;
+}
+
+.quantity_message {
+  margin-top:5px; 
+  color:red; 
+  display:none;
+}
+
+.trade_details{
+  margin-top:5px; 
+  color:green; 
+  display:none;
+}
