@@ -2758,3 +2758,119 @@ textarea#micropost_content{
   50% 50%
   no-repeat;
 }
+
+#binary_contract_name{
+  margin-left:30px; 
+  padding-top:2px
+}
+
+ .contract_link{
+   margin:0; 
+   padding:0; 
+   font-size: 14pt;
+}
+
+#binary_contract_name .correct_name{
+  padding:0;
+  border-radius: 5px 0px 0px 5px;
+  border: 3px solid #92b5d5; 
+  border-right:none;
+ }
+
+ .wrong_name{
+ opacity: 0.5;
+ }
+
+#expired_binary_contract_name{
+  margin-left:30px; 
+  padding-top:10px;
+}
+
+#expired_binary_contract_name .correct_name{
+  padding:0;
+  border-radius: 5px 0px 0px 5px;
+  border: 3px solid #92b5d5; 
+  border-right:none;
+ }
+
+#binary_contract_price{
+  margin:0; 
+  padding:13px 25px 10px 20px;
+}
+
+#binary_contract_price .current_price{
+  font-size: 14pt; 
+  padding:0px; 
+  margin:0 0 20px -20px;
+  opacity: 0.7;
+}
+
+#binary_contract_price .correct_price{
+  font-size: 14pt; 
+  padding:0px 0px 3px 10px; 
+  margin:0 0 20px -30px; 
+  border-radius: 0px 5px 5px 0px;
+  border: 3px solid #92b5d5; 
+  border-left:none;
+}
+#binary_contract_price .wrong_price{
+  font-size: 14pt; 
+  padding:0px 0px 3px 10px; 
+  margin:0 0 20px -30px; 
+  opacity: 0.5;
+}
+.price_area{
+  padding:0 0 1px 0;
+}
+
+#mark_correct {
+  margin:0; 
+  padding-top:2px;
+}
+#mark_correct .correct_answer{
+  font-size:16px;
+   padding:10px 0px 0px 10px; 
+   margin:0; color:#92b5d5;
+}
+
+#mark_correct .correct_answer2{
+  font-size:16px;
+   padding:5px 0px 0px 10px; 
+   margin:0; color:#92b5d5;
+}
+
+.multiple_choice_name{
+  margin:0; 
+  padding:5px 0 10px 0;
+}
+
+.multiple_choice_correct_name{
+  padding:0;
+  border-radius: 5px 0px 0px 5px;
+   border: 3px solid #92b5d5; 
+   border-right:none;
+}
+.multiple_choice_wrong{
+  opacity: 0.5;
+}
+
+#multiple_choice_price{
+  margin:0; 
+  padding:8px 25px 10px 20px;
+}
+
+#multiple_choice_price .correct_price{
+  font-size: 14pt; 
+  padding:0px 0px 3px 10px;
+  margin:0 0 20px -20px; 
+  border-radius: 0px 5px 5px 0px; 
+  border: 3px solid #92b5d5; 
+  border-left:none;
+}
+
+#multiple_choice_price .wrong_price{
+  font-size: 14pt; 
+  padding:0px 0px 0px -10px; 
+  margin:0 0 20px -10px; 
+  opacity: 0.5;
+}
