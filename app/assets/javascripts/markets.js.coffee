@@ -5,8 +5,8 @@ window.toggle_show_contracts = (market_id) ->
   contracts_container = '#contracts_container' + market_id
   $(contracts_container).toggleClass('hidden')
 
-$ ->
-  $('.contract-form .quantity').keyup update_price
+ready = ->
+  $('.contract-form .quantity').on 'keyup', update_price
   $('.message_button').click (e) ->
     e.preventDefault()
     tc = $(this).siblings('.transaction_container')
@@ -14,6 +14,10 @@ $ ->
 
     $('.transaction_container').addClass('hidden')
     tc.removeClass('hidden') if was_hidden
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
+
 
 window.update_price = () ->
   form = $(this).parents('form')
