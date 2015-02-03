@@ -60,7 +60,11 @@ class Utransaction < ActiveRecord::Base
     data = {}
     if transaction_type == 'S'
       holding = self.user.holdings.where(contract_id: self.contract_id).first
-      data[:current_quantity] = holding.quantity
+      unless holding.nil? 
+        data[:current_quantity] = holding.quantity
+      else
+        data[:current_quantity] = 0
+      end
     end
     data[:cost] = self.cost.round(2)
     data[:cash] = self.user.cash_amount.round(2)
