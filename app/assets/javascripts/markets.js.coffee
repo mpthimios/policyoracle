@@ -39,6 +39,10 @@ window.update_price = () ->
         $("#trade_not_enough_points").show()
         return
 
+      if (transaction_type == 'Sell' && quantity > data.current_quantity)
+        $("#sell_more_shares_than_holding").show()
+        return
+
       $('#trade_details').show()
       $('#trade_info').show()
       for k, v of data.contracts
@@ -52,4 +56,4 @@ window.update_price = () ->
       if (transaction_type == 'Buy') 
         $("#shares_buying").text("You will be buying #{quantity} shares")
       else
-        $("#shares_buying").text("After you will have #{data.current_quantity - quantity} shares")
+        $("#shares_buying").text("You will be selling  #{quantity} of the #{data.current_quantity} shares you already hold")
