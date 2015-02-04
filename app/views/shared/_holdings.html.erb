@@ -25,10 +25,12 @@
                   <td class="answered">
                     <%= holding.contract.name if holding.contract %>
                   </td>
-                  <td  class="price"><h4><%= holding.contract.current_price.round(2) if holding.contract %></h4></td> 
-                  <td class="value"><h4><%= (holding.amount_spent / holding.quantity).round(2) %></h4></td> 
+                  <td  class="price"><h4><%= "%0.2f" % (100*holding.contract.current_price.round(2) if holding.contract
+                  )%></h4></td>
+                  <td class="value"><h4><%= "%0.2f" % (100*holding.amount_spent / holding.quantity).round(2) %></h4></td>
                   <td class="details"><h4><%= holding.quantity %></h4></td> 
-                  <td class="value"><h4> <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %> <%= @cost.round(2) %></h4></td> 
+                  <td class="value"><h4> <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract
+                  .current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %> <%= "%0.2f" % (100*@cost.floor2(4)) %></h4></td>
                   <td class="answered"><h4>
                    
                     <% @diff = @cost - holding.amount_spent %>
@@ -52,16 +54,16 @@
                   <h4 style="font-size: 14px">
                   <% @diff = @cost - holding.amount_spent %>
                   <% if @diff.round(2) > 0 %>
-                    <%= @diff.round(2) %> points profit,
+                    <%= 100*@diff.round(2) %> points profit,
                   <% elsif @diff.round(2) < 0  %>
-                    <%= @diff.abs.round(2) %> points loss,
+                    <%= 100*@diff.abs.round(2) %> points loss,
                   <% elsif @diff.round(2) == 0  %> 
                     0 points profit,
                   <% end %> if you
                   <%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => current_user.id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %> now </h4>
                 </td>
                 <td class="correct" style="border-top: none;">
-                  <h4 style="font-size: 14px">If your prediction is correct, your profit will be <%= (holding.quantity - holding.amount_spent).round(2) %> points </h4>
+                  <h4 style="font-size: 14px">If your prediction is correct, your profit will be <%="%0.2f" % (100*(holding.quantity - holding.amount_spent)) %> points </h4>
                 </td>
               </tbody>
             </table>

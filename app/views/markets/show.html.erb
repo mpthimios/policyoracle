@@ -50,7 +50,7 @@
                     <p class="no_margin">Available points:</p>
                   </div>
                   <div class="grid_1 no_margin">
-                    <p class="no_margin"><%= current_user.cash_amount.round(2) %></p>
+                    <p class="no_margin"> <%= "%0.2f" % (100*current_user.cash_amount)%></p>
                   </div>
                 </div>
                 <% if !@holdings.blank? %>

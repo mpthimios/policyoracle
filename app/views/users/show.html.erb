@@ -11,7 +11,7 @@
             </li>
             <li>
   						<div class="subheaders1">Available Points</div>
-  						<h1><%= @user.cash_amount.round(2) %></h1>
+  						<h1><%= "%0.2f" % (100*@user.cash_amount) %></h1>
 			        <table class="prerformancecontent">
 			          <tbody>
 			            <tr>
@@ -21,19 +21,20 @@
                       <% @user.holdings.each do |holding| %>
                         <% if holding.contract.market.status == true %>
                           <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
-                          <% @current_holdings += @cost %>
+                          <% @current_holdings += @cost.floor2(4) %>
                         <% end %>
                       <% end %>
 
-                      <%= @current_holdings.round(2) %></td>
+                      <%= "%0.2f" % (100*@current_holdings) %></td>
 		              </tr>
 		              <tr>
 			              <td align="left">Available points:</td>
-			              <td align="right" valign="middle"><%= @user.cash_amount.round(2) %></td>
+			              <td align="right" valign="middle"><%= "%0.2f" % (100*@user.cash_amount) %></td>
 		              </tr>						           
 		              <tr>
 			              <td align="left">Total value:</td>
-			              <td align="right" valign="middle" class="summationline"><%= @user.total_amount = @current_holdings.round(2) +  @user.cash_amount.round(2) %></td>
+			              <td align="right" valign="middle" class="summationline"><%= "%0.2f" % (@user.total_amount =
+                                  100*@current_holdings +  100*@user.cash_amount) %></td>
 		              </tr>
 			          </tbody>
 			        </table>

@@ -53,7 +53,7 @@ window.update_price = () ->
         contract_value_container = '#current_price_' + k
         $(contract_value_container).text(v)
 
-      $("#price_per_share").text("Price per share: " + (data.cost/quantity).toFixed(2))
+      $("#price_per_share").text("Price per share: " + (100*(data.cost/quantity)).toFixed(2)/100)
       $("#points_needed").text("Points needed: " + data.cost)
       $("#points_available_after").text("Points available after: " + data.cash)
       

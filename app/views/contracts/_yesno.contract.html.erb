@@ -26,9 +26,10 @@
     <div class="grid_1" id="binary_contract_price" >
       <% if contract.market.correct_contract_id == contract.id %> 
         <div class="price_area">         
-          <h7 class="correct_price" id="current_price_<%= contract.id %>"><% contract.current_price.round(2) %><%= number_with_precision(contract.current_price, :precision => 2) || 0 %></h7></div>
+          <h7 class="correct_price" id="current_price_<%= contract.id %>"><%= "%0.2f" % (100*contract.current_price.round(4)) %><%
+              "%0.2f" % (number_with_precision(100*contract.current_price, :precision => 4) || 0) %></h7></div>
       <% else %>
-        <h7 class="wrong_price" id="current_price_<%= contract.id %>"><% contract.current_price.round(2) %><%= number_with_precision(contract.current_price, :precision => 2) || 0 %> </h7>
+        <h7 class="wrong_price" id="current_price_<%= contract.id %>"><%= "%0.2f" % (100*contract.current_price.round(4)) %><% "%0.2f" % (number_with_precision(100*contract.current_price, :precision => 4) || 0 )%> </h7>
       <% end %>
     </div>
     <div class="grid_2" id="mark_correct" >

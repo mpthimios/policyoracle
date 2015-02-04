@@ -56,17 +56,26 @@ class Utransaction < ActiveRecord::Base
   end
 
   def simulate
+    logger.debug "cash before: " + self.user.cash_amount.to_s
     update_market_holdings_and_money(save = false)
     data = {}
     if transaction_type == 'S'
       holding = self.user.holdings.where(contract_id: self.contract_id).first
       data[:current_quantity] = holding.quantity
+      data[:cost] = 100*self.cost
+      data[:cash] = 100*self.user.cash_amount
+      logger.debug "the ceiled cost is: " + self.cost.to_s
+      logger.debug "the ceiled cash is: " + self.user.cash_amount.to_s
+    elsif transaction_type == 'B'
+      data[:cost] = 100*self.cost
+      data[:cash] = 100*self.user.cash_amount
+      logger.debug "the floored cost is: " + self.cost.to_s + "the data cost is: " + data[:cost].to_s
+      logger.debug "the floored cash is: " + self.user.cash_amount.to_s + "the data cash is: " + data[:cash].to_s
     end
-    data[:cost] = self.cost.round(2)
-    data[:cash] = self.user.cash_amount.round(2)
+
     data[:contracts] = {}
     self.market.contracts.each do |contract|
-      data[:contracts][contract.id] = contract.current_price.round(2)
+      data[:contracts][contract.id] = 100*contract.current_price.round(4)
     end
     data
   end

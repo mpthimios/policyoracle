@@ -123,16 +123,17 @@ class Market < ActiveRecord::Base
       contract.current_price = numerators[contract[:id]]/denominator
       #contract.save!
       sum_of_prices = sum_of_prices + contract.current_price
+      logger.debug "contract price:" + contract.current_price.to_s
       logger.debug "the sum_of_prices is " + sum_of_prices.to_s
     end
 
     
     if params.transaction_type == 'B'
       cost = (self.b_value*Math.log((cur_price*(Math.exp((params.quantity)/self.b_value)-1))+1))
-      cost = cost.ceil2(6)
+      cost = cost.ceil2(4)
     elsif params.transaction_type == 'S'
       cost = (-self.b_value*Math.log((cur_price*(Math.exp((-params.quantity)/self.b_value)-1))+1))
-      cost = cost.floor2(6)
+      cost = cost.floor2(4)
     end
     #cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before) 
 
