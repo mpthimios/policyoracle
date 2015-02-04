@@ -43,10 +43,11 @@ window.update_price = () ->
         $("#trade_not_enough_points").show()
         return
 
-      if (transaction_type == 'Sell' && quantity > data.current_quantity)
+      if (transaction_type == 'Sell' && quantity > data.current_quantity || data.current_quantity == 0)
         $("#sell_more_shares_than_holding").show()
         return
 
+      $("#sell_more_shares_than_holding").hide()
       $('#trade_details').show()
       $('#trade_info').show()
       for k, v of data.contracts
