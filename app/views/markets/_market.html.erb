@@ -8,17 +8,17 @@
     <div id="contracts_container<%=market.id%>" class="hidden">
     	<% if market.status? %>
 	    	<div class="grid_3"  >
-	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;"> Possible Answer</p>
+	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;">Asset Name</p>
 	    	</div>
 	    	<div class="grid_3"  >
-	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;"> Current Prediction</p>
+	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;">Price/Probability</p>
 	    	</div>
 	    <% else %>
 	    	<div class="grid_3"  >
 	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;"> Correct Answer</p>
 	    	</div>
 	    	<div class="grid_3"  >
-	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;"> Prediction</p>
+	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;">Price/Probability</p>
 	    	</div>
 		<% end %>
         <%= render market.contracts %>
