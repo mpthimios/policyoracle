@@ -21,7 +21,7 @@
                 <% else %> sold
                 <% end %>
             </td>
-            <td class="answered"><%= utransaction.cost.round(2) if utransaction.contract %> points</td>
+            <td class="answered"><%= "%0.2f" % (100*utransaction.cost if utransaction.contract) %> points</td>
             <td><%= utransaction.created_at.to_date.to_s%></td>
           </tr>
           

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128171941) do
+ActiveRecord::Schema.define(version: 20150205194420) do
 
   create_table "bhistories", force: true do |t|
     t.integer  "user_id"
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20150128171941) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.decimal  "total_amount",                 precision: 15, scale: 8, default: 200.0
-    t.decimal  "cash_amount",                  precision: 15, scale: 8, default: 200.0
-    t.decimal  "investment_amount",            precision: 15, scale: 8, default: 0.0
+    t.decimal  "total_amount",                 precision: 15, scale: 4, default: 200.0
+    t.decimal  "cash_amount",                  precision: 15, scale: 4, default: 200.0
+    t.decimal  "investment_amount",            precision: 15, scale: 4, default: 0.0
     t.integer  "rank",                                                  default: 0
     t.string   "remember_token"
     t.boolean  "admin",                                                 default: false
