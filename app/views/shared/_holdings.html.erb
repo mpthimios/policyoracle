@@ -25,20 +25,20 @@
                   <td class="answered">
                     <%= holding.contract.name if holding.contract %>
                   </td>
-                  <td  class="price"><h4><%= "%0.2f" % (100*holding.contract.current_price.round(2) if holding.contract
+                  <td  class="price"><h4><%= "%0.2f" % (100*holding.contract.current_price.round(4) if holding.contract
                   )%></h4></td>
-                  <td class="value"><h4><%= "%0.2f" % (100*holding.amount_spent / holding.quantity).round(2) %></h4></td>
+                  <td class="value"><h4><%= "%0.2f" % (100*holding.amount_spent / holding.quantity).round(4) %></h4></td>
                   <td class="details"><h4><%= holding.quantity %></h4></td> 
                   <td class="value"><h4> <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract
-                  .current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %> <%= "%0.2f" % (100*@cost.floor2(4)) %></h4></td>
+                  .current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %> <%= "%0.2f" % (100 * @cost.floor2(4)) %></h4></td>
                   <td class="answered"><h4>
                    
                     <% @diff = @cost - holding.amount_spent %>
-                      <% if @diff.round(2) > 0 %>
-                        <%= image_tag "up-small.png"%> <%= @diff.round(2) %>
-                      <% elsif @diff.round(2) < 0  %>
-                        <%= image_tag "down-small.png"%><%= @diff.round(2) %>
-                      <% elsif @diff.round(2) == 0  %> 0
+                      <% if @diff.round(3) > 0 %>
+                        <%= image_tag "up-small.png"%> <%= "%0.2f" % (100 * @diff.round(4)) %>
+                      <% elsif @diff.round(3) < 0  %>
+                        <%= image_tag "down-small.png"%><%= "%0.2f" % (100 * @diff.round(4).abs) %>
+                      <% elsif @diff.round(3) == 0  %> 0
                       <% end %>
                   </td>
                 </tr>
@@ -53,11 +53,11 @@
                 <td class="sell" style="border-top: none;border-left:solid; border-color: #bbb;"> 
                   <h4 style="font-size: 14px">
                   <% @diff = @cost - holding.amount_spent %>
-                  <% if @diff.round(2) > 0 %>
-                    <%= 100*@diff.round(2) %> points profit,
-                  <% elsif @diff.round(2) < 0  %>
-                    <%= 100*@diff.abs.round(2) %> points loss,
-                  <% elsif @diff.round(2) == 0  %> 
+                  <% if @diff.round(3) > 0 %>
+                    <%= 100*@diff.round(4) %> points profit,
+                  <% elsif @diff.round(3) < 0  %>
+                    <%= 100*@diff.abs.round(4) %> points loss,
+                  <% elsif @diff.round(3) == 0  %> 
                     0 points profit,
                   <% end %> if you
                   <%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => current_user.id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %> now </h4>

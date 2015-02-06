@@ -2198,6 +2198,8 @@ ul {list-style:none;}
   .position table.you td.answered h3 {color: #333}
   .position table.you td.price, .headertable td.price {width: 220px}
   .position table.you td.price h3 {color: #333}
+  .position table.you td.question, .headertable td.question {width: 430px}
+  .position table.you td.question h3 {color: #333}
   .position table.you td.value, .headertable td.value {width: 120px}
   .position table.you td.value h3 {color: #333}
   .position table.you td.sell, .headertable td.sell {width: 390px}
@@ -2218,6 +2220,8 @@ ul {list-style:none;}
   .position table.you th.answered h3 {color: #333}
   .position table.you th.price, .headertable th.price {width: 220px}
   .position table.you th.price h3 {color: #333}
+  .position table.you th.question, .headertable th.question {width: 430px}
+  .position table.you th.question h3 {color: #333}
   .position table.you th.value, .headertable th.value {width: 120px}
   .position table.you th.value h3 {color: #333}
   .position table.you th.sell, .headertable th.sell {width: 340px}
@@ -2941,4 +2945,9 @@ textarea#micropost_content{
   margin:0; 
   padding-top:7px;
   padding-left: 25px;
+}
+
+.check_action{
+  margin:0; 
+  padding-left: 5px;
 }

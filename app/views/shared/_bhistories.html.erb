@@ -18,9 +18,9 @@
             <td class="prediction" style="text-transform: none;"><%= bhistory.contract.name if bhistory.contract %></td>
             <td class="answered"> 
               <% if bhistory.profit != 0 %>
-                <h4 style="color:#018311; display: inline;"><%= bhistory.profit.round(2) %> points</h4> </td>
+                <h4 style="color:#018311; display: inline;"><%= "%0.2f" % (100 * bhistory.profit.round(4)) %> points</h4> </td>
               <% else %>
-                <h4 style="color:#bd1902">-<%= bhistory.loss.round(2) %> points</h4></td>
+                <h4 style="color:#bd1902">-<%= "%0.2f" % (100 * bhistory.loss.round(4)) %> points</h4></td>
               <% end %>
             <td ><%= bhistory.created_at.to_date.to_s%></td>
           </tr>

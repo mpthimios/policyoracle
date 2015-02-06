@@ -1,6 +1,6 @@
 <%= form_for Utransaction.new, :html => {:id => "form-contract-#{contract.id}", :class =>"contract-form form-inline"} do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-    <div class="grid_1 no_margin">
+    <div class="grid_1 check_action">
         <%= f.radio_button :transaction_type, 'Buy', :checked => true %> 
         <%= label :transaction_type, 'Buy', :value => 'Buy' %>
         <%= f.radio_button :transaction_type, 'Sell' %>
