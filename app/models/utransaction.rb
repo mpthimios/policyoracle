@@ -28,10 +28,8 @@ class Utransaction < ActiveRecord::Base
     case self.transaction_type
       when 'B'
         self.user.cash_amount = self.user.cash_amount - cost
-        self.user.investment_amount += (1) * cost
       when 'S'
         self.user.cash_amount = self.user.cash_amount + cost
-        self.user.investment_amount = self.user.investment_amount - cost
     end
     #self.user.save!
     logger.debug "the transaction cost is: " + cost.to_s
