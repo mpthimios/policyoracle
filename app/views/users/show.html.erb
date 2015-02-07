@@ -21,7 +21,7 @@
                       <% @user.holdings.each do |holding| %>
                         <% if holding.contract.market.status == true %>
                           <% @cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1)) %>
-                          <% @current_holdings += @cost.ceil2(4) %>
+                          <% @current_holdings += @cost.round(4) %>
                         <% end %>
                       <% end %>
 
