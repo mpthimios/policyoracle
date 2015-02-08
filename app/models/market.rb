@@ -16,7 +16,7 @@ class Market < ActiveRecord::Base
 
 	validates_presence_of :name, :description, :published_date, :arbitration_date, :category
 	validates_length_of :name, :maximum => 255
-	validates_uniqueness_of :name
+	validates_uniqueness_of :name, scope: :tenant_id
 	
   validates_inclusion_of :market_type, :in => MARKET_TYPES, :message => "must be one of: #{MARKET_TYPES.join(',
 ')}"

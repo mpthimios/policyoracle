@@ -7,7 +7,7 @@ class AddWorthToUsers < ActiveRecord::Migration
     unless !(column_exists? :users, :worth)
       remove_column :users, :worth
     end
-    unless !(column_exists? :users, :worth)
+    unless !(column_exists? :users, :worth_updated_at)
       remove_column :users, :worth_updated_at
     end
   end
