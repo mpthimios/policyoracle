@@ -209,8 +209,10 @@ class User < ActiveRecord::Base
     holdings = self.holdings
     logger.debug(holdings)
     holdings.each do |holding|
-      cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1))
-      holdings_worth = holdings_worth + cost
+      if holding.contract.market.status == true
+        cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1))
+        holdings_worth = holdings_worth + cost
+      end
     end
     logger.debug "user's cash: " + self.cash_amount.to_s
     logger.debug "the holdings worth is: " + holdings_worth.to_s
