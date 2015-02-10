@@ -213,7 +213,7 @@ class User < ActiveRecord::Base
       utransaction.contract_id = holding.contract_id
       utransaction.user_id = self.id
       data = utransaction.simulate
-      holdings_worth = holdings_worth + data[:cost]
+      holdings_worth = holdings_worth + data[:cost]/100
     end
     self.worth = holdings_worth + self.cash_amount
     self.worth_updated_at = DateTime.now
