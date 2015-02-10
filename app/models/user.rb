@@ -205,7 +205,7 @@ class User < ActiveRecord::Base
 
   def calculate_worth
     holdings_worth = 0.0
-    holdings = self.holdings
+    holdings = self.holdings.select{|h| h.market.status == true}
     holdings.each do |holding|
       utransaction = Utransaction.new
       utransaction.transaction_type = 'S'

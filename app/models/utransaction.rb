@@ -22,8 +22,10 @@ class Utransaction < ActiveRecord::Base
     logger.debug "update_market_holdings_and_money"
 
     market = Contract.find_by_id(self.contract_id).market
-    cost = market.update_market(self)
+    cost = BigDecimal(market.update_market(self).to_s)
+    logger.debug "the transaction cost is: " + cost.to_s
     self.cost = cost
+    logger.debug "self transaction cost is: " + self.cost.to_s
     self.market = market
     case self.transaction_type
       when 'B'
@@ -31,10 +33,6 @@ class Utransaction < ActiveRecord::Base
       when 'S'
         self.user.cash_amount = self.user.cash_amount + cost
     end
-    #self.user.save!
-    logger.debug "the transaction cost is: " + cost.to_s
-    #Holding.find_or_initialize_by(user_id: self.user_id, contract_id: self.contract_id) \
-    #  .update_attributes(self)
 
     if save
       self.user.save!
@@ -54,7 +52,6 @@ class Utransaction < ActiveRecord::Base
   end
 
   def simulate
-    logger.debug "cash before: " + self.user.cash_amount.to_s
     update_market_holdings_and_money(save = false)
     data = {}
     if transaction_type == 'S'

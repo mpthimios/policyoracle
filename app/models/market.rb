@@ -127,7 +127,6 @@ class Market < ActiveRecord::Base
       logger.debug "the sum_of_prices is " + sum_of_prices.to_s
     end
 
-    
     if params.transaction_type == 'B'
       cost = (self.b_value*Math.log((cur_price*(Math.exp((params.quantity)/self.b_value)-1))+1))
       cost = cost.ceil2(4)
@@ -135,6 +134,7 @@ class Market < ActiveRecord::Base
       cost = (-self.b_value*Math.log((cur_price*(Math.exp((-params.quantity)/self.b_value)-1))+1))
       cost = cost.floor2(4)
     end
+    cost
     #cost = self.b_value*Math.log(denominator) - self.b_value*Math.log(sum_before) 
 
   end
