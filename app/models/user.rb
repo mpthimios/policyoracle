@@ -204,18 +204,18 @@ class User < ActiveRecord::Base
   end
 
   def calculate_worth
+    cost=0
     holdings_worth = 0.0
     holdings = self.holdings
+    logger.debug(holdings)
     holdings.each do |holding|
-      utransaction = Utransaction.new
-      utransaction.transaction_type = 'S'
-      utransaction.quantity = holding.quantity
-      utransaction.contract_id = holding.contract_id
-      utransaction.user_id = self.id
-      data = utransaction.simulate
-      holdings_worth = holdings_worth + data[:cost]
+      cost = (-holding.contract.market.b_value*Math.log((holding.contract.current_price*(Math.exp((-holding.quantity)/holding.contract.market.b_value)-1))+1))
+      holdings_worth = holdings_worth + cost
     end
+    logger.debug "user's cash: " + self.cash_amount.to_s
+    logger.debug "the holdings worth is: " + holdings_worth.to_s
     self.worth = holdings_worth + self.cash_amount
+    logger.debug "the user worth is: " + self.worth.to_s
     self.worth_updated_at = DateTime.now
     save
   end

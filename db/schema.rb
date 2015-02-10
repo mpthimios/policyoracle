@@ -122,17 +122,17 @@ ActiveRecord::Schema.define(version: 20150205194420) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.decimal  "total_amount",                 precision: 15, scale: 4, default: 200.0
-    t.decimal  "cash_amount",                  precision: 15, scale: 4, default: 200.0
-    t.decimal  "investment_amount",            precision: 15, scale: 4, default: 0.0
-    t.integer  "rank",                                                  default: 0
+    t.decimal  "total_amount",      precision: 15, scale: 4, default: 200.0
+    t.decimal  "cash_amount",       precision: 15, scale: 4, default: 200.0
+    t.decimal  "investment_amount", precision: 15, scale: 4, default: 0.0
+    t.integer  "rank",                                       default: 0
     t.string   "remember_token"
-    t.boolean  "admin",                                                 default: false
+    t.boolean  "admin",                                      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_digest"
     t.string   "activation_digest"
-    t.boolean  "activated",                                             default: false
+    t.boolean  "activated",                                  default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 20150205194420) do
     t.integer  "birth_year"
     t.string   "education"
     t.string   "market_knowledge"
-    t.float    "worth",             limit: 24,                          default: 0.0
+    t.decimal  "worth",             precision: 15, scale: 4, default: 0.0
     t.datetime "worth_updated_at"
   end
 
