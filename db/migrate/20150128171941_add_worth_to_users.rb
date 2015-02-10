@@ -1,6 +1,6 @@
 class AddWorthToUsers < ActiveRecord::Migration
   def self.up
-    add_column :users, :worth, :float, default:  0
+    add_column :users, :worth, :decimal,  precision: 15,    scale: 4,     :default => 0.00
     add_column :users, :worth_updated_at, :datetime
   end
   def self.down

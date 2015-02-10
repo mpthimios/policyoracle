@@ -26,7 +26,7 @@
                         <tr>
                           <td style="width:60px"><%= user.rank %></td>
                           <td class="prediction" ><%= user.name %></td>
-                          <td class="prediction"><%= user.worth.round(2) %> </td>
+                          <td class="prediction"><%= "%0.2f" % (100 * user.worth) %> </td>
                           <% if current_user.admin? %>
                             <td>
                               <%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %>
