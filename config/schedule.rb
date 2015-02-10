@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.day, :at => '12:05 am' do
-  runner "UsersController.new.update_ranking"
+  runner "User.update_ranking"
 end
