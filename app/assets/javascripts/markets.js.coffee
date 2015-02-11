@@ -53,8 +53,10 @@ window.update_price = () ->
       for k, v of data.contracts
         contract_value_container = '#current_price_' + k
         $(contract_value_container).text(v)
-
-      $("#price_per_share").text("Average price per share: " + (100*(data.cost/quantity)).toFixed(2)/100)
+      cost = parseFloat(data.cost/quantity)
+      cost = Math.round(cost*10000)
+      cost = cost/10000
+      $("#price_per_share").text("Average price per share: " + cost)
       $("#points_needed").text("Points needed: " + data.cost)
       $("#points_available_after").text("Points available after: " + data.cash)
       
