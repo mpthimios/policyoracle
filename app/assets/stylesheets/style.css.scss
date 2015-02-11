@@ -470,15 +470,15 @@ h2, h3, h4, h5, h6, h7 {
   font-weight: normal;
 }
 h2 {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 20px;
   color: #12212f;
   text-transform: uppercase;
   text-align: left;
   position: relative;
-  /*border-bottom: 3px solid #eee;*/
-  /*padding-bottom: 12px;*/
-  /*margin-bottom: 24px;*/
+  border-bottom: 3px solid #eee;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
   margin-bottom: 15px;
   font-weight: bold;
 }
@@ -623,12 +623,15 @@ Home
   margin-bottom: 0px !important;
 }
 .featured_block {
+  padding:30px 0;
   background: #d6d9dc;
   color: #000;
 }
 .featured_block h2 {
-  color: #12212f;
-  border-color: #F3B2AA;
+  color: #fc452c;
+  border-color: #fff;
+  font-weight: none;
+  font-size: 22px;
 }
 .featured_block p {
   color: #fff;
@@ -2660,10 +2663,16 @@ aside {
   margin-bottom:0px;
 }
 
+.questions_area{
+  padding: 5px;
+  background-color: #e6e8e4;
+}
+
 #latest_questions {
   font-size: 18px;
   margin-left:0px;
   margin-bottom:10px;
+  padding-left:0px;
 }
 
 #latest_questions li{
@@ -2953,4 +2962,12 @@ textarea#micropost_content{
 .check_action{
   margin:0; 
   padding-left: 5px;
+}
+
+.pitch_text {
+  line-height: 32px;
+  margin-bottom: 30px;
+  margin-top:20%; 
+  font-size: 28px;
+  color: #12212f;
 }

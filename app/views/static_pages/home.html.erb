@@ -4,13 +4,13 @@
     <section class="content">
       <div class="wrapper">
         <div class="grid_6">
-          <div class="hello_box" style="margin-top:20%; font-size: 28px;"> <%= Tenant.current.pitch_text %> </div>
+          <div class="pitch_text"> <%= Tenant.current.pitch_text %> </div>
         </div>
-        <div class="grid_6" style="padding: 5px; background-color: #e6e8e4">
+        <div class="grid_6 questions_area">
           <div class="hello_box">
             Latest Questions
           </div>
-          <ul id="latest_questions" style="padding-left:0px">
+          <ul id="latest_questions">
             <% @markets.each do |market|%>
               <li>
                 <%= link_to market.name, market_path(market) if !market.nil? && market.name%>
@@ -32,7 +32,7 @@
   <div class="container_12">
     <section class="content">
       <div class="wrapper offers_box">
-        <article class="grid_4">
+        <article class="grid_5">
           <h2 class="clearfix"> <span class="f_left">How Policy Oracle Works</span></h2>
             <!--
             <a id="next" class="next"></a> <a id="prev" class="prev"></a> </h2>
@@ -45,7 +45,7 @@
             <div class="grid_3">
               <div class="offer"> <%= image_tag("register.png", alt: "Register") %>
                 <div class="title">Register</div>
-                Want to play in a market about topics that interest you? Register today for FREE and we'll set you up with 200 points. The rest is up to you.<br>
+                Want to play in a market about topics that interest you? Register today for FREE and we'll set you up with 20.000 points. The rest is up to you.<br>
               </div>
             </div>
             <div class="grid_3">
