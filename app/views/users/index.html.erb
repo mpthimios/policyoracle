@@ -25,7 +25,7 @@
                       <% @users.each_with_index do |user, i| %>
                         <tr>
                           <td style="width:60px"><%= user.rank %></td>
-                          <td class="prediction" ><%= user.name %></td>
+                          <td class="prediction" ><%= user.name.titleize %></td>
                           <td class="prediction"><%= "%0.2f" % (100 * user.worth) %> </td>
                           <% if current_user.admin? %>
                             <td>
