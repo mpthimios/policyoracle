@@ -3,10 +3,18 @@ class StaticPagesController < ApplicationController
   layout "static"
 
   def home
-    @title = "Home"
-    @market = Market.last
-    @markets = Market.last(3)
-    @utransactions = Utransaction.order("created_at DESC").first(6)
+    unless Tenant.current.host == "www"
+      @title = "Home"
+      @market = Market.last
+      @markets = Market.last(3)
+      @utransactions = Utransaction.order("created_at DESC").first(6)
+    else
+      render action: :www, layout: false
+    end
+  end
+
+  def www
+    render layout: false
   end
 
   def howtoplay
