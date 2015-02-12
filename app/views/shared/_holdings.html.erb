@@ -64,7 +64,9 @@
                   <%= link_to'Sell', utransactions_path(:utransaction => { :transaction_type => "S", :user_id => current_user.id, :contract_id => holding.contract_id, :quantity => holding.quantity, :contract_current_value => holding.contract.current_price}), method: :post, data: { confirm: 'Are you sure?' } %> now </h4>
                 </td>
                 <td class="correct" style="border-top: none;">
-                  <h4 style="font-size: 14px">If your prediction is correct, your profit will be <%="%0.2f" % (100*(holding.quantity - holding.amount_spent)) %> points </h4>
+                  <span class="has-tooltip" data-toggle="tooltip" title="If your prediction is correct, each share worths 100 points. So, net profit = total profit - amount spent">
+                    <h4 style="font-size: 14px">If your prediction is correct, your net profit will be <%="%0.2f" % (100*(holding.quantity - holding.amount_spent)) %> points </h4>
+                  </span>
                 </td>
               </tbody>
             </table>
