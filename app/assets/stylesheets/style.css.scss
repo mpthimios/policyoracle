@@ -1244,6 +1244,58 @@ Hire us
   color: #e35845;
 }
 
+.hireform {
+}
+.hireform li {
+  float: left;
+  position: relative;
+  width: 50%;
+  margin-bottom: 24px;
+}
+.hireform li label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.hireform li input[type="text"] {
+  border: none;
+  background: #ffffff;
+  width: 224px;
+  height: 41px;
+  padding: 0px 10px 0px 77px;
+  font-size: 14px;
+  line-height: 41px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  color: #6a6a6a;
+}
+.hireform li input[type="button"] {
+  border: none;
+  background: #12212f;
+  color: #fff;
+  width: 310px;
+  height: 41px;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 41px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.hireform li input[type="button"]:hover, .hireform li input[type="button"]:focus {
+  background: #e35845;
+}
+
 .big {
   border: none;
   background: #eee;

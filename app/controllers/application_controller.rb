@@ -5,11 +5,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   before_filter	:set_tenant
+  after_filter :check_tenant
 
   def set_tenant
     @tenant = Tenant.current = Tenant.where(:host => (request.subdomain.nil? ? "" : request.subdomain) ).first
     logger.debug(@tenant)
     # TODO tenant not found
+
+  end
+
+  def check_tenant
+    if (@tenant.host == "www" && controller_name != 'static_pages' && action_name != 'home')
+      redirect_to  :controller=>'static_pages', :action => 'home'
+    end
   end
 
   # allow_cors takes in arbitrarily many symbols representing actions that

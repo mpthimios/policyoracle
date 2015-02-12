@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>PolicyOracle</title>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <%= stylesheet_link_tag "application", media: "all"%>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
+  <script type="text/javascript" charset="utf-8"></script>
+  <%= render 'layouts/javascripts' %>
+  <link rel="stylesheet" type="text/css" media="screen" href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
+  <script type="text/javascript" src="http://momentjs.com/downloads/moment.js"></script>
+  <script type="text/javascript" src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+
+  <%= render 'layouts/shim' %>
+  <%= auto_discovery_link_tag(:rss, "http://policyoracle.com") %>
+</head>
+<body>
+<div class="block1 p_bottom_zero">
+  <div class="container_12"> 
+    <!--==============================header=================================-->
+    <header class="homepage">
+      <h1 class="logo"><span class="underline">Policy</span>Oracle</h1>
+      <!--<nav>
+        <ul class="sf-menu">
+          <li class="current"><a href="index.html">Home</a></li>
+          <li><a href="how_to_play.html">How to Play?</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>-->
+      <div class="clear"></div>
+    </header>
+  </div>
+</div>
+<div class="block2">
+  <div class="container_12"> 
+    <!--==============================content================================-->
+    <section class="content">
+      <div class="wrapper">
+        <div class="grid_6 no_margin">
+          <div class="pitch_text"> Use PolicyOracle's Information Markets for Nowcasting Economic, Energy and Environmental Indices for better supporting your Desicions </div>
+        </div>
+        <div class="grid_6 questions_area">
+          <div class="hello_box">Active Information Markets</div>
+          <ul id="latest_questions">
+              <li><a href="http://experts.policyoracle.org" target="blank">Expectations of professional forecasters</a></li>
+              <li><a href="http://students.policyoracle.org" target="blank">Expectations of students</a></li>
+              <li><a href="http://imu.policyoracle.org" target="blank">Our Lab's internal market: IMU</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="featured_block">
+  <div class="container_12"> 
+    <!--==============================content================================-->
+    <section class="content">
+      <div class="wrapper offers_box">
+        <article class="grid_5">
+          <h2 class="clearfix"> <span class="f_left">How Policy Oracle Works</span></h2>
+        </article>
+      </div>
+      <div class="grid_12" style="padding-bottom:30px">
+        <div id="home-services">
+          <div class="grid_3">
+            <div class="offer"> <%= image_tag("register.png", alt: "Register") %>
+              <div class="title">Register</div>
+                Want to play in a market about topics that interest you? Register today for FREE and we'll set you up with 20.000 points. The rest is up to you.<br>
+            </div>
+          </div>
+          <div class="grid_3">
+            <div class="offer"> <%= image_tag("predict.png", alt: "Predict") %>
+              <div class="title">Predict</div>
+                Navigate in active questions and make your prediction about a topic which interests you.<br>
+            </div>
+          </div>
+          <div class="grid_3">
+            <div class="offer"> <%= image_tag("update.png", alt: "Update") %>
+              <div class="title">Update</div>
+                Get informed and update your predictions whenever you want. The goal is to win!<br>
+            </div>
+          </div>
+          <div class="grid_3 ">
+            <div class="offer"> <%= image_tag("awards.png", alt: "Awards") %>
+              <div class="title">Check Results</div>
+                After the answer to a question is determined, you will win or loose points depending on your prediction.<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="block2">
+  <div class="container_12"> 
+    <!--==============================content================================-->
+    <section class="content">
+      <div class="wrapper">
+        <div class="row clearfix">
+          <article class="grid_12">
+            <h2>Contact Us</h2>
+            <p>Send us e-mail for General Inquiries | Technical Support | Questions about our Research</p>
+            <form action="#" method="post" id="cform" name="cform">
+              <ul id="homehireus" class="hireform contactform">
+                <li>
+                  <label>Name:<span class="required">*</span></label>
+                  <input name="name" id="name" type="text" value="" tabindex="1">
+                </li>
+                <li>
+                  <label>Phone:</label>
+                  <input name="phone" id="phone" type="text" value="" tabindex="3">
+                </li>
+                <li>
+                  <label>Email:<span class="required">*</span></label>
+                  <input name="email" id="email" type="text" value="" tabindex="2">
+                </li>
+                <li>
+                  <label>Subject:<span class="required"></span></label>
+                  <input name="subject" id="subject" type="text" value="" tabindex="4">
+                </li>
+                <li>
+                  <input type="button" id="send-message" value="Send Details To PolicyOracle" tabindex="6">
+                  <div id="output" class="contactpage-msg"></div>
+                </li>
+                <li>
+                  <label>Message:<span class="required"></span></label>
+                  <textarea name="message" id="message" tabindex="5"></textarea>
+                </li>
+              </ul>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="block3"> 
+  <!--==============================footer=================================-->
+  <div class="container_12">
+    <footer>
+      <div class="wrapper">
+        <div class="grid_6">
+          <h2>About</h2>
+          <p class="navigate">PolicyOracle is developed by the <a href="http://imu.ntua.gr/" target="blank"> Information Management Unit</a>,  <a href="http://www.iccs.gr/eng/" target="blank"> ICCS </a> within the <a href="http://projectsymphony.eu/" target="blank"> SYMPHONY </a>  research project, which is co-funded by the European Comission under the FP7 program.</p>
+          <ul class="social">
+            <li><a href="https://twitter.com/thepolicyoracle" target="blank">
+              <figure><%= image_tag "soc1.png" %></figure>
+              Follow us on Twitter</a> </li>
+            <li> <a href="https://www.facebook.com/pages/PolicyOracle/652289414884739" target="blank">
+              <figure><%= image_tag "soc2.png" %></figure>
+              Join us on Facebook</a> </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+
+</body>
+</html>
