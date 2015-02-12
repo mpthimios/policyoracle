@@ -7,6 +7,10 @@ window.toggle_show_contracts = (market_id) ->
 
 ready = ->
   $('.contract-form .quantity').on 'keyup', update_price
+  $('.contract-form .check_action').click ->
+    $('#trade_info').hide()
+    $("#trade_error_enter_shares").show()
+  $('.contract-form .check_action').on 'click', update_price
   $('.message_button').click (e) ->
     e.preventDefault()
     tc = $(this).siblings('.transaction_container')
@@ -14,6 +18,12 @@ ready = ->
 
     $('.transaction_container').addClass('hidden')
     tc.removeClass('hidden') if was_hidden
+    $("#sell_more_shares_than_holding").hide()
+    $('#trade_details').hide()
+    $('#trade_info').hide()
+    $("#trade_error_enter_shares").show()
+    $('#trade_help').hide()
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
@@ -30,6 +40,7 @@ window.update_price = () ->
   $('#trade_info').hide()
   $("#trade_not_enough_points").hide()
   $("#trade_error_enter_shares").hide()
+  $("#sell_more_shares_than_holding").hide()
   $('#trade_loading').show()
 
   $.getJSON '/utransactions/12/simulate',form.serializeArray(),  (data) ->
