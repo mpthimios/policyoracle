@@ -1,5 +1,5 @@
 class String
   def is_number?
-    true if Integer(self) else false
+    /\A[-+]?\d+\z/ === self
   end
 end
