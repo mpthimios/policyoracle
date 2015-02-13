@@ -2668,6 +2668,10 @@ aside {
   margin-right: 10px;
 }
 
+.contract {
+    margin-left: 0px;
+
+}
 .contract .mchoice{
     border-style: 5px solid;
     border-bottom: thick solid #f1f1f1;
@@ -2829,7 +2833,7 @@ textarea#micropost_content{
 }
 
 #binary_contract_name{
-  margin-left:30px; 
+  margin-left:10px; 
   padding-top:2px
 }
 
@@ -2851,7 +2855,6 @@ textarea#micropost_content{
  }
 
 #expired_binary_contract_name{
-  margin-left:30px; 
   padding-top:10px;
 }
 
@@ -2952,7 +2955,7 @@ textarea#micropost_content{
 .price_column {
   margin:0; 
   text-align:right;
-  padding-right:20px
+  padding-right:30px;
 }
 
 .no_margin{
@@ -3027,4 +3030,8 @@ textarea#micropost_content{
 
 .no_border_bottom {
   border-bottom:0;
+}
+
+.no_padding_left {
+  padding-left:0px;
 }

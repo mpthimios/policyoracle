@@ -5,7 +5,7 @@
       <div class="wrapper">
         <% if signed_in? && current_user.admin? && @market.status? %>
           <div class="grid_9 last-col">
-            <div class="hello_box">  <%=  @market.name  %></div>
+            <div class="hello_box no_padding_left">  <%=  @market.name  %></div>
           </div>
           <% if @market.status? %>
             <div class="grid_3 last-col">
@@ -16,7 +16,7 @@
           <% end %>
         <% elsif signed_in? %>
           <div class="grid_12 last-col">
-            <div class="hello_box">  <%=  @market.name  %></div>
+            <div class="hello_box no_padding_left">  <%=  @market.name  %></div>
           </div>
         <% else %>
           <div class="grid_12 last-col">
