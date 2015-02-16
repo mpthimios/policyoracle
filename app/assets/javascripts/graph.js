@@ -140,7 +140,7 @@ function chart(data) {
         .attr("class", "legend")
         .attr("transform", "translate(" + margin.left + ", 0)");
 
-    focus = svg.append("g")
+    focus_area = svg.append("svg:g")
         .attr("class", "focus")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -148,7 +148,8 @@ function chart(data) {
         .attr("class", "context")
         .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
-    tooltip = focus.append("g")
+
+    tooltip = focus_area.append("svg:g")
         .attr("class", "tooltip")
         .style("display", "none");
 
@@ -212,7 +213,7 @@ function chart(data) {
             .text(d.key);
     });
 
-    focus.append("rect")
+    focus_area.append("rect")
         .attr("x", 0)
         .attr("y", 0)
         .attr("height", (lineChartHeight))
@@ -221,7 +222,7 @@ function chart(data) {
         .style("fill", "none")
         .style("stroke-width", "1");
 
-    focus.append("clipPath")
+    focus_area.append("clipPath")
         .attr("id", "focusClip")
         .append("rect")
         .attr("x", 0)
@@ -229,14 +230,14 @@ function chart(data) {
         .attr("width", width)
         .attr("height", lineChartHeight);
 
-    focus.append("g")
+    focus_area.append("g")
         .attr("class", "grid")
         .call(make_y_axis()
             .tickSize(-width, 0, 0)
             .tickFormat("")
     );
 
-    focus.append("g")
+    focus_area.append("g")
         .attr("class", "grid")
         .attr("transform", "translate(0," + (lineChartHeight) + ")")
         .call(make_x_axis()
@@ -244,7 +245,7 @@ function chart(data) {
             .tickFormat("")
     );
 
-    focus.append("rect")
+    focus_area.append("rect")
         .attr("x", 0)
         .attr("y", lineChartHeight + margin.top)
         .attr("height", (barHeight-20))
@@ -252,7 +253,7 @@ function chart(data) {
         .style("stroke", "#E0E0E0")
         .style("fill", "#E0E0E0")
         .style("stroke-width", "0.5");
-    focus.append("clipPath")
+    focus_area.append("clipPath")
         .attr("id", "barFocusClip")
         .append("rect")
         .attr("x", 0)
@@ -260,7 +261,7 @@ function chart(data) {
         .attr("width", width)
         .attr("height", barHeight-20);
 
-    focus.append("g")
+    focus_area.append("g")
         .attr("class", "grid")
         .attr("transform", "translate(0," + (lineChartHeight+margin.top) + ")")
         .call(make_bar_y_axis()
@@ -268,7 +269,7 @@ function chart(data) {
             .tickFormat("")
     );
 
-    bar = focus.selectAll(".bars")
+    bar = focus_area.selectAll(".bars")
         .data(volumes)
         .enter().append("g")
         .attr('clip-path', 'url(#barFocusClip)')
@@ -284,7 +285,7 @@ function chart(data) {
         .attr("width", barWidth - 1)
         .attr("height", function(d) { return barHeight - barY(d.volume); });
 
-    contract = focus.selectAll(".contract")
+    contract = focus_area.selectAll(".contract")
         .data(contracts)
         .enter().append("g")
         .attr("class", "contract")
@@ -298,7 +299,7 @@ function chart(data) {
             return 'tag'+d.key.replace(/\s+/g, ''); })
         .attr("d", function(d) { return line(d.prices); })
 
-    dot = focus.selectAll(".dots")
+    dot = focus_area.selectAll(".dots")
         .data(contracts)
         .enter()
         .append("g")
@@ -341,16 +342,16 @@ function chart(data) {
                 .style("opacity", 0);
         });
 
-    focus.append("g")
+    focus_area.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + lineChartHeight + ")")
         .call(xAxis);
 
-    focus.append("g")
+    focus_area.append("g")
         .attr("class", "y axis")
         .call(yAxis);
 
-    focus.append("g")
+    focus_area.append("g")
         .attr("class", "y axis")
         .attr("transform", "translate(0, "+(lineChartHeight+margin.top) +")")
         .call(baryAxis);
@@ -445,14 +446,14 @@ $( document ).ready( function() {
 
 function brushed() {
     x.domain(brush.empty() ? x2.domain() : brush.extent());
-    focus.selectAll(".line").attr("d", function(d) { return line(d.prices); });
+    focus_area.selectAll(".line").attr("d", function(d) { return line(d.prices); });
     d3.selectAll(".dot")
         .attr("cx", function(d) { return x(d.date); })
         .attr("cy", function(d) { return y(d.price); });
-    focus.select(".x.axis").call(xAxis);
-    focus.selectAll(".barHover").attr("class", "bar");
-    focus.selectAll(".bar").attr("x", function(d) { return x(d.date) - (barWidth - 1)/2; });
-    focus.selectAll(".bartext").attr("x", function(d) { return x(d.date); });
+    focus_area.select(".x.axis").call(xAxis);
+    focus_area.selectAll(".barHover").attr("class", "bar");
+    focus_area.selectAll(".bar").attr("x", function(d) { return x(d.date) - (barWidth - 1)/2; });
+    focus_area.selectAll(".bartext").attr("x", function(d) { return x(d.date); });
 }
 
 // Taken from crossfilter (http://square.github.com/crossfilter/)

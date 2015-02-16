@@ -10,7 +10,10 @@ ready = ->
   $('.contract-form .check_action').click ->
     $('#trade_info').hide()
     $("#trade_error_enter_shares").show()
-  $('.contract-form .check_action').on 'click', update_price
+  $('.contract-form .check_action').on 'click', ->
+    $(this).find()
+    form = $(this).parents('form')
+    form.find("input:text[name='utransaction[quantity]']").keyup()
   $('.message_button').click (e) ->
     e.preventDefault()
     tc = $(this).siblings('.transaction_container')
