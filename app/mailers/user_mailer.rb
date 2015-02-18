@@ -19,5 +19,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail to: user.email, subject: "Password reset"
   end
+
+  def mail_recap_week(email)
+    mail(:to => email, :subject => "PolicyOracle - Activity Report")
+  end
   
 end

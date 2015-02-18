@@ -117,6 +117,19 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
+    # Sends email for weekly activities
+  def self.mail_recap_week
+    tenants = Tenant.all
+    tenants.each do |tenant|
+      @tenant = Tenant.current = tenant
+      logger.debug(@tenant)
+      @users = User.all
+      @users.each do |user|
+        UserMailer.mail_recap_week(user.email).deliver
+      end
+    end
+  end
+
   def update_markets
     markets = Market.all
     markets.each do |market|
