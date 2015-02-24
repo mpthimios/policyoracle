@@ -145,12 +145,6 @@ class User < ActiveRecord::Base
     profit = params.quantity - params.amount_spent
     logger.debug "the profit is: " + profit.to_s
 
-    self.total_amount = self.total_amount + profit
-    logger.debug "the total amount is: " + self.total_amount.to_s
-
-    self.investment_amount = self.investment_amount - params.amount_spent
-    logger.debug "the investment_amount is: " + self.investment_amount.to_s
-
     self.cash_amount = self.cash_amount + params.quantity
     logger.debug "the cash amount is: " + self.cash_amount.to_s
 
@@ -161,13 +155,6 @@ class User < ActiveRecord::Base
   end
 
   def allocate_loss(params)
-    self.total_amount = self.total_amount - params.amount_spent
-    logger.debug "the total amount is: " + self.total_amount.to_s
-
-    self.investment_amount = self.investment_amount - params.amount_spent
-    logger.debug "the investment_amount is: " + self.investment_amount.to_s
-
-    self.save!
 
     logger.debug "the loss is: " + params.amount_spent.to_s
     
