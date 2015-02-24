@@ -32,7 +32,7 @@ class Market < ActiveRecord::Base
     users_total_cash_amount = 0
     users = User.all
     users.each do |user|
-      users_total_cash_amount = users_total_cash_amount + user.total_amount
+      users_total_cash_amount = users_total_cash_amount + user.cash_amount
     end
     number_of_contracts = 2.0
     unless !self.contracts.nil?
