@@ -3,7 +3,7 @@
     <% id = m.market_id %>
     <% @market = Market.find(id) %>
     <% if @market.status == true %>
-      <h2 style="text-transform: none;"><%= link_to @market.name, @market, :class => "three" %></h2>
+      <h2 style="text-transform: none;"><%= link_to @market.name, @market, :class => "seven" %></h2>
       <li class="posotion_group">
         <table class="headertable">
           <thead>
@@ -79,5 +79,6 @@
       <br>
     <% end %>
   <% end %>
-<ol>
-<%= will_paginate(@holdings, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+</ol>
+<% will_paginate(@holdings, :renderer => WillPaginate::ActionView::LinkRenderer) %> 
+

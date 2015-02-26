@@ -1,10 +1,11 @@
 <div>
 	<% if market.status? %>
-    	<h3 style="text-transform: none;"><%= link_to market.name, market, :class => "three" %></h3>
+    	<h3 class="no_capital"><%= link_to market.name, market, :class => "three" %></h3>
+    	<%= link_to "TRADE NOW", market, :class => "five" %>
     <% else %>
-    	<h3 style="text-transform: none;"><%= link_to market.name, market, :class => "three" %></h3><h6> Expired</h6>
+    	<h3 class="no_capital"><%= link_to market.name, market, :class => "three" %></h3><h6> Expired</h6>
     <% end %>
-    <a class="small secondary message_button" style="background-color" id="contracts_container_link<%=market.id%>" href="#" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">show answers</a>
+    <a class="small secondary message_button six" id="contracts_container_link<%=market.id%>" href="#" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">SHOW ANSWERS > </a>
     <div id="contracts_container<%=market.id%>" class="hidden">
     	<% if market.status? %>
 	    	<div class="grid_3"  >

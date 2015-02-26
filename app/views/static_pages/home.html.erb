@@ -102,7 +102,7 @@
                <% @contract = utransaction.market.contracts.order("current_price DESC").first %>
                 <div class="row">
                   <div class="grid_8">
-                    <h7><%= link_to utransaction.contract.market.name, market_path(utransaction.contract.market), :class => 'three' %> </h7><br>
+                    <h7><%= link_to utransaction.contract.market.name, market_path(utransaction.contract.market), :class => 'seven' %> </h7><br>
                     <h4 style=" display:inline;"><%= @contract.name %> </h4><p style="display:inline;"> currently leads with price/probability </p><h4 style=" display:inline;"><%= "%0.2f" % (100 * @max_value.round(4)) %></h4>
                     <div class="discussioncontainer gainlayout">
                       <div class="left hidegravatars" style="width:60px">

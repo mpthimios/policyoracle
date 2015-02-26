@@ -167,9 +167,54 @@ a.four {
   vertical-align: middle;
   display: table-cell;
 }
+a.five {
+  color: white;
+  background-color: #337ab7; 
+  border-color: #d6d9dc; 
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  vertical-align: middle;
+  display: table-cell;
+}
 
+a.six{
+  color: #337ab7;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.seven {
+  color: #12212f;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+
+}
 a.two:hover {
   color: #12212f;
+  text-decoration: none;
+}
+
+a.five:hover {
+  color:white;
+}
+a.three:hover {
+  color:#337ab7;
+  text-decoration: underline;
+
+}
+a.six:hover{
+  color:#337ab7;
+}
+a.seven:hover {
+  color: #62676d;
   text-decoration: none;
 }
 a:hover {
@@ -492,7 +537,7 @@ h2.ind2 {
   margin-bottom: 33px;
 }
 h3 {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 20px;
   color: #12212f;
   text-transform: uppercase;
@@ -1109,10 +1154,11 @@ Project filter
   padding: 3px 5px;
 }
 .projects_pagination .active, .projects_pagination a:hover, .blog_pagination .active, .blog_pagination a:hover {
-  background: #12212F;
+  background: white;
   border-radius: 3px;
-  padding: 3px 5px;
-  color: white;
+  color:  #337ab7;
+  text-decoration: underline;
+
 }
 .projectdetails .flex-prev {
   background: url() no-repeat;
@@ -3034,4 +3080,8 @@ textarea#micropost_content{
 
 .no_padding_left {
   padding-left:0px;
+}
+
+.no_capital {
+  text-transform: none;
 }
