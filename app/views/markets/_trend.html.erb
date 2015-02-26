@@ -1,0 +1,12 @@
+<div class="post">
+    <h2 class="no_border_bottom">Predictions Trend</h2>
+    <chart></chart>
+    <script>
+     $( document ).ready( function() {
+        d3.xhr( "/markets/<%=@market.id%>/graph_data", function( json ) {
+            console.log(json.response)
+            createChart(JSON.parse(json.response));
+        });
+        });
+    </script>
+</div>

@@ -1,7 +1,7 @@
 <% provide(:title, 'Question') %>
 <div class="block2">
   <div class="container_12">
-    <section class="content">
+    <section class="">
       <div class="wrapper">
         <% if signed_in? && current_user.admin? && @market.status? %>
           <div class="grid_9 last-col">
@@ -9,7 +9,11 @@
           </div>
           <% if @market.status? %>
             <div class="grid_3 last-col">
-              <h3><%= link_to 'Close this Question', close_market_path(@market), :class => "one" %></h3>
+              <ul>
+                <li> <%= link_to 'Close this Question', close_market_path(@market), :class => "one" %></li>
+                <li><%= link_to 'Edit', edit_market_path(@market) %> </li>
+                <li><%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+              </ul>
             <% elsif @market.status == false %>
               <h3>Market Expired</h3>
             </div>
@@ -25,138 +29,26 @@
           </div>
         <% end %>
       </div>
-
+    </section>
+  </div>
+</div>
+ <div class="block2 no_padding_top">
+  <div class="container_12">
+    <section class="">
       <div class="wrapper">
-        <div class="grid_12">
-          <div class="grid_9 no_margin">
-            <div class="grid_6 no_margin">
-              <div class="grid_3 no_margin">
-                <p> Asset Name </p>
-              </div>
-              <div class="grid_3 price_column">
-                <p> Price/Probability: </p>
-              </div>
-              <% if @market.market_type == "Yes/No" %>
-                <%= render "contracts/yesno.contract" %>
-              <% elsif @market.market_type == "Multiple Choices" %>
-                <%= render "contracts/mchoice.contract" %>
-              <% end %>
-            </div>
-            <% if signed_in? && @market.status?%>
-              <div class="grid_3" id="your_portfolio">
-                <div class="list">
-                  <h1 class="title"> <%= link_to "Your Portfolio", current_user, :class => "two" %></h1>
-                  <div class="grid_2 no_margin">
-                    <p class="no_margin">Available points:</p>
-                  </div>
-                  <div class="grid_1 no_margin">
-                    <p class="no_margin"> <%= "%0.2f" % (100*current_user.cash_amount)%></p>
-                  </div>
-                </div>
-                <% if !@holdings.blank? %>
-                  <div class="list">
-                    <div class="grid_3 no_margin">
-                      <p class="holdings">You hold:</p>
-                      <% @holdings.each do |holding| %>
-                          <p class="holding_quantity"><%= holding.quantity %> shares of 
-                                <%= holding.contract.name %></p>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
-                <div id="trade_help" class="select_contract">
-                  <span>Select a contract to trade!</span>
-                </div>
-
-                <div id="trade_error_enter_shares" class="quantity_message">
-                  <span>Please enter the number of shares to buy or sell!</span>
-                </div>
-
-                <div id="trade_not_enough_points" class="quantity_message ">
-                  <span>You don't have enough points to buy so many shares!</span>
-                </div>
-
-                <div id="sell_more_shares_than_holding" class="quantity_message ">
-                  <span>You don't have so many shares to sell!</span>
-                </div>
-
-                <div id="sell_without_holding" class="quantity_message ">
-                  <span>You dont't have shares of this contract!</span>
-                </div>
-                <div id="trade_loading" class="loading"></div>
-                <div id="trade_details" class="trade_details">
-                  <span>The transaction if you confirm:</span>
-                </div>
-                <div id="trade_info" style="display:none">
-                  <div id="price_per_share">Average price per share: 1</div>
-                  <div id="points_needed">Points needed: 100</div>
-                  <div id="points_available_after">Points available after: 200</div>
-                  <div id="shares_buying">You will be buying 2 shares</div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <div class="grid_3 no_margin">
-            <% if @market.status? %>
-              <p><strong>You can play until:</strong><br><%= @market.arbitration_date %></p>
-            <% else %>
-             <p style="color:#ec2624"><strong>Question Expired:</strong><br><%= @market.arbitration_date %></p>
-            <% end %>
-            <p><strong>Category:</strong><br><%= @market.category %></p>
-            <p><strong>Tags:</strong><br><%= @market.tags %></p>
-            <p><strong>Number of Transactions:</strong><br><%= @utransactions_all.count %></p>
-            <p><strong>Latest Transactions:</strong><br>
-                <% @utransactions_latest.each do |utransaction| %>
-                  <% if utransaction.transaction_type == "B" %>
-                    "<%= "#{utransaction.contract.name}" %>" raised
-                    <%= (utransaction.contract_new_value - utransaction.contract_current_value).round(2)%> <br>
-                  <% elsif utransaction.transaction_type == "S" %>
-                    "<%= "#{utransaction.contract.name}" %>" descreased
-                    <%= (utransaction.contract_new_value - utransaction.contract_current_value).abs.round(2) %> <br>
-                  <% end %>
-                <% end %>
-            </p>
-          </div>
-        </div>
-
-        <div class="grid_12">
-          <div class="post">
-            <div class="comments">
-              <h2 class="no_border_bottom">Discussion</h2>
-              <% if signed_in?%>
-                <%= render 'shared/micropost_form', market_id: @market.id, user_id: current_user %>
-              <% end %><br>
-              <%= render :partial => @microposts %>
-              <%= will_paginate(@microposts, :renderer => WillPaginate::ActionView::LinkRenderer) %>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid_12">
-          <div class="post">
-            <h2 class="no_border_bottom">Predictions Trend</h2>
-            <chart></chart>
-            <script>
-                $( document ).ready( function() {
-                    d3.xhr( "/markets/<%=@market.id%>/graph_data", function( json ) {
-                        console.log(json.response)
-                        createChart(JSON.parse(json.response));
-                    });
-                });
-            </script>
-          </div>
-          <div class="description">
-            <h2 class="no_border_bottom">Background Information</h2>
-            <p><%= @market.description.html_safe %></p>
-          </div>
-
-          <ul class="blog_pagination">
-            <%= link_to 'Back to Questions', markets_path, :class => "one" %> 
-            <% if signed_in? && current_user.admin? %>
-              | <%= link_to 'Edit', edit_market_path(@market) %> 
-              | <%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
+        <div id="question">
+          <ul class="nav nav-tabs">
+            <li class="active"> <a href="trading" class="gray" data-target="#trading" data-toggle="tab">Make a Prediction</a></li>
+            <li><a href="#discussion" class="gray" data-target="" data-toggle="tab">Discussion (<%= @microposts.count %>)</a></li>
+            <li><a href="#trend" class="gray" data-target="" data-toggle="tab">Trends</a></li>
+            <li><a href="#info" class="gray" data-target="" data-toggle="tab">Background</a></li>
           </ul>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active fade in" id="trading"><%= render partial: 'trading' %> </div>
+          <div class="tab-pane" id="discussion"><%= render partial: 'discussion' %></div>
+          <div class="tab-pane" id="trend"><%= render partial: 'trend' %></div>
+          <div class="tab-pane" id="info"><%= render partial: 'info' %></div>
         </div>
       </div>
     </section>
