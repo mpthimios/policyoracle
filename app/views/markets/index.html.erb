@@ -12,7 +12,7 @@
                 ('disabled');
                 $.getScript(more_posts_url, function() {
                     if ($this) {
-                        $this.text('More posts').removeClass('disabled');
+                        $this.text('More Questions').removeClass('disabled');
                     }
                     return loading_posts = false;
                 });
@@ -32,7 +32,7 @@
             <% end %>
           </div>
           <div class="grid_9">
-            <ul>
+            <ul class="blog_pagination">
               <%= render @markets %>
             </ul>
             <!--= will_paginate(@markets, :renderer => WillPaginate::ActionView::LinkRenderer) -->
@@ -41,7 +41,7 @@
             </div>
 
             <% if @markets.next_page %>
-                <div id="load_more_questions" class="btn btn-primary btn-lg">More Questions</div>
+                <div id="load_more_questions" class="btn btn-warning btn-lg">More Questions</div>
             <% end %>
           </div>
           <div class="grid_3">

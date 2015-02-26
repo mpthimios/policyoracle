@@ -197,6 +197,10 @@ a.seven {
   cursor: pointer;
 
 }
+a.one:hover {
+  color: #E35845;
+   text-decoration: none;
+}
 a.two:hover {
   color: #12212f;
   text-decoration: none;
@@ -1152,13 +1156,6 @@ Project filter
   transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
   margin-right: 5px;
   padding: 3px 5px;
-}
-.projects_pagination .active, .projects_pagination a:hover, .blog_pagination .active, .blog_pagination a:hover {
-  background: white;
-  border-radius: 3px;
-  color:  #337ab7;
-  text-decoration: underline;
-
 }
 .projectdetails .flex-prev {
   background: url() no-repeat;
@@ -3084,4 +3081,15 @@ textarea#micropost_content{
 
 .no_capital {
   text-transform: none;
+}
+
+.btn-warning {
+color: #fff;
+background-color: #e7bf0b;
+border-color: #e7bf0b;
+}
+.btn-warning:hover {
+color: #fff;
+background-color: #cfab0a;
+border-color: #cfab0a;
 }
