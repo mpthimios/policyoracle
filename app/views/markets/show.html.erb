@@ -3,21 +3,23 @@
   <div class="container_12">
     <section class="">
       <div class="wrapper">
-        <% if signed_in? && current_user.admin? && @market.status? %>
+        <% if signed_in? && current_user.admin? %>
           <div class="grid_9 last-col">
             <div class="hello_box no_padding_left">  <%=  @market.name  %></div>
           </div>
           <% if @market.status? %>
             <div class="grid_3 last-col">
               <ul>
-                <li> <%= link_to 'Close this Question', close_market_path(@market), :class => "one" %></li>
+                <li> <%= link_to 'Pause: Waiting to be Judged', hold_market_path(@market), method: :post, data: { confirm: 'Are you sure?' }, :class => "one" %> </li>
+                <li> <%= link_to 'Close: Known Answer', close_market_path(@market), :class => "one" %></li>
                 <li><%= link_to 'Edit', edit_market_path(@market) %> </li>
                 <li><%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %></li>
               </ul>
-            <% elsif @market.status == false %>
-              <h3>Market Expired</h3>
-            </div>
+          <% elsif @market.correct_contract_id.blank? %>
+            <div class="grid_3 last-col">
+              <%= link_to 'Close: Known Answer', close_market_path(@market), :class => "one" %>
           <% end %>
+          </div>
         <% elsif signed_in? %>
           <div class="grid_12 last-col">
             <div class="hello_box no_padding_left">  <%=  @market.name  %></div>

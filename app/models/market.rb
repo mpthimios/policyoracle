@@ -203,4 +203,8 @@ class Market < ActiveRecord::Base
     MARKET_TYPES
   end
 
+  def hold
+    self.status = 0
+  end
+
 end

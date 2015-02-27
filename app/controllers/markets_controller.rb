@@ -107,6 +107,13 @@ class MarketsController < ApplicationController
     @contracts = @market.contracts.sorted
   end
 
+  def hold
+    @market = Market.find(params[:id])
+    @market.hold
+    @market.save
+    redirect_to market_path(@market)
+  end
+
   def graph_data
     @market = Market.find(params[:id])
     render :json => @market.graph_data

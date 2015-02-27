@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       get 'close'
       get 'graph_data'
+      post 'hold'
     end
     resources :contracts, shallow: true do
       post 'after_close', on: :collection
