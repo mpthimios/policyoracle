@@ -3084,14 +3084,14 @@ textarea#micropost_content{
 }
 
 .btn-warning {
-color: #fff;
-background-color: #e7bf0b;
-border-color: #e7bf0b;
+color: #444;
+background-color: #ffe0bf;
+border-color: #ffe0bf;
 }
 .btn-warning:hover {
-color: #fff;
-background-color: #cfab0a;
-border-color: #cfab0a;
+color: #444;
+background-color: #ffd4a6;
+border-color: #ffd4a6;
 }
 
 .no_padding_top {
@@ -3125,11 +3125,23 @@ border-bottom: none;
   color: #444;
   text-decoration: none;
   position:fixed;
-  top:75px;
-  right:40px;
+  bottom:75px;
+  right:35px;
   display:none;
   background-color: #e7bf0b;
 }
 .scrollToTop:hover{
   text-decoration:none;
+}
+
+.show_answers {
+  margin-top:0; 
+  margin-bottom:0px; 
+  font-size:13px;
+}
+
+.entire_border{
+    border-style: solid;
+    border-width: 1px;
+    color: #666666;
 }

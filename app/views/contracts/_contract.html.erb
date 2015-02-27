@@ -1,17 +1,17 @@
 <% if contract.market.status? %>
 	<div class="grid_3"  >
-	    <p style="margin-top:0; margin-bottom:0; font-size:13px;"><%= contract.name %></p>
+	    <p class="show_answers"><%= contract.name %></p>
 	</div>
 	<div class="grid_3" >
-	    <p style="margin-top:0; margin-bottom:0; font-size:13px"><%= contract.current_price.round(4)*100%>%</p>
-	</div><br><br>
+	    <p class="show_answers"><%= contract.current_price.round(4)*100%>%</p>
+	</div>
 <% else %>
 	<% if contract.market.correct_contract_id == contract.id %>
 		<div class="grid_3"  >
-	    	<p style="margin-top:0; margin-bottom:0; font-size:13px;"><%= contract.name %></p>
+	    	<p class="show_answers"><%= contract.name %></p>
 		</div>
 		<div class="grid_3" >
-	    	<p style="margin-top:0; margin-bottom:0; font-size:13px"><%= contract.current_price.round(4)*100%>%</p>
+	    	<p class="show_answers"><%= contract.current_price.round(4)*100%>%</p>
 		</div>
-	<% end %><br>
+	<% end %>
 <% end %>

@@ -1,23 +1,23 @@
-<div class="hireus_block">
+<div class="hireus_block entire_border">
     <div class="container_12">
       <section class="">
         <div class="wrapper">
           <div class="grid_12">
-            <div class="grid_8 ">
-              <h1>PolicyOracle - Activity Report</h1>
-			        <h2 class="clearfix"> <span class="f_left">A weekly activity report on questions that had activity</span></h2>
-              <% @utransactions = Utransaction.where("created_at >= ?", 1.week.ago.utc)%> 
-              <% @utransactions.each do |utransaction| %>
-                <% @max_value = utransaction.market.contracts.maximum('current_price') %>
-                <% @contract = utransaction.market.contracts.order("current_price DESC").first %>
-                <div class="row">
-                  <div class="grid_8">
-                    <h7><%= link_to utransaction.contract.market.name, market_path(utransaction.contract.market), :class => 'three' %> </h7><br>
-                    <h4 style=" display:inline;"><%= @contract.name %> </h4><p style="display:inline;"> currently leads with price/probability </p><h4 style=" display:inline;"><%= @max_value.round(2) %></h4>
-                  </div>
+            <%= image_tag "logo.png" %>
+            <h1 style="color: #192e41">Weekly Activity Report</h1>
+		        <h2 class="clearfix" style="color: #62676d; border-bottom: 3px solid #eee;"> <span class="f_left">A weekly activity report on questions that had activity</span></h2>
+            <% @markets_group.each do |m| %>
+              <% id = m.market_id %>
+              <% @market = Market.find(id) %>
+              <% @max_value = @market.contracts.maximum('current_price') %>
+              <% @contract = @market.contracts.order("current_price DESC").first %>
+              <div class="row">
+                <div class="grid_8">
+                  <h7><%= link_to @market.name, market_path(@market), :class => 'three' %> </h7><br>
+                  <h4 style=" display:inline;"><%= @contract.name %> </h4><p style="display:inline;"> currently leads with price/probability </p><h4 style=" display:inline;"><%= @max_value.round(2) %></h4>
                 </div>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </section>

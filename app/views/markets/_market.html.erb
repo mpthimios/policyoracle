@@ -5,7 +5,7 @@
     <% else %>
     	<h3 class="no_capital"><%= link_to market.name, market, :class => "three" %></h3><h6> Expired</h6>
     <% end %>
-    <a class="small secondary message_button six" id="contracts_container_link<%=market.id%>" href="#" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">SHOW ANSWERS > </a>
+    <a class="small secondary message_button six" id="contracts_container_link<%=market.id%>" href="#" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">SHOW ANSWERS</a>
     <div id="contracts_container<%=market.id%>" class="hidden">
     	<% if market.status? %>
 	    	<div class="grid_3"  >
@@ -23,5 +23,9 @@
 	    	</div>
 		<% end %>
         <%= render market.contracts %>
+        <% (1..market.contracts.count).each do |i| %>
+  			<br>
+		<% end %>
+		<br>
     </div>
 </div>
