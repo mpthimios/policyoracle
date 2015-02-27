@@ -38,20 +38,21 @@
   <div class="container_12">
     <section class="">
       <div class="wrapper">
-        <div id="question">
+        
+        <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
           <ul class="nav nav-tabs">
-            <li class="active"> <a href="trading" class="gray" data-target="#trading" data-toggle="tab">Make a Prediction</a></li>
-            <li><a href="#discussion" class="gray" data-target="" data-toggle="tab">Discussion (<%= @microposts.count %>)</a></li>
-            <li><a href="#trend" class="gray" data-target="" data-toggle="tab">Trends</a></li>
-            <li><a href="#info" class="gray" data-target="" data-toggle="tab">Background</a></li>
+            <li><a href="#discussion" class="gray">Discussion</a></li>
+            <li><a href="#trend" class="gray">Trends</a></li>
+            <li><a href="#info" class="gray">Background Information</a></li>
           </ul>
         </div>
-        <div class="tab-content">
-          <div class="tab-pane active fade in" id="trading"><%= render partial: 'trading' %> </div>
-          <div class="tab-pane" id="discussion"><%= render partial: 'discussion' %></div>
-          <div class="tab-pane" id="trend"><%= render partial: 'trend' %></div>
-          <div class="tab-pane" id="info"><%= render partial: 'info' %></div>
+        <div data-spy="scroll" data-target="#navbar-example">
+          <div id="trading"><%= render partial: 'trading' %> </div>
+          <div id="discussion"><%= render partial: 'discussion' %></div>
+          <div id="trend"><%= render partial: 'trend' %></div>
+          <div id="info"><%= render partial: 'info' %></div>
         </div>
+        <a href="#" class="scrollToTop">Back to Top</a>
       </div>
     </section>
   </div>

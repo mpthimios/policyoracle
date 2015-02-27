@@ -1503,8 +1503,7 @@ Blog
   opacity: 0.8;
 }
 .post {
-  margin-bottom: 48px;
-  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 
@@ -3112,5 +3111,25 @@ border-color: #cfab0a;
   color: white;
 }
 .padding_left {
-  padding-left: 10px;
+  padding-left: 15px;
+}
+.nav-tabs {
+border-bottom: none;
+}
+
+.scrollToTop{
+  width:100px; 
+  height:25px;
+  text-align:center; 
+  font-weight: bold;
+  color: #444;
+  text-decoration: none;
+  position:fixed;
+  top:75px;
+  right:40px;
+  display:none;
+  background-color: #e7bf0b;
+}
+.scrollToTop:hover{
+  text-decoration:none;
 }

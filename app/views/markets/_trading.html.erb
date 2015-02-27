@@ -1,89 +1,91 @@
-<div class="grid_9 no_margin padding_top">
-  <div class="grid_6 no_margin padding_left">
-    <div class="grid_3 no_margin">
-      <p> Asset Name </p>
-    </div>
-    <div class="grid_3 price_column">
-      <p> Price/Probability: </p>
-    </div>
-    <% if @market.market_type == "Yes/No" %>
-      <%= render "contracts/yesno.contract" %>
-    <% elsif @market.market_type == "Multiple Choices" %>
-      <%= render "contracts/mchoice.contract" %>
-    <% end %>
-  </div>
-  <% if signed_in? && @market.status?%>
-    <div class="grid_3" id="your_portfolio">
-      <div class="list">
-        <h1 class="title"> <%= link_to "Your Portfolio", current_user, :class => "two" %></h1>
-        <div class="grid_2 no_margin">
-          <p class="no_margin">Available points:</p>
-        </div>
-        <div class="grid_1 no_margin">
-          <p class="no_margin"> <%= "%0.2f" % (100*current_user.cash_amount)%></p>
-        </div>
+<div class="row padding_left">
+  <div class="grid_9 no_margin padding_top">
+    <div class="grid_6 no_margin padding_left">
+      <div class="grid_3 no_margin">
+        <p> Asset Name </p>
       </div>
-      <% if !@holdings.blank? %>
+      <div class="grid_3 price_column">
+        <p> Price/Probability: </p>
+      </div>
+      <% if @market.market_type == "Yes/No" %>
+        <%= render "contracts/yesno.contract" %>
+      <% elsif @market.market_type == "Multiple Choices" %>
+        <%= render "contracts/mchoice.contract" %>
+      <% end %>
+    </div>
+    <% if signed_in? && @market.status?%>
+      <div class="grid_3" id="your_portfolio">
         <div class="list">
-          <div class="grid_3 no_margin">
-            <p class="holdings">You hold:</p>
-            <% @holdings.each do |holding| %>
-                <p class="holding_quantity"><%= holding.quantity %> shares of 
-                      <%= holding.contract.name %></p>
-            <% end %>
+          <h1 class="title"> <%= link_to "Your Portfolio", current_user, :class => "two" %></h1>
+          <div class="grid_2 no_margin">
+            <p class="no_margin">Available points:</p>
+          </div>
+          <div class="grid_1 no_margin">
+            <p class="no_margin"> <%= "%0.2f" % (100*current_user.cash_amount)%></p>
           </div>
         </div>
-      <% end %>
-      <div id="trade_help" class="select_contract">
-        <span>Select a contract to trade!</span>
-      </div>
-
-      <div id="trade_error_enter_shares" class="quantity_message">
-        <span>Please enter the number of shares to buy or sell!</span>
-      </div>
-
-      <div id="trade_not_enough_points" class="quantity_message ">
-        <span>You don't have enough points to buy so many shares!</span>
-      </div>
-
-      <div id="sell_more_shares_than_holding" class="quantity_message ">
-        <span>You don't have so many shares to sell!</span>
-      </div>
-
-      <div id="sell_without_holding" class="quantity_message ">
-        <span>You dont't have shares of this contract!</span>
-      </div>
-      <div id="trade_loading" class="loading"></div>
-      <div id="trade_details" class="trade_details">
-        <span>The transaction if you confirm:</span>
-      </div>
-      <div id="trade_info" style="display:none">
-        <div id="price_per_share">Average price per share: 1</div>
-        <div id="points_needed">Points needed: 100</div>
-        <div id="points_available_after">Points available after: 200</div>
-        <div id="shares_buying">You will be buying 2 shares</div>
-      </div>
-    </div>
-  <% end %>
-</div>
-<div class="grid_3 no_margin padding_top">
-  <% if @market.status? %>
-    <p><strong>You can play until:</strong><br><%= @market.arbitration_date %></p>
-  <% else %>
-   <p style="color:#ec2624"><strong>Question Expired:</strong><br><%= @market.arbitration_date %></p>
-  <% end %>
-  <p><strong>Category:</strong><br><%= @market.category %></p>
-  <p><strong>Tags:</strong><br><%= @market.tags %></p>
-  <p><strong>Number of Transactions:</strong><br><%= @utransactions_all.count %></p>
-  <p><strong>Latest Transactions:</strong><br>
-      <% @utransactions_latest.each do |utransaction| %>
-        <% if utransaction.transaction_type == "B" %>
-          "<%= "#{utransaction.contract.name}" %>" raised
-          <%= (utransaction.contract_new_value - utransaction.contract_current_value).round(2)%> <br>
-        <% elsif utransaction.transaction_type == "S" %>
-          "<%= "#{utransaction.contract.name}" %>" descreased
-          <%= (utransaction.contract_new_value - utransaction.contract_current_value).abs.round(2) %> <br>
+        <% if !@holdings.blank? %>
+          <div class="list">
+            <div class="grid_3 no_margin">
+              <p class="holdings">You hold:</p>
+              <% @holdings.each do |holding| %>
+                  <p class="holding_quantity"><%= holding.quantity %> shares of 
+                        <%= holding.contract.name %></p>
+              <% end %>
+            </div>
+          </div>
         <% end %>
-      <% end %>
-  </p>
+        <div id="trade_help" class="select_contract">
+          <span>Select a contract to trade!</span>
+        </div>
+
+        <div id="trade_error_enter_shares" class="quantity_message">
+          <span>Please enter the number of shares to buy or sell!</span>
+        </div>
+
+        <div id="trade_not_enough_points" class="quantity_message ">
+          <span>You don't have enough points to buy so many shares!</span>
+        </div>
+
+        <div id="sell_more_shares_than_holding" class="quantity_message ">
+          <span>You don't have so many shares to sell!</span>
+        </div>
+
+        <div id="sell_without_holding" class="quantity_message ">
+          <span>You dont't have shares of this contract!</span>
+        </div>
+        <div id="trade_loading" class="loading"></div>
+        <div id="trade_details" class="trade_details">
+          <span>The transaction if you confirm:</span>
+        </div>
+        <div id="trade_info" style="display:none">
+          <div id="price_per_share">Average price per share: 1</div>
+          <div id="points_needed">Points needed: 100</div>
+          <div id="points_available_after">Points available after: 200</div>
+          <div id="shares_buying">You will be buying 2 shares</div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="grid_3 no_margin padding_top">
+    <% if @market.status? %>
+      <p><strong>You can play until:</strong><br><%= @market.arbitration_date %></p>
+    <% else %>
+     <p style="color:#ec2624"><strong>Question Expired:</strong><br><%= @market.arbitration_date %></p>
+    <% end %>
+    <p><strong>Category:</strong><br><%= @market.category %></p>
+    <p><strong>Tags:</strong><br><%= @market.tags %></p>
+    <p><strong>Number of Transactions:</strong><br><%= @utransactions_all.count %></p>
+    <p><strong>Latest Transactions:</strong><br>
+        <% @utransactions_latest.each do |utransaction| %>
+          <% if utransaction.transaction_type == "B" %>
+            "<%= "#{utransaction.contract.name}" %>" raised
+            <%= (utransaction.contract_new_value - utransaction.contract_current_value).round(2)%> <br>
+          <% elsif utransaction.transaction_type == "S" %>
+            "<%= "#{utransaction.contract.name}" %>" descreased
+            <%= (utransaction.contract_new_value - utransaction.contract_current_value).abs.round(2) %> <br>
+          <% end %>
+        <% end %>
+    </p>
+  </div>
 </div>
