@@ -7,18 +7,18 @@
           <div class="grid_9 last-col">
             <div class="hello_box no_padding_left">  <%=  @market.name  %></div>
           </div>
-          <% if @market.status? %>
-            <div class="grid_3 last-col">
-              <ul>
+          <div class="grid_3 last-col">
+            <ul>
+              <% if @market.status? %>
                 <li> <%= link_to 'Pause: Waiting to be Judged', hold_market_path(@market), method: :post, data: { confirm: 'Are you sure?' }, :class => "one" %> </li>
                 <li> <%= link_to 'Close: Known Answer', close_market_path(@market), :class => "one" %></li>
-                <li><%= link_to 'Edit', edit_market_path(@market) %> </li>
-                <li><%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-              </ul>
-          <% elsif @market.correct_contract_id.blank? %>
-            <div class="grid_3 last-col">
-              <%= link_to 'Close: Known Answer', close_market_path(@market), :class => "one" %>
-          <% end %>
+                
+              <% elsif @market.correct_contract_id.blank? %>
+                <%= link_to 'Close: Known Answer', close_market_path(@market), :class => "one" %>
+              <% end %>
+              <li><%= link_to 'Edit', edit_market_path(@market) %> </li>
+              <li><%= link_to 'Delete', @market, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            </ul>
           </div>
         <% elsif signed_in? %>
           <div class="grid_12 last-col">
