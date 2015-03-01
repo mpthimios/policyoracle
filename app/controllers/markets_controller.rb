@@ -14,7 +14,13 @@ class MarketsController < ApplicationController
       @markets = Market.where(status: 1)
     end
     if params[:status]
-      @markets = Market.all.where(status: params[:status])
+      if params[:status] == '2'
+        @markets = Market.where(:status => 0).where(:correct_contract_id => nil)
+      elsif params[:status] == '0'
+        @markets = Market.all.where(status: params[:status]).where.not(:correct_contract_id => nil)
+      else
+        @markets = Market.all.where(status: params[:status])
+      end
     end
     @markets = @markets.order("created_at DESC").paginate(page: params[:page], :per_page => 10)
     respond_to do |format|

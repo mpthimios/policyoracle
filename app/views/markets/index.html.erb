@@ -27,11 +27,19 @@
           <div class="hello_box">
             <% if params[:category] %>
               Questions about <%= params[:category] %> 
+            <% elsif params[:status]%>
+              <% if params[:status] == '0'%> 
+                  Completed Questions
+              <% elsif params[:status] == '1' %>
+                  Active Questions
+              <% else %>
+                  Questions Waiting to be Settled
+              <% end %>
             <% else %>
               All Questions
             <% end %>
           </div>
-          <div class="grid_9">
+          <div class="grid_10">
             <ul class="blog_pagination">
               <%= render @markets %>
             </ul>
@@ -45,10 +53,15 @@
             <% end %>
             <a href="#" class="scrollToTop">Back to Top</a>
           </div>
-          <div class="grid_3">
+          <div class="grid_2">
             <% if signed_in? && current_user.admin? %>
               <h3><%= link_to 'New Question', new_market_path, :class => "one" %></h3>
             <% end %>
+            <h2>Status</h2>
+            <%= link_to "Active", markets_path(:status => 1), :class => "four", :style => "color:green" %><br>
+            <%= link_to "Completed", markets_path(:status => 0), :class => "four", :style => "color:red" %><br>
+            <%= link_to "To be settled", markets_path(:status => 2), :class => "four", :style => "color:#12212f" %><br>
+            <h2> Categories</h2>
             <%= link_to "All", markets_path, :class => "four"%><br>
             <%  @tenant.categories.each do |category| %> 
               <%= link_to category.name, markets_path(:category => category.name), :class => "four"%><br>
