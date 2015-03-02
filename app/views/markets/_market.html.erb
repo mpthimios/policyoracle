@@ -7,25 +7,24 @@
     <% end %>
     <a class="small secondary message_button six" id="contracts_container_link<%=market.id%>" href="#" onclick="window.toggle_show_contracts(<%=market.id%>); return false;">SHOW ANSWERS</a>
     <div id="contracts_container<%=market.id%>" class="hidden">
-    	<% if market.status? %>
-	    	<div class="grid_3"  >
-	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;">Asset Name</p>
-	    	</div>
-	    	<div class="grid_3"  >
-	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;">Price/Probability</p>
-	    	</div>
-	    <% else %>
-	    	<div class="grid_3"  >
-	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;"> Correct Answer</p>
-	    	</div>
-	    	<div class="grid_3"  >
-	    		<p style="margin-top:0; margin-bottom:0; font-size:13px;">Price/Probability</p>
-	    	</div>
-		<% end %>
+    	<div class="row">
+	    	<% if market.status? %>
+		    	<div class="grid_3"  >
+		    		<h4 class="show_headings">Asset Name</h4>
+		    	</div>
+		    	<div class="grid_3"  >
+		    		<h4 class="show_headings">Price/Probability</h4>
+		    	</div>
+		    <% else %>
+		    	<div class="grid_3"  >
+		    		<h4 class="show_headings">Correct Answer</h4>
+		    	</div>
+		    	<div class="grid_3"  >
+		    		<h4 class="show_headings">Price/Probability</h4>
+		    	</div>
+			<% end %>
+		</div>
         <%= render market.contracts %>
-        <% (1..market.contracts.count).each do |i| %>
-  			<br>
-		<% end %>
 		<br>
     </div>
 </div>

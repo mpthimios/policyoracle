@@ -1,17 +1,20 @@
-<% if contract.market.status? %>
-	<div class="grid_3"  >
-	    <p class="show_answers"><%= contract.name %></p>
-	</div>
-	<div class="grid_3" >
-	    <p class="show_answers"><%= contract.current_price.round(4)*100%>%</p>
+<% if contract.market.correct_contract_id.blank? %>
+	<div class="row">
+		<div class="grid_3"  >
+		    <h4 class="show_possible_answers"><%= contract.name %></h4>
+		</div>
+		<div class="grid_3" >
+		    <h4 class="show_possible_answers"><%= contract.current_price.round(4)*100 %></h4>
+		</div>
 	</div>
 <% else %>
 	<% if contract.market.correct_contract_id == contract.id %>
-		<div class="grid_3"  >
-	    	<p class="show_answers"><%= contract.name %></p>
-		</div>
-		<div class="grid_3" >
-	    	<p class="show_answers"><%= contract.current_price.round(4)*100%>%</p>
+		<div class="row">
+			<div class="grid_3"  >
+		    	<h4 class="show_possible_answers"><%= contract.name %></h4>
+			</div>
+			<div class="grid_3" >
+		    	<h4 class="show_possible_answers"><%= contract.current_price.round(4)*100 %></h4>
 		</div>
 	<% end %>
 <% end %>
