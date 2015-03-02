@@ -58,9 +58,15 @@
               <h3><%= link_to 'New Question', new_market_path, :class => "one" %></h3>
             <% end %>
             <h2>Status</h2>
-            <%= link_to "Active", markets_path(:status => 1), :class => "four", :style => "color:green" %><br>
-            <%= link_to "Completed", markets_path(:status => 0), :class => "four", :style => "color:red" %><br>
-            <%= link_to "To be settled", markets_path(:status => 2), :class => "four", :style => "color:#12212f" %><br>
+              <span class="has-tooltip" data-toggle="tooltip" title="Questions where you can trade">
+                <%= link_to "Active", markets_path(:status => 1), :class => "four", :style => "color:green" %>
+              </span>
+              <span class="has-tooltip" data-toggle="tooltip" title="Questions that are expired and the answer is known"><br>
+                <%= link_to "Completed", markets_path(:status => 0), :class => "four", :style => "color:red" %>
+              </span>
+              <span class="has-tooltip" data-toggle="tooltip" title="Questions that are expired and waiting to be settled"><br>
+                <%= link_to "To be settled", markets_path(:status => 2), :class => "four", :style => "color:#12212f" %>
+              </span>
             <h2> Categories</h2>
             <%= link_to "All", markets_path, :class => "four"%><br>
             <%  @tenant.categories.each do |category| %> 
