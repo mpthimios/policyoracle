@@ -49,7 +49,7 @@
                   <select class="form-control input-large" name="user[gender]" style=" width:70%">
                     <option value="" selected disabled>Please select</option>
                     <% @user.get_gender_types.each do |gender_type| %>
-                      <option><%= gender_type %></option>
+                      <option value="<%= gender_type.downcase %>"><%= gender_type %></option>
                     <%end%>
                   </select>
                 </div>

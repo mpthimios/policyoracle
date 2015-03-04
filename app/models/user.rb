@@ -123,11 +123,13 @@ class User < ActiveRecord::Base
     tenants.each do |tenant|
       @tenant = Tenant.current = tenant
       logger.debug(@tenant)
-      @utransactions = Utransaction.where("created_at >= ?", 1.week.ago.utc)
-      @markets_group = @utransactions.select(:market_id).distinct
-      @users = User.all
-      @users.each do |user|
-        UserMailer.mail_recap_week(user.email).deliver
+      market_ids = Utransaction.
+        where("created_at >= ?", 1.week.ago.utc).
+        select(:market_id).
+        distinct
+      markets = Market.where(:id => market_ids)
+      User.find_each do |user|
+        UserMailer.mail_recap_week(user.email, markets).deliver
       end
     end
   end
