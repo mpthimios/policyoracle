@@ -4,5 +4,5 @@ A weekly activity report on questions that had activity
 	<% @max_value = market.contracts.maximum('current_price') %>
 	<% @contract = market.contracts.order("current_price DESC").first %>
 	<%= link_to market.name, market_path(market), :class => 'three' %>
-	<%= @contract.name %> currently leads with price/probability <%= @max_value.round(2) %>
+	<%= @contract.name %> currently leads with price/probability <%= @max_value.round(4) %>
 <% end %>

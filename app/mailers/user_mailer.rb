@@ -24,5 +24,11 @@ class UserMailer < ActionMailer::Base
     @markets = markets
     mail(:to => email, :subject => "PolicyOracle - Activity Report")
   end
+
+  def newsletter(email, markets, tenant_obj)
+    @markets = markets
+    @tenant = tenant_obj
+    mail(:to => email, :subject => "PolicyOracle - Newsletter")
+  end
   
 end

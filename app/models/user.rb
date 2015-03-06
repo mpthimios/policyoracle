@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
-    # Sends email for weekly activities
+  # Sends email for weekly activities
   def self.mail_recap_week
     tenants = Tenant.all
     tenants.each do |tenant|
@@ -130,6 +130,20 @@ class User < ActiveRecord::Base
       markets = Market.where(:id => market_ids)
       User.find_each do |user|
         UserMailer.mail_recap_week(user.email, markets).deliver
+      end
+    end
+  end
+
+  # Sends email for weekly newsletter
+    def self.newsletter
+    tenants = Tenant.all
+    tenants.each do |tenant|
+      @tenant = Tenant.current = tenant
+      tenant_obj = Tenant.find(tenant)
+      logger.debug(@tenant)
+      markets = Market.where("created_at >= ?", 1.week.ago.utc)
+      User.find_each do |user|
+        UserMailer.newsletter(user.email, markets, tenant_obj).deliver
       end
     end
   end
