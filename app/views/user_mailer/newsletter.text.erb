@@ -1,4 +1,4 @@
-<%= DateTime.now.to_date %>
+<%= @date = Time.now %>
 <%= @tenant.name %>
 <% @markets.each do |market| %>
     <a style="font-family: Georgia, 'Times New Roman', Times, serif; margin: 0; padding: 0; color: #6a6e62; font-size: 16px; text-shadow: 1px 1px 1px #FFFFFF;" href="<%=@tenant.name%>.policyoracle.org/markets/<%= market.id%>"><%= market.name %></a>

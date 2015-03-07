@@ -4,11 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>PolicyOracle - Newsletter</title>
 </head>
-<body style="margin: 0; padding: 0; background-color: #878c80; background-image: url(images/body-bg.jpg); background-repeat: repeat;" marginheight="0" topmargin="0" marginwidth="0" leftmargin="0">
+<body style="margin: 0; padding: 0; background-color: #878c80;); background-repeat: repeat;" marginheight="0" topmargin="0" marginwidth="0" leftmargin="0">
 <!--100% body table-->
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td bgcolor="#d8e7ea" style="background-color: #878c80; background-image: url(images/body-bg.jpg); background-repeat: repeat;">
+        <td bgcolor="#d8e7ea" style="background-color: #878c80;); background-repeat: repeat;">
             <!--header text-->
             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
@@ -17,9 +17,9 @@
                             <tr>
                                 <td valign="middle" align="center" height="60"> <em>
                                     <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px; color: #bfc1ae; margin: 0; padding: 0;">You’re receiving this newsletter because you signed up in PolicyOracle 
-                                        <!--<webversion style="color:#bfc1ae; text-decoration: underline;">View it in your browser.</webversion>
+                                        <webversion style="color:#bfc1ae; text-decoration: underline;">View it in your browser.</webversion>
                                         |
-                                        <unsubscribe style="color:#bfc1ae; text-decoration: underline;">Click here to instantly unsubscribe.</unsubscribe> -->
+                                        <!--<unsubscribe style="color:#bfc1ae; text-decoration: underline;">Click here to instantly unsubscribe.</unsubscribe> -->
                                     </p>
                                     </em> </td>
                             </tr>
@@ -29,9 +29,9 @@
             </table>
             <!--/header text-->
             <!--intro-->
-            <table bgcolor="#d4d2c5" background="images/full-bg-top.jpg" width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+            <table bgcolor="#d4d2c5" width="600" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td valign="top" width="15" height="147"><img style="margin: 0; padding: 0; display: block;" src="images/left-top-curl.jpg" width="15" height="147"></td>
+                    <td valign="top" width="15" height="147"><img style="margin: 0; padding: 0; display: block;" width="15" height="147"></td>
                     <td valign="top" height="100">
                         <table width="100%" border="0" cellpadding="0" cellspacing="0">
                             <tr>
@@ -41,7 +41,7 @@
                                 <td width="48"></td>
                             </tr>
                             <tr>
-                                <td valign="top" height="124" background="images/top-intro-bg.jpg" bgcolor="#dd2d1d">
+                                <td valign="top" height="124" bgcolor="#dd2d1d">
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td height="30"></td>
@@ -52,12 +52,12 @@
                                             <td valign="top">
                                                 <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; margin: 0; padding: 0; color: #FFF; text-shadow: -1px -1px 1px #a10e08; font-size: 36px;">PolicyOracle</h1>
                                                 <em>
-                                                <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px; margin: 0; padding: 0; color:#e7edcf;">   <%= @tenant.name %>.policyoracle.org</p>
+                                                <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px; color:#6a6e62; margin: 0; padding: 0; color:#e7edcf;">   <%= @tenant.name %>.policyoracle.org</p>
                                                 </em> </td>
                                         </tr>
                                     </table>
                                 </td>
-                                <td valign="top"> <img style="margin: 0; padding: 0; display: block;" src="images/bracket-red.png"> </td>
+                                <td valign="top"> <img style="margin: 0; padding: 0; display: block;"> </td>
                                 <td valign="top">
                                     <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
                                         <tr>
@@ -67,14 +67,14 @@
                                             <td  height="30" align="center">
                                                 <table width="27" border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                        <td valign="top" align="center" height="27" bgcolor="#b7b7ac" background="images/date-bg-2.jpg">
+                                                        <td valign="top" align="center" height="27" bgcolor="#b7b7ac" <%= image_tag attachments['date-bg-2.jpg'] %>>
                                                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                 <tr>
                                                                     <td height="3"></td>
                                                                 </tr>
                                                             </table>
-                                                            <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px; color: #FFF; margin-bottom: 0px; margin-top: 0px; padding: 0px; -webkit-text-size-adjust: none; clear: both;"> <%= DateTime.now.to_date %>
-                                                                <currentday>
+                                                            <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px; color: #FFF; margin-bottom: 0px; margin-top: 0px; padding: 0px; -webkit-text-size-adjust: none; clear: both;"> 
+                                                               <%@date = Time.now %> <%= @date.strftime("%d") %><currentday>
                                                             </p>
                                                         </td>
                                                     </tr>
@@ -82,36 +82,36 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td valign="bottom" height="19" align="center"><img style="margin: 0; padding: 0;" src="images/ornament.gif" width="76" height="19"> </td>
+                                            <td valign="bottom" height="19" align="center"><img style="margin: 0; padding: 0;" <%= image_tag attachments['ornament.gif'] %> width="76" height="19"> </td>
                                         </tr>
                                         <tr>
                                             <td height="20" align="center">
                                                 <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px; color: #9c9e93; margin-bottom: 0px; margin-top: 0px; padding: 0px; text-shadow: 1px 1px 1px #FFFFFF; -webkit-text-size-adjust: none; clear: both;">
-                                                    <currentmonthname>
+                                                    <%= @date.strftime("%B") %><currentmonthname>
                                                 </p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td align="center">
                                                 <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 24px; color: #9c9e93; margin-bottom: 0px; margin-top: 0px; padding: 0px; text-shadow: 1px 1px 1px #FFFFFF; -webkit-text-size-adjust: none; clear: both;">
-                                                    <currentyear>
+                                                    <%= @date.strftime("%Y") %><currentyear>
                                                 </p>
                                             </td>
                                         </tr>
                                     </table>
                                 </td>
-                                <td align="right" valign="top"><img style="margin: 0; padding: 0; display: block;" src="images/bracket-green.png" width="48" height="124"></td>
+                                <td align="right" valign="top"><img style="margin: 0; padding: 0; display: block;" width="48" height="124"></td>
                             </tr>
                         </table>
                     </td>
-                    <td valign="top" width="15" height="147"><img style="margin: 0; padding: 0; display: block;" src="images/right-top-curl.jpg" width="15" height="147"></td>
+                    <td valign="top" width="15" height="147"><img style="margin: 0; padding: 0; display: block;"  width="15" height="147"></td>
                 </tr>
             </table>
             <!--/intro-->
             <!--content section-->
             <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td valign="top" width="15"> <img style="margin: 0; padding: 0; display: block;" src="images/left-curl-part-1.jpg" width="15" height="56"></td>
+                    <td valign="top" width="15"> <img style="margin: 0; padding: 0; display: block;"  width="15" height="56"></td>
                     <td background="images/full-bg.jpg" bgcolor="#d4d2c5" valign="top">
                         <table width="569" border="0" cellspacing="0" cellpadding="0">
                             <tr>
@@ -121,7 +121,7 @@
                                             <td height="27"></td>
                                         </tr>
                                         <tr>
-                                            <td><img style="margin: 0; padding: 0; display: block;" src="images/left-curl-part-2.gif" width="12" height="28"></td>
+                                            <td><img style="margin: 0; padding: 0; display: block;" width="12" height="28"></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -142,7 +142,7 @@
                                                   <a style="font-family: Georgia, 'Times New Roman', Times, serif; margin: 0; padding: 0; color: #6a6e62; font-size: 16px; text-shadow: 1px 1px 1px #FFFFFF;" href="<%=@tenant.name%>.policyoracle.org/markets/<%= market.id%>"><%= market.name %></a>
                                                   <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                      <td valign="middle" height="10"><img style="margin: 0; padding: 0; display: block;" src="images/line-break-dotted3.gif" width="176" height="6"></td>
+                                                      <td valign="middle" height="10"><img style="margin: 0; padding: 0; display: block;" <%= image_tag attachments['line-break.gif'] %>  width="176" height="6"></td>
                                                      </tr>
                                                   </table>
                                                 <% end %>
@@ -184,7 +184,7 @@
                         </table>
                         <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td background="images/full-bg.jpg" bgcolor="#d4d2c5" width="348">
+                                <td  bgcolor="#d4d2c5" width="348">
                                     <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; margin: 0; padding: 0; color: #de2d1d; font-size: 24px;">
                                 </td>
                             </tr>
@@ -260,7 +260,7 @@
                     <td style="background-color: none;" bgcolor="" valign="top" width="15">&nbsp;</td>
                 </tr>
             </table>
-            <!-/content section
+            <!-/content section -->
             <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
                     <td width="15"> </td>
@@ -270,7 +270,7 @@
                                 <td height="20"></td>
                             </tr>
                         </table>
-                        <p align="center" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px; margin: 0; padding: 0; color:#bcc1ae; font-weight: normal;">abc Widgets and the abc Widgets Logo are registered trademarks of abcWidgets Corp.
+                        <!--<p align="center" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14px; margin: 0; padding: 0; color:#bcc1ae; font-weight: normal;">abc Widgets and the abc Widgets Logo are registered trademarks of abcWidgets Corp.
                             <forwardtoafriend style="color: #bcc1ae; text-decoration: underline;">Forward this email to a friend.</forwardtoafriend>
                             Not interested anymore?
                             <unsubscribe style="color: #bcc1ae; text-decoration: underline;" href="#">Unsubscribe Instantly.</unsubscribe>
@@ -279,10 +279,10 @@
                             <tr>
                                 <td height="20"></td>
                             </tr>
-                        </table>
+                        </table>-->
                     </td>
                 </tr>
-            </table>-->
+            </table>
         </td>
     </tr>
 </table>

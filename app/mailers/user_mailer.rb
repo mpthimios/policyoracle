@@ -28,6 +28,9 @@ class UserMailer < ActionMailer::Base
   def newsletter(email, markets, tenant_obj)
     @markets = markets
     @tenant = tenant_obj
+    attachments.inline['date-bg-2.jpg'] = File.read(Rails.root.join('app/assets/images/email/date-bg-2.jpg'))
+    attachments.inline['ornament.gif'] = File.read(Rails.root.join('app/assets/images/email/ornament.gif'))
+    attachments.inline['line-break.gif'] = File.read(Rails.root.join('app/assets/images/email/line-break.gif'))
     mail(:to => email, :subject => "PolicyOracle - Newsletter")
   end
   
