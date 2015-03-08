@@ -159,7 +159,7 @@ class Market < ActiveRecord::Base
 
     #add transactions
     n = 1
-    self.utransactions.order("created_at").each do |transaction|
+    self.utransactions.where("created_at > ?", self.created_at).order("created_at").each do |transaction|
 
       date = transaction.created_at.strftime("%Y-%m-%d %H:%M")
       index = data[:dates].index(date)
@@ -192,7 +192,11 @@ class Market < ActiveRecord::Base
       data[:prices][i][:values] << contract.current_price.round(2)
       i = i + 1
     end
-    data[:dates] << DateTime.now.strftime("%Y-%m-%d %H:%M")
+    if (self.status == true)
+      data[:dates] << DateTime.now.strftime("%Y-%m-%d %H:%M")
+    else
+      data[:dates] << self.arbitration_date.strftime("%Y-%m-%d %H:%M")
+    end
     data[:volume] << 0
 
     data
